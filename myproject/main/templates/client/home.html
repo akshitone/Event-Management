@@ -6,7 +6,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Eventes - Event Conference HTML5 Template</title>
+         <title>{{titlename}}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
@@ -37,46 +37,34 @@
                                     <a href="index.html"><img src="{% static 'client_plugins/img/logo/logo.png' %}" alt="logo"></a>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-9">
+                            <div class="col-xl-9 col-lg-9">
                                 <div class="responsive"><i class="icon dripicons-align-right"></i></div>
-                                <div class="main-menu text-right text-xl-center">
+                                <div class="main-menu text-right text-xl-right pr-50">
                                     <nav id="mobile-menu">
                                         <ul>
-                                            <li class="active has-sub"><a href="#home">Home  +</a>
-												<ul>
-													<li><a href="index.html">Home Page 01</a></li>
-													<li><a href="index2.html">Home Page 02</a></li>
-													<li><a href="index3.html">Home Page 03</a></li>
-												</ul>
+                                            <li>
+                                                <a href="/">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="/registration">Registration</a>
+                                            </li>
+                                            <li class="has-sub">
+												<a href="about.html">Club</a>												
 											</li>
                                             <li class="has-sub">
-												<a href="about.html">About</a>												
+												<a href="venue.html">Event</a>
 											</li>
                                             <li class="has-sub">
-												<a href="venue.html">venue</a>
+												<a href="/venue">Venue</a>
 											</li>
-                                             <li class="has-sub">
-												<a href="#">Speakers +</a>
-												<ul>
-													<li><a href="speakers.html">Speakers Page</a></li>
-													<li><a href="speaker-details.html">Speakers Details</a></li>
-												</ul>
-											</li>
-                                             <li class="has-sub">
-												<a href="#">Shop +</a>
-												<ul>
-													<li><a href="shop.html">Shop Page</a></li>
-													<li><a href="shop-details.html">Shop Details</a></li>
-												</ul>
-											 </li>
-                                            <li><a href="blog.html">News</a></li>
+                                            <li>
+                                                <a href="blog.html">Who we are?</a>
+                                            </li>
+                                            <li>
+                                                <a href="blog.html">Contact Us</a>
+                                            </li>
                                         </ul>
                                     </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 text-right d-none d-xl-block">
-                                <div class="header-btn second-header-btn">
-                                     <a href="contact.html" class="btn"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +76,7 @@
         <!-- main-area -->
         <main>
             <!-- slider-area -->
-            <section id="parallax" class="slider-area slider-bg second-slider-bg slider-bg2 d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/home_2_slider_img.jpg)">
+            <section id="parallax" class="slider-area slider-bg second-slider-bg slider-bg2 d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/home_2_slider_img.jpg' %})">
                 <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
                 <div class="slider-shape ss-two layer" data-depth="0.30"><img src="{% static 'client_plugins/img/doddle_8.png' %}" alt="shape"></div>
                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
@@ -136,7 +124,7 @@
                             </div>
                         </div>
 						 <div class="col-lg-6">
-                         <div class="s-video-wrap" style="background-image:url({% static 'client_plugins/img/video_bg_2.jpg)">
+                         <div class="s-video-wrap" style="background-image:url({% static 'client_plugins/img/video_bg_2.jpg' %})">
                                 <div class="s-video-content">
                                     <a href="https://www.youtube.com/watch?v=7e90gBu4pas" class="popup-video mb-50"><i class="fas fa-play"></i></a>
                                    
@@ -322,7 +310,7 @@
             </section>
             <!-- team-area-end -->
              <!-- counter-area -->
-            <div class="counter-area pt-120 pb-120" style="background-image:url({% static 'client_plugins/img/counter_bg.jpg);background-size: cover;">
+            <div class="counter-area pt-120 pb-120" style="background-image:url({% static 'client_plugins/img/counter_bg.jpg' %});background-size: cover;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
@@ -920,7 +908,7 @@
             </div>
             <!-- counter-area-end -->
 			 <!-- pricing-area -->
-            <section id="pricing" class="pricing-area pt-113 pb-90 fix" style="background-image:url({% static 'client_plugins/img/pricing_bg.jpg);background-size: cover;">
+            <section id="pricing" class="pricing-area pt-113 pb-90 fix" style="background-image:url({% static 'client_plugins/img/pricing_bg.jpg' %});background-size: cover;">
 			<div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Plans</h2></div>
 			 <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
@@ -1068,7 +1056,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-post mb-30">
                                 <div class="blog-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_1.jpg" alt="img"></a>
+                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_1.jpg' %}" alt="img"></a>
                                 </div>
                                 <div class="blog-content">
                                     <div class="b-meta mb-20">
@@ -1087,7 +1075,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-post active mb-30">
                                 <div class="blog-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_2.jpg" alt="img"></a>
+                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_2.jpg' %}" alt="img"></a>
                                 </div>
                                 <div class="blog-content">
                                     <div class="b-meta mb-20">
@@ -1106,7 +1094,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-post mb-30">
                                 <div class="blog-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_3.jpg" alt="img"></a>
+                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_3.jpg' %}" alt="img"></a>
                                 </div>
                                 <div class="blog-content">
                                     <div class="b-meta mb-20">
@@ -1125,7 +1113,7 @@
 						<div class="col-lg-4 col-md-6">
                             <div class="single-post mb-30">
                                 <div class="blog-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_2.jpg" alt="img"></a>
+                                    <a href="blog-details.html"><img src="{% static 'client_plugins/img/blog_img_2.jpg' %}" alt="img"></a>
                                 </div>
                                 <div class="blog-content">
                                     <div class="b-meta mb-20">
@@ -1148,7 +1136,7 @@
         </main>
         <!-- main-area-end -->
         <!-- footer -->
-        <footer class="footer-bg footer-p" style="background-image:url({% static 'client_plugins/img/footer_bg_img.jpg);background-size: cover;">
+        <footer class="footer-bg footer-p" style="background-image:url({% static 'client_plugins/img/footer_bg_img.jpg' %});background-size: cover;">
           
             <div class="footer-top">
                 <div class="container">
@@ -1180,12 +1168,12 @@
                             <div class="copyright-text text-center">
 								<div class="footer-link">
                                     <ul>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Eventime</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                        <li><a href="#">Tickets</a></li>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Registration</a></li>
+                                        <li><a href="#">Club</a></li>
+                                        <li><a href="#">Event</a></li>
                                         <li><a href="#">Venue</a></li>
+                                        <li><a href="#">Who we are?</a></li>
                                     </ul>
                                 </div>                              
                             </div>

@@ -1,0 +1,88 @@
+{% extends 'client/master.html' %}
+
+
+{% block main-content %}
+
+<section id="team" class="team-area p-relative pt-10 pb-50 fix">
+    <div class="circal1 item-zoom-inout"></div>
+    <div class="circal2 item-zoom-inout"></div>
+    <div class="circal3 item-zoom-inout"></div>
+    <div class="circal4 item-zoom-inout"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-12">
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="booking-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
+                    <form>
+                        <div class="form-outer">
+                            <div class="icon"><i class="fal fa-user"></i></div>
+                            <input type="text" placeholder="Enter your name"/>
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="fal fa-envelope"></i></div>
+                            <input type="email" placeholder="Enter your email"/>
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="fal fa-key"></i></div>
+                            <input type="password" placeholder="Enter your password"/>
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="far fa-phone"></i></div>
+                            <input type="text" placeholder="Enter your phone"/>
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="far fa-venus-mars"></i></div>
+                            <select id="select">
+                            <option selected="selected">Select gender</option>
+                            <option>Male</option>  
+                            <option>Female</option>  
+                            <option>Others</option>  
+                            </select>                                         
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="far fa-building"></i></div>
+                            <select id="select">
+                            <option selected="selected">Select your department</option>
+                            <option>one</option>  
+                            <option>two</option>  
+                            <option>three</option>  
+                            <option>four</option>  
+                            <option >five</option>  
+                            </select>                                   
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="fas fa-building"></i></div>
+                            <select id="select">
+                            <option selected="selected">Select your sub-department</option>
+                            <option>one</option>  
+                            <option>two</option>  
+                            <option>three</option>  
+                            <option>four</option>  
+                            <option >five</option>  
+                            </select>                                          
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="far fa-home"></i></div>
+                            <textarea rows="4">Enter your address</textarea>
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="far fa-map-marker-alt"></i></div>
+                            <input type="text" placeholder="Enter your city"/>
+                        </div>
+                        <div class="form-outer">
+                            <div class="icon"><i class="far fa-image"></i></div>
+                            <input type="text" placeholder="Upload your image"/>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+{% endblock main-content %}
+    
