@@ -7,10 +7,10 @@ def college_add(request):
         college = College (
             CollegeName     = request.POST['txtcollegename'],  
             City            = request.POST['txtcityname'],  
-            CollegeType     = request.POST['txtcollegetype']  
+            CollegeType     = request.POST['collegetype']
         )
         college.save()
-        return redirect('/college/add/')
+        return redirect('/admin/college/add/')
     else:
         return render(request, 'admin/college-add.html')
 

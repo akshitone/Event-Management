@@ -19,159 +19,29 @@
 	</head>
 	<body>
 		<!-- Loader -->
-		<div id="preloader">
-			<div id="status">
-				<div class="spinner"></div>
-			</div>
-		</div>
-		<div class="header-bg">
-			<!-- Navigation Bar-->
-			<header id="topnav">
-				<div class="topbar-main">
-					<div class="container-fluid">
-						<!-- Logo-->
-						<div class="d-block d-lg-none mr-5"><a href="index.html" class="logo"><img src="{% static 'admin_plugins/images/favicon.png' %}" alt="" height="28" class="logo-small"></a></div>
-						<!-- End Logo-->
-						<div class="menu-extras topbar-custom navbar p-0">
-							<ul class="list-inline flags-dropdown d-none d-lg-block mb-0">
-								<li class="list-inline-item text-white-50 mr-3"><span class="font-13">Help : +91 7874 987 797</span></li>
-							</ul>
-							<!-- Search input -->
-							<div class="search-wrap" id="search-wrap">
-								<div class="search-bar"><input class="search-input" type="search" placeholder="Search"> <a href="#" class="close-search toggle-search" data-target="#search-wrap"><i class="mdi mdi-close-circle"></i></a></div>
-							</div>
-							<ul class="list-inline ml-auto mb-0">
-								<!-- notification-->
-								<li class="list-inline-item dropdown notification-list"><a class="nav-link waves-effect toggle-search" href="#" data-target="#search-wrap"><i class="mdi mdi-magnify noti-icon"></i></a></li>
-								<li class="list-inline-item dropdown notification-list">
-									<a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><i class="mdi mdi-bell-outline noti-icon"></i> <span class="badge badge-info badge-pill noti-icon-badge">3</span></a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-arrow dropdown-menu-lg">
-										<!-- item-->
-										<div class="dropdown-item noti-title">
-											<h5>Notification (3)</h5>
-										</div>
-										<div class="slimscroll-noti">
-											<!-- item--> 
-											<a href="javascript:void(0);" class="dropdown-item notify-item active">
-												<div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-												<p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-											</a>
-											<!-- item--> 
-											<a href="javascript:void(0);" class="dropdown-item notify-item">
-												<div class="notify-icon bg-danger"><i class="mdi mdi-message-text-outline"></i></div>
-												<p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-											</a>
-											<!-- item--> 
-											<a href="javascript:void(0);" class="dropdown-item notify-item">
-												<div class="notify-icon bg-info"><i class="mdi mdi-filter-outline"></i></div>
-												<p class="notify-details"><b>Your item is shipped</b><span class="text-muted">It is a long established fact that a reader will</span></p>
-											</a>
-											<!-- item--> 
-											<a href="javascript:void(0);" class="dropdown-item notify-item">
-												<div class="notify-icon bg-success"><i class="mdi mdi-message-text-outline"></i></div>
-												<p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-											</a>
-											<!-- item--> 
-											<a href="javascript:void(0);" class="dropdown-item notify-item">
-												<div class="notify-icon bg-warning"><i class="mdi mdi-cart-outline"></i></div>
-												<p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-											</a>
-										</div>
-										<!-- All--> <a href="javascript:void(0);" class="dropdown-item notify-all">View All</a>
-									</div>
-								</li>
-								<!-- User-->
-								<li class="list-inline-item dropdown notification-list">
-									<a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="{% static 'admin_plugins/images/users/avatar-6.jpg' %}" alt="user" class="rounded-circle"> <span class="d-none d-md-inline-block ml-1">Donald T. <i class="mdi mdi-chevron-down"></i></span></a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
-                                        <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a> 
-                                        <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span>
-                                        <i class="dripicons-gear text-muted"></i> Settings</a> <a class="dropdown-item" href="#">
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#"><i class="dripicons-exit text-muted"></i>Logout</a>
-									</div>
-								</li>
-								<li class="menu-item list-inline-item">
-									<!-- Mobile menu toggle--> 
-									<a class="navbar-toggle nav-link">
-										<div class="lines"><span></span> <span></span> <span></span></div>
-									</a>
-									<!-- End mobile menu toggle-->
-								</li>
-							</ul>
-						</div>
-						<!-- end menu-extras -->
-						<div class="clearfix"></div>
-					</div>
-					<!-- end container -->
-				</div>
-				<!-- end topbar-main --><!-- MENU Start -->
-				<div class="navbar-custom">
-					<div class="container-fluid">
-						<!-- Logo-->
-						<div class="d-none d-lg-block">
-							<!-- Text Logo
-								<a href="index.html" class="logo">
-								    Foxia
-								</a>
-								 --><!-- Image Logo --> 
-							<a href="index.html" class="logo">
-								<!-- <img src="{% static 'admin_plugins/images/logo-sm.png' %}" alt="" height="22" class="logo-small"> --> <img src="{% static 'admin_plugins/images/logo.png' %}" alt="" height="20" class="logo-large">
-							</a>
-						</div>
-						<!-- End Logo-->
-						<div id="navigation">
-							<!-- Navigation Menu-->
-							<ul class="navigation-menu">
-								<li class="has-submenu"><a href="index.html"><i class="dripicons-meter"></i>Dashboard</a></li>
-								<li><a href="#"><i class="mdi mdi-city"></i>College</a></li>
-								<li><a href="#"><i class="mdi mdi-account-network"></i>Department</a></li>
-								<li><a href="#"><i class="dripicons-user"></i>Employee</a></li>
-                                <li class="has-submenu">
-                                    <a href="#"><i class="ti-user"></i>Student <i class="mdi mdi-chevron-down mdi-drop"></i></a>
-                                    <ul class="submenu">
-										<li><a href="advanced-animation.html">Animation</a></li>
-										<li><a href="advanced-highlight.html">Highlight</a></li>
-										<li><a href="advanced-rating.html">Rating</a></li>
-										<li><a href="advanced-nestable.html">Nestable</a></li>
-										<li><a href="advanced-alertify.html">Alertify</a></li>
-										<li><a href="advanced-rangeslider.html">Range Slider</a></li>
-										<li><a href="advanced-sessiontimeout.html">Session Timeout</a></li>
-									</ul>
-                                </li>
-                                <li><a href="#"><i class="ti-crown"></i>Club</a></li>
-                                <li><a href="#"><i class="mdi mdi-calendar-clock"></i>Event</a></li>
-								<li><a href="#"><i class="dripicons-trophy"></i>Achievement</a></li>
-							</ul>
-							<!-- End navigation menu -->
-						</div>
-						<!-- end #navigation -->
-					</div>
-					<!-- end container -->
-				</div>
-				<!-- end navbar-custom -->
-			</header>
-			<!-- End Navigation Bar-->
-			<div class="container-fluid">
-				<!-- Page-Title -->
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="page-title-box">
-							<div class="row align-items-center">
-								<div class="col-md-8">
-									<h4 class="page-title mb-0">College Form</h4>
-									<ol class="breadcrumb m-0">
-										<li class="breadcrumb-item"><a href="#">College</a></li>
-										<li class="breadcrumb-item active" aria-current="page">College Form</li>
-									</ol>
-								</div>
+		
+		{% include 'admin/header.html' %}
+		<!-- End Navigation Bar-->
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row align-items-center">
+							<div class="col-md-8">
+								<h4 class="page-title mb-0">College Form</h4>
+								<ol class="breadcrumb m-0">
+									<li class="breadcrumb-item"><a href="#">College</a></li>
+									<li class="breadcrumb-item active" aria-current="page">College Form</li>
+								</ol>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- end page title end breadcrumb -->
 			</div>
+			<!-- end page title end breadcrumb -->
 		</div>
+	</div>
 		<div class="wrapper">
 			<div class="container-fluid">
 				<div class="row">
@@ -190,7 +60,12 @@
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">College type</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" type="text" placeholder="Enter college type" name="txtcollegetype" id="txtcollegetype"></div>
+										<div class="col-sm-10">
+											<div class="btn-group btn-group-toggle" data-toggle="buttons">
+												<label class="btn btn-outline-primary  p-2"><input type="radio" name="collegetype" id="option1" value="Private" checked="checked">Private</label> 
+												<label class="btn btn-outline-pink p-2"><input type="radio" name="collegetype" value="Public" id="option2">Public</label> 
+											</div>
+										</div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">&nbsp;</label>

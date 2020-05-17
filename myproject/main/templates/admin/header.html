@@ -10,7 +10,7 @@
         <div class="topbar-main">
             <div class="container-fluid">
                 <!-- Logo-->
-                <div class="d-block d-lg-none mr-5"><a href="index.html" class="logo"><img src="{% static 'admin_plugins/images/favicon.png' %}" alt="" height="28" class="logo-small"></a></div>
+                <div class="d-block d-lg-none mr-5"><a href="/admin/" class="logo"><img src="{% static 'admin_plugins/images/favicon.png' %}" alt="" height="28" class="logo-small"></a></div>
                 <!-- End Logo-->
                 <div class="menu-extras topbar-custom navbar p-0">
                     <ul class="list-inline flags-dropdown d-none d-lg-block mb-0">
@@ -95,7 +95,7 @@
                             Foxia
                         </a>
                          --><!-- Image Logo --> 
-                    <a href="index.html" class="logo">
+                    <a href="/admin/" class="logo">
                         <!-- <img src="{% static 'admin_plugins/images/logo-sm.png' %}" alt="" height="22" class="logo-small"> --> <img src="{% static 'admin_plugins/images/logo.png' %}" alt="" height="20" class="logo-large">
                     </a>
                 </div>
@@ -103,15 +103,23 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
-                        <li class="has-submenu"><a href="index.html"><i class="dripicons-meter"></i>Dashboard</a></li>
+                        <li class="has-submenu"><a href="/admin/"><i class="dripicons-meter"></i>Dashboard</a></li>
                         <li class="has-submenu">
-                            <a href="#"><i class="mdi mdi-city"></i>College <i class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <a href="/admin/college/"><i class="mdi mdi-city"></i>College<i class="mdi mdi-chevron-down mdi-drop"></i></a>
                             <ul class="submenu">
-                                <li><a href="advanced-animation.html">Add College</a></li>
-                                <li><a href="advanced-highlight.html">View College</a></li>
+                                <li><a href="/admin/college/add/">Add College</a></li>
+                                <li><a href="/admin/college/">View College</a></li>
                             </ul>
                         </li>
-                        <li><a href="#"><i class="mdi mdi-account-network"></i>Department</a></li>
+                        <li class="has-submenu">
+                            <a href="/admin/department/"><i class="mdi mdi-account-network"></i>Department<i class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu">
+                                <li><a href="/admin/department/add/">Add Department</a></li>
+                                <li><a href="/admin/department/">View Department</a></li>
+                                <li><a href="/admin/college/add/">Add Sub Department</a></li>
+                                <li><a href="/admin/college/">View Sub Department</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#"><i class="dripicons-user"></i>Employee</a></li>
                         <li class="has-submenu">
                             <a href="#"><i class="ti-user"></i>Student <i class="mdi mdi-chevron-down mdi-drop"></i></a>
@@ -137,24 +145,3 @@
         </div>
         <!-- end navbar-custom -->
     </header>
-    <!-- End Navigation Bar-->
-    <div class="container-fluid">
-        <!-- Page-Title -->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h4 class="page-title mb-0">Dashboard</h4>
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="#">Foxia</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end page title end breadcrumb -->
-    </div>
-</div>

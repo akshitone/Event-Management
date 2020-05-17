@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
-		<title>College Table | eVentes</title>
+		<title>Department Table | eVentes</title>
 		<meta content="Admin Dashboard" name="description">
 		<meta content="Themesbrand" name="author">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,22 +53,18 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="mt-0 header-title mb-3">College Table</h4>
+								<h4 class="mt-0 header-title mb-3">Department Table</h4>
 								<table id="datatable" class="table table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 									<thead>
 										<tr>
-											<th>College Name</th>
-											<th>City</th>
-											<th>College Type</th>
+											<th>Department Name</th>
 											<th>Actions</th>
 										</tr>
 									</thead>
 									<tbody>
-										{% for college in college_data %}
+										{% for department in department_data %}
 										<tr>
-											<td> {{college.CollegeName}}</td>
-											<td> {{college.City}} </td>
-											<td> {{college.CollegeType}} </td>
+											<td> {{department.DepartmentName}}</td>
 											<td>
 												<button type="button" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></button>
 												<button type="button" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></button>
