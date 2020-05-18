@@ -10,6 +10,7 @@ class Employee(models.Model):
     DepartmentName         = models.ForeignKey(Department, on_delete=models.CASCADE)
     SubDepartmentName      = models.ForeignKey(SubDepartment, on_delete=models.CASCADE)
     Gender                 = models.CharField(max_length = 10, null=False, blank=False)
+    EmployeeImageName      = models.TextField(null=True, blank=True)
     EmployeeImage          = models.ImageField(upload_to='images', null=True, blank=True)
     EmployeePhone          = models.CharField(max_length = 150)
     EmployeeEmail          = models.EmailField(max_length = 150, null=True, blank=True)

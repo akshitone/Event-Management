@@ -57,9 +57,9 @@
 								<table id="datatable" class="table table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 									<thead>
 										<tr>
-											<th>College Name</th>
+											<th>College name</th>
 											<th>City</th>
-											<th>College Type</th>
+											<th>College type</th>
 											<th>Actions</th>
 										</tr>
 									</thead>
@@ -70,9 +70,9 @@
 											<td> {{college.City}} </td>
 											<td> {{college.CollegeType}} </td>
 											<td>
-												<button type="button" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></button>
-												<button type="button" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></button>
-												<button type="button" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></button>
+												<a class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
+												<a class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
+												<a href="{% url 'college-delete' id=college.CollegeId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 										{% endfor %}

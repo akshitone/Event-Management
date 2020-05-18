@@ -17,3 +17,8 @@ def college_add(request):
 def college_table(request):
     college_data = College.objects.all()
     return render(request, 'admin/college-table.html', {'college_data': college_data})
+
+def college_delete(request, id):
+    college = College.objects.filter(pk = id)
+    college.delete()
+    return redirect('/admin/college/')

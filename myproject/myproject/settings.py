@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'main',
     'college',
     'department',
-    'employee'
+    'employee',
+    'student',
+    'club',
+    'event',
+    'achievement'
 ]
 
 MIDDLEWARE = [

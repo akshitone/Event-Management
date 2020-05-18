@@ -21,7 +21,6 @@ def subdepartment_add(request):
         subdepartment = SubDepartment (
             SubDepartmentName     = request.POST['txtsubdepartmentname'],
             DepartmentName_id     = request.POST['departmentdropdown']
-
         )
         subdepartment.save()
         return redirect('/admin/subdepartment/add/')
