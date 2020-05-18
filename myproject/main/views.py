@@ -11,8 +11,6 @@ def registration(request):
 def venue(request):
     return render(request, 'client/venue.html')
 
-
 #admin side
-
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
