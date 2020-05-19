@@ -15,6 +15,7 @@ urlpatterns = [
     path('', include('club.urls')),
     path('', include('event.urls')),
     path('', include('student.urls')),
+    path('', include('venue.urls')),
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

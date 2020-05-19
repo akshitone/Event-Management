@@ -1,5 +1,6 @@
 from django.db import models
 from club.models import Club
+from venue.models import Venue
 
 # Create your models here.
 class Event(models.Model):
@@ -8,6 +9,7 @@ class Event(models.Model):
     EventImageName      = models.TextField(null=True, blank=True)
     EventImage          = models.ImageField(upload_to='images', null=True, blank=True)
     ClubName            = models.ForeignKey(Club, on_delete=models.CASCADE)
+    VenueId             = models.ForeignKey(Venue, on_delete=models.CASCADE)
     EventType           = models.CharField(max_length = 150)
     EventEligibility    = models.CharField(max_length = 150)
     EventStatus         = models.CharField(max_length = 10, default=False)

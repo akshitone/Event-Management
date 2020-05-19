@@ -49,7 +49,7 @@
                                                 <a href="/registration">Registration</a>
                                             </li>
                                             <li class="has-sub">
-												<a href="about.html">Club</a>												
+												<a href="/club">Club</a>												
 											</li>
                                             <li class="has-sub">
 												<a href="venue.html">Event</a>
@@ -102,10 +102,39 @@
                 </div>
             </section>
             <!-- slider-area-end -->
-            <!-- about-area -->
             <section id="about" class="about-area about-p pt-120 pb-120 p-relative">
                 <div class="container">
-                    <div class="row align-items-center">                       
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                         <div class="feature-box wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
+							<div class="crl mb-30">
+								<img src="{% static 'client_plugins/img/icon_1.png' %}" alt="icon">
+								<span>1</span>
+							</div>
+							<h4>Networking</h4>
+						 </div>
+						   <div class="feature-box wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
+							<div class="crl mb-30">
+								<img src="{% static 'client_plugins/img/icon_2.png' %}" alt="icon">
+								<span>2</span>
+							</div>
+							<h4>New Speaker</h4>
+						 </div>
+						   <div class="feature-box wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
+							<div class="crl mb-30">
+								<img src="{% static 'client_plugins/img/icon_3.png' %}" alt="icon">
+								<span>3</span>
+							</div>
+							<h4>Food Court</h4>
+						 </div>
+						   <div class="feature-box wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
+							<div class="crl mb-30">
+								<img src="{% static 'client_plugins/img/icon_4.png' %}" alt="icon">
+								<span>4</span>
+							</div>
+							<h4>Have Fun</h4>
+						 </div>
+                        </div>
                         <div class="col-lg-6">
                             <div class="about-content s-about-content pl-30">
                                 <div class="about-title second-atitle">
@@ -123,21 +152,12 @@
 							   </div>
                             </div>
                         </div>
-						 <div class="col-lg-6">
-                         <div class="s-video-wrap" style="background-image:url({% static 'client_plugins/img/video_bg_2.jpg' %})">
-                                <div class="s-video-content">
-                                    <a href="https://www.youtube.com/watch?v=7e90gBu4pas" class="popup-video mb-50"><i class="fas fa-play"></i></a>
-                                   
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
-            <!-- about-area-end -->
 			<!-- team-area -->
             <section id="team" class="team-area p-relative pt-120 pb-120 fix">
-                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Speakers</h2></div>
+                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Clubs</h2></div>
 				<div class="circal1 item-zoom-inout"></div>
 				<div class="circal2 item-zoom-inout"></div>
 				<div class="circal3 item-zoom-inout"></div>
@@ -146,165 +166,34 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
                             <div class="section-title text-center mb-80">
-                                <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Angels</span>
-                                <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".4s">Event Speakers</h2>
+                                <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".4s">Clubs</h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                              <div class="single-team text-center pt-50  pb-50 mb-30">
-                                <div class="team-thumb">
-                                    <img src="{% static 'client_plugins/img/speaker_1.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>James D. Franklin</h5>
-                                   <p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                    <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        
+                        {% for club in club_data %}
+
+                            <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
+                                <div class="single-team text-center pt-50  pb-50 mb-30">
+                                    <div class="team-thumb">
+                                        <img src="{{club.ClubImage}}" alt="img">
                                     </div>
-									 <span>Content Writer</span>
+                                    <div class="team-info">
+                                        <h5>{{club.ClubName}}</h5>
+                                        <strong>{{club.ClubType}}</strong> 
+                                        <div class="team-social pt-15 pb-15 mb-15">
+                                            <a href="{{club.FacebookLink}}"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="{{club.InstagramLink}}"><i class="fab fa-twitter"></i></a>
+                                            <a href="{{club.TwitterLink}}"><i class="fab fa-instagram"></i></a>
+                                            <a href="{{club.DribbbleLink}}"><i class="fab fa-dribbble"></i></a>
+                                        </div>
+                                        <span>{{club.DepartmentName_id}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                          <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                              <div class="single-team text-center pt-50  pb-50 mb-30">
-                                <div class="team-thumb">
-                                   <img src="{% static 'client_plugins/img/speaker_2.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>Natosha W. Green</h5>
-                                    <p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                   <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </div>
-									 <span>Content Writer</span>
-                                </div>
-                            </div>
-                        </div>
-                          <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                              <div class="single-team text-center pt-50  pb-50 mb-30">
-								<div class="tag">Gold</div>
-                                <div class="team-thumb">
-                                    <img src="{% static 'client_plugins/img/speaker_3.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>Brian J. Swanson</h5>
-                                    <p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                    <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </div>
-									 <span>Content Writer</span>
-                                </div>
-                            </div>
-                        </div>
-                          <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                            <div class="single-team text-center pt-50  pb-50 mb-30">
-                                <div class="team-thumb">
-                                   <img src="{% static 'client_plugins/img/speaker_4.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>Stephanie D. Gray</h5>                                   
-									<p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                    <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </div>
-									 <span>Content Writer</span>
-                                </div>
-                            </div>
-                        </div>
-						  <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                              <div class="single-team text-center pt-50  pb-50 mb-30">
-                                <div class="team-thumb">
-                                    <img src="{% static 'client_plugins/img/speaker_5.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>James D. Franklin</h5>
-                                   <p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                    <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </div>
-									 <span>Content Writer</span>
-                                </div>
-                            </div>
-                        </div>
-                          <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                              <div class="single-team text-center pt-50  pb-50 mb-30">
-                                <div class="team-thumb">
-                                   <img src="{% static 'client_plugins/img/speaker_6.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>Natosha W. Green</h5>
-                                    <p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                   <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </div>
-									 <span>Content Writer</span>
-                                </div>
-                            </div>
-                        </div>
-                          <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                              <div class="single-team text-center pt-50  pb-50 mb-30">
-                                <div class="team-thumb">
-                                    <img src="{% static 'client_plugins/img/speaker_7.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>Brian J. Swanson</h5>
-                                    <p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                    <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </div>
-									 <span>Content Writer</span>
-                                </div>
-                            </div>
-                        </div>
-                          <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                            <div class="single-team text-center pt-50  pb-50 mb-30">
-                                <div class="team-thumb">
-                                   <img src="{% static 'client_plugins/img/speaker_8.png' %}" alt="img">
-                                </div>
-                                <div class="team-info">
-                                    <h5>Stephanie D. Gray</h5>                                   
-									<p>Founder & CEO</p>
-									<strong>Fire Epic Ltd.</strong> 
-                                    <div class="team-social pt-15 pb-15 mb-15">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </div>
-									 <span>Content Writer</span>
-                                </div>
-                            </div>
-                        </div>
+
+                        {% endfor %}
                     </div>
                 </div>
             </section>
@@ -1136,52 +1025,7 @@
         </main>
         <!-- main-area-end -->
         <!-- footer -->
-        <footer class="footer-bg footer-p" style="background-image:url({% static 'client_plugins/img/footer_bg_img.jpg' %});background-size: cover;">
-          
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-12 col-lg-12 col-sm-12 text-center">
-                            <div class="footer-widget pt-120 mb-30">
-                                <div class="logo mb-35">
-                                    <a href="#"><img src="{% static 'client_plugins/img/footer_logo.png' %}" alt="logo"></a>
-                                </div>
-                                <div class="footer-text mb-20">
-                                    <p>The issue with any content strategy is time. Time to sit down and think about what kind of content should be created, time to stop and write, or record, edit and publish, and time to engage with your audience to promote the content you created.</p>
-                                </div>
-                                <div class="footer-social">                                    
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="copyright-wrap pb-120">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">						
-                            <div class="copyright-text text-center">
-								<div class="footer-link">
-                                    <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Registration</a></li>
-                                        <li><a href="#">Club</a></li>
-                                        <li><a href="#">Event</a></li>
-                                        <li><a href="#">Venue</a></li>
-                                        <li><a href="#">Who we are?</a></li>
-                                    </ul>
-                                </div>                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        {% include 'client/footer.html' %}
         <!-- footer-end -->
 
 

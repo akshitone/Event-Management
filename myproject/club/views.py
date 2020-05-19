@@ -15,7 +15,11 @@ def club_add(request):
             ClubType           = request.POST['txtclubtype'],  
             ClubImageName      = filename,  
             ClubImage          = url,  
-            DepartmentName_id  = request.POST['dropdowndepartment']
+            DepartmentName_id  = request.POST['dropdowndepartment'],
+            FacebookLink       = request.POST['txtfacebook'],
+            InstagramLink      = request.POST['txtinstagram'],
+            TwitterLink        = request.POST['txttwitter'],
+            DribbbleLink       = request.POST['txtdribbble']
         )
         club.save()
         return redirect('/admin/club/add/')

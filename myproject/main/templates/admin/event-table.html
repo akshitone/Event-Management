@@ -60,9 +60,9 @@
 											<th>Event</th>
 											<th>Event name</th>
 											<th>Club name</th>
+											<th>Venue</th>
 											<th>Date</th>
 											<th>Eligibility</th>
-											<th>Amonut</th>
 											<th>Status</th>
 											<th>Approval</th>
 											<th>Actions</th>
@@ -76,9 +76,9 @@
 											</td>
 											<td> {{event.EventName}}</td>
 											<td>{{event.ClubName_id}}</td>
+											<td>{{event.VenueId}}</td>
 											<td> {{event.EventStartDate}} - {{event.EventEndDate}}  </td>
 											<td> {{event.EventEligibility}}</td>
-											<td> &#8377; {{event.EventAmount}}</td>
 											<td> 
 												{% if event.EventStatus == 'True' %}
 													<span class="badge badge-success p-1">Active</span>

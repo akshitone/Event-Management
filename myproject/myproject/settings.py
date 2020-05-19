@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'student',
     'club',
     'event',
-    'achievement'
+    'achievement',
+    'venue'
 ]
 
 MIDDLEWARE = [

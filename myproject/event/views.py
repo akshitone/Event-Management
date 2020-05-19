@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from .models import Event
 from club.models import Club
+from venue.models import Venue
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
@@ -13,6 +14,7 @@ def event_add(request):
         event = Event (
             EventName          = request.POST['txteventname'],
             ClubName_id        = request.POST['dropdownclub'],
+            VenueId            = request.POST['dropdownvenue'],
             EventType          = request.POST['eventtype'],
             EventImageName     = filename,  
             EventImage         = url, 
@@ -26,8 +28,10 @@ def event_add(request):
         return redirect('/admin/event/add/')
     else:
         club_data = Club.objects.all()
-        return render(request, 'admin/event-add.html', {'club_data': club_data})
+        venue_data = Venue.objects.all()
+        return render(request, 'admin/event-add.html', {'club_data': club_data, 'venue_data': venue_data})
 
 def event_table(request):
     event_data = Event.objects.all()
-    return render(request, 'admin/event-table.html',{'event_data': event_data})
+    venue_data = Venue.objects.all()
+    return render(request, 'admin/event-table.html',{'event_data': event_data, 'venue_data': venue_data})
