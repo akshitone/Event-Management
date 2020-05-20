@@ -7,3 +7,4 @@ class Venue(models.Model):
     VenueImageName   = models.TextField(null=True, blank=True)
     VenueImage       = models.ImageField(upload_to='images', null=True, blank=True)
     VenueLocation    = models.TextField()
+

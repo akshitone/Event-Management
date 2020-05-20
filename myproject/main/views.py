@@ -20,3 +20,6 @@ def club(request):
 #admin side
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
+
+def admin_login(request):
+    return render(request, 'admin/login-page.html')

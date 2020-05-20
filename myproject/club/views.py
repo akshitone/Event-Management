@@ -30,3 +30,10 @@ def club_add(request):
 def club_table(request):
     club_data = Club.objects.all()
     return render(request, 'admin/club-table.html', {'club_data': club_data})
+
+def club_delete(request, name):
+    club           = Club.objects.get(pk = name)
+    filesystem     = FileSystemStorage()
+    filesystem.delete(club.ClubImageName)
+    club.delete()
+    return redirect('/admin/club/')

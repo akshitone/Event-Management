@@ -1,4 +1,9 @@
 {% load static %}
+
+{% if user.is_authenticated %}
+	
+
+	
 <!DOCTYPE html>
 <html lang="en">
 	<!-- Mirrored from themesbrand.com/foxia/blue/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:55:57 GMT -->
@@ -503,3 +508,7 @@
 	</body>
 	<!-- Mirrored from themesbrand.com/foxia/blue/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:22 GMT -->
 </html>
+
+{% else %}
+you fucker first login
+{% endif %}
