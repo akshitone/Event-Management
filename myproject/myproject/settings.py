@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'club',
     'event',
     'achievement',
-    'venue'
+    'venue',
+    'mainadmin'
 ]
 
 MIDDLEWARE = [
