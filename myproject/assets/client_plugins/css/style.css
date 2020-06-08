@@ -895,6 +895,20 @@ left: 98% !important;
 .slider-bg4 {
     min-height: 700px !important;
 }
+.clubform{
+	float: right;
+    background: #fff;
+    height: 880px;
+    width: 480px;
+    border-radius: 10px;
+    padding: 14%;
+    margin-right: -150px;
+	position: relative;
+}
+.clubform input,.clubform select {
+    width: 92%;
+    border: none;
+}
 .booking-form {
     float: right;
     background: #fff;

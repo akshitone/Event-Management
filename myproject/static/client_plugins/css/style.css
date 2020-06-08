@@ -966,6 +966,77 @@ left: 98% !important;
 	background: #ffffff1f;
 	border-radius: 10px;
 }
+.club-form {
+    float: right;
+    background: #fff;
+    height: 680px;
+    width: 480px;
+    border-radius: 10px;
+    padding: 14%;
+    margin-right: -150px;
+	position: relative;
+
+}
+.club-form h2{
+	font-size:30px;
+	text-align:center;
+	margin-bottom:30px;
+}
+.club-form .form-outer .icon {
+    float: left;
+    width: 30px;
+    color: #ff007a;
+}
+.form-outer textarea{
+	border: none;
+	width: 90%;
+}
+.club-form .form-outer {
+
+    float: left;
+    width: 100%;
+    padding: 0px 0 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e7edff;
+
+}
+.club-form input,.club-form select {
+    width: 92%;
+    border: none;
+}
+.club-form input::placeholder {
+    color: #000;
+}
+.club-form .btn{
+	box-shadow: 0px 10px 19px 0px #ff007a66 !important;
+}
+.club-form::before {
+   position: absolute;
+	content: "";
+	background: #ffffff1f;
+	left: 20px;
+	top: 100px;
+	right: 20px;
+	margin: auto;
+	height: 100%;
+	z-index: -1;
+	width: 450px;
+	border-radius: 10px;
+	height: 400px;
+}
+.club-form::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    left: 40px;
+    top:110px;
+    right: 40px;
+    z-index: -1;
+	width: 410px;
+	height: 400px;
+	background: #ffffff1f;
+	border-radius: 10px;
+}
 .slider-content ul li {
     display: inline-block;
     font-size: 18px;

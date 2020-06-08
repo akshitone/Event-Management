@@ -7,5 +7,5 @@ class Achievement(models.Model):
     AchievementName        = models.CharField(max_length = 150)
     DepartmentName         = models.ForeignKey(Department, on_delete=models.CASCADE)
     SubDepartmentName      = models.ForeignKey(SubDepartment, on_delete=models.CASCADE)
-    AchievementDescription  = models.TextField()
+    AchievementDescription = models.TextField()
     

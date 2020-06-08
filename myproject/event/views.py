@@ -33,5 +33,4 @@ def event_add(request):
 
 def event_table(request):
     event_data = Event.objects.all()
-    venue_data = Venue.objects.all()
-    return render(request, 'admin/event-table.html',{'event_data': event_data, 'venue_data': venue_data})
+    return render(request, 'admin/event-table.html',{'event_data': event_data})
