@@ -14,7 +14,7 @@ def event_add(request):
         event = Event (
             EventName          = request.POST['txteventname'],
             ClubName_id        = request.POST['dropdownclub'],
-            VenueId            = request.POST['dropdownvenue'],
+            VenueId_id         = request.POST['dropdownvenue'],
             EventType          = request.POST['eventtype'],
             EventImageName     = filename,  
             EventImage         = url, 

@@ -75,3 +75,7 @@ def employee_edit(request, id):
         department_data     = Department.objects.all()
         subdepartment_data  = SubDepartment.objects.all()
         return render(request, 'admin/employee-edit.html', {'id': id, 'employee_data': employee_data, 'department_data': department_data, 'subdepartment_data': subdepartment_data})
+
+def employee_view(request, id):
+    employee_data = Employee.objects.filter(pk = id)
+    return render(request, 'admin/employee-view.html', {'id': id, 'employee_data': employee_data})

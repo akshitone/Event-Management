@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from club.models import Club
 from venue.models import Venue
+from event.models import Event
 
 # Create your views here.
 def home(request):
@@ -21,6 +22,10 @@ def club(request):
 
 def clubform(request):
     return render(request, 'client/club-form.html')
+
+def event(request):
+    event_data = Event.objects.all()
+    return render(request, 'client/event.html', {'event_data': event_data})
 
 
 #admin side

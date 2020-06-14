@@ -1037,6 +1037,8 @@ left: 98% !important;
 	background: #ffffff1f;
 	border-radius: 10px;
 }
+
+
 .slider-content ul li {
     display: inline-block;
     font-size: 18px;
@@ -6055,4 +6057,10 @@ pre cite {
 .admin-bar .sticky-menu {
   top: 32px;
   margin-top:0;
+}
+.eventdescription{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }

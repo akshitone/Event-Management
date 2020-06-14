@@ -6,7 +6,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Club | eVentes</title>
+         <title>Event | eVentes</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
@@ -42,12 +42,12 @@
                             <div class="breadcrumb-wrap text-center">
 							 
                                 <div class="breadcrumb-title mb-30">
-                                    <h2>Our Clubs</h2>                                   
+                                    <h2>Event</h2>                                   
                                 </div>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Club</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Event</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -58,36 +58,30 @@
             
 			<!-- team-area -->
             <section id="team" class="team-area p-relative pt-120 pb-120 fix">
-                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Clubs</h2></div>
+                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Event</h2></div>
 				<div class="circal1 item-zoom-inout"></div>
 				<div class="circal2 item-zoom-inout"></div>
 				<div class="circal3 item-zoom-inout"></div>
 				<div class="circal4 item-zoom-inout"></div>
                 <div class="container">
-                    
                     <div class="row">
-                        
-                        {% for club in club_data %}
-
-                            <div class="col-lg-4 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                                <div class="single-team text-center pt-50  pb-50 mb-30">
-                                    <div class="team-thumb">
-                                        <img src="{{club.ClubImage}}" alt="img">
+                        {% for event in event_data %}
+                        <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
+                            <div class="single-team text-center pb-50 mb-30">
+                                <div class="team-thumb">
+                                    <img src="{{event.EventImage}}" style="padding: 30px;" alt="img">
+                                </div>
+                                <div class="team-info">
+                                    <h4>{{event.EventName}}</h4>
+                                    <strong>{{event.ClubName_id}}</strong>
+                                    <div class="team-social pb-15 mb-15">
+                                        <p class="eventdescription" style="color: #47759d;">{{event.EventDescription}}</p>
+                                        <p>{{event.EventStartDate}} - {{event.EventEndDate}}</p> 
                                     </div>
-                                    <div class="team-info">
-                                        <h5>{{club.ClubName}}</h5>
-                                        <strong>{{club.ClubType}}</strong> 
-                                        <div class="team-social pt-15 pb-15 mb-15">
-                                            <a href="{{club.FacebookLink}}"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="{{club.InstagramLink}}"><i class="fab fa-twitter"></i></a>
-                                            <a href="{{club.TwitterLink}}"><i class="fab fa-instagram"></i></a>
-                                            <a href="{{club.DribbbleLink}}"><i class="fab fa-dribbble"></i></a>
-                                        </div>
-                                        <span>{{club.DepartmentName_id}}</span>
-                                    </div>
+                                    <div class="icon"><i class="far fa-map-marker-alt" style="color: #ff007a;"></i><span>&nbsp;{{event.VenueId.VenueName}}</span></div>
                                 </div>
                             </div>
-
+                        </div>
                         {% endfor %}
                     </div>
                 </div>

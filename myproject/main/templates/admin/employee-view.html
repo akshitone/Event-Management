@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
-		<title>Employee Table | eVentes</title>
+		<title>Employee View | eVentes</title>
 		<meta content="Admin Dashboard" name="description">
 		<meta content="Themesbrand" name="author">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +33,10 @@
 					<div class="page-title-box">
 						<div class="row align-items-center">
 							<div class="col-md-8">
-								<h4 class="page-title mb-0">Employee Table</h4>
+								<h4 class="page-title mb-0">Employee View</h4>
 								<ol class="breadcrumb m-0">
 									<li class="breadcrumb-item"><a href="#">Employee</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Employee Table</li>
+									<li class="breadcrumb-item active" aria-current="page">Employee View</li>
 								</ol>
 							</div>
 						</div>
@@ -47,56 +47,39 @@
 		</div>
 	</div>
 		
-		<div class="wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="mt-0 header-title mb-3">Employee Table</h4>
-								<table id="datatable" class="table table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-									<thead>
-										<tr>
-											<th>Employee</th>
-											<th>Employee name</th>
-											<th>Username</th>
-											<th>Status</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										{% for employee in employee_data %}
-										<tr>
-											<td> 
-												<img class="d-flex mr-3 rounded-circle" src="{{employee.EmployeeImage}}" alt="Not found" height="50"> 
-											</td>
-											<td> {{employee.EmployeeName}}</td>
-											<td>@{{employee.EmployeeUserName}}</td>
-											<td> 
-												{% if employee.EmployeeStatus == 'True' %}
-													<span class="badge badge-success p-1">Active</span>
-												{% else %}
-													<span class="badge badge-danger p-1">Pending</span>
-												{% endif %}	
-											</td>
-											<td>
-												<a href="{% url 'employee-view' id=employee.EmployeeId %}" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
-												<a href="{% url 'employee-edit' id=employee.EmployeeId %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
-												<a href="{% url 'employee-delete' id=employee.EmployeeId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-											</td>
-										</tr>
-										{% endfor %}
-									</tbody>
-								</table>
-							</div>
+	<div class="wrapper">
+		{% for employee in employee_data %}
+		<input type="hidden" name="txtemployeeid" value="{{employee.EmployeeId}}">
+		<div class="container-fluid">
+			<div class="row">
+						<div class="col-2">
+							&nbsp;
+						</div>
+						<div class="card card-body col-8">
+							<div class="row">
+								<div class="col-3">
+										<div class="card" style="margin-left: 15px;">
+											<img class="card-img-top rounded img-fluid" src="{{employee.EmployeeImage}}" alt="Card image cap">		
+										</div>
+								</div>
+								<div class="col-9" style="padding-left: 20px;">
+									<h2 class="card-title mt-0 mb-20">{{employee.EmployeeName}}</h2>
+									<p class="card-title mt-0 mb-10"><i class="mdi mdi-email font-20 pr-2"></i><span class="text-muted">{{employee.EmployeeEmail}}</span></p>
+									<p class="card-title mt-0 mb-10"><i class="mdi mdi-city font-20 pr-2"></i><span class="text-muted">{{employee.SubDepartmentName_id}} ( {{employee.DepartmentName_id}} )</span></p>
+									<p class="card-title mt-0 mb-10"><i class="mdi mdi-phone font-20 pr-2"></i><span class="text-muted">{{employee.EmployeePhone}}</span></p>
+									<p class="card-title mt-0 mb-10"><i class="mdi mdi-at font-20 pr-2"></i><span class="text-muted">{{employee.EmployeeUserName}}</span></p>
+									<p class="card-title mt-0 mb-10"><i class="mdi mdi-map-marker font-20 pr-2"></i><span class="text-muted">{{employee.EmployeeAddress}}</span></p>
+									<p class="card-title mt-0 mb-0"><i class="mdi mdi-map-marker-radius font-20 pr-2"></i><span class="text-muted">{{employee.EmployeeCity}}</span></p>
+								</div>
 						</div>
 					</div>
-					<!-- end col -->
 				</div>
-				<!-- end row -->
 			</div>
-			<!-- end container -->
+			<!-- End row -->
+			{% endfor %}
 		</div>
+		<!-- end container -->
+	</div>
 		<!-- end wrapper -->
         <!-- jQuery  -->
         <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
