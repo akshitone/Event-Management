@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', views.dashboard, name='dashboard'),
     path('club/', views.club, name='club'),
     path('event/', views.event, name='event'),
+    path('event/view/<int:id>/', views.event_view, name='event-view'),
     path('club/form/', views.clubform, name='clubform'),
     path('admin/login/', views.admin_login, name='admin-login'),
 ]

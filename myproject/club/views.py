@@ -37,3 +37,33 @@ def club_delete(request, name):
     filesystem.delete(club.ClubImageName)
     club.delete()
     return redirect('/admin/club/')
+
+def club_edit(request, name):
+    if request.method == 'POST':
+        ClubImage  = request.FILES['txtimageurl']
+        filesystem     = FileSystemStorage()
+        filename       = filesystem.save(ClubImage.name, ClubImage)
+
+        emp = Club.objects.get(pk = name)
+        filesystem     = FileSystemStorage()
+        filesystem.delete(emp.ClubImageName)
+
+        url            = filesystem.url(filename)
+        club = Club (
+            ClubName            = request.POST['txtfullname'],
+            ClubType            = request.POST['txtclubtype'],
+            FacebookLink        = request.POST['txtfacebooklink'],
+            DepartmentName_id   = request.POST['dropdowndepartment'],
+            ClubImageName       = filename,
+            ClubImage           = url,
+            InstagramLink       = request.POST['txtinstagramlink'],
+            TwitterLink         = request.POST['txttwitterlink'],
+            DribbbleLink        = request.POST['txtdribbblelink'],
+            clubStatus          = request.POST['txtclubstatus']
+        )
+        club.save()
+        return redirect('/admin/club/')
+    else:
+        club_data       = Club.objects.filter(pk = name)
+        department_data  = Department.objects.all()
+        return render(request, 'admin/club-edit.html', {'name': name, 'club_data': club_data, 'department_data': department_data,})

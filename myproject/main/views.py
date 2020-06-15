@@ -27,6 +27,10 @@ def event(request):
     event_data = Event.objects.all()
     return render(request, 'client/event.html', {'event_data': event_data})
 
+def event_view(request, id):
+    event_data = Event.objects.filter(pk = id)
+    return render(request, 'client/event-view.html', {'id': id,'event_data': event_data})
+
 
 #admin side
 def dashboard(request):

@@ -69,8 +69,8 @@
 											<td> {{achievement.SubDepartmentName_id}} ( {{achievement.DepartmentName_id}} ) </td>
 											<td>
 												<a class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
-												<a href="" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
-												<a href="" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+												<a href="{% url 'achievement-edit' id=achievement.AchievementId %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
+												<a href="{% url 'achievement-delete' id=achievement.AchievementId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 										{% endfor %}

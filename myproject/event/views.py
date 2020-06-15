@@ -3,6 +3,9 @@ from .models import Event
 from club.models import Club
 from venue.models import Venue
 from django.core.files.storage import FileSystemStorage
+from django.core import serializers
+from django.http import HttpResponse,JsonResponse
+import datetime
 
 # Create your views here.
 def event_add(request):
@@ -12,15 +15,17 @@ def event_add(request):
         filename       = filesystem.save(EventImage.name, EventImage)
         url            = filesystem.url(filename)
         event = Event (
-            EventName          = request.POST['txteventname'],
+            title              = request.POST['txteventname'],
             ClubName_id        = request.POST['dropdownclub'],
             VenueId_id         = request.POST['dropdownvenue'],
             EventType          = request.POST['eventtype'],
             EventImageName     = filename,  
             EventImage         = url, 
             EventEligibility   = request.POST['eventeligibility'],
-            EventStartDate     = request.POST['txtstartdate'],
-            EventEndDate       = request.POST['txtenddate'],
+            start              = request.POST['txtstartdate'],
+            end                = request.POST['txtenddate'],
+            EventStartTime     = request.POST['txtstarttime'],
+            EventEndTime       = request.POST['txtendtime'],
             EventDescription   = request.POST['txtdescription'],
             EventAmount        = request.POST['txtamount']
         )
@@ -34,3 +39,10 @@ def event_add(request):
 def event_table(request):
     event_data = Event.objects.all()
     return render(request, 'admin/event-table.html',{'event_data': event_data})
+
+def calendar(request):
+    fields = Event.objects.values_list('EventId','title','ClubName_id','VenueId_id','EventType','EventImageName','EventImage','EventEligibility','start','end','EventStartTime','EventEndTime','EventDescription','EventAmount')   
+    events = eval(serializers.serialize("json", Event.objects.all()))
+    events = list(map(lambda x: x['fields'],events))
+    print(events)
+    return render(request, 'admin/calendar.html',{'events': events})

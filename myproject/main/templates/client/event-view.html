@@ -2,11 +2,13 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
     
-<!-- Mirrored from zcube.in/eventes/speakers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:36:52 GMT -->
+<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Event | eVentes</title>
+        {% for event in event_data %}
+        <title>{{event.EventName}} | eVentes</title>
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
@@ -31,62 +33,63 @@
         <!-- header-end -->
         <!-- main-area -->
         <main>
+            <!-- slider-area -->
             <!-- breadcrumb-area -->
             <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/innerpage_bg_img.jpg' %})">
-			<div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
-							<div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
-							<div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                            <div class="breadcrumb-wrap text-center">
-							 
-                                <div class="breadcrumb-title mb-30">
-                                    <h2>Event</h2>                                   
-                                </div>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Event</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-			<!-- team-area -->
-            <section id="team" class="team-area p-relative pt-120 pb-120 fix">
-                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Event</h2></div>
-				<div class="circal1 item-zoom-inout"></div>
-				<div class="circal2 item-zoom-inout"></div>
-				<div class="circal3 item-zoom-inout"></div>
-				<div class="circal4 item-zoom-inout"></div>
-                <div class="container">
-                    <div class="row">
-                        {% for event in event_data %}
-                        <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
-                            <div class="single-team text-center pb-50 mb-30">
-                                <div class="team-thumb">
-                                    <a href="{% url 'event-view' id=event.EventId %}"><img src="{{event.EventImage}}" style="padding: 30px;" alt="img"></a>
-                                </div>
-                                <div class="team-info">
-                                    <a href="{% url 'event-view' id=event.EventId %}"><h4>{{event.EventName}}</h4></a>
-                                    <strong>{{event.ClubName_id}}</strong>
-                                    <div class="team-social pb-15 mb-15">
-                                        <p class="eventdescription" style="color: #47759d;">{{event.EventDescription}}</p>
-                                        <p>{{event.EventStartDate}} - {{event.EventEndDate}}</p> 
+                <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
+                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
+                 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                                <div class="breadcrumb-wrap text-center">
+                                    <div class="breadcrumb-title mb-30">
+                                        <h2>{{event.EventName}}</h2>                                   
                                     </div>
-                                    <div class="icon"><i class="far fa-map-marker-alt" style="color: #ff007a;"></i><span>&nbsp;{{event.VenueId.VenueName}}</span></div>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="index.html">{{event.ClubName_id}}</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">{{event.EventName}}</li>
+                                        </ol>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
+                    </div>
+                </section>
+            <!-- slider-area-end -->
+            <!-- about-area -->
+            <section id="team" class="team-area p-relative pt-120 pb-120 fix">
+                <div class="container mb-100">
+                    <div class="circal1 item-zoom-inout"></div>
+                    <div class="circal2 item-zoom-inout"></div>
+                    <div class="circal3 item-zoom-inout"></div>
+                    <div class="circal4 item-zoom-inout"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
+                                <img src="{{event.EventImage}}" class="eventdisplay" alt="shape">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about-content s-about-content pl-30">
+                                <div class="about-title second-atitle">
+                                <div class="text-outline">
+                                        <span>Event</span>
+                                    </div>
+                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.EventName}}</h2>
+                                    <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.EventStartDate}} - {{event.EventEndDate}}</span>
+                                    <p style="color: #47759d;">{{event.EventDescription}}</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </section>
-            <!-- team-area-end -->
+            <!-- about-area-end -->
         </main>
         <!-- main-area-end -->
         <!-- footer -->
@@ -95,7 +98,6 @@
 
 
 
-		
 		<!-- JS here -->
         <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
@@ -118,5 +120,6 @@
         <script src="{% static 'client_plugins/js/main.js' %}"></script>
     </body>
 
-<!-- Mirrored from zcube.in/eventes/speakers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:37:09 GMT -->
+<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
 </html>
+    

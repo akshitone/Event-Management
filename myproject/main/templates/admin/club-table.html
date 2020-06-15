@@ -70,7 +70,7 @@
 										{% for club in club_data %}
 										<tr>
 											<td> 
-												<img class="d-flex mr-3" src="{{club.ClubImage}}" alt="Not found" height="50"> 
+												<img class="d-flex mr-3 rounded-circle" src="{{club.ClubImage}}" alt="Not found" height="50"> 
 											</td>
 											<td> {{club.ClubName}}</td>
 											<td>{{club.ClubType}}</td>
@@ -93,7 +93,7 @@
 											</td>
 											<td>
 												<a class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
-												<a href="" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
+												<a href="{% url 'club-edit' name=club.ClubName %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
 												<a href="{% url 'club-delete' name=club.ClubName %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
