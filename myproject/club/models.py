@@ -1,5 +1,6 @@
 from django.db import models
 from department.models import Department
+from student.models import Student
 
 # Create your models here.
 class Club(models.Model):
@@ -14,4 +15,9 @@ class Club(models.Model):
     DepartmentName     = models.ForeignKey(Department, on_delete=models.CASCADE)
     clubStatus         = models.CharField(max_length = 10, default=False)
     clubApproval       = models.CharField(max_length = 10, default = -1)
-    
+
+class ClubMember(models.Model):
+    ClubMemberId        = models.AutoField(primary_key=True)
+    ClubId              = models.ForeignKey(Club, on_delete=models.CASCADE)
+    StudentId           = models.ForeignKey(Student, on_delete=models.CASCADE)
+    MemberRole          = models.CharField(max_length = 150)   

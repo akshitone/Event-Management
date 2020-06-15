@@ -6,7 +6,7 @@ import datetime
 
 # Create your models here.
 class Event(models.Model):
-    EventId             = models.AutoField(primary_key=True)
+    EventId             = models.AutoField(primary_key=True, unique=True)
     title               = models.CharField(max_length = 150)
     EventImageName      = models.TextField(null=True, blank=True)
     EventImage          = models.ImageField(upload_to='images', null=True, blank=True)
@@ -22,6 +22,3 @@ class Event(models.Model):
     EventEndTime        = models.TimeField(auto_now=False, auto_now_add=False, default=timezone.now())
     EventDescription    = models.TextField()
     EventAmount         = models.IntegerField()  
-    
-
-

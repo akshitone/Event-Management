@@ -72,11 +72,11 @@
                                     <a href="{% url 'event-view' id=event.EventId %}"><img src="{{event.EventImage}}" style="padding: 30px;" alt="img"></a>
                                 </div>
                                 <div class="team-info">
-                                    <a href="{% url 'event-view' id=event.EventId %}"><h4>{{event.EventName}}</h4></a>
+                                    <a href="{% url 'event-view' id=event.EventId %}"><h4>{{event.title}}</h4></a>
                                     <strong>{{event.ClubName_id}}</strong>
                                     <div class="team-social pb-15 mb-15">
                                         <p class="eventdescription" style="color: #47759d;">{{event.EventDescription}}</p>
-                                        <p>{{event.EventStartDate}} - {{event.EventEndDate}}</p> 
+                                        <p>{{event.start}} - {{event.end}}</p> 
                                     </div>
                                     <div class="icon"><i class="far fa-map-marker-alt" style="color: #ff007a;"></i><span>&nbsp;{{event.VenueId.VenueName}}</span></div>
                                 </div>

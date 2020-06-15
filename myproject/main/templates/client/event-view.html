@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         {% for event in event_data %}
-        <title>{{event.EventName}} | eVentes</title>
+        <title>{{event.title}} | eVentes</title>
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,13 +44,13 @@
                             <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                                 <div class="breadcrumb-wrap text-center">
                                     <div class="breadcrumb-title mb-30">
-                                        <h2>{{event.EventName}}</h2>                                   
+                                        <h2>{{event.title}}</h2>                                   
                                     </div>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                                             <li class="breadcrumb-item"><a href="index.html">{{event.ClubName_id}}</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">{{event.EventName}}</li>
+                                            <li class="breadcrumb-item active" aria-current="page">{{event.title}}</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -78,8 +78,8 @@
                                 <div class="text-outline">
                                         <span>Event</span>
                                     </div>
-                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.EventName}}</h2>
-                                    <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.EventStartDate}} - {{event.EventEndDate}}</span>
+                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.title}}</h2>
+                                    <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.start}} - {{event.end}} ({{event.EventStartTime}} - {{event.EventEndTime}})</span>
                                     <p style="color: #47759d;">{{event.EventDescription}}</p>
                                     
                                 </div>

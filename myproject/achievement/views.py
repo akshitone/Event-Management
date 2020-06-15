@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
-from .models import Achievement
+from .models import Achievement, Achiever
 from department.models import Department, SubDepartment
+from student.models import Student
 
 # Create your views here.
 def achievement_add(request):
@@ -40,7 +41,24 @@ def achievement_edit(request, id):
         achievement.save()
         return redirect('/admin/achievement/')
     else:
-        achievement_data       = Achievement.objects.filter(pk = id)
+        achievement_data    = Achievement.objects.filter(pk = id)
         department_data     = Department.objects.all()
         subdepartment_data  = SubDepartment.objects.all()
         return render(request, 'admin/achievement-edit.html', {'id': id, 'achievement_data': achievement_data, 'department_data': department_data, 'subdepartment_data': subdepartment_data})
+
+def achiever_add(request):
+    if request.method == 'POST':
+        achiever = achiever (
+            AchievementId_id       = request.POST['dropdowndachievement'],
+            StudentId_id    = request.POST['dropdownstudent']
+        )
+        achiever.save()
+        return redirect('/admin/achiever/add/')
+    else:
+        achievement_data   = Achievement.objects.all()
+        student_data       = Student.objects.all()
+        return render(request, 'admin/achiever-add.html', {'achievement_data': achievement_data, 'student_data': student_data})
+
+def achiever_table(request):
+    achiever_data = Achiever.objects.all()
+    return render(request, 'admin/achiever-table.html', {'achiever_data': achiever_data})

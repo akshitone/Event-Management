@@ -59,10 +59,7 @@
 										<tr>
 											<th>Event</th>
 											<th>Event name</th>
-											<th>Club name</th>
 											<th>Venue</th>
-											<th>Date</th>
-											<th>Eligibility</th>
 											<th>Status</th>
 											<th>Approval</th>
 											<th>Actions</th>
@@ -74,11 +71,8 @@
 											<td> 
 												<img class="d-flex mr-3" src="{{event.EventImage}}" alt="Not found" height="50"> 
 											</td>
-											<td> {{event.EventName}}</td>
-											<td>{{event.ClubName_id}}</td>
+											<td> {{event.title}}</td>
 											<td>{{event.VenueId.VenueName}}</td>
-											<td> {{event.EventStartDate}} - {{event.EventEndDate}}  </td>
-											<td> {{event.EventEligibility}}</td>
 											<td> 
 												{% if event.EventStatus == 'True' %}
 													<span class="badge badge-success p-1">Active</span>
