@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render
 from .models import Club
 from department.models import Department
 from django.core.files.storage import FileSystemStorage
+from club.models import ClubMember
+from student.models import Student
 
 # Create your views here.
 def club_add(request):
@@ -67,3 +69,22 @@ def club_edit(request, name):
         club_data       = Club.objects.filter(pk = name)
         department_data  = Department.objects.all()
         return render(request, 'admin/club-edit.html', {'name': name, 'club_data': club_data, 'department_data': department_data,})
+
+    
+def clubmember_add(request):
+    if request.method == 'POST':
+        clubmember = ClubMember (
+            ClubId_id              = request.POST['dropdownclub'],
+            StudentId_id           = request.POST['dropdownstudent'],
+            MemberRole             = request.POST['txtrole']
+        )
+        clubmember.save()
+        return redirect('/admin/clubmember/add/')
+    else:
+        club_data          = Club.objects.all()
+        student_data       = Student.objects.all()
+        return render(request, 'admin/clubmember-add.html', {'club_data': club_data, 'student_data': student_data})
+
+def clubmember_table(request):
+    clubmember_data = ClubMember.objects.all()
+    return render(request, 'admin/clubmember-table.html', {'clubmember_data': clubmember_data})

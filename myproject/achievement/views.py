@@ -48,9 +48,9 @@ def achievement_edit(request, id):
 
 def achiever_add(request):
     if request.method == 'POST':
-        achiever = achiever (
-            AchievementId_id       = request.POST['dropdowndachievement'],
-            StudentId_id    = request.POST['dropdownstudent']
+        achiever = Achiever (
+            AchievementId_id       = request.POST['dropdownachievement'],
+            StudentId_id           = request.POST['dropdownstudent']
         )
         achiever.save()
         return redirect('/admin/achiever/add/')
