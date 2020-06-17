@@ -84,17 +84,18 @@
                 <div class="slider-shape ss-two layer" data-depth="0.30"><img src="{% static 'client_plugins/img/doddle_8.png' %}" alt="shape"></div>
                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
                 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
+                {% for event in event_data %}
                 <div class="slider-active">
                     <div class="single-slider">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 text-center">
                                     <div class="slider-content second-slider-content">
-										<h2 data-animation="fadeInUp animated" data-delay=".4s">Digital World Conference</h2> 
+										<h2 data-animation="fadeInUp animated" data-delay=".4s">{{event.title}}</h2> 
                                         <ul data-animation="fadeInUp animated" data-delay=".2s">
-											<li><i class="fas fa-map-marker-alt"></i> Waterfront Hotel, London</li>
-											<li><i class="far fa-clock"></i>  5 - 7 June 2019, </li>
-											<li><i class="fal fa-building"></i>  Edition </li>
+											<p><i class="fas fa-map-marker-alt pr-2 mb-20"></i> {{event.VenueId.VenueLocation}}</p>
+											<p><i class="far fa-clock pr-2 mb-20"></i>  {{event.start}} - {{event.end}} ({{event.EventStartTime}} - {{event.EventEndTime}})</p>
+											<p><i class="fal fa-building pr-2"></i>  {{event.VenueId.VenueName}} </p>
 										</ul>
                                         
                                     </div>
@@ -103,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </section>
             <!-- slider-area-end -->
             <section id="about" class="about-area about-p pt-120 pb-120 p-relative">

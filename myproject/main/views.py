@@ -2,11 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from club.models import Club
 from venue.models import Venue
 from event.models import Event
+from django.utils.datetime_safe import date
 
 # Create your views here.
 def home(request):
-    club_data = Club.objects.all()
-    return render(request, 'client/home.html', {'club_data': club_data})
+    club_data   = Club.objects.all()
+    event_data  = Event.objects.filter(start = date.today())
+    return render(request, 'client/home.html', {'club_data': club_data, 'event_data': event_data})
 
 def registration(request):
     return render(request, 'client/registration-form.html')

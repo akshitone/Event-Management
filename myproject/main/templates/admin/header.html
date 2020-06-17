@@ -32,30 +32,14 @@
                                 </div>
                                 <div class="slimscroll-noti">
                                     <!-- item--> 
+                                    {% for notification in notification_data %}
                                     <a href="javascript:void(0);" class="dropdown-item notify-item active">
                                         <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-                                        <p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
+                                        <p class="notify-details">{{notification.NotificationTitle}} <b>{{notification.NotificationName}}</b><span class="text-muted">{{notification.NotificationDescription}}</span></p>
+                                        <p class="notify-details"><span class="text-muted">{{notification.NotificationDateTime}}</span></p>
                                     </a>
+                                    {% endfor %}
                                     <!-- item--> 
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-danger"><i class="mdi mdi-message-text-outline"></i></div>
-                                        <p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-                                    </a>
-                                    <!-- item--> 
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-info"><i class="mdi mdi-filter-outline"></i></div>
-                                        <p class="notify-details"><b>Your item is shipped</b><span class="text-muted">It is a long established fact that a reader will</span></p>
-                                    </a>
-                                    <!-- item--> 
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-success"><i class="mdi mdi-message-text-outline"></i></div>
-                                        <p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-                                    </a>
-                                    <!-- item--> 
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-warning"><i class="mdi mdi-cart-outline"></i></div>
-                                        <p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-                                    </a>
                                 </div>
                                 <!-- All--> <a href="javascript:void(0);" class="dropdown-item notify-all">View All</a>
                             </div>
@@ -164,6 +148,7 @@
                             <ul class="submenu">
                                 <li><a href="/admin/event/add/">Add event</a></li>
                                 <li><a href="/admin/event/">View event</a></li>
+                                <li><a href="/admin/event/calendar/">View calendar</a></li>
                             </ul>
                         </li>
                         <li class="has-submenu">

@@ -39,3 +39,9 @@ def event_add(request):
 def event_table(request):
     event_data = Event.objects.all()
     return render(request, 'admin/event-table.html',{'event_data': event_data})
+
+def calendar(request):
+    fields = Event.objects.values_list('EventId','title','ClubName_id','VenueId_id','EventType','EventImageName','EventImage','EventEligibility','start','end','EventStartTime','EventEndTime','EventDescription','EventAmount')   
+    events = eval(serializers.serialize("json", Event.objects.all()))
+    events = list(map(lambda x: x['fields'],events))
+    return render(request, 'admin/calendar.html', {'events': events})

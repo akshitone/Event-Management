@@ -4,6 +4,7 @@ from department.models import Department
 from django.core.files.storage import FileSystemStorage
 from club.models import ClubMember
 from student.models import Student
+from main.models import Notification
 
 # Create your views here.
 def club_add(request):
@@ -12,8 +13,11 @@ def club_add(request):
         filesystem     = FileSystemStorage()
         filename       = filesystem.save(ClubImage.name, ClubImage)
         url            = filesystem.url(filename)
+
+        name           = request.POST['txtclubname']
+
         club = Club (
-            ClubName           = request.POST['txtclubname'],  
+            ClubName           = name,  
             ClubType           = request.POST['txtclubtype'],  
             ClubImageName      = filename,  
             ClubImage          = url,  
@@ -24,10 +28,19 @@ def club_add(request):
             DribbbleLink       = request.POST['txtdribbble']
         )
         club.save()
+
+        notification = Notification(
+            NotificationTitle            = "New Club ",
+            NotificationName             = name,
+            NotificationDescription      = "Added by Akshit Mithaiwala"
+        )
+        notification.save()
+
         return redirect('/admin/club/add/')
     else:
         department_data = Department.objects.all()
-        return render(request, 'admin/club-add.html', {'department_data': department_data})
+        notification_data = Notification.objects.all()
+        return render(request, 'admin/club-add.html', {'department_data': department_data, 'notification_data': notification_data})
 
 def club_table(request):
     club_data = Club.objects.all()
@@ -88,3 +101,15 @@ def clubmember_add(request):
 def clubmember_table(request):
     clubmember_data = ClubMember.objects.all()
     return render(request, 'admin/clubmember-table.html', {'clubmember_data': clubmember_data})
+
+def club_updateactive(request, name):
+    club_data       = Club.objects.filter(pk = name)
+    for club in club_data:
+        print(club.clubStatus)
+    return redirect('/admin/club/')
+
+def club_updatenotactive(request, name):
+    club_data       = Club.objects.filter(pk = name)
+    for club in club_data:
+        print(club.clubStatus)
+    return redirect('/admin/club/')

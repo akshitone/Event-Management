@@ -77,9 +77,9 @@
 											<td> {{club.DepartmentName_id}} </td>
 											<td> 
 												{% if club.clubStatus == 'True' %}
-													<span class="badge badge-success p-1">Active</span>
+													<a href="{% url 'club-update-not-active' name=club.ClubName %}"><span class="badge badge-success p-1">Active</span></a>
 												{% else %}
-													<span class="badge badge-secondary p-1">Not active</span>
+													<a href="{% url 'club-update-active' name=club.ClubName %}"><span class="badge badge-secondary p-1">Not active</span></a>
 												{% endif %}	
 											</td>
 											<td> 
