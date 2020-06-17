@@ -73,14 +73,14 @@
 											<td> {{student.StudentName}}</td>
 											<td> {{student.SubDepartmentName_id}} ( {{student.DepartmentName_id}} ) </td>
 											<td> 
-												{% if student.studentStatus == 'True' %}
-													<span class="badge badge-success p-1">Active</span>
+												{% if student.StudentStatus == True %}
+												<a href="{% url 'student-update-approval-no' id=student.StudentId %}"><span class="badge badge-success p-1">Approve</span></a>
 												{% else %}
-													<span class="badge badge-danger p-1">Pending</span>
+												<a href="{% url 'student-update-approval-yes' id=student.StudentId %}"><span class="badge badge-danger p-1">No Approve</span></a>
 												{% endif %}	
 											</td>
 											<td>
-												<a href="" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
+												<a href="{% url 'student-view' id=student.StudentId %}" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
 												<a href="{% url 'student-edit' id=student.StudentId %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
 												<a href="{% url 'student-delete' id=student.StudentId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 											</td>

@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
-		<title>Achievement Table | eVentes</title>
+		<title>Club View | eVentes</title>
 		<meta content="Admin Dashboard" name="description">
 		<meta content="Themesbrand" name="author">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +33,10 @@
 					<div class="page-title-box">
 						<div class="row align-items-center">
 							<div class="col-md-8">
-								<h4 class="page-title mb-0">Achievement Table</h4>
+								<h4 class="page-title mb-0">Club View</h4>
 								<ol class="breadcrumb m-0">
-									<li class="breadcrumb-item"><a href="#">Achievement</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Achievement Table</li>
+									<li class="breadcrumb-item"><a href="#">Club</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Club View</li>
 								</ol>
 							</div>
 						</div>
@@ -47,43 +47,47 @@
 		</div>
 	</div>
 		
-		<div class="wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="mt-0 header-title mb-3">Achievement Table</h4>
-								<table id="datatable" class="table table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-									<thead>
-										<tr>
-											<th>Achievement name</th>
-											<th>Department name</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										{% for achievement in achievement_data %}
-										<tr>
-											<td> {{achievement.AchievementName}}</td>
-											<td> {{achievement.SubDepartmentName_id}} ( {{achievement.DepartmentName_id}} ) </td>
-											<td>
-												<a href="{% url 'achievement-edit' id=achievement.AchievementId %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
-												<a href="{% url 'achievement-delete' id=achievement.AchievementId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-											</td>
-										</tr>
-										{% endfor %}
-									</tbody>
-								</table>
-							</div>
+	<div class="wrapper">
+		{% for club in club_data %}
+		<div class="container-fluid">
+			<div class="row">
+						<div class="col-2">
+							&nbsp;
+						</div>
+						<div class="card card-body col-8">
+							<div class="row">
+								<div class="col-3">
+										<div class="card" style="margin-left: 15px;">
+											<img class="card-img-top rounded img-fluid" src="{{club.ClubImage}}" alt="Card image cap">		
+										</div>
+								</div>
+								<div class="col-9" style="padding-left: 20px;">
+									<h2 class="card-title mt-0 mb-20">{{club.ClubName}} ({{club.ClubType}})</h2>
+                                    <p class="card-title mt-0 mb-10"><i class="mdi mdi-city font-20 pr-2"></i><span class="text-muted">{{club.DepartmentName_id}} </span></p>
+									<a href="{{club.FacebookLink}}"><p class="card-title mt-0 mb-10"><i class="mdi mdi-facebook font-20 pr-2"></i><span class="text-muted">{{club.FacebookLink}}</span></p></a>
+									<a href="{{club.InstagramLink}}"><p class="card-title mt-0 mb-10"><i class="mdi mdi-instagram font-20 pr-2"></i><span class="text-muted">{{club.InstagramLink}}</span></p></a>
+									<a href="{{club.TwitterLink}}"><p class="card-title mt-0 mb-10"><i class="mdi mdi-twitter font-20 pr-2"></i><span class="text-muted">{{club.TwitterLink}}</span></p></a>
+									<a href="{{club.DribbbleLink}}"><p class="card-title mt-0 mb-10"><i class="mdi mdi-dribbble font-20 pr-2"></i><span class="text-muted">{{club.DribbbleLink}}</span></p></a>
+									{% if club.clubStatus == 'True' %}
+													<a href="{% url 'club-update-notactive' name=club.ClubName %}"><span class="btn btn-success waves-effect waves-light mr-1">Active</span></a>
+												{% else %}
+													<a href="{% url 'club-update-active' name=club.ClubName %}"><span class="btn btn-secondary waves-effect waves-light mr-1">Not active</span></a>
+												{% endif %}	
+												{% if club.clubApproval == '1' %}
+												<a href="{% url 'club-update-approval-no' name=club.ClubName %}"><span class="btn btn-success waves-effect waves-light mr-1">Approve</span></a>
+											{% else %}
+												<a href="{% url 'club-update-approval-yes' name=club.ClubName %}"><span class="btn btn-danger waves-effect waves-light mr-1">Not approve</span></a>
+											{% endif %}	
+								</div>
 						</div>
 					</div>
-					<!-- end col -->
 				</div>
-				<!-- end row -->
 			</div>
-			<!-- end container -->
+			<!-- End row -->
+			{% endfor %}
 		</div>
+		<!-- end container -->
+	</div>
 		<!-- end wrapper -->
         <!-- jQuery  -->
         <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>

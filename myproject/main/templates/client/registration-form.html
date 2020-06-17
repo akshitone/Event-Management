@@ -44,7 +44,7 @@
                                     </div>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html">Student</a></li>
+                                            <li class="breadcrumb-item"><a href="">Student</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Student Registration</li>
                                         </ol>
                                     </nav>
@@ -65,68 +65,69 @@
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="booking-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
-                                <form>
+                                <form action="" enctype="multipart/form-data" method="POST">
+                                    {% csrf_token %}
                                     <div class="form-outer">
                                         <div class="icon"><i class="fal fa-user"></i></div>
-                                        <input type="text" placeholder="Enter your name"/>
+                                        <input type="text" placeholder="Enter your full-name" name="txtfullname" id="txtfullname"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-user"></i></div>
+                                        <input type="text" placeholder="Enter user name" name="txtusername" id="txtusername"/>
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="fal fa-envelope"></i></div>
-                                        <input type="email" placeholder="Enter your email"/>
+                                        <input type="email" placeholder="Enter your email" name="txtemail" id="txtemail"/>
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="fal fa-key"></i></div>
-                                        <input type="password" placeholder="Enter your password"/>
+                                        <input type="password" placeholder="Enter your password" name="txtpassword" id="txtpassword"/>
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="far fa-phone"></i></div>
-                                        <input type="text" placeholder="Enter your phone"/>
+                                        <input type="text" placeholder="Enter your phone" name="txtphoneno" id="txtphoneno"/>
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="far fa-venus-mars"></i></div>
-                                        <select id="select">
-                                        <option selected="selected">Select gender</option>
-                                        <option>Male</option>  
-                                        <option>Female</option>  
-                                        <option>Others</option>  
+                                        <select name="gender" id="gender">
+                                        <option name="gender" selected="selected">Select gender</option>
+                                        <option name="gender" value="Male" id="option1">Male</option>  
+                                        <option name="gender" value="Female" id="option2">Female</option>  
+                                        <option name="gender" value="Others" id="option3">Others</option>  
                                         </select>                                         
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="far fa-building"></i></div>
-                                        <select id="select">
+                                        <select id="select" name="dropdowndepartment" id="dropdowndepartment">
                                         <option selected="selected">Select your department</option>
-                                        <option>one</option>  
-                                        <option>two</option>  
-                                        <option>three</option>  
-                                        <option>four</option>  
-                                        <option >five</option>  
+                                        {% for department in department_data %}
+											<option value="{{department.DepartmentName}}"> {{department.DepartmentName}} </option>
+										{% endfor %}  
                                         </select>                                   
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="fas fa-building"></i></div>
-                                        <select id="select">
-                                        <option selected="selected">Select your sub-department</option>
-                                        <option>one</option>  
-                                        <option>two</option>  
-                                        <option>three</option>  
-                                        <option>four</option>  
-                                        <option >five</option>  
+                                        <select id="select" name="dropdownsubdepartment" id="dropdownsubdepartment">
+                                        <option selected="selected" >Select your sub-department</option>
+                                        {% for subdepartment in subdepartment_data %}
+											<option value="{{subdepartment.SubDepartmentName}}"> {{subdepartment.SubDepartmentName}} </option>
+										{% endfor %} 
                                         </select>                                          
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="far fa-home"></i></div>
-                                        <textarea rows="4" placeholder="Enter your address"></textarea>
+                                        <textarea rows="4" placeholder="Enter your address" name="txtaddress" id="txtaddress"></textarea>
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="far fa-map-marker-alt"></i></div>
-                                        <input type="text" placeholder="Enter your city"/>
+                                        <input type="text" placeholder="Enter your city" name="txtcityname" id="txtcityname"/>
                                     </div>
                                     <div class="form-outer">
                                         <div class="icon"><i class="far fa-image"></i></div>
-                                        <input type="text" placeholder="Upload your image"/>
+                                        <input type="file" placeholder="Upload your image" name="txtimageurl" id="txtimageurl"/>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#" class="btn"><i class="far fa-ticket-alt"></i> Registration</a>
+                                        <button type="submit" class="btn">Registration</button>
                                     </div>
                                 </form>
                             </div>

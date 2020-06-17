@@ -75,3 +75,15 @@ def student_edit(request, id):
         department_data     = Department.objects.all()
         subdepartment_data  = SubDepartment.objects.all()
         return render(request, 'admin/student-edit.html', {'id': id, 'student_data': student_data, 'department_data': department_data, 'subdepartment_data': subdepartment_data})
+
+def student_view(request, id):
+    student_data = Student.objects.filter(pk = id)
+    return render(request, 'admin/student-view.html', {'id': id, 'student_data': student_data})
+
+def student_update_approval_yes(request, id):
+    Student.objects.filter(pk = id).update(StudentStatus=True)
+    return redirect('/admin/student/')
+
+def student_update_approval_no(request, id):
+    Student.objects.filter(pk = id).update(StudentStatus=False)
+    return redirect('/admin/employee/')

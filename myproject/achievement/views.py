@@ -46,6 +46,8 @@ def achievement_edit(request, id):
         subdepartment_data  = SubDepartment.objects.all()
         return render(request, 'admin/achievement-edit.html', {'id': id, 'achievement_data': achievement_data, 'department_data': department_data, 'subdepartment_data': subdepartment_data})
 
+
+
 def achiever_add(request):
     if request.method == 'POST':
         achiever = Achiever (

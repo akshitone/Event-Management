@@ -77,22 +77,20 @@
 											<td> {{club.DepartmentName_id}} </td>
 											<td> 
 												{% if club.clubStatus == 'True' %}
-													<a href="{% url 'club-update-not-active' name=club.ClubName %}"><span class="badge badge-success p-1">Active</span></a>
+													<a href="{% url 'club-update-notactive' name=club.ClubName %}"><span class="badge badge-success p-1">Active</span></a>
 												{% else %}
 													<a href="{% url 'club-update-active' name=club.ClubName %}"><span class="badge badge-secondary p-1">Not active</span></a>
 												{% endif %}	
 											</td>
 											<td> 
 												{% if club.clubApproval == '1' %}
-													<span class="badge badge-success p-1">Approve</span>
-												{% elif club.clubApproval == '0' %}
-													<span class="badge badge-danger p-1">Not approve</span>
+													<a href="{% url 'club-update-approval-no' name=club.ClubName %}"><span class="badge badge-success p-1">Approve</span></a>
 												{% else %}
-													<span class="badge badge-warning p-1">Pending</span>
+													<a href="{% url 'club-update-approval-yes' name=club.ClubName %}"><span class="badge badge-danger p-1">Not approve</span></a>
 												{% endif %}	
 											</td>
 											<td>
-												<a class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
+												<a href="{% url 'club-view' name=club.ClubName %}" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
 												<a href="{% url 'club-edit' name=club.ClubName %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
 												<a href="{% url 'club-delete' name=club.ClubName %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 											</td>

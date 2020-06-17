@@ -27,7 +27,7 @@ def employee_add(request):
         employee.save()
         return redirect('/admin/employee/add/')
     else:
-        department_data = Department.objects.all()
+        department_data =   Department.objects.all()
         subdepartment_data = SubDepartment.objects.all()
         return render(request, 'admin/employee-add.html', {'department_data': department_data, 'subdepartment_data': subdepartment_data})
 
@@ -79,3 +79,11 @@ def employee_edit(request, id):
 def employee_view(request, id):
     employee_data = Employee.objects.filter(pk = id)
     return render(request, 'admin/employee-view.html', {'id': id, 'employee_data': employee_data})
+
+def employee_update_approval_yes(request, id):
+    Employee.objects.filter(pk = id).update(EmployeeStatus=True)
+    return redirect('/admin/employee/')
+
+def employee_update_approval_no(request, id):
+    Employee.objects.filter(pk = id).update(EmployeeStatus=False)
+    return redirect('/admin/employee/')

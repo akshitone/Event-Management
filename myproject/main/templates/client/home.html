@@ -79,12 +79,13 @@
         <!-- main-area -->
         <main>
             <!-- slider-area -->
-            <section id="parallax" class="slider-area slider-bg second-slider-bg slider-bg2 d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/home_2_slider_img.jpg' %})">
+            {% for event in event_data %}
+            <section id="parallax" class="slider-area slider-bg second-slider-bg slider-bg2 d-flex align-items-center justify-content-center fix" style="background-image:url({{event.VenueId.VenueImage}})">
                 <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
                 <div class="slider-shape ss-two layer" data-depth="0.30"><img src="{% static 'client_plugins/img/doddle_8.png' %}" alt="shape"></div>
                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
                 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
-                {% for event in event_data %}
+                
                 <div class="slider-active">
                     <div class="single-slider">
                         <div class="container">

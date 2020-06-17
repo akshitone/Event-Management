@@ -83,6 +83,26 @@ def club_edit(request, name):
         department_data  = Department.objects.all()
         return render(request, 'admin/club-edit.html', {'name': name, 'club_data': club_data, 'department_data': department_data,})
 
+def club_view(request, name):
+    club_data = Club.objects.filter(pk = name)
+    return render(request, 'admin/club-view.html', {'name': name, 'club_data': club_data})
+
+def club_update_active(request, name):
+    Club.objects.filter(pk = name).update(clubStatus=True)
+    return redirect('/admin/club/')
+
+def club_update_notactive(request, name):
+    Club.objects.filter(pk = name).update(clubStatus=False)
+    return redirect('/admin/club/')
+
+def club_update_approval_yes(request, name):
+    Club.objects.filter(pk = name).update(clubApproval=1)
+    return redirect('/admin/club/')
+
+def club_update_approval_no(request, name):
+    Club.objects.filter(pk = name).update(clubApproval=-1)
+    return redirect('/admin/club/')
+
     
 def clubmember_add(request):
     if request.method == 'POST':
@@ -102,14 +122,4 @@ def clubmember_table(request):
     clubmember_data = ClubMember.objects.all()
     return render(request, 'admin/clubmember-table.html', {'clubmember_data': clubmember_data})
 
-def club_updateactive(request, name):
-    club_data       = Club.objects.filter(pk = name)
-    for club in club_data:
-        print(club.clubStatus)
-    return redirect('/admin/club/')
 
-def club_updatenotactive(request, name):
-    club_data       = Club.objects.filter(pk = name)
-    for club in club_data:
-        print(club.clubStatus)
-    return redirect('/admin/club/')

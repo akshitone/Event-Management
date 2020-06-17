@@ -73,10 +73,10 @@
 											<td> {{employee.EmployeeName}}</td>
 											<td> {{employee.SubDepartmentName_id}} ( {{employee.DepartmentName_id}} ) </td>
 											<td> 
-												{% if employee.EmployeeStatus == 'True' %}
-													<span class="badge badge-success p-1">Active</span>
+												{% if employee.EmployeeStatus == True %}
+												<a href="{% url 'employee-update-approval-no' id=employee.EmployeeId %}"><span class="badge badge-success p-1">Aprrove</span></a>
 												{% else %}
-													<span class="badge badge-danger p-1">Pending</span>
+												<a href="{% url 'employee-update-approval-yes' id=employee.EmployeeId %}"><span class="badge badge-danger p-1">Not approve</span></a>
 												{% endif %}	
 											</td>
 											<td>
