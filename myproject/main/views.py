@@ -226,5 +226,5 @@ def loginView(request):
         return render(request, 'client/login-page.html')
 
 def logoutView(request):
-    logout(request)
+    logout(request) 
     return redirect("home")
