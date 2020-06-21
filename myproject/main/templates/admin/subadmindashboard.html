@@ -1,0 +1,327 @@
+{% load static %}	
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themesbrand.com/foxia/blue/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:55:57 GMT -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+		<title>Dashboard | eVentes</title>
+		<meta content="Admin Dashboard" name="description">
+		<meta content="Themesbrand" name="author">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- App Icons -->
+		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
+		<!--Morris Chart CSS -->
+		<link rel="stylesheet" href="{% static 'admin_plugins/plugins/morris/morris.css' %}" type="text/css">
+		<!-- App css -->
+		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<!-- Loader -->
+		{% include 'admin/header.html' %}
+		<!-- End Navigation Bar-->
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row align-items-center">
+							<div class="col-md-8">
+								<h4 class="page-title mb-0">Sub-Admin Dashboard</h4>
+								<ol class="breadcrumb m-0">
+									<li class="breadcrumb-item"><a href="#">Sub-Admin</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end page title end breadcrumb -->
+		</div>
+	</div>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xl-3 col-md-6">
+						<div class="card mini-stats">
+							<div class="p-3 mini-stats-content">
+								<div class="mb-4">
+									<div class="float-right text-right">
+										<span class="badge badge-light text-info mt-2 mb-2">+ 11%</span>
+										<p class="text-white-50">From previous period</p>
+									</div>
+									<span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">5/8</span>
+								</div>
+							</div>
+							<div class="ml-3 mr-3">
+								<div class="bg-white p-3 mini-stats-desc rounded">
+									<h5 class="float-right mt-0">{{club_count}}</h5>
+									<h6 class="mt-0 mb-3">Clubs</h6>
+									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6">
+						<div class="card mini-stats">
+							<div class="p-3 mini-stats-content">
+								<div class="mb-4">
+									<div class="float-right text-right">
+										<span class="badge badge-light text-danger mt-2 mb-2">- 27%</span>
+										<p class="text-white-50">From previous period</p>
+									</div>
+									<span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">2/5</span>
+								</div>
+							</div>
+							<div class="ml-3 mr-3">
+								<div class="bg-white p-3 mini-stats-desc rounded">
+									<h5 class="float-right mt-0">{{event_count}}</h5>
+									<h6 class="mt-0 mb-3">Events</h6>
+									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6">
+						<div class="card mini-stats">
+							<div class="p-3 mini-stats-content">
+								<div class="mb-4">
+									<div class="float-right text-right">
+										<span class="badge badge-light text-primary mt-2 mb-2">0%</span>
+										<p class="text-white-50">From previous period</p>
+									</div>
+									<span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">3/8</span>
+								</div>
+							</div>
+							<div class="ml-3 mr-3">
+								<div class="bg-white p-3 mini-stats-desc rounded">
+									<h5 class="float-right mt-0">{{member_count}}</h5>
+									<h6 class="mt-0 mb-3">Club-Members</h6>
+									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-md-6">
+						<div class="card mini-stats">
+							<div class="p-3 mini-stats-content">
+								<div class="mb-4">
+									<div class="float-right text-right">
+										<span class="badge badge-light text-info mt-2 mb-2">- 89%</span>
+										<p class="text-white-50">From previous period</p>
+									</div>
+									<span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">3/5</span>
+								</div>
+							</div>
+							<div class="ml-3 mr-3">
+								<div class="bg-white p-3 mini-stats-desc rounded">
+									<h5 class="float-right mt-0">{{student_count}}</h5>
+									<h6 class="mt-0 mb-3">Students</h6>
+									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end row -->
+				<div class="row">
+					<div class="col-xl-9">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="mt-0 header-title mb-5">Monthly Earning</h4>
+								<div id="morris-bar-stacked" class="morris-chart-height morris-charts"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="mt-0 header-title">Club Analytics</h4>
+								<div class="row text-center m-t-20">
+									<div class="col-6">
+										<h5 class="">{{active_club}}</h5>
+										<p class="text-muted font-14">Active</p>
+									</div>
+									<div class="col-6">
+										<h5 class="">{{deactive_club}}</h5>
+										<p class="text-muted font-14">Not Active</p>
+									</div>
+								</div>
+								<div id="morris-donut-example" class="dash-chart morris-charts text-center"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end row -->
+				<div class="row">
+						<div class="col-xl-4">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="mt-0 header-title">Recent Employee</h4>
+									<div class="p-2">
+										<ul class="list-unstyled rec-acti-list mb-0">
+											{% for emp in last_employee %}
+											<li class="rec-acti-list-item">
+												<div>
+													<h6 class="mb-0"><a href="#" class="text-dark">{{emp.EmployeeName}}</a></h6>
+													<p class="text-muted mb-0">{{emp.SubDepartmentName.SubDepartmentName}} ({{emp.DepartmentName.DepartmentName}})</p>
+													<div class="delete-icon"><a href="{% url 'employee-view' id=emp.id %}" class="text-primary"><i class="mdi mdi-delete-forever h4"></i></a></div>
+												</div>
+											</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+					<div class="col-xl-4 col-md-6">
+						<div class="card messages">
+							<div class="card-body">
+								<h4 class="mt-0 header-title">Latest Club</h4>
+								<nav class="mt-4">
+									<div class="nav nav-tabs latest-messages-tabs nav-justified" id="nav-tab" role="tablist">
+										<a class="nav-item nav-link active" id="nav-first-tab" data-toggle="tab" href="#nav-first" role="tab" aria-controls="nav-first" aria-selected="true">
+											<h4 class="mt-0">{{active_club}}</h4>
+											<p class="text-muted mb-0">Active</p>
+										</a>
+										<a class="nav-item nav-link" id="nav-second-tab" data-toggle="tab" href="#nav-second" role="tab" aria-controls="nav-second" aria-selected="false">
+											<h4 class="mt-0">{{deactive_club}}</h4>
+											<p class="text-muted mb-0">Not Active</p>
+										</a>
+									</div>
+								</nav>
+								<div class="tab-content" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
+										<div class="p-2 mt-2">
+											<ul class="list-unstyled latest-message-list mb-0">
+												{% for club in active_club_data %}
+												<li class="message-list-item">
+													<a href="{% url 'club-view' name=club.ClubName %}" class="text-dark">
+														<div class="media">
+															<img class="mr-3 thumb-md rounded-circle" src="{{club.ClubImage}}" alt="">
+															<div class="media-body">
+																<h6 class="mt-0">{{club.ClubName}}</h6>
+																<p class="text-muted mb-0">{{club.ClubType}}</p>
+															</div>
+														</div>
+													</a>
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab">
+										<div class="p-2 mt-2">
+											<ul class="list-unstyled latest-message-list mb-0">
+												{% for club in deactive_club_data %}
+												<li class="message-list-item">
+													<a href="{% url 'club-view' name=club.ClubName %}" class="text-dark">
+														<div class="media">
+															<img class="mr-3 thumb-md rounded-circle" src="{{club.ClubImage}}" alt="">
+															<div class="media-body">
+																<h6 class="mt-0">{{club.ClubName}}</h6>
+																<p class="text-muted mb-0">{{club.ClubType}}</p>
+															</div>
+														</div>
+													</a>
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="mt-0 header-title">Recent Students</h4>
+								<div class="p-2">
+									<ul class="list-unstyled rec-acti-list mb-0">
+										{% for student in last_student %}
+										<li class="rec-acti-list-item">
+											<div>
+												<h6 class="mb-0"><a href="#" class="text-dark">{{student.StudentName}}</a></h6>
+												<p class="text-muted mb-0">{{student.SubDepartmentName.SubDepartmentName}} ({{student.DepartmentName.DepartmentName}})</p>
+												<div class="delete-icon"><a href="{% url 'student-view' id=student.StudentId %}" class="text-primary"><i class="mdi mdi-delete-forever h4"></i></a></div>
+											</div>
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="mt-0 header-title">Latest Events</h4>
+								<div class="table-responsive mt-4">
+									<table class="table table-hover mb-0">
+										<thead>
+											<tr>
+												<th scope="col">(#) Id</th>
+												<th scope="col">Name</th>
+												<th scope="col">Date</th>
+												<th scope="col">Status</th>
+												<th scope="col">Club</th>
+												<th scope="col">Venue</th>
+												<th scope="col" colspan="2">Amount</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for event in last_event %}
+											<tr>
+												<th scope="row">{{event.id}}</th>
+												<td>
+													<div><img src="{{event.EventImage}}" alt="" class="thumb-sm rounded-circle mr-2">{{event.title}}</div>
+												</td>
+												<td>{{event.start}}</td>
+												<td>
+													{% if event.EventStatus == 'True' %}
+														<a href="{% url 'event-update-approval-no' id=event.id %}"><span class="badge badge-success p-1">Active</span></a>
+													{% else%}
+														<a href="{% url 'event-update-approval-yes' id=event.id %}"><span class="badge badge-secondary p-1">Not active</span></a>
+													{% endif %}	
+												</td>
+												<td>{{event.ClubName.ClubName}}</td>
+												<td>{{event.VenueId.VenueName}}</td>
+												<td>{{event.EventAmount}} Rs</td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- jQuery  -->
+		<script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+		<script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+		<script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+		<script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+		<script src="{% static 'admin_plugins/plugins/peity-chart/jquery.peity.min.js' %}"></script>
+		<!--Morris Chart-->
+		<script src="{% static 'admin_plugins/plugins/morris/morris.min.js' %}"></script>
+		<script src="{% static 'admin_plugins/plugins/raphael/raphael-min.js' %}"></script>
+		<script src="{% static 'admin_plugins/pages/dashboard.js' %}"></script>
+		<!-- App js -->
+		<script src="{% static 'admin_plugins/js/app.js' %}"></script>
+	</body>
+	<!-- Mirrored from themesbrand.com/foxia/blue/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:22 GMT -->
+</html>
+

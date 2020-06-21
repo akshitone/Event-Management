@@ -2,27 +2,46 @@ from django.shortcuts import redirect,render
 from student.models import Student
 from department.models import Department, SubDepartment
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.models import User
 
 # Create your views here.
 def student_add(request):
     if request.method == 'POST':
-        EmployeeImage  = request.FILES['txtimageurl']
-        filesystem     = FileSystemStorage()
-        filename       = filesystem.save(EmployeeImage.name, EmployeeImage)
-        url            = filesystem.url(filename)
+        StudentImage = request.FILES['txtimageurl']
+        filesystem   = FileSystemStorage()
+        filename     = filesystem.save(StudentImage.name, StudentImage)
+        url          = filesystem.url(filename)
+        users = User.objects.all()
+        for user in users:
+            if user.username == request.POST['txtusername']:
+                messages.warning(request,"User already exist")
+                return render(request, 'client/registration-form.html')
+        # User Creation
+        user = User.objects.create_user(request.POST['txtusername'],request.POST['txtemail'],request.POST['txtpassword'])
+        group = Group.objects.get(name="Student")
+        user.groups.add(group)
+        # Name split and join
+        Name = request.POST['txtfullname'].split()
+        if len(Name) > 1:
+            user.first_name = Name[0]
+            user.last_name  = " ".join(Name[1:])
+        else:
+            user.first_name = " ".join(Name)
+        user.save()
         student = Student (
-            StudentName            = request.POST['txtfullname'],
-            StudentUserName        = request.POST['txtusername'],
-            StudentPassword        = request.POST['txtpassword'],
-            DepartmentName_id      = request.POST['dropdowndepartment'],
-            SubDepartmentName_id   = request.POST['dropdownsubdepartment'],
-            StudentImageName       = filename,
-            StudentImage           = url,
-            StudentGender          = request.POST['gender'],
-            StudentPhoneNumber     = request.POST['txtphoneno'],
-            StudentEmail           = request.POST['txtemail'],
-            StudentAddress         = request.POST['txtaddress'],
-            StudentCity            = request.POST['txtcityname']
+              StudentName          = request.POST['txtfullname'],
+              UserId               = user,
+            # StudentUserName      = request.POST['txtusername'],
+            # StudentPassword      = request.POST['txtpassword'],
+              DepartmentName_id    = request.POST['dropdowndepartment'],
+              SubDepartmentName_id = request.POST['dropdownsubdepartment'],
+              StudentImageName     = filename,
+              StudentImage         = url,
+              StudentGender        = request.POST['gender'],
+              StudentPhoneNumber   = request.POST['txtphoneno'],
+              StudentEmail         = request.POST['txtemail'],
+              StudentAddress       = request.POST['txtaddress'],
+              StudentCity          = request.POST['txtcityname']
         )
         student.save()
         return redirect('/admin/student/add/')
@@ -37,38 +56,71 @@ def student_table(request):
 
 def student_delete(request, id):
     student       = Student.objects.get(pk = id)
+    userId = student.UserId
+    user = User.objects.get(pk=userId)
     filesystem     = FileSystemStorage()
     filesystem.delete(student.StudentImageName)
+    user.delete()
     student.delete()
     return redirect('/admin/student/')
 
 def student_edit(request, id):
     if request.method == 'POST':
-        StudentImage  = request.FILES['txtimageurl']
-        filesystem     = FileSystemStorage()
-        filename       = filesystem.save(StudentImage.name, StudentImage)
-
+        StudentImage = request.FILES['txtimageurl']
+        filesystem   = FileSystemStorage()
+        filename     = filesystem.save(StudentImage.name, StudentImage)
+        url          = filesystem.url(filename)
+        """ users = User.objects.all()
+        for user in users:
+            if user.username == request.POST['txtusername']:
+                messages.warning(request,"User already exist")
+                return redirect('/admin/student/add/')
+        # User Creation
+        # user = User.objects.create_user(request.POST['txtusername'],request.POST['txtemail'],request.POST['txtpassword'])
+        # group = Group.objects.get(name="Student")
+        # user.groups.add(group)
+        usr.username = request.POST['txtusername']
+        usr.password = request.POST['txtpassword']
+        # Name split and join
+        Name = request.POST['txtfullname'].split()
+        if len(Name) > 1:
+            user.first_name = Name[0]
+            user.last_name  = " ".join(Name[1:])
+        else:
+            user.first_name = " ".join(Name)
+         """
+        fn = ""
+        ln = ""
+        Name = request.POST['txtfullname'].split()
+        if len(Name) > 1:
+            fn = Name[0]
+            ln  = " ".join(Name[1:])
+        else:
+            fn = " ".join(Name)
         std = Student.objects.get(pk = id)
-        filesystem     = FileSystemStorage()
-        filesystem.delete(std.StudentImageName)
-
-        url            = filesystem.url(filename)
-        student = Student (
-            StudentId              = request.POST['txtemployeeid'],
-            StudentName            = request.POST['txtfullname'],
-            StudentUserName        = request.POST['txtusername'],
-            StudentPassword        = request.POST['txtpassword'],
-            DepartmentName_id      = request.POST['dropdowndepartment'],
-            SubDepartmentName_id   = request.POST['dropdownsubdepartment'],
-            StudentImageName       = filename,
-            StudentImage           = url,
-            StudentGender          = request.POST['gender'],
-            StudentPhoneNumber     = request.POST['txtphoneno'],
-            StudentEmail           = request.POST['txtemail'],
-            StudentAddress         = request.POST['txtaddress'],
-            StudentCity            = request.POST['txtcityname']
+        userId = std.UserId_id
+        print(userId)
+        usr = User.objects.all().filter(pk=userId).update(
+            email = request.POST['txtemail'],
+            first_name = fn,
+            last_name = ln
         )
-        student.save()
+        Student.objects.all().filter(pk = id).update(
+              StudentName          = request.POST['txtfullname'],
+            #   UserId               = user,
+            # StudentUserName      = request.POST['txtusername'],
+            # StudentPassword      = request.POST['txtpassword'],
+              DepartmentName_id    = request.POST['dropdowndepartment'],
+              SubDepartmentName_id = request.POST['dropdownsubdepartment'],
+              StudentImageName     = filename,
+              StudentImage         = url,
+              StudentGender        = request.POST.get('gender','Male'),
+              StudentPhoneNumber   = request.POST['txtphoneno'],
+              StudentEmail         = request.POST['txtemail'],
+              StudentAddress       = request.POST['txtaddress'],
+              StudentCity          = request.POST['txtcityname']
+        )
+        # std.update()
         return redirect('/admin/student/')
     else:
         student_data       = Student.objects.filter(pk = id)

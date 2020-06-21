@@ -65,6 +65,9 @@
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="booking-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
+                                {% for message in messages%}
+                                    <p style="color:red; text-align:center; margin-bottom:auto; text-decoration:none;"> {{message}} </p>
+                                {% endfor %}
                                 <form action="" enctype="multipart/form-data" method="POST">
                                     {% csrf_token %}
                                     <div class="form-outer">
@@ -130,6 +133,9 @@
                                         <button type="submit" class="btn">Registration</button>
                                     </div>
                                 </form>
+                                    <div class="m-t-40 text-center text-white-50">
+                                        <p>Already have an account ? <a href="{% url 'login' %}" class="font-600 text-black">Sign In</a></p>
+                                    </div>
                             </div>
                         </div>
                     </div>

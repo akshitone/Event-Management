@@ -18,12 +18,6 @@
                                     <li>
                                         <a href="/">Home</a>
                                     </li>
-                                    <li class="has-sub"><a href="/student/form">Registration</a>
-                                        <ul>
-                                            <li><a href="/student/form">Student Registration</a></li>
-                                            <li><a href="/club/form">Club Registration</a></li>
-                                        </ul>
-                                    </li>
                                     <li class="has-sub">
                                         <a href="/club">Club</a>												
                                     </li>
@@ -32,6 +26,17 @@
                                     </li>
                                     <li class="has-sub">
                                         <a href="/venue">Venue</a>
+                                    </li>
+                                    <li class="has-sub"><a href="/student/form">Account</a>
+                                        <ul>
+                                        {% if request.user.is_authenticated  %}
+                                            <li><a href="/club/form">Club Registration</a></li>
+                                            <li><a href="{% url 'logout' %} ">Log out</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'login' %}">Log in</a></li>
+                                            <li><a href="{% url 'registration' %}">Register</a></li>
+                                        {% endif %}
+                                        </ul>
                                     </li>
                                     <li>
                                         <a href="/whoweare">Who we are?</a>

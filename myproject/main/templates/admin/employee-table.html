@@ -74,15 +74,15 @@
 											<td> {{employee.SubDepartmentName_id}} ( {{employee.DepartmentName_id}} ) </td>
 											<td> 
 												{% if employee.EmployeeStatus == True %}
-												<a href="{% url 'employee-update-approval-no' id=employee.EmployeeId %}"><span class="badge badge-success p-1">Aprrove</span></a>
+												<a href="{% url 'employee-update-approval-no' id=employee.id %}"><span class="badge badge-success p-1">Aprrove</span></a>
 												{% else %}
-												<a href="{% url 'employee-update-approval-yes' id=employee.EmployeeId %}"><span class="badge badge-danger p-1">Not approve</span></a>
+												<a href="{% url 'employee-update-approval-yes' id=employee.id %}"><span class="badge badge-danger p-1">Not approve</span></a>
 												{% endif %}	
 											</td>
 											<td>
-												<a href="{% url 'employee-view' id=employee.EmployeeId %}" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
-												<a href="{% url 'employee-edit' id=employee.EmployeeId %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
-												<a href="{% url 'employee-delete' id=employee.EmployeeId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+												<a href="{% url 'employee-view' id=employee.id %}" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
+												<a href="{% url 'employee-edit' id=employee.id %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
+												<a href="{% url 'employee-delete' id=employee.id %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 										{% endfor %}

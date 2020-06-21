@@ -70,9 +70,9 @@
 									<p class="card-title mt-0 mb-10"><i class="mdi mdi-map-marker font-20 pr-2"></i><span class="text-muted">{{employee.EmployeeAddress}}</span></p>
 									<p class="card-title mt-0 mb-10"><i class="mdi mdi-map-marker-radius font-20 pr-2"></i><span class="text-muted">{{employee.EmployeeCity}}</span></p>
 									{% if employee.EmployeeStatus == True %}
-												<a href="{% url 'employee-update-approval-no' id=employee.EmployeeId %}"><span class="btn btn-success waves-effect waves-light mr-1">Approve</span></a>
+												<a href="{% url 'employee-update-approval-no' id=employee.id %}"><span class="btn btn-success waves-effect waves-light mr-1">Approve</span></a>
 											{% else %}
-												<a href="{% url 'employee-update-approval-yes' id=employee.EmployeeId %}"><span class="btn btn-danger waves-effect waves-light mr-1">Not approve</span></a>
+												<a href="{% url 'employee-update-approval-yes' id=employee.id %}"><span class="btn btn-danger waves-effect waves-light mr-1">Not approve</span></a>
 											{% endif %}	
 								</div>
 						</div>

@@ -13,26 +13,33 @@ def club_add(request):
         filesystem     = FileSystemStorage()
         filename       = filesystem.save(ClubImage.name, ClubImage)
         url            = filesystem.url(filename)
-
-        name           = request.POST['txtclubname']
-
+        userId = request.user.id
+        student = Student.objects.get(UserId_id=userId)
         club = Club (
-            ClubName           = name,  
-            ClubType           = request.POST['txtclubtype'],  
-            ClubImageName      = filename,  
-            ClubImage          = url,  
+            ClubName           = request.POST['txtclubname'],
+            ClubType           = request.POST['txtclubtype'],
+            ClubImageName      = filename,
+            ClubImage          = url,
             DepartmentName_id  = request.POST['dropdowndepartment'],
             FacebookLink       = request.POST['txtfacebook'],
             InstagramLink      = request.POST['txtinstagram'],
             TwitterLink        = request.POST['txttwitter'],
             DribbbleLink       = request.POST['txtdribbble']
         )
+        clubMember = ClubMember(
+            ClubId       = club,
+            StudentId    = student,
+            MemberRole   = 'Club Admin'
+        )
+        group = Group.objects.get(name="clubAdmin")
+        request.user.groups.add(group)
         club.save()
+        clubMember.save()
 
         notification = Notification(
             NotificationTitle            = "New Club ",
             NotificationName             = name,
-            NotificationDescription      = "Added by Akshit Mithaiwala"
+            NotificationDescription      = "Added by " + request.user.first_name
         )
         notification.save()
 
@@ -122,4 +129,27 @@ def clubmember_table(request):
     clubmember_data = ClubMember.objects.all()
     return render(request, 'admin/clubmember-table.html', {'clubmember_data': clubmember_data})
 
+def clubmember_view(request, id):
+    clubmember_data = ClubMember.objects.filter(pk = id)
+    return render(request, 'admin/clubmember-view.html', {'id': id, 'clubmember_data': clubmember_data})
 
+def clubmember_edit(request, id):
+    if request.method == 'POST':
+        clubmember = ClubMember (
+            ClubMemberId            = request.POST['txtclubmemberid'],
+            MemberRole            = request.POST['txtmemberrole'],
+            ClubId_id        = request.POST['dropdownclubname'],
+            StudentId_id   = request.POST['dropdownstudent'],
+        )
+        clubmember.save()
+        return redirect('/admin/clubmember/')
+    else:
+        clubmember_data       = ClubMember.objects.filter(pk = id)
+        club_data  = Club.objects.all()
+        student_data = Student.objects.all()
+        return render(request, 'admin/clubmember-edit.html', {'id': id, 'clubmember_data': clubmember_data, 'club_data': club_data, 'student_data': student_data})
+
+def clubmember_delete(request, id):
+    clubmember           = ClubMember.objects.get(pk = id)
+    clubmember.delete()
+    return redirect('/admin/clubmember/')

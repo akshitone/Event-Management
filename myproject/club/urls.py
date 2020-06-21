@@ -13,4 +13,7 @@ urlpatterns = [
     path('admin/club/updatenotapprove/<str:name>/', views.club_update_approval_no, name='club-update-approval-no'),
     path('admin/clubmember/add/', views.clubmember_add, name='clubmember-add'),
     path('admin/clubmember/', views.clubmember_table, name='clubmember-table'),
+    path('admin/clubmember/view/<int:id>/', views.clubmember_view, name='clubmember-view'),
+    path('admin/clubmember/edit/<int:id>/', views.clubmember_edit, name='clubmember-edit'),
+    path('admin/clubmember/delete/<int:id>/', views.clubmember_delete, name='clubmember-delete'),
 ]
