@@ -1,0 +1,335 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:50 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"
+        />
+        <title>Club Table | eVentes</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App Icons -->
+        <link
+            rel="shortcut icon"
+            href="{% static 'admin_plugins/images/favicon.png' %}"
+        />
+        <!-- DataTables -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- Responsive datatable examples -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- App css -->
+        <link
+            href="{% static 'admin_plugins/css/bootstrap.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/icons.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/style.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <!-- Loader -->
+        {% include 'admin/header.html' %}
+        <!-- End Navigation Bar-->
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-0">Club Table</h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Club</a>
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        Club Table
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+        </div>
+		</div>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <ul
+                        class="nav nav-pills nav-bg-custom nav-justified pull-right"
+                        role="tablist"
+                    >
+                        <li class="nav-item waves-effect waves-light">
+                            <a
+                                class="nav-link active"
+                                data-toggle="tab"
+                                href="#details"
+                                role="tab"
+                                ><span class="d-none d-md-block"
+                                    ><i class="dripicons-list"></i></span
+                                ><span class="d-block d-md-none"
+                                    ><i
+                                        class="mdi mdi-home-variant h5"
+                                    ></i></span
+                            ></a>
+                        </li>
+                        <li class="nav-item waves-effect waves-light">
+                            <a
+                                class="nav-link"
+                                data-toggle="tab"
+                                href="#grid"
+                                role="tab"
+                                ><span class="d-none d-md-block"
+                                    ><i class="dripicons-view-thumb"></i></span
+                                ><span class="d-block d-md-none"
+                                    ><i class="mdi mdi-account h5"></i></span
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div
+                        class="tab-pane active p-3"
+                        id="details"
+                        role="tabpanel"
+                    >
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title mb-3">
+                                            Club Table
+                                        </h4>
+                                        <table
+                                            id="datatable"
+                                            class="table table-hover dt-responsive nowrap"
+                                            style="
+                                                border-collapse: collapse;
+                                                border-spacing: 0;
+                                                width: 100%;
+                                            "
+                                        >
+                                            <thead>
+                                                <tr>
+                                                    <th>Club</th>
+                                                    <th>Club name</th>
+                                                    <th>Club type</th>
+                                                    <th>Department name</th>
+                                                    <th>Status</th>
+                                                    <th>Approval</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for club in club_data %}
+                                                <tr>
+                                                    <td>
+                                                        <img
+                                                            class="d-flex mr-3 rounded-circle"
+                                                            src="{{club.ClubImage}}"
+                                                            alt="Not found"
+                                                            height="50"
+                                                        />
+                                                    </td>
+                                                    <td>{{club.ClubName}}</td>
+                                                    <td>{{club.ClubType}}</td>
+                                                    <td>
+                                                        {{club.DepartmentName_id}}
+                                                    </td>
+                                                    <td>
+                                                        {% if club.clubStatus == 'True' %}
+                                                        <a
+                                                            href="{% url 'club-update-notactive' name=club.ClubName %}"
+                                                            ><span
+                                                                class="badge badge-success p-1"
+                                                                >Active</span
+                                                            ></a
+                                                        >
+                                                        {% else %}
+                                                        <a
+                                                            href="{% url 'club-update-active' name=club.ClubName %}"
+                                                            ><span
+                                                                class="badge badge-secondary p-1"
+                                                                >Not
+                                                                active</span
+                                                            ></a
+                                                        >
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if club.clubApproval == '1' %}
+                                                        <a
+                                                            href="{% url 'club-update-approval-no' name=club.ClubName %}"
+                                                            ><span
+                                                                class="badge badge-success p-1"
+                                                                >Approve</span
+                                                            ></a
+                                                        >
+                                                        {% else %}
+                                                        <a
+                                                            href="{% url 'club-update-approval-yes' name=club.ClubName %}"
+                                                            ><span
+                                                                class="badge badge-danger p-1"
+                                                                >Not
+                                                                approve</span
+                                                            ></a
+                                                        >
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        <a
+                                                            href="{% url 'club-view' name=club.ClubName %}"
+                                                            class="btn btn-outline-primary waves-effect waves-light mr-1"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"
+                                                            data-original-title="View"
+                                                            ><i
+                                                                class="fa fa-eye"
+                                                            ></i
+                                                        ></a>
+                                                        <a
+                                                            href="{% url 'club-edit' name=club.ClubName %}"
+                                                            class="btn btn-outline-pink waves-effect waves-light mr-1"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"
+                                                            data-original-title="Update"
+                                                            ><i
+                                                                class="fa fa-edit"
+                                                            ></i
+                                                        ></a>
+                                                        <a
+                                                            href="{% url 'club-delete' name=club.ClubName %}"
+                                                            class="btn btn-outline-danger waves-effect waves-light mr-1"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"
+                                                            data-original-title="Delete"
+                                                            ><i
+                                                                class="fa fa-trash"
+                                                            ></i
+                                                        ></a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                    </div>
+                    <div class="tab-pane p-3" id="grid" role="tabpanel">
+                        <div class="row">
+                            {% for club in club_data %}
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <img
+                                        class="card-img-top img-fluid"
+                                        src="{{club.ClubImage}}"
+                                        alt="Card image cap"
+                                    />
+                                    <div class="card-body">
+                                        <h4 class="card-title font-20 mt-0">
+                                            {{club.ClubName}}
+                                        </h4>
+                                        <p class="card-text">
+                                            <small class="text-muted"
+                                                >{{club.ClubType}}</small
+                                            >
+                                        </p>
+
+                                        <a
+                                            href="{% url 'club-view' name=club.ClubName %}"
+                                            class="btn btn-outline-primary waves-effect waves-light mr-1"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            data-original-title="View"
+                                            ><i class="fa fa-eye"></i
+                                        ></a>
+                                        <a
+                                            href="{% url 'club-edit' name=club.ClubName %}"
+                                            class="btn btn-outline-pink waves-effect waves-light mr-1"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            data-original-title="Update"
+                                            ><i class="fa fa-edit"></i
+                                        ></a>
+                                        <a
+                                            href="{% url 'club-delete' name=club.ClubName %}"
+                                            class="btn btn-outline-danger waves-effect waves-light mr-1"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            data-original-title="Delete"
+                                            ><i class="fa fa-trash"></i
+                                        ></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <!-- Required datatable js -->
+        <script src="{% static 'admin_plugins/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/jszip.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.colVis.min.js' %}"></script>
+        <!-- Responsive examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
+        <!-- Datatable init js -->
+        <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+    </body>
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
+</html>

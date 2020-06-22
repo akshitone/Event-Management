@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:36 GMT -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+		<title>Student Form | eVentes</title>
+		<meta content="Admin Dashboard" name="description">
+		<meta content="Themesbrand" name="author">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- App Icons -->
+		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
+		<!-- App css -->
+		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+			{% include 'admin/header.html' %}
+			<!-- End Navigation Bar-->
+			<div class="container-fluid">
+				<!-- Page-Title -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="page-title-box">
+							<div class="row align-items-center">
+								<div class="col-md-8">
+									<h4 class="page-title mb-0">Student Form</h4>
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item"><a href="#">Student</a></li>
+										<li class="breadcrumb-item active" aria-current="page">Student Form</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end page title end breadcrumb -->
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<form action="" enctype="multipart/form-data" method="POST">
+									{% csrf_token %}
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Full name</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="Enter full name" type="text" name="txtfullname" id="txtfullname"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="Enter username name" type="text" name="txtusername" id="txtusername"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Password</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="Enter password here!" type="password" name="txtpassword" id="txtpassword"></div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Department name</label>
+										<div class="col-sm-10">
+											<select class="form-control form-control-lg" name="dropdowndepartment" id="dropdowndepartment">
+												<option>Select department name</option>
+												{% for department in department_data %}
+												<option value="{{department.DepartmentName}}"> {{department.DepartmentName}} </option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Sub department name</label>
+										<div class="col-sm-10">
+											<select class="form-control form-control-lg" name="dropdownsubdepartment" id="dropdownsubdepartment">
+												<option>Select sub department name</option>
+												{% for subdepartment in subdepartment_data %}
+												<option value="{{subdepartment.SubDepartmentName}}"> {{subdepartment.SubDepartmentName}} </option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Gender</label>
+										<div class="col-sm-10">
+											<div class="btn-group btn-group-toggle" data-toggle="buttons">
+												<label class="btn btn-outline-primary  p-2"><input type="radio" name="gender" value="Male" id="option1" checked="checked"> Male</label> 
+												<label class="btn btn-outline-pink p-2"><input type="radio" name="gender" value="Female" id="option2"> Female</label> 
+												<label class="btn btn-outline-purple p-2"><input type="radio" name="gender" value="Others" id="option3"> Others</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Image</label>
+										<div class="col-sm-10">
+											<input type="file" class="filestyle" name="txtimageurl" id="txtimageurl" data-buttonname="btn-primary">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Phone no.</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="1111 2222 33" type="text" name="txtphoneno" id="txtphoneno"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="helloyouare@example.com" type="email" name="txtemail" id="txtemail"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Address</label>
+										<div class="col-sm-10"><textarea name="txtaddress" id="txtaddress" class="form-control form-control-lg" maxlength="225" rows="4" placeholder="Enter address here!"></textarea></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">City</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="Enter city name" type="text" name="txtcityname" id="txtcityname"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">&nbsp;</label>
+										<div class="col-sm-10">
+											<button type="submit" class="btn btn-pink btn-lg waves-effect waves-light">Submit</button>
+											<button type="reset" class="btn btn-secondary btn-lg waves-effect waves-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <!-- Plugins js -->
+        <script src="{% static 'admin_plugins/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js' %}"></script>
+        <!-- Plugins Init js -->
+        <script src="{% static 'admin_plugins/pages/form-advanced.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+        $(document).ready(function() {
+			$('form').parsley();
+			});
+		</script>
+	</body>
+	<!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:37 GMT -->
+</html>

@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:50 GMT -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+		<title>Achievement View | eVentes</title>
+		<meta content="Admin Dashboard" name="description">
+		<meta content="Themesbrand" name="author">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- App Icons -->
+		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
+		<!-- DataTables -->
+		<link href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+		<!-- Responsive datatable examples -->
+		<link href="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+		<!-- App css -->
+		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<!-- Loader -->
+		{% include 'admin/header.html' %}
+		<!-- End Navigation Bar-->
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row align-items-center">
+							<div class="col-md-8">
+								<h4 class="page-title mb-0">Achievement View</h4>
+								<ol class="breadcrumb m-0">
+									<li class="breadcrumb-item"><a href="#">Achievement</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Achievement View</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end page title end breadcrumb -->
+		</div>
+	</div>
+		
+	<div class="wrapper">
+		{% for achievement in achievement_data %}
+		<div class="container-fluid">
+			<div class="row">
+						<div class="col-2">
+							&nbsp;
+						</div>
+						<div class="card card-body col-8">
+							<div class="row">
+								<div class="col-9" style="padding-left: 20px;">
+									<h2 class="card-title mt-0 mb-20">{{achievement.AchievementName}}</h2>
+									<p class="card-title mt-0 mb-10"><i class="mdi mdi-email font-20 pr-2"></i><span class="text-muted">{{achievement.AchievementDescription}}</span></p>
+                                    <p class="card-title mt-0 mb-10"><i class="mdi mdi-city font-20 pr-2"></i><span class="text-muted">{{achievement.SubDepartmentName_id}} ( {{achievement.DepartmentName_id}} )</span></p>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End row -->
+			{% endfor %}
+		</div>
+		<!-- end container -->
+	</div>
+		<!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <!-- Required datatable js -->
+        <script src="{% static 'admin_plugins/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/jszip.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.colVis.min.js' %}"></script>
+        <!-- Responsive examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
+        <!-- Datatable init js -->
+        <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+	</body>
+	<!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
+</html>

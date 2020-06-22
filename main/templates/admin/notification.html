@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:50 GMT -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+		<title>Notification | eVentes</title>
+		<meta content="Admin Dashboard" name="description">
+		<meta content="Themesbrand" name="author">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- App Icons -->
+		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
+		<!-- DataTables -->
+		<link href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+		<!-- Responsive datatable examples -->
+		<link href="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
+		<!-- App css -->
+		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<!-- Loader -->
+		{% include 'admin/header.html' %}
+		<!-- End Navigation Bar-->
+		<div class="container-fluid">
+			<!-- Page-Title -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-title-box">
+						<div class="row align-items-center">
+							<div class="col-md-8">
+								<h4 class="page-title mb-0">Notification</h4>
+								<ol class="breadcrumb m-0">
+									<li class="breadcrumb-item"><a href="#">Admin</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Notification</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end page title end breadcrumb -->
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-10">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="mt-0 header-title mb-3">Notification</h4>
+							<table id="datatable" class="table table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+								<tbody>
+									{% for notification in notification_data %}
+									<tr>
+										<td> 
+											{% if notification.NotificationTitle == "New Student" %}
+											<span class="btn btn-info btn-circle waves-effect waves-light font-20" style="border-radius: 50%;"><i class="ti-user"></i></span>
+											{% elif notification.NotificationTitle == "New Club" %}
+											<span class="btn btn-purple btn-circle waves-effect waves-light font-20" style="border-radius: 50%;"><i class="ti-crown"></i></span>
+											{% elif notification.NotificationTitle == "New Event" %}
+											<span class="btn btn-success btn-circle waves-effect waves-light font-20" style="border-radius: 50%;"><i class="mdi mdi-calendar-clock"></i></span>
+											{% elif notification.NotificationTitle == "New Achievement" %}
+											<span class="btn btn-warning btn-circle waves-effect waves-light font-20" style="border-radius: 50%;"><i class="dripicons-trophy"></i></span>
+											{% elif notification.NotificationTitle == "New Achiever" %}
+											<span class="btn btn-primary btn-circle waves-effect waves-light font-20" style="border-radius: 50%;"><i class="mdi mdi-account-star"></i></span>
+											{% else %}
+											<span class="btn btn-pink btn-circle waves-effect waves-light font-20" style="border-radius: 50%;"><i class="mdi mdi-account-multiple"></i></span>
+											{% endif %}	
+										</td>
+										<td>
+											{% if notification.NotificationTitle == "New Club member" %}
+												<b>{{notification.NotificationTitle}}</b> {{notification.StudentId.StudentName}} joined in {{notification.NotificationDescription}}
+											{% elif notification.NotificationTitle == "New Achiever"  %}
+												<b>{{notification.NotificationTitle}}</b> {{notification.StudentId.StudentName}} achieved {{notification.AchievementId.AchievementName}} {{notification.NotificationDescription}}
+											{% else %}
+												<b>{{notification.NotificationTitle}}</b> {{notification.NotificationDescription}}
+											{% endif %}
+										</td>
+										<td> <small class="text-muted"> - {{notification.NotificationDateTime}}</small></td>
+										
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- end col -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</div>
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <!-- Required datatable js -->
+        <script src="{% static 'admin_plugins/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/jszip.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.colVis.min.js' %}"></script>
+        <!-- Responsive examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
+        <!-- Datatable init js -->
+        <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+	</body>
+	<!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
+</html>

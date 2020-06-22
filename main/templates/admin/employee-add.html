@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:36 GMT -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+		<title>Employee Form | eVentes</title>
+		<meta content="Admin Dashboard" name="description">
+		<meta content="Themesbrand" name="author">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- App Icons -->
+		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
+		<!-- App css -->
+		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+			{% include 'admin/header.html' %}
+			<!-- End Navigation Bar-->
+			<div class="container-fluid">
+				<!-- Page-Title -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="page-title-box">
+							<div class="row align-items-center">
+								<div class="col-md-8">
+									<h4 class="page-title mb-0">Employee Form</h4>
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item"><a href="#">Employee</a></li>
+										<li class="breadcrumb-item active" aria-current="page">Employee Form</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end page title end breadcrumb -->
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<form action="" enctype="multipart/form-data" method="POST">
+								{% for message in messages%}
+                                    <p style="color:red; text-align:center; margin-bottom:auto; text-decoration:none;"> {{message}} </p>
+                                {% endfor %}
+									{% csrf_token %}
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Full name</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="Enter full name" type="text" name="txtfullname" id="txtfullname" required 
+											data-parsley-pattern="^[a-zA-Z][a-zA-Z\s]*$" 
+											data-parsley-pattern-message="Name must not be Alphabatic"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
+										<div class="col-sm-7"><input class="form-control form-control-lg" placeholder="Enter username name" type="text" name="txtusername" id="txtusername" required
+											data-parsley-type="alphanum"
+											data-parsley-type-message="Name must not be Alphanumeric"
+                                            data-url="{% url 'employee-check' %}"></div>
+                                        <div id="alert" class="col-sm-3"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Password</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="Enter password here!" type="password" name="txtpassword" id="txtpassword" required
+											data-parsley-minlength="8"
+											data-parsley-uppercase="1"
+											data-parsley-lowercase="1"
+											data-parsley-number="1"
+											data-parsley-special="1"></div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Department name</label>
+										<div class="col-sm-10">
+											<select class="form-control form-control-lg" name="dropdowndepartment" id="dropdowndepartment" required> 
+												<option value="">Select department name</option>
+												{% for department in department_data %}
+												<option value="{{department.DepartmentName}}"> {{department.DepartmentName}} </option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Sub department name</label>
+										<div class="col-sm-10">
+											<select class="form-control form-control-lg" name="dropdownsubdepartment" id="dropdownsubdepartment" required>
+												<option value="">Select sub department name</option>
+												{% for subdepartment in subdepartment_data %}
+												<option value="{{subdepartment.SubDepartmentName}}"> {{subdepartment.SubDepartmentName}} </option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Gender</label>
+										<div class="col-sm-10">
+											<div class="btn-group btn-group-toggle" data-toggle="buttons">
+												<label class="btn btn-outline-primary  p-2"><input type="radio" name="gender" value="Male" id="option1" checked="checked"> Male</label> 
+												<label class="btn btn-outline-pink p-2"><input type="radio" name="gender" value="Female" id="option2"> Female</label> 
+												<label class="btn btn-outline-purple p-2"><input type="radio" name="gender" value="Others" id="option3"> Others</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Role</label>
+										<div class="col-sm-10">
+											<div class="btn-group btn-group-toggle" data-toggle="buttons">
+												<label class="btn btn-outline-primary  p-2"><input type="radio" name="role" value="is_staff" id="option1" > Is Staff</label> 
+												<label class="btn btn-outline-pink p-2"><input type="radio" name="role" value="is_subAdmin" id="option2"> Is Admin</label> 
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Image</label>
+										<div class="col-sm-10">
+											<input type="file" class="filestyle" name="txtimageurl" id="txtimageurl" data-buttonname="btn-primary" 
+											data-parsley-filemaxmegabytes="2"
+											data-parsley-trigger="change"
+											data-parsley-filemimetypes="image/jpeg, image/png, image/jpg, image/gif">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Phone no.</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="1111 2222 33" type="text" name="txtphoneno" id="txtphoneno" required
+											data-parsley-pattern="^[6-9]\d{9}$"
+											data-parsley-pattern-message="Invalid Mobile Number"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="helloyouare@example.com" type="email" name="txtemail" id="txtemail" required></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Address</label>
+										<div class="col-sm-10"><textarea name="txtaddress" id="txtaddress" class="form-control form-control-lg" maxlength="225" rows="4" placeholder="Enter address here!"></textarea></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">City</label>
+										<div class="col-sm-10"><input class="form-control form-control-lg" placeholder="Enter city name" type="text" name="txtcityname" id="txtcityname"></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">&nbsp;</label>
+										<div class="col-sm-10">
+											<button type="submit" class="btn btn-pink btn-lg waves-effect waves-light">Submit</button>
+											<button type="reset" class="btn btn-secondary btn-lg waves-effect waves-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <!-- Plugins js -->
+        <script src="{% static 'admin_plugins/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js' %}"></script>
+        <!-- Plugins Init js -->
+        <script src="{% static 'admin_plugins/pages/form-advanced.js' %}"></script>
+        <!-- App js -->
+		<script src="{% static 'admin_plugins/js/app.js' %}"></script>
+		<!-- Parsley js -->
+        <script src="{% static 'admin_plugins/plugins/parsleyjs/parsley.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js'  %}"></script>
+        <script>
+            window.Parsley.addValidator("filemaxmegabytes", {
+                requirementType: "string",
+                validateString: function (value, requirement, parsleyInstance) {
+                    var file = parsleyInstance.$element[0].files;
+                    var maxBytes = requirement * 1048576;
+
+                    if (file.length == 0) {
+                        return true;
+                    }
+
+                    return file.length === 1 && file[0].size <= maxBytes;
+                },
+                messages: {
+                    en: "File mus be less then %sMb",
+                },
+            }).addValidator("filemimetypes", {
+                requirementType: "string",
+                validateString: function (value, requirement, parsleyInstance) {
+                    var file = parsleyInstance.$element[0].files;
+                    if (file.length == 0) {
+                        return true;
+                    }
+                    var allowedMimeTypes = requirement
+                        .replace(/\s/g, "")
+                        .split(",");
+                    return allowedMimeTypes.indexOf(file[0].type) !== -1;
+                },
+                messages: {
+                    en: " You must upload %s",
+                },
+            });
+            //has uppercase
+            window.Parsley.addValidator("uppercase", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var uppercases = value.match(/[A-Z]/g) || [];
+                    return uppercases.length >= requirement;
+                },
+                messages: {
+                    en:
+                        "Your password must contain at least (%s) uppercase letter.",
+                },
+            });
+
+            //has lowercase
+            window.Parsley.addValidator("lowercase", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var lowecases = value.match(/[a-z]/g) || [];
+                    return lowecases.length >= requirement;
+                },
+                messages: {
+                    en:
+                        "Your password must contain at least (%s) lowercase letter.",
+                },
+            });
+
+            //has number
+            window.Parsley.addValidator("number", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var numbers = value.match(/[0-9]/g) || [];
+                    return numbers.length >= requirement;
+                },
+                messages: {
+                    en: "Your password must contain at least (%s) number.",
+                },
+            });
+
+            //has special char
+            window.Parsley.addValidator("special", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+                    return specials.length >= requirement;
+                },
+                messages: {
+                    en:
+                        "Your password must contain at least (%s) special characters.",
+                },
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                let valid = false;
+                $("#form").parsley();
+                $("#txtusername").on("focusout", function (e) {
+                    $("#alert").html("");
+                    if ($("#txtusername").parsley().isValid()) {
+                        var employee_username = $("#txtusername").val();
+                        var url = $("#txtusername").data("url");
+                        $.ajax({
+                            headers: { "X-CSRFToken": "{{csrf_token}}" },
+                            url: url,
+                            data: {
+                                employee_username: employee_username,
+                            },
+                            type: "post",
+                            success: function (response) {
+                                valid = true;
+                                $("#alert").html(
+                                    "<div style='margin-bottom:0px' class='alert alert-success bg-success text-white' role='alert'><strong> " +
+                                        response.msg +
+                                        "!</strong></div>"
+                                );
+                            },
+                            error: function (response) {
+                                valid = false;
+                                $("#alert").html(
+                                    "<div style='margin-bottom:0px' class='alert alert-danger bg-danger text-white' role='alert'><strong>" +
+                                        response.responseJSON.error +
+                                        "!</strong></div>"
+                                );
+                            },
+                        });
+                    }
+                });
+                $("#submit-btn").click(function (e) {
+                    if ($("#form").parsley().isValid()) {
+                        e.preventDefault();
+                        if (valid) {
+                            data = new FormData($("#form")[0]);
+                            var url = $("#form").data("url");
+                            $.ajax({
+                                headers: { "X-CSRFToken": "{{csrf_token}}" },
+                                url: url,
+                                data: data,
+                                type: "post",
+                                processData: false,
+                                contentType: false,
+                                success: function (response) {
+                                    alertify.success(response.msg);
+                                    $("#alert").html("");
+                                    $("#form")[0].reset();
+                                },
+                                error: function (response) {
+                                    alertify.error(
+                                        response["responseJSON"]["error"]
+                                    );
+                                    $("#alert").html("");
+                                },
+                            });
+                        }
+                    }
+                });
+            });
+        </script>
+	</body>
+	<!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:37 GMT -->
+</html>

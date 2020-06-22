@@ -1,0 +1,175 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+         <title>Student Registration | eVentes</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
+        <!-- Place favicon.ico in the root directory -->
+        
+		<!-- CSS here -->
+		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="{% static 'client_plugins/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/fontawesome/css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/dripicons.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/default.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/responsive.css' %}">
+    </head>
+    <body>
+        {% include 'client/header.html' %}
+        <!-- main-area -->
+        <main>
+            <!-- slider-area -->
+            <!-- breadcrumb-area -->
+            <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/innerpage_bg_img.jpg' %})">
+                <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
+                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
+                 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                                <div class="breadcrumb-wrap text-center">
+                                    <div class="breadcrumb-title mb-30">
+                                        <h2>Student</h2>                                   
+                                    </div>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="">Student</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Student Registration</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <!-- slider-area-end -->
+            <section id="team" class="team-area p-relative pt-10 pb-50 fix">
+                <div class="circal1 item-zoom-inout"></div>
+                <div class="circal2 item-zoom-inout"></div>
+                <div class="circal3 item-zoom-inout"></div>
+                <div class="circal4 item-zoom-inout"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-12">
+                        </div>
+                        <div class="col-lg-4 col-sm-12">
+                            <div class="booking-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
+                                {% for message in messages%}
+                                    <p style="color:red; text-align:center; margin-bottom:auto; text-decoration:none;"> {{message}} </p>
+                                {% endfor %}
+                                <form action="" enctype="multipart/form-data" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-user"></i></div>
+                                        <input type="text" placeholder="Enter full name" name="txtfullname" id="txtfullname"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-user"></i></div>
+                                        <input type="text" placeholder="Enter user name" name="txtusername" id="txtusername"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <input type="email" placeholder="Enter your email" name="txtemail" id="txtemail"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-key"></i></div>
+                                        <input type="password" placeholder="Enter your password" name="txtpassword" id="txtpassword"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="far fa-phone"></i></div>
+                                        <input type="text" placeholder="Enter your phone" name="txtphoneno" id="txtphoneno"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="far fa-venus-mars"></i></div>
+                                        <select name="gender" id="gender">
+                                        <option name="gender" selected="selected">Select gender</option>
+                                        <option name="gender" value="Male" id="option1">Male</option>  
+                                        <option name="gender" value="Female" id="option2">Female</option>  
+                                        <option name="gender" value="Others" id="option3">Others</option>  
+                                        </select>                                         
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="far fa-building"></i></div>
+                                        <select id="select" name="dropdowndepartment" id="dropdowndepartment">
+                                        <option selected="selected">Select your department</option>
+                                        {% for department in department_data %}
+											<option value="{{department.DepartmentName}}"> {{department.DepartmentName}} </option>
+										{% endfor %}  
+                                        </select>                                   
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fas fa-building"></i></div>
+                                        <select id="select" name="dropdownsubdepartment" id="dropdownsubdepartment">
+                                        <option selected="selected" >Select your sub-department</option>
+                                        {% for subdepartment in subdepartment_data %}
+											<option value="{{subdepartment.SubDepartmentName}}"> {{subdepartment.SubDepartmentName}} </option>
+										{% endfor %} 
+                                        </select>                                          
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="far fa-home"></i></div>
+                                        <textarea rows="4" placeholder="Enter your address" name="txtaddress" id="txtaddress"></textarea>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="far fa-map-marker-alt"></i></div>
+                                        <input type="text" placeholder="Enter your city" name="txtcityname" id="txtcityname"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="far fa-image"></i></div>
+                                        <input type="file" placeholder="Upload your image" name="txtimageurl" id="txtimageurl"/>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn">Registration</button>
+                                    </div>
+                                </form>
+                                    <div class="m-t-40 text-center text-white-50">
+                                        <p>Already have an account ? <a href="{% url 'login' %}" class="font-600 text-black">Sign In</a></p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- main-area-end -->
+        {% include 'client/footer.html' %}
+
+
+
+		<!-- JS here -->
+        <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/popper.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/one-page-nav-min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/slick.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/ajax-form.js' %}"></script>
+        <script src="{% static 'client_plugins/js/paroller.js' %}"></script>
+        <script src="{% static 'client_plugins/js/wow.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/parallax.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.countdown.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/element-in-view.js' %}"></script>
+		<script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/main.js' %}"></script>
+    </body>
+
+<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
+</html>
+
+                
