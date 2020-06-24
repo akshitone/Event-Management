@@ -65,6 +65,9 @@
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="club-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
+                                {% for message in messages %}
+                                    <p>{{message}}</p>
+                                {% endfor %}
                                 <form action="" enctype="multipart/form-data" method="POST">
                                     {% csrf_token %}
                                     <div class="form-outer">

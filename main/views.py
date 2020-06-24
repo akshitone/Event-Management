@@ -37,8 +37,8 @@ def registration(request):
         filesystem   = FileSystemStorage()
         filename     = filesystem.save(StudentImage.name, StudentImage)
         url          = filesystem.url(filename)
-        users = User.objects.get(username = request.POST['txtusername'])
-        if users is not None:
+        # users = User.objects.get(username = request.POST['txtusername'])
+        if User.objects.filter(username = request.POST['txtusername']).exists():
             messages.warning(request,"User already exist")
             return render(request, 'client/registration-form.html')
         # User Creation
@@ -98,13 +98,15 @@ def clubform(request):
         filename       = filesystem.save(ClubImage.name, ClubImage)
         url            = filesystem.url(filename)
         # userId = request.user.id
-        clubs = Club.objects.all().filter(ClubName=request.POST['txtclubname'])
-        if clubs is not None:
+        clubs = Club.objects.filter(ClubName=request.POST['txtclubname'])
+        if Club.objects.filter(pk=request.POST['txtclubname']).exists():
+            print(clubs)    
             department_data = Department.objects.all()
             messages.warning(request,"Club Already Exist!")
             return render(request, 'client/club-form.html', {'department_data': department_data})
         users = User.objects.all().filter(username = request.POST['txtusername'])
-        if users is not None:
+        if User.objects.filter(username = request.POST['txtusername']).exists():
+            print(users)
             messages.warning(request,"Username already exist")
             department_data = Department.objects.all()
             return render(request, 'client/club-form.html', {'department_data': department_data})
@@ -141,8 +143,12 @@ def clubform(request):
         notification.save()
         if request.user.is_authenticated:
             logout(request)
-        messages.info(request,"Login to access club dashboard")
-        return render(request, 'admin/login-page.html')
+            messages.info(request,"Login to access club dashboard")
+            return render(request, 'admin/login-page.html')
+        else:
+            messages.info(request,"Login to access club dashboard")
+            return render(request, 'admin/login-page.html')
+
     else:
         department_data = Department.objects.all()
         return render(request, 'client/club-form.html', {'department_data': department_data})
