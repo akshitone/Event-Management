@@ -18,6 +18,12 @@
             rel="shortcut icon"
             href="{% static 'admin_plugins/images/favicon.png' %}"
         />
+        <!-- Sweet Alert -->
+        <link
+            href="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
         <!-- DataTables -->
         <link
             href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}"
@@ -82,106 +88,289 @@
             </div>
             <!-- end page title end breadcrumb -->
         </div>
-		</div>
+        </div>
         <div class="wrapper">
             <div class="container-fluid">
+                <!-- end row -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mt-0 header-title mb-3">
-                                    Employee Table
-                                </h4>
-                                <table
-                                    class="table table-hover dt-responsive nowrap"
-                                    id="datatable-buttons"
-                                    style="
-                                        border-collapse: collapse;
-                                        border-spacing: 0;
-                                        width: 100%;
-                                    "
-                                >
-                                    <thead>
-                                        <tr>
-                                            <th>Employee</th>
-                                            <th>Employee name</th>
-                                            <th>Department name</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for employee in employee_data %}
-                                        <tr>
-                                            <td>
-                                                <img
-                                                    class="d-flex mr-3 rounded-circle"
-                                                    src="{{employee.EmployeeImage}}"
-                                                    alt="Not found"
-                                                    height="50"
-                                                />
-                                            </td>
-                                            <td>{{employee.EmployeeName}}</td>
-                                            <td>
-                                                {{employee.SubDepartmentName_id}}
-                                                ( {{employee.DepartmentName_id}}
-                                                )
-                                            </td>
-                                            <td>
-                                                {% if employee.EmployeeStatus == True %}
-                                                <a
-                                                    href="{% url 'employee-update-approval-no' id=employee.id %}"
-                                                    ><span
-                                                        class="badge badge-success p-1"
-                                                        >Aprrove</span
-                                                    ></a
-                                                >
-                                                {% else %}
-                                                <a
-                                                    href="{% url 'employee-update-approval-yes' id=employee.id %}"
-                                                    ><span
-                                                        class="badge badge-danger p-1"
-                                                        >Not approve</span
-                                                    ></a
-                                                >
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                <a
-                                                    href="{% url 'employee-view' id=employee.id %}"
-                                                    class="btn btn-outline-primary waves-effect waves-light mr-1"
-                                                    data-toggle="tooltip"
-                                                    data-placement="bottom"
-                                                    data-original-title="View"
-                                                    ><i class="fa fa-eye"></i
-                                                ></a>
-                                                <a
-                                                    href="{% url 'employee-edit' id=employee.id %}"
-                                                    class="btn btn-outline-pink waves-effect waves-light mr-1"
-                                                    data-toggle="tooltip"
-                                                    data-placement="bottom"
-                                                    data-original-title="Update"
-                                                    ><i class="fa fa-edit"></i
-                                                ></a>
-                                                <a
-                                                    href="{% url 'employee-delete' id=employee.id %}"
-                                                    class="btn btn-outline-danger waves-effect waves-light mr-1"
-                                                    data-toggle="tooltip"
-                                                    data-placement="bottom"
-                                                    data-original-title="Delete"
-                                                    ><i class="fa fa-trash"></i
-                                                ></a>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                    <ul
+                        class="nav nav-pills nav-bg-custom nav-justified pull-right"
+                        role="tablist"
+                        id="tab"
+                    >
+                        <li class="nav-item waves-effect waves-light">
+                            <a
+                                class="nav-link active"
+                                data-toggle="tab"
+                                href="#details"
+                                role="tab"
+                                data-id="details"
+                                ><span class="d-none d-md-block"
+                                    ><i class="dripicons-list"></i></span
+                                ><span class="d-block d-md-none"
+                                    ><i
+                                        class="mdi mdi-home-variant h5"
+                                    ></i></span
+                            ></a>
+                        </li>
+                        <li class="nav-item waves-effect waves-light">
+                            <a
+                                class="nav-link"
+                                data-toggle="tab"
+                                href="#grid"
+                                role="tab"
+                                data-id="grid"
+                                ><span class="d-none d-md-block"
+                                    ><i class="dripicons-view-thumb"></i></span
+                                ><span class="d-block d-md-none"
+                                    ><i class="mdi mdi-account h5"></i></span
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div
+                        class="tab-pane active p-3"
+                        id="details"
+                        role="tabpanel"
+                    >
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title mb-3">
+                                            Employee Table
+                                        </h4>
+                                        <table
+                                            class="table table-hover dt-responsive nowrap"
+                                            id="datatable-buttons"
+                                            style="
+                                                border-collapse: collapse;
+                                                border-spacing: 0;
+                                                width: 100%;
+                                            "
+                                        >
+                                            <thead>
+                                                <tr>
+                                                    <th>Employee</th>
+                                                    <th>Employee name</th>
+                                                    <th>Department name</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for employee in employee_data %}
+                                                <tr>
+                                                    <td>
+                                                        <img
+                                                            class="d-flex mr-3 rounded-circle"
+                                                            src="{{employee.EmployeeImage}}"
+                                                            alt="Not found"
+                                                            height="50"
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        {{employee.EmployeeName}}
+                                                    </td>
+                                                    <td>
+                                                        {{employee.SubDepartmentName_id}}
+                                                        (
+                                                        {{employee.DepartmentName_id}}
+                                                        )
+                                                    </td>
+                                                    <td>
+                                                        {% if employee.EmployeeStatus == True %}
+                                                        <a
+                                                            href="{% url 'employee-update-approval-no' id=employee.id %}"
+                                                            ><span
+                                                                class="badge badge-success p-1"
+                                                                >Aprrove</span
+                                                            ></a
+                                                        >
+                                                        {% else %}
+                                                        <a
+                                                            href="{% url 'employee-update-approval-yes' id=employee.id %}"
+                                                            ><span
+                                                                class="badge badge-danger p-1"
+                                                                >Not
+                                                                approve</span
+                                                            ></a
+                                                        >
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        <a
+                                                            href="{% url 'employee-view' id=employee.id %}"
+                                                            class="btn btn-outline-primary waves-effect waves-light mr-1"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"
+                                                            data-original-title="View"
+                                                            ><i
+                                                                class="fa fa-eye"
+                                                            ></i
+                                                        ></a>
+                                                        <a
+                                                            href="{% url 'employee-edit' id=employee.id %}"
+                                                            class="btn btn-outline-pink waves-effect waves-light mr-1"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"
+                                                            data-original-title="Update"
+                                                            ><i
+                                                                class="fa fa-edit"
+                                                            ></i
+                                                        ></a>
+                                                        <a
+                                                            href="{% url 'employee-delete' %}"
+                                                            class="btn btn-outline-danger waves-effect waves-light mr-1"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"
+                                                            data-original-title="Delete"
+                                                            name="delete"
+                                                            data-id="{{employee.id}}"
+                                                            data-name="{{employee.EmployeeName}}"
+                                                            ><i
+                                                                class="fa fa-trash"
+                                                            ></i
+                                                        ></a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- end col -->
                         </div>
                     </div>
-                    <!-- end col -->
+                    <div class="tab-pane p-3" id="grid" role="tabpanel">
+                        <div class="row">
+                        {% for employee in employee_data %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card directory-card">
+                                    <div class="p-4 directory-content">
+                                        <div class="float-right">
+                                            {% if employee.Role == "staff" %}
+												<span class="badge badge-default">Staff</span>
+											{% else %}
+                                                <span class="badge badge-warning">Sub-Admin</span>
+											{% endif %}	
+                                        </div>
+                                        <div class="media">
+                                            <img
+                                                class="d-flex mr-3 rounded-circle thumb-md"
+                                                src="{{employee.EmployeeImage}}"
+                                                alt="{{employee.EmployeeName}}"
+                                            />
+                                            <div class="media-body text-white">
+                                                <h5 class="mt-0 font-18 mb-1">
+                                                    {{employee.EmployeeName}}
+                                                </h5>
+                                                <p class="text-white-50 m-b-5">
+                                                    {{employee.EmployeeEmail}}
+                                                </p>
+                                                <p class="font-600">
+                                                    {{employee.SubDepartmentName_id}} ( {{employee.DepartmentName_id}} )
+                                                </p>
+                                                <p class="font-600">
+                                                    <a
+                                                        href="{% url 'employee-view' id=employee.id %}"
+                                                        class="btn btn-warning waves-effect waves-dark mr-1"
+                                                        data-toggle="tooltip"
+                                                        data-placement="bottom"
+                                                        data-original-title="View"
+                                                        ><i
+                                                            class="fa fa-eye"
+                                                        ></i
+                                                    ></a>
+                                                    <a
+                                                        href="{% url 'employee-edit' id=employee.id %}"
+                                                        class="btn btn-secondary waves-effect waves-dark mr-1"
+                                                        data-toggle="tooltip"
+                                                        data-placement="bottom"
+                                                        data-original-title="Update"
+                                                        ><i
+                                                            class="fa fa-edit"
+                                                        ></i
+                                                    ></a>
+                                                    <a
+                                                        href="{% url 'employee-delete' %}"
+                                                        class="btn btn-danger waves-effect waves-dark mr-1"
+                                                        data-toggle="tooltip"
+                                                        data-placement="bottom"
+                                                        data-original-title="Delete"
+                                                        name="delete"
+                                                        data-id="{{employee.id}}"
+                                                        data-name="{{employee.EmployeeName}}"
+                                                        ><i
+                                                            class="fa fa-trash"
+                                                        ></i
+                                                    ></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <ul
+                                            class="social-links text-center list-inline mb-0 p-3"
+                                        >
+                                            <li class="list-inline-item">
+                                                <a
+                                                    title=""
+                                                    data-placement="top"
+                                                    data-toggle="tooltip"
+                                                    class="tooltips"
+                                                    href="#"
+                                                    data-original-title="{{employee.EmployeeAddress}}"
+                                                    ><i
+                                                        class="mdi mdi-map-marker"
+                                                    ></i
+                                                ></a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a
+                                                    title=""
+                                                    data-placement="top"
+                                                    data-toggle="tooltip"
+                                                    class="tooltips"
+                                                    href="#"
+                                                    data-original-title="{{employee.EmployeeCity}}"
+                                                    ><i
+                                                        class="mdi mdi-map-marker-radius"
+                                                    ></i
+                                                ></a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a
+                                                    title=""
+                                                    data-placement="top"
+                                                    data-toggle="tooltip"
+                                                    class="tooltips"
+                                                    href="#"
+                                                    data-original-title="{{employee.EmployeePhone}}"
+                                                    ><i class="fa fa-phone"></i
+                                                ></a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a
+                                                    title=""
+                                                    data-placement="top"
+                                                    data-toggle="tooltip"
+                                                    class="tooltips"
+                                                    href="#"
+                                                    data-original-title="{{employee.EmployeeUserName}}"
+                                                    ><i class="mdi mdi-at"></i
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
                 </div>
-                <!-- end row -->
             </div>
             <!-- end container -->
         </div>
@@ -209,8 +398,61 @@
         <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
         <!-- Datatable init js -->
         <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js' %}"></script>
         <!-- App js -->
         <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                var alert = localStorage.getItem("delete");
+                var tab = localStorage.getItem("tab");
+                if (alert) {
+                    if (tab == "grid") {
+                        $("#details,a[data-id=details]").removeClass("active");
+                        $("#grid,a[data-id=grid]").addClass("active");
+                    }
+                    alertify.success(alert + " has been fired!");
+                    localStorage.clear();
+                }
+                $("a[name=delete]").click(function (e) {
+                    e.preventDefault();
+                    var url = $(this).attr("href");
+                    var employee_id = $(this).data("id");
+                    var employee_name = $(this).data("name");
+                    swal({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        type: "warning",
+                        showCancelButton: !0,
+                        confirmButtonClass: "btn btn-success",
+                        cancelButtonClass: "btn btn-danger m-l-10",
+                        confirmButtonText: "Yes, delete it!",
+                    }).then(function () {
+                        $.ajax({
+                            headers: { "X-CSRFToken": "{{csrf_token}}" },
+                            url: url,
+                            data: {
+                                employee_id: employee_id,
+                            },
+                            type: "post",
+                            success: function (data) {
+                                localStorage.setItem("delete", employee_name);
+                                localStorage.setItem(
+                                    "tab",
+                                    $("#tab li a.active").data("id")
+                                );
+                                location.reload();
+                            },
+                            error: function (response) {
+                                alertify.error(
+                                    "You can't fire " + employee_name
+                                );
+                            },
+                        });
+                    });
+                });
+            });
+        </script>
     </body>
     <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
 </html>
