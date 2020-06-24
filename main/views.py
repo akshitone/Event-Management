@@ -247,9 +247,13 @@ def adminLogin(request):
                             userId = user.id
                             club = Club.objects.get(UserId_id = userId)
                             # clubMember = ClubMember.objects.all().filter(ClubId = club.ClubName)
-                            
                             # print(clubMember.ClubId.ClubName)
-                            return HttpResponseRedirect(reverse('clubdashboard',args=(club.ClubName,)))
+                            if club.clubApproval == 1:
+                                return HttpResponseRedirect(reverse('clubdashboard',args=(club.ClubName,)))
+                            else:
+                                logout(request)
+                                messages.warning(request, "Club not approved please contact admin")
+                                return redirect("adminlogin")
                         elif group.name == "subAdmin":
                             return redirect('subadmindashboard')
                 messages.warning(request, "Not Authorized User")

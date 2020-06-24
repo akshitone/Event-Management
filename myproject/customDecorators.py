@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
+from club.models import Club
 
 
 def authentication_check(view_func):
@@ -44,7 +45,13 @@ def club_authentication(view_func):
             groups = request.user.groups.all()
             for group in groups:
                 if "clubAdmin" in group.name:
-                    return view_func(request, *args, **kwargs)
+                    club = Club.objects.get(UserId = request.user.id)[0].clubApproval
+                    print(Club.objects.get(UserId = request.user.id)[0].clubApproval)
+                    if club.clubApproval == 1:
+                        return view_func(request, *args, **kwargs)
+                    else:
+                        messages.warning(request, "Club not approved please contact admin")
+                        return redirect("adminlogin")
         messages.warning(request, "Please login from club username")
         return redirect("adminlogin")
     return wrapper_func
