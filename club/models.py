@@ -1,10 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 from department.models import Department
 from student.models import Student
 
 # Create your models here.
 class Club(models.Model):
     ClubName       = models.CharField(max_length = 150, primary_key=True)
+    UserId         = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     ClubImageName  = models.TextField(null=True, blank=True)
     ClubImage      = models.ImageField(upload_to='images', null=True, blank=True)
     ClubType       = models.CharField(max_length = 150, null=True, blank=True)

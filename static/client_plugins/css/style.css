@@ -34,7 +34,7 @@
 
 /* 1. Theme default css */
 
- body {
+body {
 	font-family: 'Karla', sans-serif;
 	font-size: 14px;
 	font-weight: normal;
@@ -904,6 +904,7 @@ left: 98% !important;
     padding: 14%;
     margin-right: -150px;
 	position: relative;
+	box-shadow: 1px 2px 2px rgba(0,0,0,0.3);
 
 }
 .booking-form h2{
@@ -6080,4 +6081,77 @@ pre cite {
 	border-radius: 30px;
 	width: 300px;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, .5);
+}
+
+.login-form {
+    float: right;
+    background: #fff;
+    height: 450px;
+    width: 480px;
+    border-radius: 10px;
+    padding: 14%;
+    margin-right: -150px;
+	position: relative;
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+
+}
+.login-form h2{
+	font-size:30px;
+	text-align:center;
+	margin-bottom:30px;
+}
+.login-form .form-outer .icon {
+    float: left;
+    width: 30px;
+    color: #ff007a;
+}
+.form-outer textarea{
+	border: none;
+	width: 90%;
+}
+.login-form .form-outer {
+
+    float: left;
+    width: 100%;
+    padding: 0px 0 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e7edff;
+
+}
+.login-form input,.login-form select {
+    width: 92%;
+    border: none;
+}
+.login-form input::placeholder {
+    color: #000;
+}
+.login-form .btn{
+	box-shadow: 0px 10px 19px 0px #ff007a66 !important;
+}
+.login-form::before {
+   position: absolute;
+	content: "";
+	background: #ffffff1f;
+	left: 20px;
+	top: 100px;
+	right: 20px;
+	margin: auto;
+	height: 100%;
+	z-index: -1;
+	width: 450px;
+	border-radius: 10px;
+	height: 400px;
+}
+.login-form::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    left: 40px;
+    top:110px;
+    right: 40px;
+    z-index: -1;
+	width: 410px;
+	height: 400px;
+	background: #ffffff1f;
+	border-radius: 10px;
 }

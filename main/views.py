@@ -37,11 +37,10 @@ def registration(request):
         filesystem   = FileSystemStorage()
         filename     = filesystem.save(StudentImage.name, StudentImage)
         url          = filesystem.url(filename)
-        users = User.objects.all()
-        for user in users:
-            if user.username == request.POST['txtusername']:
-                messages.warning(request,"User already exist")
-                return render(request, 'client/registration-form.html')
+        users = User.objects.get(username = request.POST['txtusername'])
+        if users is not None:
+            messages.warning(request,"User already exist")
+            return render(request, 'client/registration-form.html')
         # User Creation
         user = User.objects.create_user(request.POST['txtusername'],request.POST['txtemail'],request.POST['txtpassword'])
         group = Group.objects.get(name="Student")
@@ -53,7 +52,6 @@ def registration(request):
             user.last_name  = " ".join(Name[1:])
         else:
             user.first_name = " ".join(Name)
-        user.save()
         student = Student (
               StudentName          = request.POST['txtfullname'],
               UserId_id               = user.id,
@@ -69,6 +67,7 @@ def registration(request):
               StudentAddress       = request.POST['txtaddress'],
               StudentCity          = request.POST['txtcityname']
         )
+        user.save()
         student.save()
         return redirect('home')
     else:
@@ -98,37 +97,52 @@ def clubform(request):
         filesystem     = FileSystemStorage()
         filename       = filesystem.save(ClubImage.name, ClubImage)
         url            = filesystem.url(filename)
-        userId = request.user.id
-        print(userId)
-        student = Student.objects.get(UserId_id=userId)
-        club = Club (
-            ClubName           = request.POST['txtclubname'],
-            ClubType           = request.POST['txtclubtype'],
-            ClubImageName      = filename,
-            ClubImage          = url,
-            DepartmentName_id  = request.POST['dropdowndepartment'],
-            FacebookLink       = request.POST['txtfacebook'],
-            InstagramLink      = request.POST['txtinstagram'],
-            TwitterLink        = request.POST['txttwitter'],
-            DribbbleLink       = request.POST['txtdribbble']
-        )
-        clubMember = ClubMember(
-            ClubId       = club,
-            StudentId    = student,
-            MemberRole   = 'Club Admin'
-        )
+        # userId = request.user.id
+        clubs = Club.objects.all().filter(ClubName=request.POST['txtclubname'])
+        if clubs is not None:
+            department_data = Department.objects.all()
+            messages.warning(request,"Club Already Exist!")
+            return render(request, 'client/club-form.html', {'department_data': department_data})
+        users = User.objects.all().filter(username = request.POST['txtusername'])
+        if users is not None:
+            messages.warning(request,"Username already exist")
+            department_data = Department.objects.all()
+            return render(request, 'client/club-form.html', {'department_data': department_data})
+        user = User.objects.create_user(request.POST['txtusername'],request.POST['txtemail'],request.POST['txtpassword'])
         group = Group.objects.get(name="clubAdmin")
-        request.user.groups.add(group)
+        user.groups.add(group)
+        # print(userId)
+        # student = Student.objects.get(UserId_id=userId)
+        club = Club (
+            ClubName          = request.POST['txtclubname'],
+            UserId            = user,
+            ClubType          = request.POST['txtclubtype'],
+            ClubImageName     = filename,
+            ClubImage         = url,
+            DepartmentName_id = request.POST['dropdowndepartment']
+            # FacebookLink       = request.POST['txtfacebook'],
+            # InstagramLink      = request.POST['txtinstagram'],
+            # TwitterLink        = request.POST['txttwitter'],
+            # DribbbleLink       = request.POST['txtdribbble']
+        )
+        # clubMember = ClubMember(
+        #     ClubId       = club,
+        #     StudentId    = student,
+        #     MemberRole   = 'Club Admin'
+        # )
+        user.save()
         club.save()
-        clubMember.save()
+        # clubMember.save()
 
         notification = Notification(
             NotificationTitle            = "New Club",
-            NotificationDescription      = request.POST['txtclubname'] + " Added by Akshit Mithaiwala"
+            NotificationDescription      = request.POST['txtclubname'] + "Created"
         )
         notification.save()
-
-        return render(request, 'client/club-form.html')
+        if request.user.is_authenticated:
+            logout(request)
+        messages.info(request,"Login to access club dashboard")
+        return render(request, 'admin/login-page.html')
     else:
         department_data = Department.objects.all()
         return render(request, 'client/club-form.html', {'department_data': department_data})
@@ -208,20 +222,7 @@ def club_dashboard(request, clubName):
     # else:
     #     return redirect('/login/')
 
-
-def loginView(request):
-    #     AdminUserName = request.POST['username']
-    #     AdminPassword = request.POST['userpassword']
-    #     admin = MainAdmin.objects.filter(AdminUserName = AdminUserName, AdminPassword = AdminPassword).exists()
-    #     if admin:
-    #         request.session['AdminUserName'] = request.user.username
-    #         print("----------------------------------")
-    #         print("----------------------------------")
-    #         print(request.session['AdminUserName'])
-    #         return redirect('/admin/')
-    #         #del request.session['AdminUserName']
-    #     else:
-    #         return redirect('/login/')
+def adminLogin(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['userpassword']
@@ -238,14 +239,43 @@ def loginView(request):
                         print(group.name)
                         if group.name == "clubAdmin":
                             userId = user.id
-                            student = Student.objects.get(UserId_id = userId)
-                            clubMember = ClubMember.objects.get(StudentId = student.StudentId)
+                            club = Club.objects.get(UserId_id = userId)
+                            # clubMember = ClubMember.objects.all().filter(ClubId = club.ClubName)
                             
-                            print(clubMember.ClubId.ClubName)
-                            return HttpResponseRedirect(reverse('clubdashboard',args=(clubMember.ClubId.ClubName,)))
+                            # print(clubMember.ClubId.ClubName)
+                            return HttpResponseRedirect(reverse('clubdashboard',args=(club.ClubName,)))
                         elif group.name == "subAdmin":
                             return redirect('subadmindashboard')
-                return redirect("home")
+                messages.warning(request, "Not Authorized User")
+                return render(request, 'admin/login-page.html')
+        else: 
+            messages.warning(request, "Invalid Credentials")
+            return render(request, 'admin/login-page.html')
+
+    if request.method == "GET":
+        return render(request, "admin/login-page.html")
+
+def loginView(request):
+    #     AdminUserName = request.POST['username']
+    #     AdminPassword = request.POST['userpassword']
+    #     admin = MainAdmin.objects.filter(AdminUserName = AdminUserName, AdminPassword = AdminPassword).exists()
+    #     if admin:
+    #         request.session['AdminUserName'] = request.user.username
+    #         print("----------------------------------")
+    #         print("----------------------------------")
+    #         print(request.session['AdminUserName'])
+    #         return redirect('/admin/')
+    #         #del request.session['AdminUserName']
+    #     else:
+    #         return redirect('/login/')
+    if request.method == 'POST':
+        username = request.POST['txtusername']
+        password = request.POST['txtpassword']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            print(user.is_superuser)
+            login(request,user)
+            return redirect("home")
         else: 
             messages.warning(request, "Invalid Credentials")
             return render(request, 'client/login-page.html')
@@ -254,9 +284,18 @@ def loginView(request):
         return render(request, 'client/login-page.html')
 
 def logoutView(request):
+    groups = request.user.groups.all()
+    if request.user.is_superuser:
+        logout(request)
+        return redirect('adminlogin')
+    
     logout(request) 
+    for group in groups:
+        if "Admin" in group.name:
+            return redirect('adminlogin')
+
     return redirect("home")
-    return render(request, 'admin/login-page.html')
+
 
 def notification(request):
     notification_data = Notification.objects.all().order_by('-NotificationDateTime')

@@ -27,17 +27,21 @@
                                     <li class="has-sub">
                                         <a href="/venue">Venue</a>
                                     </li>
-                                    <li class="has-sub"><a href="/student/form">Account</a>
-                                        <ul>
-                                        {% if request.user.is_authenticated  %}
-                                            <li><a href="/club/form">Club Registration</a></li>
-                                            <li><a href="{% url 'logout' %} ">Log out</a></li>
-                                        {% else %}
-                                            <li><a href="{% url 'login' %}">Log in</a></li>
-                                            <li><a href="{% url 'registration' %}">Register</a></li>
+                                    {% if request.user.is_authenticated  %}
+                                        <li class="has-sub"><a href="/student/form">Hello, {{request.user.first_name}}</a>
+                                            <ul>
+                                                <li><a href="/club/form">Club Registration</a></li>
+                                                <li><a href="{% url 'logout' %} ">Log out</a></li>
+                                            </ul>
+                                        </li>
+                                    {% else %}
+                                        <li class="has-sub"><a href="/student/form">Account</a>
+                                            <ul>
+                                                <li><a href="{% url 'login' %}">Log in</a></li>
+                                                <li><a href="{% url 'registration' %}">Register</a></li>
+                                            </ul>
+                                        </li>
                                         {% endif %}
-                                        </ul>
-                                    </li>
                                     <li>
                                         <a href="/whoweare">Who we are?</a>
                                     </li>

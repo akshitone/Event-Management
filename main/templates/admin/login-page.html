@@ -33,7 +33,10 @@
 						<a href="index.html" class="logo-admin"><img src="{% static 'admin_plugins/images/loginlogo.png' %}" height="26" alt="logo"></a>
 					</div>
 					<div class="p-3">
-						<form class="form-horizontal m-t-10" action="" method="POST" enctype="multipart/form-data">
+					{% for message in messages%}
+						<p> {{message}} </p>
+					{% endfor %}
+						<form class="form-horizontal m-t-10" action="{% url 'adminlogin' %}" method="POST" enctype="multipart/form-data">
 							{% csrf_token %}
 							<div class="form-group"><label for="username">Username</label> <input type="text" class="form-control" name="username" id="username" placeholder="Enter username"></div>
 							<div class="form-group"><label for="userpassword">Password</label> <input type="password" class="form-control" name="userpassword" id="userpassword" placeholder="Enter password"></div>
@@ -48,10 +51,14 @@
 				</div>
 			</div>
 			<div class="m-t-40 text-center text-white-50">
-				<p>Don't have an account ? <a href="pages-register.html" class="font-600 text-white">Signup Now</a></p>
+				<p>Don't have an account ? <a href="{% url 'registration' %}" class="font-600 text-white">Signup Now</a></p>
 			</div>
 		</div>
-		<!-- jQuery  --><script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script><script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script><script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script><script src="{% static 'admin_plugins/js/waves.js' %}"></script><script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script><!-- App js --><script src="{% static 'admin_plugins/js/app.js' %}"></script>
+		<!-- jQuery  --><script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+		<script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script><script src="{% static 'admin_plugins/js/waves.js' %}"></script><script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+		<!-- App js -->
+		<script src="{% static 'admin_plugins/js/app.js' %}"></script>
 	</body>
 	<!-- Mirrored from themesbrand.com/foxia/blue/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:57:08 GMT -->
 </html>

@@ -76,6 +76,18 @@
                                         <input type="text" placeholder="Enter club type" name="txtclubtype" id="txtclubtype"/>
                                     </div>
                                     <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-user"></i></div>
+                                        <input type="text" placeholder="Enter club user name" name="txtusername" id="txtusername"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <input type="email" placeholder="Enter club email" name="txtemail" id="txtemail"/>
+                                    </div>
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-key"></i></div>
+                                        <input type="password" placeholder="Enter password" name="txtpassword" id="txtpassword"/>
+                                    </div>
+                                    <div class="form-outer">
                                         <div class="icon"><i class="far fa-building"></i></div>
                                         <select id="select" name="dropdowndepartment">
                                         <option selected="selected">Select your department</option>
@@ -84,7 +96,7 @@
 												{% endfor %}  
                                         </select>                                   
                                     </div>
-                                    <div class="form-outer">
+                                    {% comment %} <div class="form-outer">
                                         <div class="icon"><i class="fab fa-facebook-f"></i></div>
                                         <input type="text" placeholder="https://www.facebook.com/clubname" name="txtfacebook" id="txtfacebook"/>
                                     </div>
@@ -99,13 +111,13 @@
                                     <div class="form-outer">
                                         <div class="icon"><i class="fab fa-dribbble"></i></div>
                                         <input type="text" placeholder="https://dribbble.com/clubname" name="txtdribbble" id="txtdribbble"/>
-                                    </div>
+                                    </div>{% endcomment %}
                                     <div class="form-outer">
                                         <div class="icon"><i class="far fa-image"></i></div>
                                         <input type="file" placeholder="Upload your image" name="txtimageurl" id="txtimageurl"/>
-                                    </div>
+                                    </div> 
                                     <div class="text-center">
-                                        <button type="submit" class="btn">Registration</button>
+                                        <button type="submit" class="btn">Register</button>
                                     </div>
                                 </form>
                             </div>

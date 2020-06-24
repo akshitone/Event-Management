@@ -85,10 +85,11 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'eVentes_database',
+        'NAME': 'event_management_db',
         'USER': 'postgres',
-        'PASSWORD': '1920',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
+        'PORT': '5352',
     }
 }
 

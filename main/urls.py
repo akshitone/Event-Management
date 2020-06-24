@@ -24,5 +24,6 @@ urlpatterns = [
     path('contactus/', views.contactus, name='contactus'),
     path('event/view/<int:id>/', views.event_view, name='event-view'),
     path('club/form/', views.clubform, name='clubform'),
+    path('admin/login/', views.adminLogin, name='adminlogin'),
     path('admin/notification/', views.notification, name='notification'),
 ]

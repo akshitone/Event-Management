@@ -1,60 +1,99 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-	<!-- Mirrored from themesbrand.com/foxia/blue/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:57:08 GMT -->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
-		<title>Login | eVentes</title>
-		<meta content="Admin Dashboard" name="description">
-		<meta content="Themesbrand" name="author">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- App Icons -->
-		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
-		<!-- App css -->
-		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
-		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<!-- Loader -->
-		<div id="preloader">
-			<div id="status">
-				<div class="spinner"></div>
-			</div>
-		</div>
-		<!-- Begin page -->
-		<div class="accountbg"></div>
-		<div class="wrapper-page">
-			<div class="card">
-				<div class="card-body">
-					<div class="text-center">
-						<a href="index.html" class="logo-admin"><img src="{% static 'admin_plugins/images/loginlogo.png' %}" height="26" alt="logo"></a>
-					</div>
-					<div class="p-3">
-					{% for message in messages%}
-						<p> {{message}} </p>
-					{% endfor %}
-						<form class="form-horizontal m-t-10" action="" method="POST" enctype="multipart/form-data">
-							{% csrf_token %}
-							<div class="form-group"><label for="username">Username</label> <input type="text" class="form-control" name="username" id="username" placeholder="Enter username"></div>
-							<div class="form-group"><label for="userpassword">Password</label> <input type="password" class="form-control" name="userpassword" id="userpassword" placeholder="Enter password"></div>
-							<div class="form-group row m-t-30">
-								<div class="col-sm-6">
-									<div class="col-12 text-center"><a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a></div>
-								</div>
-								<div class="col-sm-6 text-right"><button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button></div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="m-t-40 text-center text-white-50">
-				<p>Don't have an account ? <a href="{% url 'registration' %}" class="font-600 text-white">Signup Now</a></p>
-			</div>
-		</div>
-		<!-- jQuery  --><script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script><script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script><script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script><script src="{% static 'admin_plugins/js/waves.js' %}"></script><script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script><!-- App js --><script src="{% static 'admin_plugins/js/app.js' %}"></script>
-	</body>
-	<!-- Mirrored from themesbrand.com/foxia/blue/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:57:08 GMT -->
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+         <title>Login | eVentes</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
+        <!-- Place favicon.ico in the root directory -->
+        
+		<!-- CSS here -->
+		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="{% static 'client_plugins/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/fontawesome/css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/dripicons.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/default.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'client_plugins/css/responsive.css' %}">
+    </head>
+    <body>
+        <!-- main-area -->
+        <main>
+            <!-- slider-area -->
+            <!-- breadcrumb-area -->
+            <!-- slider-area-end -->
+            <section id="team" class="team-area p-relative pt-100 pb-200 fix">
+                <div class="circal1 item-zoom-inout"></div>
+                <div class="circal2 item-zoom-inout"></div>
+                <div class="circal3 item-zoom-inout"></div>
+                <div class="circal4 item-zoom-inout"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-12">
+                        </div>
+                        <div class="col-lg-4 col-sm-12">
+                            <div class="login-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
+                                <h2 style="font-size: 50px;">eVentes.</h2>
+                                <form action="" enctype="multipart/form-data" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-user"></i></div>
+                                        <input type="text" placeholder="Enter user name" name="txtusername" id="txtusername"/>
+                                    </div>
+                                    
+                                    <div class="form-outer">
+                                        <div class="icon"><i class="fal fa-key"></i></div>
+                                        <input type="password" placeholder="Enter your password" name="txtpassword" id="txtpassword"/>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <button type="submit" class="btn">Login</button>
+                                    </div>
+                                </form>
+                                    <div class="m-t-40 text-center text-white-50"><br/>
+                                        <p>Don't have an Account? <a href="{% url 'registration' %}" class="font-600 text-black">Sign Up</a></p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+
+		<!-- JS here -->
+        <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/popper.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/one-page-nav-min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/slick.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/ajax-form.js' %}"></script>
+        <script src="{% static 'client_plugins/js/paroller.js' %}"></script>
+        <script src="{% static 'client_plugins/js/wow.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/parallax.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.countdown.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/element-in-view.js' %}"></script>
+		<script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/main.js' %}"></script>
+    </body>
+
+<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
 </html>
+
+                
