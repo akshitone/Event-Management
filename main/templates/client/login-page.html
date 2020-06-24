@@ -43,6 +43,9 @@
                         <div class="col-lg-4 col-sm-12">
                             <div class="login-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
                                 <h2 style="font-size: 50px;">eVentes.</h2>
+                                {% for message in messages%}
+                                    <p> {{message}} </p><br/>
+                                {% endfor %}
                                 <form action="" enctype="multipart/form-data" method="POST">
                                     {% csrf_token %}
                                     <div class="form-outer">

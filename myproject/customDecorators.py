@@ -27,7 +27,7 @@ def user_authentication(allowed_users=[]):
                         return view_func(request, *args, **kwargs)
                 messages.warning(
                     request, "Not authorized! Log in as authorized user")
-                return redirect("login")
+                return redirect("adminlogin")
             # if no groups assigned
             # else:
             #     messages.warning(request,"Not authorized! Log in as authorized user")
@@ -46,5 +46,5 @@ def club_authentication(view_func):
                 if "clubAdmin" in group.name:
                     return view_func(request, *args, **kwargs)
         messages.warning(request, "Please login from club username")
-        return redirect("login")
+        return redirect("adminlogin")
     return wrapper_func
