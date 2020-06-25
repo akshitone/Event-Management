@@ -26,4 +26,6 @@ urlpatterns = [
     path('club/form/', views.clubform, name='clubform'),
     path('admin/login/', views.adminLogin, name='adminlogin'),
     path('admin/notification/', views.notification, name='notification'),
+    path('clubmember/add/<str:name>', views.clubmember_add, name='clubmember_add'),
+    path('eventmember/add/<int:id>', views.eventmember_add, name='eventmember_add'),
 ]

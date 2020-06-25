@@ -3,6 +3,7 @@ from club.models import Club
 from venue.models import Venue
 from django.utils import timezone
 import datetime
+from student.models import Student
 
 # Create your models here.
 class Event(models.Model):
@@ -21,3 +22,8 @@ class Event(models.Model):
     EventEndTime        = models.TimeField(auto_now=False, auto_now_add=False, default=timezone.now())
     EventDescription    = models.TextField()
     EventAmount         = models.IntegerField()
+
+class EventMember(models.Model):
+    EventMemberId       = models.AutoField(primary_key=True)
+    EventId             = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="eventName")
+    StudentId           = models.ForeignKey(Student, on_delete=models.CASCADE)

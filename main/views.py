@@ -4,7 +4,7 @@ from club.models import Club, ClubMember
 from venue.models import Venue
 from department.models import Department, SubDepartment
 from employee.models import Employee
-from event.models import Event
+from event.models import Event, EventMember
 from venue.models import Venue
 from student.models import Student
 from .models import Notification
@@ -248,7 +248,8 @@ def adminLogin(request):
                             club = Club.objects.get(UserId_id = userId)
                             # clubMember = ClubMember.objects.all().filter(ClubId = club.ClubName)
                             # print(clubMember.ClubId.ClubName)
-                            if club.clubApproval == 1:
+                            print(club.clubApproval)
+                            if club.clubApproval:
                                 return HttpResponseRedirect(reverse('clubdashboard',args=(club.ClubName,)))
                             else:
                                 logout(request)
@@ -313,3 +314,27 @@ def notification(request):
 
 def contactus(request):
     return render(request, 'client/contact-us.html')
+
+def whoweare(request):
+    employee_data = Employee.objects.all().order_by('id')
+    return render(request, 'client/who-we-are.html', {'employee_data': employee_data})
+
+def clubmember_add(request, name):
+    userId = request.user.id
+    student = Student.objects.get(UserId_id=userId)
+    clubmember = ClubMember (
+        ClubId_id           = name,
+        StudentId           = student
+    )
+    clubmember.save()
+    return redirect('club')
+
+def eventmember_add(request, id):
+    userId = request.user.id
+    student = Student.objects.get(UserId_id=userId)
+    eventmember = EventMember (
+        EventId_id           = id,
+        StudentId           = student
+    )
+    eventmember.save()
+    return redirect('event')

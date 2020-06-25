@@ -18,11 +18,12 @@ def event_add(request):
         filesystem = FileSystemStorage()
         filename = filesystem.save(EventImage.name, EventImage)
         url = filesystem.url(filename)
-
+        userid = request.user
+        club = Club.objects.get(UserId_id = userid)
         name = request.POST['txteventname']
         event = Event(
             title=name,
-            ClubName_id=request.POST['dropdownclub'],
+            ClubName_id=club.ClubName,
             VenueId_id=request.POST['dropdownvenue'],
             EventType=request.POST['eventtype'],
             EventImageName=filename,
@@ -60,7 +61,7 @@ def event_table(request):
 @authentication_check
 @user_authentication(allowed_users=['clubAdmin', 'superAdmin', 'subAdmin'])
 def calendar(request):
-    fields = Event.objects.values_list('EventId', 'title', 'ClubName_id', 'VenueId_id', 'EventType', 'EventImageName',
+    fields = Event.objects.values_list('id', 'title', 'ClubName_id', 'VenueId_id', 'EventType', 'EventImageName',
                                        'EventImage', 'EventEligibility', 'start', 'end', 'EventStartTime', 'EventEndTime', 'EventDescription', 'EventAmount')
     events = eval(serializers.serialize("json", Event.objects.all()))
     events = list(map(lambda x: x['fields'], events))

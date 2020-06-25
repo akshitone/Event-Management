@@ -87,9 +87,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'event_management_db',
         'USER': 'postgres',
-        'PASSWORD': 'root',
+        'PASSWORD': '1999',
         'HOST': 'localhost',
-        'PORT': '5352',
     }
 }
 

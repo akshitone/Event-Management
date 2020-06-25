@@ -157,7 +157,8 @@
         </div>
         {% endif %}
 
-        {% if group.name == 'subAdmin'  %}
+        {% for group in request.user.groups.all %}
+        {% if "subAdmin" in group.name %}
         <div class="navbar-custom">
             <div class="container-fluid">
                 <!-- Logo-->
@@ -208,7 +209,7 @@
         </div>
         {% endif %}
 
-        {% if group.name == 'clubAdmin' %}
+        {% if "clubAdmin" in group.name %}
         <div class="navbar-custom">
             <div class="container-fluid">
                 <!-- Logo-->
@@ -245,5 +246,6 @@
             <!-- end container -->
         </div>
         {% endif %}
+        {% endfor %}
         <!-- end navbar-custom -->
     </header>

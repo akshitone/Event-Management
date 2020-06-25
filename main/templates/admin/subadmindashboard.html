@@ -287,10 +287,10 @@
 												</td>
 												<td>{{event.start}}</td>
 												<td>
-													{% if event.EventStatus == 'True' %}
-														<a href="{% url 'event-update-approval-no' id=event.id %}"><span class="badge badge-success p-1">Active</span></a>
-													{% else%}
-														<a href="{% url 'event-update-approval-yes' id=event.id %}"><span class="badge badge-secondary p-1">Not active</span></a>
+													{% if event.EventStatus == True %}
+														<a href=""><span class="badge badge-success p-1">Active</span></a>
+													{% else %}
+														<a href=""><span class="badge badge-secondary p-1">Not active</span></a>
 													{% endif %}	
 												</td>
 												<td>{{event.ClubName.ClubName}}</td>

@@ -82,7 +82,14 @@
                                     <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s" style="margin-top: -20px; font-size:25px;">Organized By {{event.ClubName.ClubName}}</h2>
                                     <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.start}} - {{event.end}} ({{event.EventStartTime}} - {{event.EventEndTime}})</span>
                                     <p style="color: #47759d;">{{event.EventDescription}}</p>
-                                    
+                                    <span class="wow fadeInUp animated pt-10" data-animation="fadeInUp animated" style="font-size: 10px;" data-delay=".2s"><a href="/venue"><i class="far fa-map-marker-alt"></i> {{event.VenueId.VenueName}} - {{event.VenueId.VenueLocation}}</a></span>
+                                    <div class="blog__btn mt-30">
+                                        {% if request.user.is_authenticated  %}
+                                            <a href="/eventmember/add/{{event.id}}" class="btn"><i class="far fa-user"></i> Join me</a>
+                                        {% else %}
+                                            <a href="/login" class="btn"><i class="far fa-user"></i> First Log in</a>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
