@@ -18,6 +18,12 @@
             rel="shortcut icon"
             href="{% static 'admin_plugins/images/favicon.png' %}"
         />
+        <!-- Sweet Alert -->
+        <link
+            href="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
         <!-- DataTables -->
         <link
             href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}"
@@ -89,6 +95,7 @@
                     <ul
                         class="nav nav-pills nav-bg-custom nav-justified pull-right"
                         role="tablist"
+                        id="tab"
                     >
                         <li class="nav-item waves-effect waves-light">
                             <a
@@ -96,6 +103,7 @@
                                 data-toggle="tab"
                                 href="#details"
                                 role="tab"
+                                data-id="details"
                                 ><span class="d-none d-md-block"
                                     ><i class="dripicons-list"></i></span
                                 ><span class="d-block d-md-none"
@@ -110,6 +118,7 @@
                                 data-toggle="tab"
                                 href="#grid"
                                 role="tab"
+                                data-id="grid"
                                 ><span class="d-none d-md-block"
                                     ><i class="dripicons-view-thumb"></i></span
                                 ><span class="d-block d-md-none"
@@ -132,7 +141,7 @@
                                             Event Table
                                         </h4>
                                         <table
-                                            id="datatable"
+                                            id="datatable-buttons"
                                             class="table table-hover dt-responsive nowrap"
                                             style="
                                                 border-collapse: collapse;
@@ -218,11 +227,14 @@
                                                             ></i
                                                         ></a>
                                                         <a
-                                                            href=""
+                                                            href="{% url 'event-delete' %}"
                                                             class="btn btn-outline-danger waves-effect waves-light mr-1"
                                                             data-toggle="tooltip"
                                                             data-placement="bottom"
                                                             data-original-title="Delete"
+                                                            name="delete"
+                                                            data-id="{{event.id}}"
+                                                            data-name="{{event.title}}"
                                                             ><i
                                                                 class="fa fa-trash"
                                                             ></i
@@ -274,11 +286,14 @@
                                             ><i class="fa fa-edit"></i
                                         ></a>
                                         <a
-                                            href=""
+                                            href="{% url 'event-delete' %}"
                                             class="btn btn-outline-danger waves-effect waves-light mr-1"
                                             data-toggle="tooltip"
                                             data-placement="bottom"
                                             data-original-title="Delete"
+                                            name="delete"
+                                            data-id="{{event.id}}"
+                                            data-name="{{event.title}}"
                                             ><i class="fa fa-trash"></i
                                         ></a>
                                     </div>
@@ -316,8 +331,61 @@
         <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
         <!-- Datatable init js -->
         <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js' %}"></script>
         <!-- App js -->
         <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                var alert = localStorage.getItem("delete");
+                var tab = localStorage.getItem("tab");
+                if (alert) {
+                    if (tab == "grid") {
+                        $("#details,a[data-id=details]").removeClass("active");
+                        $("#grid,a[data-id=grid]").addClass("active");
+                    }
+                    alertify.success(alert + " has been Canceled!");
+                    localStorage.clear();
+                }
+                $("a[name=delete]").click(function (e) {
+                    e.preventDefault();
+                    var url = $(this).attr("href");
+                    var event_id = $(this).data("id");
+                    var event_name = $(this).data("name");
+                    swal({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        type: "warning",
+                        showCancelButton: !0,
+                        confirmButtonClass: "btn btn-success",
+                        cancelButtonClass: "btn btn-danger m-l-10",
+                        confirmButtonText: "Yes, delete it!",
+                    }).then(function () {
+                        $.ajax({
+                            headers: { "X-CSRFToken": "{{csrf_token}}" },
+                            url: url,
+                            data: {
+                                event_id: event_id,
+                            },
+                            type: "post",
+                            success: function (data) {
+                                localStorage.setItem("delete", event_name);
+                                localStorage.setItem(
+                                    "tab",
+                                    $("#tab li a.active").data("id")
+                                );
+                                location.reload();
+                            },
+                            error: function (response) {
+                                alertify.error(
+                                    "Unable to Cancel" + event_name
+                                );
+                            },
+                        });
+                    });
+                });
+            });
+        </script>
     </body>
     <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
 </html>

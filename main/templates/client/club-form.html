@@ -1,29 +1,115 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
-    
-<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Club Registrastion | eVentes</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
+    <!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>Club Registrastion | eVentes</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="{% static 'client_plugins/img/favicon.png' %}"
+        />
         <!-- Place favicon.ico in the root directory -->
-        
-		<!-- CSS here -->
-		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="{% static 'client_plugins/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/fontawesome/css/all.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/dripicons.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/slick.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/responsive.css' %}">
+
+        <!-- CSS here -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- Alertify css -->
+        <link
+            href="{% static 'admin_plugins/plugins/alertify/css/alertify.css'  %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/bootstrap.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/animate.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/magnific-popup.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/fontawesome/css/all.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/dripicons.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/slick.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/default.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/style.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/responsive.css' %}"
+        />
+        <style>
+            /* width */
+            ::-webkit-scrollbar {
+                width: 10px;
+                background-color: #f5f5f5;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                background-color: #f5f5f5;
+                border-radius: 10px;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-color: #0652c5;
+                background-image: -webkit-linear-gradient(
+                    315deg,
+                    #0652c5 0%,
+                    #d4418e 74%
+                );
+            }
+            .parsley-error {
+                color: red;
+            }
+            .parsley-errors-list {
+                margin: 2px 0 10px 8px;
+                padding: 0;
+                color: red;
+                list-style-type: none;
+                font-size: 0.9em;
+                line-height: 0.9em;
+                opacity: 0;
+                transition: all 0.3s ease-in;
+                -o-transition: all 0.3s ease-in;
+                -moz-transition: all 0.3s ease-in;
+                -webkit-transition: all 0.3s ease-in;
+            }
+            .parsley-errors-list.filled {
+                opacity: 1;
+            }
+        </style>
     </head>
     <body>
         {% include 'client/header.html' %}
@@ -31,28 +117,56 @@
         <main>
             <!-- slider-area -->
             <!-- breadcrumb-area -->
-            <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/innerpage_bg_img.jpg' %})">
-                <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
-                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
-                 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                                <div class="breadcrumb-wrap text-center">
-                                    <div class="breadcrumb-title mb-30">
-                                        <h2>Club</h2>                                   
-                                    </div>
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="">Club</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Club Registration</li>
-                                        </ol>
-                                    </nav>
+            <section
+                id="parallax"
+                class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix"
+                style="
+                    background-image: url({% static 'client_plugins/img/innerpage_bg_img.jpg' %});
+                "
+            >
+                <div class="slider-shape ss-one layer" data-depth="0.10">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_6.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-three layer" data-depth="0.40">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_9.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-four layer" data-depth="0.60">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_7.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                            <div class="breadcrumb-wrap text-center">
+                                <div class="breadcrumb-title mb-30">
+                                    <h2>Create Your Own Club!</h2>
                                 </div>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="">Club</a>
+                                        </li>
+                                        <li
+                                            class="breadcrumb-item active"
+                                            aria-current="page"
+                                        >
+                                            Create Your Own Club
+                                        </li>
+                                    </ol>
+                                </nav>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
             <!-- slider-area-end -->
             <section id="team" class="team-area p-relative pt-10 pb-50 fix">
                 <div class="circal1 item-zoom-inout"></div>
@@ -61,66 +175,147 @@
                 <div class="circal4 item-zoom-inout"></div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-sm-12">
-                        </div>
+                        <div class="col-lg-3 col-sm-12"></div>
                         <div class="col-lg-4 col-sm-12">
-                            <div class="club-form mt-50 align-items-center justify-content-center wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
-                                {% for message in messages %}
-                                    <p>{{message}}</p>
-                                {% endfor %}
-                                <form action="" enctype="multipart/form-data" method="POST">
+                            <div
+                                class="club-form mt-50 align-items-center justify-content-center wow fadeInLeft"
+                                data-animation="fadeInLeft"
+                                data-delay=".2s"
+                            >
+                                <h2>Proposal Form</h2>
+                                <form
+                                    id="form"
+                                    action=""
+                                    enctype="multipart/form-data"
+                                    method="POST"
+                                >
                                     {% csrf_token %}
+                                    <div id="checkbox-errors"></div>
                                     <div class="form-outer">
-                                        <div class="icon"><i class="fal fa-cube"></i></div>
-                                        <input type="text" placeholder="Enter club name" name="txtclubname" id="txtclubname"/>
+                                        <div class="icon">
+                                            <i class="fal fa-cube"></i>
+                                        </div>
+                                        <input
+                                            data-parsley-errors-container="#checkbox-errors"
+                                            required
+                                            type="text"
+                                            placeholder="Enter club name"
+                                            name="txtclubname"
+                                            id="txtclubname"
+                                            data-url="{% url 'club-check' %}"
+                                            data-parsley-type="alphanum"
+                                            data-parsley-type-message="Invalid Club Name"
+                                        />
                                     </div>
+                                    <div id="checkbox-errors2"></div>
                                     <div class="form-outer">
-                                        <div class="icon"><i class="fal fa-envelope"></i></div>
-                                        <input type="text" placeholder="Enter club type" name="txtclubtype" id="txtclubtype"/>
+                                        <div class="icon">
+                                            <i class="fal fa-envelope"></i>
+                                        </div>
+                                        <input
+                                            data-parsley-errors-container="#checkbox-errors2"
+                                            required
+                                            type="text"
+                                            placeholder="Enter club type"
+                                            name="txtclubtype"
+                                            id="txtclubtype"
+                                            data-parsley-pattern="^[a-zA-Z][a-zA-Z\s]*$"
+                                            data-parsley-pattern-message="Type must be Alphabatic"
+                                        />
                                     </div>
+                                    <div id="checkbox-errors3"></div>
                                     <div class="form-outer">
-                                        <div class="icon"><i class="fal fa-user"></i></div>
-                                        <input type="text" placeholder="Enter club user name" name="txtusername" id="txtusername"/>
+                                        <div class="icon">
+                                            <i class="fal fa-user"></i>
+                                        </div>
+                                        <input
+                                            data-parsley-errors-container="#checkbox-errors3"
+                                            required
+                                            type="text"
+                                            placeholder="Enter club user name"
+                                            name="txtusername"
+                                            id="txtusername"
+                                            data-url="{% url 'user-check' %}"
+                                            data-parsley-type="alphanum"
+                                            data-parsley-type-message="Invalid Username"
+                                        />
                                     </div>
+                                    <div id="checkbox-errors4"></div>
                                     <div class="form-outer">
-                                        <div class="icon"><i class="fal fa-envelope"></i></div>
-                                        <input type="email" placeholder="Enter club email" name="txtemail" id="txtemail"/>
+                                        <div class="icon">
+                                            <i class="fal fa-envelope"></i>
+                                        </div>
+                                        <input
+                                            data-parsley-errors-container="#checkbox-errors4"
+                                            required
+                                            type="email"
+                                            placeholder="Enter club email"
+                                            name="txtemail"
+                                            id="txtemail"
+                                        />
                                     </div>
+                                    <div id="checkbox-errors5"></div>
                                     <div class="form-outer">
-                                        <div class="icon"><i class="fal fa-key"></i></div>
-                                        <input type="password" placeholder="Enter password" name="txtpassword" id="txtpassword"/>
+                                        <div class="icon">
+                                            <i class="fal fa-key"></i>
+                                        </div>
+                                        <input
+                                            data-parsley-errors-container="#checkbox-errors5"
+                                            required
+                                            type="password"
+                                            placeholder="Enter password"
+                                            name="txtpassword"
+                                            id="txtpassword"
+                                            data-parsley-minlength="8"
+                                            data-parsley-uppercase="1"
+                                            data-parsley-lowercase="1"
+                                            data-parsley-number="1"
+                                            data-parsley-special="1"
+                                        />
                                     </div>
+                                    <div id="checkbox-errors6"></div>
                                     <div class="form-outer">
-                                        <div class="icon"><i class="far fa-building"></i></div>
-                                        <select id="select" name="dropdowndepartment">
-                                        <option selected="selected">Select your department</option>
-                                        {% for department in department_data %}
-												<option value="{{department.DepartmentName}}">{{department.DepartmentName}}</option>
-												{% endfor %}  
-                                        </select>                                   
+                                        <div class="icon">
+                                            <i class="far fa-building"></i>
+                                        </div>
+                                        <select
+                                            data-parsley-errors-container="#checkbox-errors6"
+                                            required
+                                            id="select"
+                                            name="dropdowndepartment"
+                                        >
+                                            <option  value=""selected="selected"
+                                                >Select your department</option
+                                            >
+                                            {% for department in department_data %}
+                                            <option
+                                                value="{{department.DepartmentName}}"
+                                                >{{department.DepartmentName}}</option
+                                            >
+                                            {% endfor %}
+                                        </select>
                                     </div>
-                                    {% comment %} <div class="form-outer">
-                                        <div class="icon"><i class="fab fa-facebook-f"></i></div>
-                                        <input type="text" placeholder="https://www.facebook.com/clubname" name="txtfacebook" id="txtfacebook"/>
+                                    <div id="checkbox-errors7"></div>
+                                    <div class="form-outer">
+                                        <div class="icon">
+                                            <i class="far fa-image"></i>
+                                        </div>
+                                        <input
+                                            data-parsley-errors-container="#checkbox-errors7"
+                                            required
+                                            type="file"
+                                            placeholder="Upload your image"
+                                            name="txtimageurl"
+                                            id="txtimageurl"
+                                            data-parsley-filemaxmegabytes="2"
+                                            data-parsley-trigger="change"
+                                            data-parsley-filemimetypes="image/jpeg, image/png, image/jpg, image/gif"
+                                        />
                                     </div>
-                                    <div class="form-outer">
-                                        <div class="icon"><i class="fab fa-instagram"></i></div>
-                                        <input type="text" placeholder="https://www.instagram.com/clubname" name="txtinstagram" id="txtinstagram"/>
-                                    </div>
-                                    <div class="form-outer">
-                                        <div class="icon"><i class="fab fa-twitter"></i></div>
-                                        <input type="text" placeholder="https://twitter.com/clubname" name="txttwitter" id="txttwitter"/>
-                                    </div>
-                                    <div class="form-outer">
-                                        <div class="icon"><i class="fab fa-dribbble"></i></div>
-                                        <input type="text" placeholder="https://dribbble.com/clubname" name="txtdribbble" id="txtdribbble"/>
-                                    </div>{% endcomment %}
-                                    <div class="form-outer">
-                                        <div class="icon"><i class="far fa-image"></i></div>
-                                        <input type="file" placeholder="Upload your image" name="txtimageurl" id="txtimageurl"/>
-                                    </div> 
                                     <div class="text-center">
-                                        <button type="submit" class="btn">Register</button>
+                                        <button id="submit-btn" type="submit" class="btn">
+                                            Send Proposal
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -132,9 +327,7 @@
         <!-- main-area-end -->
         {% include 'client/footer.html' %}
 
-
-
-		<!-- JS here -->
+        <!-- JS here -->
         <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/popper.min.js' %}"></script>
@@ -151,12 +344,172 @@
         <script src="{% static 'client_plugins/js/jquery.scrollUp.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/jquery.magnific-popup.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/element-in-view.js' %}"></script>
-		<script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/parsleyjs/parsley.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js'  %}"></script>
         <script src="{% static 'client_plugins/js/main.js' %}"></script>
+        <script>
+            window.Parsley.addValidator("filemaxmegabytes", {
+                requirementType: "string",
+                validateString: function (value, requirement, parsleyInstance) {
+                    var file = parsleyInstance.$element[0].files;
+                    var maxBytes = requirement * 1048576;
+                    if (file.length == 0) {
+                        return true;
+                    }
+                    return file.length === 1 && file[0].size <= maxBytes;
+                },
+                messages: {
+                    en: "File mus be less then %sMb",
+                },
+            }).addValidator("filemimetypes", {
+                requirementType: "string",
+                validateString: function (value, requirement, parsleyInstance) {
+                    var file = parsleyInstance.$element[0].files;
+                    if (file.length == 0) {
+                        return true;
+                    }
+                    var allowedMimeTypes = requirement
+                        .replace(/\s/g, "")
+                        .split(",");
+                    return allowedMimeTypes.indexOf(file[0].type) !== -1;
+                },
+                messages: {
+                    en: " You must upload %s",
+                },
+            });
+            //has uppercase
+            window.Parsley.addValidator("uppercase", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var uppercases = value.match(/[A-Z]/g) || [];
+                    return uppercases.length >= requirement;
+                },
+                messages: {
+                    en:
+                        " - Must contain at least (%s) uppercase letter.",
+                },
+            });
+            //has lowercase
+            window.Parsley.addValidator("lowercase", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var lowecases = value.match(/[a-z]/g) || [];
+                    return lowecases.length >= requirement;
+                },
+                messages: {
+                    en:
+                        " - Must contain at least (%s) lowercase letter.",
+                },
+            });
+            //has number
+            window.Parsley.addValidator("number", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var numbers = value.match(/[0-9]/g) || [];
+                    return numbers.length >= requirement;
+                },
+                messages: {
+                    en: " - Must contain at least (%s) number.",
+                },
+            });
+            //has special char
+            window.Parsley.addValidator("special", {
+                requirementType: "number",
+                validateString: function (value, requirement) {
+                    var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+                    return specials.length >= requirement;
+                },
+                messages: {
+                    en:
+                        " - Must contain at least (%s) special character.",
+                },
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#form").parsley();
+                $("#txtclubname").on("focusout", function (e) {
+                    if ($("#txtclubname").parsley().isValid()) {
+                        var club_name = $("#txtclubname").val();              
+                        var url = $("#txtclubname").data("url");
+                        $.ajax({
+                            headers: { "X-CSRFToken": "{{csrf_token}}" },
+                            url: url,
+                            data: {
+                                club_name: club_name,
+                            },
+                            type: "post",
+                            success: function (response) {
+                                valid = true;
+                                alertify.success(
+                                    response.msg
+                                );
+                            },
+                            error: function (response) {
+                                valid = false;
+                                alertify.error(
+                                    response["responseJSON"]["error"]
+                                );
+                            },
+                        });
+                    }
+                });
+                $("#txtusername").on("focusout", function (e) {
+                    if ($("#txtusername").parsley().isValid()) {
+                        var username = $("#txtusername").val();
+                        var url = $("#txtusername").data("url");
+                        $.ajax({
+                            headers: { "X-CSRFToken": "{{csrf_token}}" },
+                            url: url,
+                            data: {
+                                username: username,
+                            },
+                            type: "post",
+                            success: function (response) {
+                                valid = true;
+                                alertify.success(
+                                    response.msg
+                                );
+                            },
+                            error: function (response) {
+                                valid = false;
+                                alertify.error(
+                                    response["responseJSON"]["error"]
+                                );
+                            },
+                        });
+                    }
+                });
+                $("#submit-btn").click(function (e) {
+                    if ($("#form").parsley().isValid()) {
+                        e.preventDefault();
+                        if (valid) {
+                            data = new FormData($("#form")[0]);
+                            var url = $("#form").data("url");
+                            $.ajax({
+                                headers: { "X-CSRFToken": "{{csrf_token}}" },
+                                url: url,
+                                data: data,
+                                type: "post",
+                                processData: false,
+                                contentType: false,
+                                success: function (response) {
+                                    alertify.success(response.msg);
+                                },
+                                error: function (response) {
+                                    alertify.error(
+                                        response["responseJSON"]["error"]
+                                    );
+                                },
+                            });
+                        } 
+                    }
+                });
+            });
+        </script>
     </body>
 
-<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
+    <!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
 </html>
-
-                

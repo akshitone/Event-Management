@@ -1,29 +1,91 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
-    
-<!-- Mirrored from zcube.in/eventes/speakers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:36:52 GMT -->
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Who we are? | eVentes</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
+    <!-- Mirrored from zcube.in/eventes/speakers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:36:52 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>Who we are? | eVentes</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="{% static 'client_plugins/img/favicon.png' %}"
+        />
         <!-- Place favicon.ico in the root directory -->
 
-		<!-- CSS here -->
-		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="{% static 'client_plugins/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/fontawesome/css/all.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/dripicons.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/slick.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/responsive.css' %}">
+        <!-- CSS here -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/bootstrap.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/animate.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/magnific-popup.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/fontawesome/css/all.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/dripicons.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/slick.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/default.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/style.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/responsive.css' %}"
+        />
+
+        <style>
+            /* width */
+            ::-webkit-scrollbar {
+                width: 10px;
+                background-color: #f5f5f5;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                background-color: #f5f5f5;
+                border-radius: 10px;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-color: #0652c5;
+                background-image: -webkit-linear-gradient(
+                    315deg,
+                    #0652c5 0%,
+                    #d4418e 74%
+                );
+            }
+        </style>
     </head>
     <body>
         <!-- header -->
@@ -32,22 +94,49 @@
         <!-- main-area -->
         <main>
             <!-- breadcrumb-area -->
-            <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/innerpage_bg_img.jpg' %})">
-			<div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
-							<div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
-							<div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
+            <section
+                id="parallax"
+                class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix"
+                style="
+                    background-image: url({% static 'client_plugins/img/innerpage_bg_img.jpg' %});
+                "
+            >
+                <div class="slider-shape ss-one layer" data-depth="0.10">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_6.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-three layer" data-depth="0.40">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_9.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-four layer" data-depth="0.60">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_7.png' %}"
+                        alt="shape"
+                    />
+                </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                             <div class="breadcrumb-wrap text-center">
-							 
                                 <div class="breadcrumb-title mb-30">
-                                    <h2>Who we are</h2>                                   
+                                    <h2>Who we are</h2>
                                 </div>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Who we are</li>
+                                        <li class="breadcrumb-item">
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li
+                                            class="breadcrumb-item active"
+                                            aria-current="page"
+                                        >
+                                            Who we are
+                                        </li>
                                     </ol>
                                 </nav>
                             </div>
@@ -55,91 +144,178 @@
                     </div>
                 </div>
             </section>
-            <section id="about" class="about-area about-p pt-120 pb-50 p-relative">
+            <section
+                id="about"
+                class="about-area about-p pt-120 pb-50 p-relative"
+            >
                 <div class="container">
                     <div class="row">
-						<div class="col-lg-6">
+                        <div class="col-lg-6">
                             <div class="about-content s-about-content pl-30">
                                 <div class="about-title second-atitle">
-								<div class="text-outline">
-										<span>About</span>
-									</div>
-                                    <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">About Us</span>
-                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Learn About Our eVentes</h2>
-                                    <h5 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s" style="font-size: 20px;">Shift your perspective on digital management</h5>
+                                    <div class="text-outline">
+                                        <span>About</span>
+                                    </div>
+                                    <span
+                                        class="wow fadeInUp animated"
+                                        data-animation="fadeInUp animated"
+                                        data-delay=".2s"
+                                        >About Us</span
+                                    >
+                                    <h2
+                                        class="wow fadeInUp animated"
+                                        data-animation="fadeInUp animated"
+                                        data-delay=".2s"
+                                    >
+                                        Learn About Our eVentes
+                                    </h2>
+                                    <h5
+                                        class="wow fadeInUp animated"
+                                        data-animation="fadeInUp animated"
+                                        data-delay=".2s"
+                                        style="font-size: 20px;"
+                                    >
+                                        Shift your perspective on digital
+                                        management
+                                    </h5>
                                 </div>
-                                <p>eVentes is a website that creates solutions supporting and enhancing the mission of nonoverlapping events without any manual chores.</p>
+                                <p>
+                                    eVentes is a website that creates solutions
+                                    supporting and enhancing the mission of
+                                    nonoverlapping events without any manual
+                                    chores.
+                                </p>
                             </div>
                         </div>
                         <div class="col-lg-6 pt-60">
-                         <div class="feature-box text-left wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
-							<div class="icon color1">
-								<i class="fal fa-analytics"></i>
-							</div>
-							<div class="content">
-								<h5>Exploring</h5>
-								<p>All clubs and upcoming events are here to help you our joyful audiences.</p>
-							</div>
-						 </div>
-						  <div class="feature-box text-left wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
-							<div class="icon color2">
-								<i class="far fa-users"></i>
-							</div>
-							<div class="content">
-								<h5>New People</h5>
-								<p>Easy to join in our clubs and events to make your day with happiness.</p>
-							</div>
-						 </div>
-						  <div class="feature-box text-left wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
-							<div class="icon color3">
-								<i class="far fa-cogs"></i>
-							</div>
-							<div class="content">
-								<h5>Event Management</h5>
-								<p>Moments delightful by arranging events by clubs only to manage them.</p>
-							</div>
-						 </div>
-						  <div class="feature-box text-left wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
-							<div class="icon color4">
-								<i class="fal fa-magic"></i>
-							</div>
-							<div class="content">
-								<h5>Venue</h5>
-								<p>Open sky and theatre make you join us and feels you heaven here.</p>
-							</div>
-						 </div>
-						
+                            <div
+                                class="feature-box text-left wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                            >
+                                <div class="icon color1">
+                                    <i class="fal fa-analytics"></i>
+                                </div>
+                                <div class="content">
+                                    <h5>Exploring</h5>
+                                    <p>
+                                        All clubs and upcoming events are here
+                                        to help you our joyful audiences.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="feature-box text-left wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                            >
+                                <div class="icon color2">
+                                    <i class="far fa-users"></i>
+                                </div>
+                                <div class="content">
+                                    <h5>New People</h5>
+                                    <p>
+                                        Easy to join in our clubs and events to
+                                        make your day with happiness.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="feature-box text-left wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                            >
+                                <div class="icon color3">
+                                    <i class="far fa-cogs"></i>
+                                </div>
+                                <div class="content">
+                                    <h5>Event Management</h5>
+                                    <p>
+                                        Moments delightful by arranging events
+                                        by clubs only to manage them.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="feature-box text-left wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                            >
+                                <div class="icon color4">
+                                    <i class="fal fa-magic"></i>
+                                </div>
+                                <div class="content">
+                                    <h5>Venue</h5>
+                                    <p>
+                                        Open sky and theatre make you join us
+                                        and feels you heaven here.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        
                     </div>
                 </div>
             </section>
-			<!-- team-area -->
+            <!-- team-area -->
             <section id="team" class="team-area p-relative pt-120 pb-120 fix">
-                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Employee
-                </h2></div>
-				<div class="circal1 item-zoom-inout"></div>
-				<div class="circal2 item-zoom-inout"></div>
-				<div class="circal3 item-zoom-inout"></div>
-				<div class="circal4 item-zoom-inout"></div>
+                <div
+                    class="section-t team-t paroller"
+                    data-paroller-factor="0.15"
+                    data-paroller-factor-lg="0.15"
+                    data-paroller-factor-md="0.15"
+                    data-paroller-factor-sm="0.15"
+                    data-paroller-type="foreground"
+                    data-paroller-direction="horizontal"
+                >
+                    <h2>Employee</h2>
+                </div>
+                <div class="circal1 item-zoom-inout"></div>
+                <div class="circal2 item-zoom-inout"></div>
+                <div class="circal3 item-zoom-inout"></div>
+                <div class="circal4 item-zoom-inout"></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
                             <div class="section-title text-center mb-80">
-                                    <h2 class="wow fadeInUp  animated" data-animation="fadeInUp animated" data-delay=".4s" style="visibility: visible; animation-name: fadeInUp;">University Employee</h2>
+                                <h2
+                                    class="wow fadeInUp animated"
+                                    data-animation="fadeInUp animated"
+                                    data-delay=".4s"
+                                    style="
+                                        visibility: visible;
+                                        animation-name: fadeInUp;
+                                    "
+                                >
+                                    University Employee
+                                </h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         {% for employee in employee_data %}
-                        <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
+                        <div
+                            class="col-lg-3 col-md-6 wow fadeInDown animated"
+                            data-animation="fadeInUp animated"
+                            data-delay=".2s"
+                        >
                             <div class="single-team text-center pb-50 mb-30">
                                 <div class="team-thumb">
-                                   <img src="{{employee.EmployeeImage}}" style="padding-top: 40px; border-radius:100%; width:150px;" alt="img">
+                                    <img
+                                        src="{{employee.EmployeeImage}}"
+                                        style="
+                                            padding-top: 40px;
+                                            border-radius: 100%;
+                                            width: 150px;
+                                        "
+                                        alt="img"
+                                    />
                                 </div>
                                 <div class="team-info">
-                                   <h6>{{employee.EmployeeName}}</h6>
-                                    <strong>{{employee.SubDepartmentName_id}} ({{employee.DepartmentName_id}})</strong>
+                                    <h6>{{employee.EmployeeName}}</h6>
+                                    <strong
+                                        >{{employee.SubDepartmentName_id}}
+                                        ({{employee.DepartmentName_id}})</strong
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -154,10 +330,7 @@
         {% include 'client/footer.html' %}
         <!-- footer-end -->
 
-
-
-		
-		<!-- JS here -->
+        <!-- JS here -->
         <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/popper.min.js' %}"></script>
@@ -174,10 +347,10 @@
         <script src="{% static 'client_plugins/js/jquery.scrollUp.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/jquery.magnific-popup.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/element-in-view.js' %}"></script>
-		<script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/imagesloaded.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/main.js' %}"></script>
     </body>
 
-<!-- Mirrored from zcube.in/eventes/speakers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:37:09 GMT -->
+    <!-- Mirrored from zcube.in/eventes/speakers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:37:09 GMT -->
 </html>

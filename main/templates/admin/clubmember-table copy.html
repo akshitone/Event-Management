@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:50 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"
+        />
+        <title>Club Member Table | eVentes</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App Icons -->
+        <link
+            rel="shortcut icon"
+            href="{% static 'admin_plugins/images/favicon.png' %}"
+        />
+        <!-- DataTables -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- Responsive datatable examples -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- App css -->
+        <link
+            href="{% static 'admin_plugins/css/bootstrap.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/icons.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/style.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <!-- Loader -->
+        {% include 'admin/header.html' %}
+        <!-- End Navigation Bar-->
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-0">
+                                    Club Member Table
+                                </h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Club Member</a>
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        Club Member Table
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+		</div>
+		</div>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title mb-3">
+                                    Club Member Table
+                                </h4>
+                                <table
+                                    id="datatable-buttons"
+                                    class="table table-hover dt-responsive nowrap"
+                                    style="
+                                        border-collapse: collapse;
+                                        border-spacing: 0;
+                                        width: 100%;
+                                    "
+                                >
+                                    <thead>
+                                        <tr>
+                                            <th>Member</th>
+                                            <th>Member Name</th>
+                                            <th>Club Name</th>
+                                            <th>Member Role</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for clubmember in clubmember_data %}
+                                        <tr>
+                                            <td>
+                                                <img
+                                                    class="d-flex mr-3 rounded-circle"
+                                                    src="{{clubmember.StudentId.StudentImage}}"
+                                                    alt="Not found"
+                                                    height="50"
+                                                />
+                                            </td>
+                                            <td>
+                                                {{clubmember.StudentId.StudentName}}
+                                            </td>
+                                            <td>
+                                                {{clubmember.ClubId.ClubName}}
+                                            </td>
+                                            <td>{{clubmember.MemberRole}}</td>
+                                            <td>
+                                                <a
+                                                    href="{% url 'clubmember-view' id=clubmember.ClubMemberId %}"
+                                                    class="btn btn-outline-primary waves-effect waves-light mr-1"
+                                                    data-toggle="tooltip"
+                                                    data-placement="bottom"
+                                                    data-original-title="View"
+                                                    ><i class="fa fa-eye"></i
+                                                ></a>
+                                                <a
+                                                    href="{% url 'clubmember-edit' id=clubmember.ClubMemberId %}"
+                                                    class="btn btn-outline-pink waves-effect waves-light mr-1"
+                                                    data-toggle="tooltip"
+                                                    data-placement="bottom"
+                                                    data-original-title="Update"
+                                                    ><i class="fa fa-edit"></i
+                                                ></a>
+                                                <a
+                                                    href="{% url 'clubmember-delete' id=clubmember.ClubMemberId %}"
+                                                    class="btn btn-outline-danger waves-effect waves-light mr-1"
+                                                    data-toggle="tooltip"
+                                                    data-placement="bottom"
+                                                    data-original-title="Delete"
+                                                    ><i class="fa fa-trash"></i
+                                                ></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <!-- Required datatable js -->
+        <script src="{% static 'admin_plugins/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/jszip.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.colVis.min.js' %}"></script>
+        <!-- Responsive examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
+        <!-- Datatable init js -->
+        <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+    </body>
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
+</html>

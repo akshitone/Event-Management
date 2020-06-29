@@ -8,6 +8,7 @@ from club.models import ClubMember
 from student.models import Student
 from main.models import Notification
 from myproject.customDecorators import *
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -18,21 +19,17 @@ def club_add(request):
         filesystem = FileSystemStorage()
         filename = filesystem.save(ClubImage.name, ClubImage)
         url = filesystem.url(filename)
-
         # Name split and join
         club_username = request.POST['txtclubname'].lower().split()
         if len(club_username) > 1:
             club_username = club_username[0] + "@events.com"
         else:
             club_username = "".join(club_username) + "@events.com"
-
         alphabet = string.ascii_letters + string.digits
         password = ''.join(secrets.choice(alphabet) for i in range(10))
-
         userId = request.user.id
         student = Student.objects.get(UserId_id=userId)
         email = student.StudentEmail
-
         # User Creation
         user = User.objects.create_user(
             club_username,
@@ -84,14 +81,34 @@ def club_table(request):
     return render(request, 'admin/club-table.html', {'club_data': club_data})
 
 
+def club_exists(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            club_name = request.POST['club_name']
+            try:
+                Club.objects.get(ClubName=club_name)
+                return JsonResponse({'error': 'Club Already Exists'}, status=422)
+            except:
+                return JsonResponse({'msg': 'Verified'}, status=200)
+
+
 @authentication_check
 @user_authentication(allowed_users=['superAdmin', 'subAdmin'])
-def club_delete(request, name):
-    club = Club.objects.get(pk=name)
-    filesystem = FileSystemStorage()
-    filesystem.delete(club.ClubImageName)
-    club.delete()
-    return redirect('/admin/club/')
+def club_delete(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            try:
+                club_name = request.POST['club_name']
+                club = Club.objects.get(pk=club_name)
+                userId = club.UserId_id
+                user = User.objects.get(pk=userId)
+                filesystem = FileSystemStorage()
+                club.delete()
+                filesystem.delete(club.ClubImageName)
+                user.delete()
+                return JsonResponse({}, status=200)
+            except:
+                return JsonResponse({}, status=500)
 
 
 @authentication_check
@@ -224,7 +241,13 @@ def clubmember_edit(request, id):
 
 @authentication_check
 @user_authentication(allowed_users=['clubAdmin'])
-def clubmember_delete(request, id):
-    clubmember = ClubMember.objects.get(pk=id)
-    clubmember.delete()
-    return redirect('/admin/clubmember/')
+def clubmember_delete(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            try:
+                clubmember_id = request.POST['clubmember_id']
+                clubmember = ClubMember.objects.get(pk=clubmember_id)
+                clubmember.delete()
+                return JsonResponse({}, status=200)
+            except:
+                return JsonResponse({}, status=500)

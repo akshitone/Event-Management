@@ -111,7 +111,7 @@
                                                 id="txtusername"
                                                 required
                                                 data-parsley-type="alphanum"
-                                                data-parsley-type-message="Name must not be Alphanumeric"
+                                                data-parsley-type-message="Name must be Alphanumeric"
                                                 data-url="{% url 'employee-check' %}"
                                             />
                                         </div>
@@ -404,11 +404,9 @@
                 validateString: function (value, requirement, parsleyInstance) {
                     var file = parsleyInstance.$element[0].files;
                     var maxBytes = requirement * 1048576;
-
                     if (file.length == 0) {
                         return true;
                     }
-
                     return file.length === 1 && file[0].size <= maxBytes;
                 },
                 messages: {
@@ -442,7 +440,6 @@
                         "Your password must contain at least (%s) uppercase letter.",
                 },
             });
-
             //has lowercase
             window.Parsley.addValidator("lowercase", {
                 requirementType: "number",
@@ -455,7 +452,6 @@
                         "Your password must contain at least (%s) lowercase letter.",
                 },
             });
-
             //has number
             window.Parsley.addValidator("number", {
                 requirementType: "number",
@@ -467,7 +463,6 @@
                     en: "Your password must contain at least (%s) number.",
                 },
             });
-
             //has special char
             window.Parsley.addValidator("special", {
                 requirementType: "number",

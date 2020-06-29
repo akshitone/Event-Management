@@ -1,25 +1,31 @@
 {% load static %}
 <!-- header -->
-<header id="home" class="header-area">            
+<header id="home" class="header-area">
     <div id="header-sticky" class="menu-area">
         <div class="container">
             <div class="second-menu">
                 <div class="row align-items-center">
                     <div class="col-xl-3 col-lg-3">
                         <div class="logo">
-                            <a href="/"><img src="{% static 'client_plugins/img/logo/logo.png' %}" alt="logo"></a>
+                            <a href="/"
+                                ><img
+                                    src="{% static 'client_plugins/img/logo/logo.png' %}"
+                                    alt="logo"
+                            /></a>
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-9">
-                        <div class="responsive"><i class="icon dripicons-align-right"></i></div>
-                        <div class="main-menu text-right text-xl-right pr-50">
+                        <div class="responsive">
+                            <i class="icon dripicons-align-right"></i>
+                        </div>
+                        <div class="main-menu text-center text-xl-center pr-50">
                             <nav id="mobile-menu">
-                               <ul>
+                                <ul>
                                     <li>
                                         <a href="/">Home</a>
                                     </li>
                                     <li class="has-sub">
-                                        <a href="/club">Club</a>												
+                                        <a href="/club">Club</a>
                                     </li>
                                     <li class="has-sub">
                                         <a href="/event">Event</a>
@@ -27,27 +33,49 @@
                                     <li class="has-sub">
                                         <a href="/venue">Venue</a>
                                     </li>
-                                    {% if request.user.is_authenticated  %}
-                                        <li class="has-sub"><a href="/student/form">Hello, {{request.user.first_name}}</a>
-                                            <ul>
-                                                <li><a href="/club/form">Club Registration</a></li>
-                                                <li><a href="{% url 'logout' %} ">Log out</a></li>
-                                            </ul>
-                                        </li>
-                                    {% else %}
-                                        <li class="has-sub"><a href="/student/form">Account</a>
-                                            <ul>
-                                                <li><a href="{% url 'login' %}">Log in</a></li>
-                                                <li><a href="{% url 'registration' %}">Register</a></li>
-                                            </ul>
-                                        </li>
-                                        {% endif %}
                                     <li>
-                                        <a href="/whoweare">Who we are?</a>
+                                        <a href="/who-we-are">Who we are?</a>
                                     </li>
                                     <li>
                                         <a href="/contactus">Contact Us</a>
                                     </li>
+                                    {% if request.user.is_authenticated %}
+                                    <li class="has-sub">
+                                        <a href="/student/form"
+                                            >Hello,
+                                            {{request.user.first_name}}</a
+                                        >
+                                        <ul>
+                                            <li>
+                                                <a href="/club/form"
+                                                    >Create Your Own Club!</a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'logout' %} "
+                                                    >Log out</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {% else %}
+                                    <li class="has-sub">
+                                        <a href="/student/form">Account</a>
+                                        <ul>
+                                            <li>
+                                                <a href="{% url 'login' %}"
+                                                    >Log in</a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{% url 'registration' %}"
+                                                    >Register</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </nav>
                         </div>

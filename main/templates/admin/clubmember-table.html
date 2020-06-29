@@ -1,97 +1,343 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-	<!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:50 GMT -->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
-		<title>Club Member Table | eVentes</title>
-		<meta content="Admin Dashboard" name="description">
-		<meta content="Themesbrand" name="author">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- App Icons -->
-		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
-		<!-- DataTables -->
-		<link href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
-		<link href="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
-		<!-- Responsive datatable examples -->
-		<link href="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css">
-		<!-- App css -->
-		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
-		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<!-- Loader -->
-		{% include 'admin/header.html' %}
-		<!-- End Navigation Bar-->
-		<div class="container-fluid">
-			<!-- Page-Title -->
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="page-title-box">
-						<div class="row align-items-center">
-							<div class="col-md-8">
-								<h4 class="page-title mb-0">Club Member Table</h4>
-								<ol class="breadcrumb m-0">
-									<li class="breadcrumb-item"><a href="#">Club Member</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Club Member Table</li>
-								</ol>
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:50 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"
+        />
+        <title>Club Member Table | eVentes</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App Icons -->
+        <link
+            rel="shortcut icon"
+            href="{% static 'admin_plugins/images/favicon.png' %}"
+        />
+        <!-- Sweet Alert -->
+        <link
+            href="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- DataTables -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- Responsive datatable examples -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- App css -->
+        <link
+            href="{% static 'admin_plugins/css/bootstrap.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/icons.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/style.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <!-- Loader -->
+        {% include 'admin/header.html' %}
+        <!-- End Navigation Bar-->
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-0">
+                                    Club Member Table
+                                </h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Club Member</a>
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        Club Member Table
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+		</div>
+        </div>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <!-- end row -->
+                <div class="row">
+                    <ul
+                        class="nav nav-pills nav-bg-custom nav-justified pull-right"
+                        role="tablist"
+                        id="tab"
+                    >
+                        <li class="nav-item waves-effect waves-light">
+                            <a
+                                class="nav-link active"
+                                data-toggle="tab"
+                                href="#details"
+                                role="tab"
+                                data-id="details"
+                                ><span class="d-none d-md-block"
+                                    ><i class="dripicons-list"></i></span
+                                ><span class="d-block d-md-none"
+                                    ><i
+                                        class="mdi mdi-home-variant h5"
+                                    ></i></span
+                            ></a>
+                        </li>
+                        <li class="nav-item waves-effect waves-light">
+                            <a
+                                class="nav-link"
+                                data-toggle="tab"
+                                href="#grid"
+                                role="tab"
+                                data-id="grid"
+                                ><span class="d-none d-md-block"
+                                    ><i class="dripicons-view-thumb"></i></span
+                                ><span class="d-block d-md-none"
+                                    ><i class="mdi mdi-account h5"></i></span
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div
+                        class="tab-pane active p-3"
+                        id="details"
+                        role="tabpanel"
+					>
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="mt-0 header-title mb-3">
+											Club Member Table
+										</h4>
+										<table
+											id="datatable-buttons"
+											class="table table-hover dt-responsive nowrap"
+											style="
+												border-collapse: collapse;
+												border-spacing: 0;
+												width: 100%;
+											"
+										>
+											<thead>
+												<tr>
+													<th>Member</th>
+													<th>Member Name</th>
+													<th>Club Name</th>
+													<th>Member Role</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for clubmember in clubmember_data %}
+												<tr>
+													<td>
+														<img
+															class="d-flex mr-3 rounded-circle"
+															src="{{clubmember.StudentId.StudentImage}}"
+															alt="Not found"
+															height="50"
+														/>
+													</td>
+													<td>
+														{{clubmember.StudentId.StudentName}}
+													</td>
+													<td>
+														{{clubmember.ClubId.ClubName}}
+													</td>
+													<td>{{clubmember.MemberRole}}</td>
+													<td>
+														<a
+															href="{% url 'clubmember-view' id=clubmember.ClubMemberId %}"
+															class="btn btn-outline-primary waves-effect waves-light mr-1"
+															data-toggle="tooltip"
+															data-placement="bottom"
+															data-original-title="View"
+															><i class="fa fa-eye"></i
+														></a>
+														<a
+															href="{% url 'clubmember-edit' id=clubmember.ClubMemberId %}"
+															class="btn btn-outline-pink waves-effect waves-light mr-1"
+															data-toggle="tooltip"
+															data-placement="bottom"
+															data-original-title="Update"
+															><i class="fa fa-edit"></i
+														></a>
+														{% if clubmember.MemberRole != "Club Admin" %}
+														<a
+															href="{% url 'clubmember-delete' %}"
+															class="btn btn-outline-danger waves-effect waves-light mr-1"
+															data-toggle="tooltip"
+															data-placement="bottom"
+															data-original-title="Delete"
+															name="delete"
+															data-id="{{clubmember.ClubMemberId}}"
+															data-name="{{clubmember.StudentId.StudentName}}"
+															><i class="fa fa-trash"></i
+														></a>
+														{% endif %}	
+													</td>
+												</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end page title end breadcrumb -->
-		</div>
-	</div>
-		
-		<div class="wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="mt-0 header-title mb-3">Club Member Table</h4>
-								<table id="datatable" class="table table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-									<thead>
-										<tr>
-											<th>Member</th>
-											<th>Member Name</th>
-                                            <th>Club Name</th>
-                                            <th>Member Role</th>
-                                            <th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										{% for clubmember in clubmember_data %}
-										<tr>
-											<td> 
-												<img class="d-flex mr-3 rounded-circle" src="{{clubmember.StudentId.StudentImage}}" alt="Not found" height="50"> 
-											</td>
-											<td> {{clubmember.StudentId.StudentName}}</td>
-                                            <td> {{clubmember.ClubId.ClubName}}</td>
-                                            <td> {{clubmember.MemberRole}}</td>
-											<td>
-												<a href="{% url 'clubmember-view' id=clubmember.ClubMemberId %}" class="btn btn-outline-primary waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="View"><i class="fa fa-eye"></i></a>
-												<a href="{% url 'clubmember-edit' id=clubmember.ClubMemberId %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
-												<a href="{% url 'clubmember-delete' id=clubmember.ClubMemberId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-											</td>
-										</tr>
-										{% endfor %}
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<!-- end col -->
-				</div>
-				<!-- end row -->
-			</div>
-			<!-- end container -->
-		</div>
-		<!-- end wrapper -->
+                    </div>
+                    <div class="tab-pane p-3" id="grid" role="tabpanel">
+                        <div class="row">
+                        {% for clubmember in clubmember_data %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card directory-card">
+                                    <div class="p-4 directory-content">
+                                        <div class="float-right">
+                                            {% if clubmember.MemberRole == "Club Admin" %}
+												<span class="badge badge-warning">Club-Admin</span>
+											{% else %}
+                                                <span class="badge badge-default">Member</span>
+											{% endif %}	
+                                        </div>
+                                        <div class="media">
+                                            <img
+                                                class="d-flex mr-3 rounded-circle thumb-md"
+                                                src="{{clubmember.StudentId.StudentImage}}"
+                                                alt="{{clubmember.StudentId.StudentName}}"
+                                            />
+                                            <div class="media-body text-white">
+                                                <h5 class="mt-0 font-18 mb-1">
+                                                    {{clubmember.StudentId.StudentName}}
+                                                </h5>
+                                                <p class="text-white-50 m-b-5">
+                                                    {{clubmember.StudentId.StudentEmail}}
+                                                </p>
+                                                <p class="font-600">
+                                                    {{clubmember.StudentId.StudentGender}}
+                                                </p>
+                                                <p class="font-600">
+                                                    <a
+														href="{% url 'clubmember-view' id=clubmember.ClubMemberId %}"
+														class="btn btn-warning waves-effect waves-dark mr-1"
+														data-toggle="tooltip"
+														data-placement="bottom"
+														data-original-title="View"
+														><i class="fa fa-eye"></i
+													></a>
+													<a
+														href="{% url 'clubmember-edit' id=clubmember.ClubMemberId %}"
+														class="btn btn-secondary waves-effect waves-dark mr-1"
+														data-toggle="tooltip"
+														data-placement="bottom"
+														data-original-title="Update"
+														><i class="fa fa-edit"></i
+													></a>
+													{% if clubmember.MemberRole != "Club Admin" %}
+													<a
+														href="{% url 'clubmember-delete' %}"
+														class="btn btn-danger waves-effect waves-dark mr-1"
+														data-toggle="tooltip"
+														data-placement="bottom"
+														data-original-title="Delete"
+														name="delete"
+														data-id="{{clubmember.ClubMemberId}}"
+														data-name="{{clubmember.StudentId.StudentName}}"
+														><i class="fa fa-trash"></i
+													></a>
+													{% endif %}	
+                                                </p>
+											</div>
+                                        </div>
+									</div>
+									<div>
+										<ul
+											class="social-links text-center list-inline mb-0 p-3"
+										>
+											<li class="list-inline-item">
+												<a
+													title=""
+													data-placement="top"
+													data-toggle="tooltip"
+													class="tooltips"
+													href="#"
+													data-original-title="{{clubmember.StudentId.StudentAddress}}"
+													><i
+														class="mdi mdi-map-marker"
+													></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a
+													title=""
+													data-placement="top"
+													data-toggle="tooltip"
+													class="tooltips"
+													href="#"
+													data-original-title="{{clubmember.StudentId.StudentCity}}"
+													><i
+														class="mdi mdi-map-marker-radius"
+													></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a
+													title=""
+													data-placement="top"
+													data-toggle="tooltip"
+													class="tooltips"
+													href="#"
+													data-original-title="{{clubmember.StudentId.StudentPhoneNumber}}"
+													name="delete"
+													data-id="{{clubmember.ClubMemberId}}"
+													data-name="{{clubmember.StudentId.StudentName}}"
+													><i class="fa fa-phone"></i
+												></a>
+											</li>
+										</ul>
+									</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end wrapper -->
         <!-- jQuery  -->
         <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
         <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
@@ -115,8 +361,61 @@
         <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
         <!-- Datatable init js -->
         <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js' %}"></script>
         <!-- App js -->
         <script src="{% static 'admin_plugins/js/app.js' %}"></script>
-	</body>
-	<!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
+        <script>
+            $(document).ready(function () {
+                var alert = localStorage.getItem("delete");
+                var tab = localStorage.getItem("tab");
+                if (alert) {
+                    if (tab == "grid") {
+                        $("#details,a[data-id=details]").removeClass("active");
+                        $("#grid,a[data-id=grid]").addClass("active");
+                    }
+                    alertify.success(alert + " has been dismissed!");
+                    localStorage.clear();
+                }
+                $("a[name=delete]").click(function (e) {
+                    e.preventDefault();
+                    var url = $(this).attr("href");
+                    var clubmember_id = $(this).data("id");
+                    var clubmember_name = $(this).data("name");
+                    swal({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        type: "warning",
+                        showCancelButton: !0,
+                        confirmButtonClass: "btn btn-success",
+                        cancelButtonClass: "btn btn-danger m-l-10",
+                        confirmButtonText: "Yes, delete it!",
+                    }).then(function () {
+                        $.ajax({
+                            headers: { "X-CSRFToken": "{{csrf_token}}" },
+                            url: url,
+                            data: {
+                                clubmember_id: clubmember_id,
+                            },
+                            type: "post",
+                            success: function (data) {
+                                localStorage.setItem("delete", clubmember_name);
+                                localStorage.setItem(
+                                    "tab",
+                                    $("#tab li a.active").data("id")
+                                );
+                                location.reload();
+                            },
+                            error: function (response) {
+                                alertify.error(
+                                    "You can't dismiss " + clubmember_name
+                                );
+                            },
+                        });
+                    });
+                });
+            });
+        </script>
+    </body>
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
 </html>

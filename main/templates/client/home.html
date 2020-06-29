@@ -1,80 +1,175 @@
-{% load static %} 
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
-    
-<!-- Mirrored from zcube.in/eventes/index2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:40 GMT -->
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Home | eVentes</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
+    <!-- Mirrored from zcube.in/eventes/index2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:40 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>Home | eVentes</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="{% static 'client_plugins/img/favicon.png' %}"
+        />
         <!-- Place favicon.ico in the root directory -->
 
-		<!-- CSS here -->
-		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="{% static 'client_plugins/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/fontawesome/css/all.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/dripicons.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/slick.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/responsive.css' %}">
+        <!-- CSS here -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/bootstrap.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/animate.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/magnific-popup.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/fontawesome/css/all.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/dripicons.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/slick.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/default.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/style.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/responsive.css' %}"
+        />
+        <style>
+            /* width */
+            ::-webkit-scrollbar {
+                width: 10px;
+                background-color: #f5f5f5;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                background-color: #f5f5f5;
+                border-radius: 10px;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-color: #0652c5;
+                background-image: -webkit-linear-gradient(315deg, #0652c5 0%, #d4418e 74%);
+            }
+        </style>
     </head>
     <body>
         <!-- header -->
-        <header id="home" class="header-area">            
+        <header id="home" class="header-area">
             <div id="header-sticky" class="menu-area">
                 <div class="container">
                     <div class="second-menu">
                         <div class="row align-items-center">
                             <div class="col-xl-3 col-lg-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{% static 'client_plugins/img/logo/logo.png' %}" alt="logo"></a>
+                                    <a href="index.html"
+                                        ><img
+                                            src="{% static 'client_plugins/img/logo/logo.png' %}"
+                                            alt="logo"
+                                    /></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9">
-                                <div class="responsive"><i class="icon dripicons-align-right"></i></div>
-                                <div class="main-menu text-right text-xl-right pr-50">
+                                <div class="responsive">
+                                    <i class="icon dripicons-align-right"></i>
+                                </div>
+                                <div
+                                    class="main-menu text-center text-xl-center pr-50"
+                                >
                                     <nav id="mobile-menu">
                                         <ul>
                                             <li>
                                                 <a href="/">Home</a>
                                             </li>
                                             <li class="has-sub">
-												<a href="/club">Club</a>												
-											</li>
+                                                <a href="/club">Club</a>
+                                            </li>
                                             <li class="has-sub">
-												<a href="/event">Event</a>
-											</li>
+                                                <a href="/event">Event</a>
+                                            </li>
                                             <li class="has-sub">
-												<a href="/venue">Venue</a>
-											</li>
-                                            {% if request.user.is_authenticated  %}
-                                                <li class="has-sub"><a href="/student/form">Hello, {{request.user.first_name}}!</a>
-                                                    <ul>
-                                                        <li><a href="/club/form">Club Registration</a></li>
-                                                        <li><a href="{% url 'logout' %} ">Log out</a></li>
-                                                    </ul>
-                                                </li>
+                                                <a href="/venue">Venue</a>
+                                            </li>
+                                            <li>
+                                                <a href="/who-we-are"
+                                                    >Who we are?</a
+                                                >
+                                            </li>
+                                            <li>
+                                                <a href="/contactus"
+                                                    >Contact Us</a
+                                                >
+                                            </li>
+                                            {% if request.user.is_authenticated %}
+                                            <li class="has-sub">
+                                                <a href="/student/form"
+                                                    >Hello,
+                                                    {{request.user.first_name}}!</a
+                                                >
+                                                <ul>
+                                                    <li>
+                                                        <a href="/club/form"
+                                                            >Create Your Own Club!</a
+                                                        >
+                                                    </li>
+                                                    <li>
+                                                        <a
+                                                            href="{% url 'logout' %} "
+                                                            >Log out</a
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             {% else %}
-                                                <li class="has-sub"><a href="/student/form">Account</a>
-                                                    <ul>
-                                                        <li><a href="{% url 'login' %}">Log in</a></li>
-                                                        <li><a href="{% url 'registration' %}">Register</a></li>
-                                                    </ul>
-                                                </li>
+                                            <li class="has-sub">
+                                                <a href="/student/form"
+                                                    >Account</a
+                                                >
+                                                <ul>
+                                                    <li>
+                                                        <a
+                                                            href="{% url 'login' %}"
+                                                            >Log in</a
+                                                        >
+                                                    </li>
+                                                    <li>
+                                                        <a
+                                                            href="{% url 'registration' %}"
+                                                            >Register</a
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             {% endif %}
-                                            <li>
-                                                <a href="/whoweare">Who we are?</a>
-                                            </li>
-                                            <li>
-                                                <a href="/contactus">Contact Us</a>
-                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -88,29 +183,85 @@
         <!-- main-area -->
         <main>
             <!-- slider-area -->
-            <section id="parallax" class="slider-area slider-bg second-slider-bg slider-bg2 d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/bg-events.jpg' %})">
-                <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
-                <div class="slider-shape ss-two layer" data-depth="0.30"><img src="{% static 'client_plugins/img/doddle_8.png' %}" alt="shape"></div>
-                <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
-                <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
-                
+            <section
+                id="parallax"
+                class="slider-area slider-bg second-slider-bg slider-bg2 d-flex align-items-center justify-content-center fix"
+                style="
+                    background-image: url({% static 'client_plugins/img/bg-events.jpg' %});
+                "
+            >
+                <div class="slider-shape ss-one layer" data-depth="0.10">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_6.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-two layer" data-depth="0.30">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_8.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-three layer" data-depth="0.40">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_9.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-four layer" data-depth="0.60">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_7.png' %}"
+                        alt="shape"
+                    />
+                </div>
+
                 <div class="slider-active">
                     <div class="single-slider">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <div class="slider-content second-slider-content">
-										<h2 data-animation="fadeInUp animated" data-delay=".4s">eVentes</h2> 
-                                        <ul data-animation="fadeInUp animated" data-delay=".2s">
-											<p><i class="fas fa-map-marker-alt pr-2 mb-20"></i> Survey No, 124, Paud Rd, Kothrud, Pune, Maharashtra - 411038</p>
-											<p><i class="far fa-clock pr-2 mb-20"></i>  8.00 AM - 5.30 PM</p>
-                                            <p><i class="fal fa-phone pr-2"></i>  +91 7874-987-797 </p>
+                                    <div
+                                        class="slider-content second-slider-content"
+                                    >
+                                        <h2
+                                            data-animation="fadeInUp animated"
+                                            data-delay=".4s"
+                                        >
+                                            eVentes
+                                        </h2>
+                                        <ul
+                                            data-animation="fadeInUp animated"
+                                            data-delay=".2s"
+                                        >
                                             <p>
-                                                <a href="/student/form" class="btn mt-20"><i class="far fa-user"></i> Sign up Student</a>&nbsp;&nbsp;&nbsp;
-                                                <a href="/club/form" class="btn mt-20"><i class="far fa-cube"></i> Sign up Club</a>
+                                                <i
+                                                    class="fas fa-map-marker-alt pr-2 mb-20"
+                                                ></i>
+                                                Survey No, 124, Paud Rd,
+                                                Kothrud, Pune, Maharashtra -
+                                                411038
                                             </p>
-										</ul>
-                                        
+                                            <p>
+                                                <i
+                                                    class="far fa-clock pr-2 mb-20"
+                                                ></i>
+                                                8.00 AM - 5.30 PM
+                                            </p>
+                                            <p>
+                                                <i
+                                                    class="fal fa-phone pr-2"
+                                                ></i>
+                                                +91 7874-987-797
+                                            </p>
+                                            <p>
+                                                <a
+                                                    href="/student/form"
+                                                    class="btn mt-20"
+                                                    ><i class="far fa-user"></i>
+                                                    Join Us</a
+                                                >
+                                            </p>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -119,220 +270,552 @@
                 </div>
             </section>
             <!-- slider-area-end -->
-            
+
             <!-- team-area -->
             <div class="event fix pt-120 pb-120">
-                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Event</h2></div>
+                <div
+                    class="section-t team-t paroller"
+                    data-paroller-factor="0.15"
+                    data-paroller-factor-lg="0.15"
+                    data-paroller-factor-md="0.15"
+                    data-paroller-factor-sm="0.15"
+                    data-paroller-type="foreground"
+                    data-paroller-direction="horizontal"
+                >
+                    <h2>Event</h2>
+                </div>
                 <div class="row justify-content-center">
-                           <div class="col-xl-6 col-lg-8">
-                               <div class="section-title text-center mb-80">
-                                   <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Event</span>
-                                   <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Event On Trend</h2>
-                               </div>
-                           </div>
-                       </div>
-                   <div class="container">
-                   <div class="row">
-                       <div class="col-lg-12 ">				
-                           <nav class="wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
-                              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                 <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#one" role="tab" aria-selected="true">
-                                 <img src="{% static 'client_plugins/img/t-icon.png' %}" alt="img" class="drk-icon">		
-                                 <img src="{% static 'client_plugins/img/t-w-icon1.png' %}" alt="img" class="lgt-icon">  
-                                 <div class="nav-content">
-                                     <strong>First Day</strong>
-                                     <span>{{first}}</span>
-                                 </div>
-                                 </a>
-                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#two" role="tab" aria-selected="false"><img src="{% static 'client_plugins/img/t-icon.png' %}" alt="img" class="drk-icon">		
-                                 <img src="{% static 'client_plugins/img/t-w-icon1.png' %}" alt="img" class="lgt-icon"> 
-                                 <div class="nav-content">
-                                     <strong>Second Day</strong>
-                                     <span>{{second}}</span>
-                                 </div>
-                                 </a>
-                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#three" role="tab" aria-selected="false"><img src="{% static 'client_plugins/img/t-icon.png' %}" alt="img" class="drk-icon">		
-                                 <img src="{% static 'client_plugins/img/t-w-icon1.png' %}" alt="img" class="lgt-icon"> 
-                                 <div class="nav-content">
-                                     <strong>Third Day</strong>
-                                     <span>{{third}}</span>
-                                 </div>
-                                 </a>
-                                 <a class="nav-item nav-link" id="nav-contact-tab2" data-toggle="tab" href="#four" role="tab" aria-selected="false"><img src="{% static 'client_plugins/img/t-icon.png' %}" alt="img" class="drk-icon">		
-                                 <img src="{% static 'client_plugins/img/t-w-icon1.png' %}" alt="img" class="lgt-icon"> 
-                                 <div class="nav-content">
-                                     <strong>Fourth Day</strong>
-                                     <span>{{fourth}}</span>
-                                 </div>
-                                 </a>
-                              </div>
-                           </nav>
-                           <div class="tab-content py-3 px-3 px-sm-0 wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s" id="nav-tabContent">
-                              <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="nav-home-tab">
-                                 <!-- row loop -->
-                                 {% for one in first_event_data %}
-                                 <div class="row mb-30">
-                                    <div class="col-lg-2">
-                                       <div class="user">
-                                           <div class="title">  
-                                               <img src="{{one.EventImage}}" alt="img">							  
-                                              <h5>{{one.title}}</h5>
-                                           </div>
-                                           <ul>
-                                          <li><i class="fal fa-coffee"></i>{{one.EventType}}</li>
-                                          <li><i class="fal fa-video"></i>{{one.EventEligibility}}</li>
-                                       </ul>
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-10">
-                                       <div class="event-list-content fix">
-                                          <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-                                             <li><i class="fas fa-map-marker-alt"></i>{{one.VenueId.VenueLocation}}</li>
-                                             <li><i class="far fa-clock"></i> {{one.EventStartTime}} To {{one.EventEndTime}}</li>
-                                          </ul>
-                                          <h2>{{one.title}}</h2>
-                                          <p>{{one.EventDescription}}</p>
-                                          <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-                                          <a href="#" class="btn mt-20">Read More</a>
-                                          <div class="crical"><i class="fal fa-video"></i> </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 {% endfor %}
-                                 <!-- row loop -->
-                                 
-                              </div>
-                              <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                 <!-- row loop -->
-                                 {% for two in second_event_data %}
-                                 <div class="row mb-30">
-                                     <div class="col-lg-2">
-                                        <div class="user">
-                                            <div class="title">  
-                                                <img src="{{two.EventImage}}" alt="img">							  
-                                               <h5>{{two.title}}</h5>
-                                            </div>
-                                            <ul>
-                                           <li><i class="fal fa-coffee"></i>{{two.EventType}}</li>
-                                           <li><i class="fal fa-video"></i>{{two.EventEligibility}}</li>
-                                        </ul>
-                                        </div>
-                                     </div>
-                                     <div class="col-lg-10">
-                                        <div class="event-list-content fix">
-                                           <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-                                              <li><i class="fas fa-map-marker-alt"></i>{{two.VenueId.VenueLocation}}</li>
-                                              <li><i class="far fa-clock"></i> {{two.EventStartTime}} To {{two.EventEndTime}}</li>
-                                           </ul>
-                                           <h2>{{two.title}}</h2>
-                                           <p>{{two.EventDescription}}</p>
-                                           <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-                                           <a href="#" class="btn mt-20">Read More</a>
-                                           <div class="crical"><i class="fal fa-video"></i> </div>
-                                        </div>
-                                     </div>
-                                  </div>
-                                 {% endfor %}
-                                 <!-- row loop -->
-                              </div>
-                              <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                 <!-- row loop -->
-                                 {% for three in third_event_data %}
-                                 <div class="row mb-30">
-                                     <div class="col-lg-2">
-                                        <div class="user">
-                                            <div class="title">  
-                                                <img src="{{three.EventImage}}" alt="img">							  
-                                               <h5>{{three.title}}</h5>
-                                            </div>
-                                            <ul>
-                                           <li><i class="fal fa-coffee"></i>{{three.EventType}}</li>
-                                           <li><i class="fal fa-video"></i>{{three.EventEligibility}}</li>
-                                        </ul>
-                                        </div>
-                                     </div>
-                                     <div class="col-lg-10">
-                                        <div class="event-list-content fix">
-                                           <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-                                              <li><i class="fas fa-map-marker-alt"></i>{{three.VenueId.VenueLocation}}</li>
-                                              <li><i class="far fa-clock"></i> {{three.EventStartTime}} To {{three.EventEndTime}}</li>
-                                           </ul>
-                                           <h2>{{three.title}}</h2>
-                                           <p>{{three.EventDescription}}</p>
-                                           <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-                                           <a href="#" class="btn mt-20">Read More</a>
-                                           <div class="crical"><i class="fal fa-video"></i> </div>
-                                        </div>
-                                     </div>
-                                  </div>
-                                 {% endfor %}
-                                 <!-- row loop -->
-                              </div>
-                              <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                 <!-- row loop -->
-                                 {% for four in forth_event_data %}
-                                 <div class="row mb-30">
-                                     <div class="col-lg-2">
-                                        <div class="user">
-                                            <div class="title">  
-                                                <img src="{{four.EventImage}}" alt="img">							  
-                                               <h5>{{four.title}}</h5>
-                                            </div>
-                                            <ul>
-                                           <li><i class="fal fa-coffee"></i>{{four.EventType}}</li>
-                                           <li><i class="fal fa-video"></i>{{four.EventEligibility}}</li>
-                                        </ul>
-                                        </div>
-                                     </div>
-                                     <div class="col-lg-10">
-                                        <div class="event-list-content fix">
-                                           <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-                                              <li><i class="fas fa-map-marker-alt"></i>{{four.VenueId.VenueLocation}}</li>
-                                              <li><i class="far fa-clock"></i> {{four.EventStartTime}} To {{three.EventEndTime}}</li>
-                                           </ul>
-                                           <h2>{{four.title}}</h2>
-                                           <p>{{four.EventDescription}}</p>
-                                           <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-                                           <a href="#" class="btn mt-20">Read More</a>
-                                           <div class="crical"><i class="fal fa-video"></i> </div>
-                                        </div>
-                                     </div>
-                                  </div>
-                                 {% endfor %}
-                                 <!-- row loop -->
-                              </div>
-                           </div>
+                    <div class="col-xl-6 col-lg-8">
+                        <div class="section-title text-center mb-80">
+                            <span
+                                class="wow fadeInUp animated"
+                                data-animation="fadeInUp animated"
+                                data-delay=".2s"
+                                >Event</span
+                            >
+                            <h2
+                                class="wow fadeInUp animated"
+                                data-animation="fadeInUp animated"
+                                data-delay=".2s"
+                            >
+                                Event On Trend
+                            </h2>
                         </div>
-                  <div class="col-lg-12 justify-content-center text-center">
-                   <a href="#" class="btn mt-20 mr-10">More Program  +</a>
-                  </div>
-                  </div>
-               </div>
-               </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <nav
+                                class="wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                            >
+                                <div
+                                    class="nav nav-tabs nav-fill"
+                                    id="nav-tab"
+                                    role="tablist"
+                                >
+                                    <a
+                                        class="nav-item nav-link active show"
+                                        id="nav-home-tab"
+                                        data-toggle="tab"
+                                        href="#one"
+                                        role="tab"
+                                        aria-selected="true"
+                                    >
+                                        <img
+                                            src="{% static 'client_plugins/img/t-icon.png' %}"
+                                            alt="img"
+                                            class="drk-icon"
+                                        />
+                                        <img
+                                            src="{% static 'client_plugins/img/t-w-icon1.png' %}"
+                                            alt="img"
+                                            class="lgt-icon"
+                                        />
+                                        <div class="nav-content">
+                                            <strong>First Day</strong>
+                                            <span>{{first}}</span>
+                                        </div>
+                                    </a>
+                                    <a
+                                        class="nav-item nav-link"
+                                        id="nav-profile-tab"
+                                        data-toggle="tab"
+                                        href="#two"
+                                        role="tab"
+                                        aria-selected="false"
+                                        ><img
+                                            src="{% static 'client_plugins/img/t-icon.png' %}"
+                                            alt="img"
+                                            class="drk-icon"
+                                        />
+                                        <img
+                                            src="{% static 'client_plugins/img/t-w-icon1.png' %}"
+                                            alt="img"
+                                            class="lgt-icon"
+                                        />
+                                        <div class="nav-content">
+                                            <strong>Second Day</strong>
+                                            <span>{{second}}</span>
+                                        </div>
+                                    </a>
+                                    <a
+                                        class="nav-item nav-link"
+                                        id="nav-contact-tab"
+                                        data-toggle="tab"
+                                        href="#three"
+                                        role="tab"
+                                        aria-selected="false"
+                                        ><img
+                                            src="{% static 'client_plugins/img/t-icon.png' %}"
+                                            alt="img"
+                                            class="drk-icon"
+                                        />
+                                        <img
+                                            src="{% static 'client_plugins/img/t-w-icon1.png' %}"
+                                            alt="img"
+                                            class="lgt-icon"
+                                        />
+                                        <div class="nav-content">
+                                            <strong>Third Day</strong>
+                                            <span>{{third}}</span>
+                                        </div>
+                                    </a>
+                                    <a
+                                        class="nav-item nav-link"
+                                        id="nav-contact-tab2"
+                                        data-toggle="tab"
+                                        href="#four"
+                                        role="tab"
+                                        aria-selected="false"
+                                        ><img
+                                            src="{% static 'client_plugins/img/t-icon.png' %}"
+                                            alt="img"
+                                            class="drk-icon"
+                                        />
+                                        <img
+                                            src="{% static 'client_plugins/img/t-w-icon1.png' %}"
+                                            alt="img"
+                                            class="lgt-icon"
+                                        />
+                                        <div class="nav-content">
+                                            <strong>Fourth Day</strong>
+                                            <span>{{fourth}}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </nav>
+                            <div
+                                class="tab-content py-3 px-3 px-sm-0 wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                                id="nav-tabContent"
+                            >
+                                <div
+                                    class="tab-pane fade active show"
+                                    id="one"
+                                    role="tabpanel"
+                                    aria-labelledby="nav-home-tab"
+                                >
+                                    <!-- row loop -->
+                                    {% for one in first_event_data %}
+                                    <div class="row mb-30">
+                                        <div class="col-lg-2">
+                                            <div class="user">
+                                                <div class="title">
+                                                    <img
+                                                        src="{{one.EventImage}}"
+                                                        alt="img"
+                                                    />
+                                                    <h5>{{one.title}}</h5>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-coffee"
+                                                        ></i
+                                                        >{{one.EventType}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-video"
+                                                        ></i
+                                                        >{{one.EventEligibility}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="event-list-content fix">
+                                                <ul
+                                                    data-animation="fadeInUp animated"
+                                                    data-delay=".2s"
+                                                    style="
+                                                        animation-delay: 0.2s;
+                                                    "
+                                                    class=""
+                                                >
+                                                    <li>
+                                                        <i
+                                                            class="fas fa-map-marker-alt"
+                                                        ></i
+                                                        >{{one.VenueId.VenueLocation}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="far fa-clock"
+                                                        ></i>
+                                                        {{one.EventStartTime}}
+                                                        To {{one.EventEndTime}}
+                                                    </li>
+                                                </ul>
+                                                <h2>{{one.title}}</h2>
+                                                <p>{{one.EventDescription}}</p>
+                                                <a
+                                                    href="#"
+                                                    class="btn mt-20 mr-10"
+                                                    ><i
+                                                        class="far fa-ticket-alt"
+                                                    ></i>
+                                                    Buy Ticket</a
+                                                >
+                                                <a href="#" class="btn mt-20"
+                                                    >Read More</a
+                                                >
+                                                <div class="crical">
+                                                    <i class="fal fa-video"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- row loop -->
+                                </div>
+                                <div
+                                    class="tab-pane fade"
+                                    id="two"
+                                    role="tabpanel"
+                                    aria-labelledby="nav-profile-tab"
+                                >
+                                    <!-- row loop -->
+                                    {% for two in second_event_data %}
+                                    <div class="row mb-30">
+                                        <div class="col-lg-2">
+                                            <div class="user">
+                                                <div class="title">
+                                                    <img
+                                                        src="{{two.EventImage}}"
+                                                        alt="img"
+                                                    />
+                                                    <h5>{{two.title}}</h5>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-coffee"
+                                                        ></i
+                                                        >{{two.EventType}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-video"
+                                                        ></i
+                                                        >{{two.EventEligibility}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="event-list-content fix">
+                                                <ul
+                                                    data-animation="fadeInUp animated"
+                                                    data-delay=".2s"
+                                                    style="
+                                                        animation-delay: 0.2s;
+                                                    "
+                                                    class=""
+                                                >
+                                                    <li>
+                                                        <i
+                                                            class="fas fa-map-marker-alt"
+                                                        ></i
+                                                        >{{two.VenueId.VenueLocation}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="far fa-clock"
+                                                        ></i>
+                                                        {{two.EventStartTime}}
+                                                        To {{two.EventEndTime}}
+                                                    </li>
+                                                </ul>
+                                                <h2>{{two.title}}</h2>
+                                                <p>{{two.EventDescription}}</p>
+                                                <a
+                                                    href="#"
+                                                    class="btn mt-20 mr-10"
+                                                    ><i
+                                                        class="far fa-ticket-alt"
+                                                    ></i>
+                                                    Buy Ticket</a
+                                                >
+                                                <a href="#" class="btn mt-20"
+                                                    >Read More</a
+                                                >
+                                                <div class="crical">
+                                                    <i class="fal fa-video"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- row loop -->
+                                </div>
+                                <div
+                                    class="tab-pane fade"
+                                    id="three"
+                                    role="tabpanel"
+                                    aria-labelledby="nav-contact-tab"
+                                >
+                                    <!-- row loop -->
+                                    {% for three in third_event_data %}
+                                    <div class="row mb-30">
+                                        <div class="col-lg-2">
+                                            <div class="user">
+                                                <div class="title">
+                                                    <img
+                                                        src="{{three.EventImage}}"
+                                                        alt="img"
+                                                    />
+                                                    <h5>{{three.title}}</h5>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-coffee"
+                                                        ></i
+                                                        >{{three.EventType}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-video"
+                                                        ></i
+                                                        >{{three.EventEligibility}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="event-list-content fix">
+                                                <ul
+                                                    data-animation="fadeInUp animated"
+                                                    data-delay=".2s"
+                                                    style="
+                                                        animation-delay: 0.2s;
+                                                    "
+                                                    class=""
+                                                >
+                                                    <li>
+                                                        <i
+                                                            class="fas fa-map-marker-alt"
+                                                        ></i
+                                                        >{{three.VenueId.VenueLocation}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="far fa-clock"
+                                                        ></i>
+                                                        {{three.EventStartTime}}
+                                                        To
+                                                        {{three.EventEndTime}}
+                                                    </li>
+                                                </ul>
+                                                <h2>{{three.title}}</h2>
+                                                <p>
+                                                    {{three.EventDescription}}
+                                                </p>
+                                                <a
+                                                    href="#"
+                                                    class="btn mt-20 mr-10"
+                                                    ><i
+                                                        class="far fa-ticket-alt"
+                                                    ></i>
+                                                    Buy Ticket</a
+                                                >
+                                                <a href="#" class="btn mt-20"
+                                                    >Read More</a
+                                                >
+                                                <div class="crical">
+                                                    <i class="fal fa-video"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- row loop -->
+                                </div>
+                                <div
+                                    class="tab-pane fade"
+                                    id="four"
+                                    role="tabpanel"
+                                    aria-labelledby="nav-contact-tab"
+                                >
+                                    <!-- row loop -->
+                                    {% for four in forth_event_data %}
+                                    <div class="row mb-30">
+                                        <div class="col-lg-2">
+                                            <div class="user">
+                                                <div class="title">
+                                                    <img
+                                                        src="{{four.EventImage}}"
+                                                        alt="img"
+                                                    />
+                                                    <h5>{{four.title}}</h5>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-coffee"
+                                                        ></i
+                                                        >{{four.EventType}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="fal fa-video"
+                                                        ></i
+                                                        >{{four.EventEligibility}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="event-list-content fix">
+                                                <ul
+                                                    data-animation="fadeInUp animated"
+                                                    data-delay=".2s"
+                                                    style="
+                                                        animation-delay: 0.2s;
+                                                    "
+                                                    class=""
+                                                >
+                                                    <li>
+                                                        <i
+                                                            class="fas fa-map-marker-alt"
+                                                        ></i
+                                                        >{{four.VenueId.VenueLocation}}
+                                                    </li>
+                                                    <li>
+                                                        <i
+                                                            class="far fa-clock"
+                                                        ></i>
+                                                        {{four.EventStartTime}}
+                                                        To
+                                                        {{three.EventEndTime}}
+                                                    </li>
+                                                </ul>
+                                                <h2>{{four.title}}</h2>
+                                                <p>{{four.EventDescription}}</p>
+                                                <a
+                                                    href="#"
+                                                    class="btn mt-20 mr-10"
+                                                    ><i
+                                                        class="far fa-ticket-alt"
+                                                    ></i>
+                                                    Buy Ticket</a
+                                                >
+                                                <a href="#" class="btn mt-20"
+                                                    >Read More</a
+                                                >
+                                                <div class="crical">
+                                                    <i class="fal fa-video"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- row loop -->
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-12 justify-content-center text-center"
+                        >
+                            <a href="#" class="btn mt-20 mr-10"
+                                >More Program +</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- team-area-end -->
-             <!-- counter-area -->
-            <div class="counter-area pt-120 pb-120" style="background-image:url({% static 'client_plugins/img/counter_bg.jpg' %});background-size: cover;">
+            <!-- counter-area -->
+            <div
+                class="counter-area pt-120 pb-120"
+                style="
+                    background-image: url({% static 'client_plugins/img/counter_bg.jpg' %});
+                    background-size: cover;
+                "
+            >
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
-                           <div class="about-title second-atitle">							
-                                    <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Why Join Ovent</span>
-                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Join us at 110th oVent Expo.</h2>
-                                    <h5 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Shift your perspective on digital business</h5>
-                                </div>
-								<ul class="wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
-									<li>
-										<img src="{% static 'client_plugins/img/calendar.png' %}" alt="img"> 
-										<span>Study in a newly-refreshed campus located in the heart of Berlin, Europe's start-up capital. Berlin is a fantastic place to study as there</span>
-									</li>
-									<li>
-										<img src="{% static 'client_plugins/img/comments.png' %}" alt="img"> 
-										<span>Study in a newly-refreshed campus located in the heart of Berlin, Europe's start-up capital. Berlin is a fantastic place to study as there</span>
-									</li>
-								</ul>
+                            <div class="about-title second-atitle">
+                                <span
+                                    class="wow fadeInUp animated"
+                                    data-animation="fadeInUp animated"
+                                    data-delay=".2s"
+                                    >Why Join Ovent</span
+                                >
+                                <h2
+                                    class="wow fadeInUp animated"
+                                    data-animation="fadeInUp animated"
+                                    data-delay=".2s"
+                                >
+                                    Join us at 110th oVent Expo.
+                                </h2>
+                                <h5
+                                    class="wow fadeInUp animated"
+                                    data-animation="fadeInUp animated"
+                                    data-delay=".2s"
+                                >
+                                    Shift your perspective on digital business
+                                </h5>
+                            </div>
+                            <ul
+                                class="wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                            >
+                                <li>
+                                    <img
+                                        src="{% static 'client_plugins/img/calendar.png' %}"
+                                        alt="img"
+                                    />
+                                    <span
+                                        >Study in a newly-refreshed campus
+                                        located in the heart of Berlin, Europe's
+                                        start-up capital. Berlin is a fantastic
+                                        place to study as there</span
+                                    >
+                                </li>
+                                <li>
+                                    <img
+                                        src="{% static 'client_plugins/img/comments.png' %}"
+                                        alt="img"
+                                    />
+                                    <span
+                                        >Study in a newly-refreshed campus
+                                        located in the heart of Berlin, Europe's
+                                        start-up capital. Berlin is a fantastic
+                                        place to study as there</span
+                                    >
+                                </li>
+                            </ul>
                         </div>
                         <div class="col-lg-6 col-sm-6">
-						 <div class="single-counter text-center mb-30 cr1">
+                            <div class="single-counter text-center mb-30 cr1">
                                 <div class="counter p-relative">
                                     <span class="count">20</span>
                                     <small>+</small>
@@ -346,63 +829,86 @@
                                 </div>
                                 <p>Cool Speakers</p>
                             </div>
-							<div class="single-counter text-center mb-30 cr3">
+                            <div class="single-counter text-center mb-30 cr3">
                                 <div class="counter p-relative">
                                     <span class="count">5</span>
                                     <small>+</small>
                                 </div>
                                 <p>Happy People</p>
                             </div>
-							<div class="cr4"></div>
-							<div class="cr5"></div>
-							<div class="cr6"></div>
-							
-                        </div>                        
+                            <div class="cr4"></div>
+                            <div class="cr5"></div>
+                            <div class="cr6"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- counter-area-end -->
-			<!-- event -->
-            
+            <!-- event -->
+
             <!-- counter-area-end -->
-			 
+
             <!-- Sponsors-area -->
             <section class="sponsors services-bg pt-113 fix">
                 <div class="container">
-                    <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Club</h2></div>
+                    <div
+                        class="section-t team-t paroller"
+                        data-paroller-factor="0.15"
+                        data-paroller-factor-lg="0.15"
+                        data-paroller-factor-md="0.15"
+                        data-paroller-factor-sm="0.15"
+                        data-paroller-type="foreground"
+                        data-paroller-direction="horizontal"
+                    >
+                        <h2>Club</h2>
+                    </div>
                     <div class="circal1 item-zoom-inout"></div>
-				<div class="circal2 item-zoom-inout"></div>
-				<div class="circal3 item-zoom-inout"></div>
-				<div class="circal4 item-zoom-inout"></div>
+                    <div class="circal2 item-zoom-inout"></div>
+                    <div class="circal3 item-zoom-inout"></div>
+                    <div class="circal4 item-zoom-inout"></div>
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
                             <div class="section-title text-center mb-80">
-                                <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Happy clubs</h2>
+                                <h2
+                                    class="wow fadeInUp animated"
+                                    data-animation="fadeInUp animated"
+                                    data-delay=".2s"
+                                >
+                                    Happy clubs
+                                </h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 text-center">
-                            <ul class="wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s">
+                            <ul
+                                class="wow fadeInDown animated"
+                                data-animation="fadeInDown animated"
+                                data-delay=".2s"
+                            >
                                 {% for club in club_data %}
-                                <li><a href="#"><img src="{{club.ClubImage}}" class="clubdisplay" alt="img"></a></li>
+                                <li>
+                                    <a href="#"
+                                        ><img
+                                            src="{{club.ClubImage}}"
+                                            class="clubdisplay"
+                                            alt="img"
+                                    /></a>
+                                </li>
                                 {% endfor %}
-							</ul>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- Sponsors-area-end -->
-           
         </main>
         <!-- main-area-end -->
         <!-- footer -->
         {% include 'client/footer.html' %}
         <!-- footer-end -->
 
-
-
-		<!-- JS here -->
+        <!-- JS here -->
         <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/popper.min.js' %}"></script>
@@ -419,10 +925,10 @@
         <script src="{% static 'client_plugins/js/jquery.scrollUp.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/jquery.magnific-popup.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/element-in-view.js' %}"></script>
-		<script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/imagesloaded.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/main.js' %}"></script>
     </body>
 
-<!-- Mirrored from zcube.in/eventes/index2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
+    <!-- Mirrored from zcube.in/eventes/index2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
 </html>

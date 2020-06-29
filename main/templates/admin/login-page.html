@@ -1,64 +1,169 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-	<!-- Mirrored from themesbrand.com/foxia/blue/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:57:08 GMT -->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
-		<title>Login | eVentes</title>
-		<meta content="Admin Dashboard" name="description">
-		<meta content="Themesbrand" name="author">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- App Icons -->
-		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
-		<!-- App css -->
-		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
-		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<!-- Loader -->
-		<div id="preloader">
-			<div id="status">
-				<div class="spinner"></div>
-			</div>
-		</div>
-		<!-- Begin page -->
-		<div class="accountbg"></div>
-		<div class="wrapper-page">
-			<div class="card">
-				<div class="card-body">
-					<div class="text-center">
-						<a href="index.html" class="logo-admin"><img src="{% static 'admin_plugins/images/loginlogo.png' %}" height="26" alt="logo"></a>
-					</div>
-					<div class="p-3">
-					{% for message in messages%}
-						<p> {{message}} </p>
-					{% endfor %}
-						<form class="form-horizontal m-t-10" action="{% url 'adminlogin' %}" method="POST" enctype="multipart/form-data">
-							{% csrf_token %}
-							<div class="form-group"><label for="username">Username</label> <input type="text" class="form-control" name="username" id="username" placeholder="Enter username"></div>
-							<div class="form-group"><label for="userpassword">Password</label> <input type="password" class="form-control" name="userpassword" id="userpassword" placeholder="Enter password"></div>
-							<div class="form-group row m-t-30">
-								<div class="col-sm-6">
-									<div class="col-12 text-center"><a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a></div>
-								</div>
-								<div class="col-sm-6 text-right"><button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button></div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="m-t-40 text-center text-white-50">
-				<p>Don't have an account ? <a href="{% url 'registration' %}" class="font-600 text-white">Signup Now</a></p>
-			</div>
-		</div>
-		<!-- jQuery  --><script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
-		<script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
-		<script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script><script src="{% static 'admin_plugins/js/waves.js' %}"></script><script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
-		<!-- App js -->
-		<script src="{% static 'admin_plugins/js/app.js' %}"></script>
-	</body>
-	<!-- Mirrored from themesbrand.com/foxia/blue/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:57:08 GMT -->
+    <!-- Mirrored from themesbrand.com/foxia/blue/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:57:08 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"
+        />
+        <title>Login | eVentes</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App Icons -->
+        <link
+            rel="shortcut icon"
+            href="{% static 'admin_plugins/images/favicon.png' %}"
+        />
+        <!-- App css -->
+        <link
+            href="{% static 'admin_plugins/css/bootstrap.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/icons.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/style.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <!-- Loader -->
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner"></div>
+            </div>
+        </div>
+        <!-- Begin page -->
+        <div class="accountbg"></div>
+        <div class="wrapper-page">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <a href="index.html" class="logo-admin"
+                            ><img
+                                src="{% static 'admin_plugins/images/loginlogo.png' %}"
+                                height="26"
+                                alt="logo"
+                        /></a>
+                    </div>
+                    <div class="p-3">
+                        <form
+                            class="form-horizontal m-t-10"
+                            action="{% url 'adminlogin' %}"
+                            method="POST"
+                            enctype="multipart/form-data"
+                            id="form"
+                        >
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="username"
+                                    id="username"
+                                    placeholder="Enter username"
+                                    required
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="userpassword">Password</label>
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    name="userpassword"
+                                    id="userpassword"
+                                    placeholder="Enter password"
+                                    required
+                                />
+                            </div>
+                            <div class="form-group row m-t-30">
+                                <div class="col-sm-6">
+                                    <div class="col-12 text-center">
+                                        <a
+                                            name="reset"
+                                            href="{% url 'reset_password' %}"
+                                            class="text-muted"
+                                            ><i class="mdi mdi-lock"></i> Forgot
+                                            your password?</a
+                                        >
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <button
+                                        id="submit-btn"
+                                        class="btn btn-primary w-md waves-effect waves-light"
+                                        type="submit"
+                                    >
+                                        Log In
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/parsleyjs/parsley.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js'  %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                $("#form").parsley();
+                $("#submit-btn").click(function (e) {
+                    if ($("#form").parsley().isValid()) {
+                        e.preventDefault();
+                        var username = $("#username").val();
+                        var password = $("#userpassword").val();
+                        var csrfmiddlewaretoken = $(
+                            "[name='csrfmiddlewaretoken']"
+                        )
+                            .first()
+                            .val();
+                        var url = $("#form").data("url");
+                        $.ajax({
+                            url: url,
+                            data: {
+                                username: username,
+                                password: password,
+                                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                            },
+                            type: "post",
+                            success: function (response) {
+                                location.replace(response.url);
+                            },
+                            error: function (response) {
+                                alertify.error(
+                                    response["responseJSON"]["error"]
+                                );
+                            },
+                        });
+                    }
+                });
+                $("a[name=reset]").click(function (e) {
+                    e.preventDefault();
+                    var url = $(this).attr("href");
+                    localStorage.setItem("type", "admin");
+                    location.replace(url);
+                })
+            });
+        </script>
+    </body>
+    <!-- Mirrored from themesbrand.com/foxia/blue/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:57:08 GMT -->
 </html>
