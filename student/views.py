@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User, Group
 from myproject.customDecorators import *
+from employee.models import Employee
 
 # Create your views here.
 
@@ -68,8 +69,15 @@ def student_add(request):
 @authentication_check
 @user_authentication(allowed_users=['superAdmin', 'subAdmin'])
 def student_table(request):
-    student_data = Student.objects.all()
-    return render(request, 'admin/student-table.html', {'student_data': student_data})
+    uid=request.user.id
+    s = request.user.is_superuser
+    if s:
+        student_data = Student.objects.all().order_by('StudentId')
+        return render(request, 'admin/student-table.html', {'student_data': student_data})
+    else:
+        dname = Employee.objects.get(UserId=uid).DepartmentName_id
+        student_data = Student.objects.filter(DepartmentName_id=dname).order_by('StudentId')
+        return render(request, 'admin/student-table.html', {'student_data': student_data})
 
 
 @authentication_check
@@ -170,4 +178,6 @@ def student_update_approval_yes(request, id):
 @user_authentication(allowed_users=['superAdmin', 'subAdmin'])
 def student_update_approval_no(request, id):
     Student.objects.filter(pk=id).update(StudentStatus=False)
-    return redirect('/admin/employee/')
+    return redirect('/admin/student/')
+
+

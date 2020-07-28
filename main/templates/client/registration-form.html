@@ -127,7 +127,7 @@
                                 data-animation="fadeInLeft"
                                 data-delay=".2s"
                             >
-                                <h2>Register!</h2>
+                                <h2 style="font-size: 40px;">Register Here!</h2>
                                 <form
                                     id="form"
                                     action=""
@@ -353,22 +353,15 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button id="submit-btn" type="submit" class="btn">
+                                        <button id="submit-btn" type="submit" class="btn" style="margin-right: 20px;">
                                             Register
                                         </button>
+                                        <a class="btn" href="{% url 'login' %}">
+                                            Sign In
+                                        </a>
                                     </div>
                                 </form>
                                 <br />
-                                <div class="m-t-40 text-center text-white-50">
-                                    <p>
-                                        Already have an account ?
-                                        <a
-                                            href="{% url 'login' %}"
-                                            class="font-600 text-black"
-                                            >Sign In</a
-                                        >
-                                    </p>
-                                </div>
                                 <div class="m-t-40 text-right text-white-50">
                                     <p>
                                         Want to Checkout Website ?

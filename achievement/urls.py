@@ -9,4 +9,5 @@ urlpatterns = [
     path('admin/achiever/add/', views.achiever_add, name='achiever-add'),
     path('admin/achiever/', views.achiever_table, name='achiever-table'),
     path('admin/achiever/edit/<int:id>/', views.achiever_edit, name='achiever-edit'),
+    path('admin/achiever/delete/<int:id>/', views.achiever_delete, name='achiever-delete'),
 ]

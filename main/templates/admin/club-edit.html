@@ -51,16 +51,16 @@
 									{% for club in club_data %}
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Club Name</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{club.ClubName}}" type="text" name="txtfullname" id="txtfullname"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{club.ClubName}}" type="text" name="txtfullname" id="txtfullname"></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Club Type</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{club.ClubType}}" type="text" name="txtclubtype" id="txtclubtype"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{club.ClubType}}" type="text" name="txtclubtype" id="txtclubtype"></div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Department name</label>
 										<div class="col-sm-10">
-											<select class="form-control form-control-lg" name="dropdowndepartment" id="dropdowndepartment">
+											<select required class="form-control form-control-lg" name="dropdowndepartment" id="dropdowndepartment">
 												<option value="{{club.DepartmentName_id}}">{{club.DepartmentName_id}}</option>
 												{% endfor %}
 												{% for department in department_data %}
@@ -73,7 +73,7 @@
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Image</label>
 										<div class="col-sm-9 mt-3">
-											<input type="file" class="filestyle" name="txtimageurl" id="txtimageurl" data-buttonname="btn-primary">
+											<input required type="file" class="filestyle" name="txtimageurl" id="txtimageurl" data-buttonname="btn-primary">
 										</div>
 										<div class="col-sm-1">
 											<img class="d-flex mr-3 rounded-circle" src="{{club.ClubImage}}" alt="Not found" height="70"> 
@@ -81,23 +81,23 @@
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Facebook</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{club.FacebookLink}}" type="text" name="txtfacebooklink" id="txtfacebooklink"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{club.FacebookLink}}" type="text" name="txtfacebooklink" id="txtfacebooklink"></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Instagram</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{club.InstagramLink}}" type="text" name="txtinstagramlink" id="txtinstagramlink"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{club.InstagramLink}}" type="text" name="txtinstagramlink" id="txtinstagramlink"></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Twitter</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{club.InstagramLink}}" type="text" name="txttwitterlink" id="txttwitterlink"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{club.InstagramLink}}" type="text" name="txttwitterlink" id="txttwitterlink"></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Dribbble</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{club.DribbbleLink}}" type="text" name="txtdribbblelink" id="txtdribbblelink"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{club.DribbbleLink}}" type="text" name="txtdribbblelink" id="txtdribbblelink"></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Club Status</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{club.clubStatus}}" type="text" name="txtclubstatus" id="txtclubstatus"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{club.clubStatus}}" type="text" name="txtclubstatus" id="txtclubstatus"></div>
 									</div>
 									{% endfor %}
 									<div class="form-group row">

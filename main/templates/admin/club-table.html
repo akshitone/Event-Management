@@ -176,6 +176,36 @@
                                                     <td>
                                                         {{club.DepartmentName_id}}
                                                     </td>
+                                                    {% if request.user.is_superuser  %}
+                                                    <td>
+                                                        {% if club.clubStatus == 'True' %}
+                                                        <span
+                                                                class="badge badge-success p-1"
+                                                                >Active</span
+                                                            >
+                                                        {% else %}
+                                                        <span
+                                                                class="badge badge-secondary p-1"
+                                                                >Not
+                                                                active</span
+                                                            >
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if club.clubApproval == '1' %}
+                                                        <span
+                                                                class="badge badge-success p-1"
+                                                                >Approve</span
+                                                            >
+                                                        {% else %}
+                                                        <span
+                                                                class="badge badge-danger p-1"
+                                                                >Not
+                                                                approve</span
+                                                            >
+                                                        {% endif %}
+                                                    </td>
+                                                    {% else %}
                                                     <td>
                                                         {% if club.clubStatus == 'True' %}
                                                         <a
@@ -216,6 +246,7 @@
                                                         >
                                                         {% endif %}
                                                     </td>
+                                                    {% endif %}
                                                     <td>
                                                         <a
                                                             href="{% url 'club-view' name=club.ClubName %}"
@@ -227,6 +258,9 @@
                                                                 class="fa fa-eye"
                                                             ></i
                                                         ></a>
+                                                        {% if request.user.is_superuser  %}
+                                                        
+                                                        {% else %}
                                                         <a
                                                             href="{% url 'club-edit' name=club.ClubName %}"
                                                             class="btn btn-outline-pink waves-effect waves-light mr-1"
@@ -237,6 +271,7 @@
                                                                 class="fa fa-edit"
                                                             ></i
                                                         ></a>
+                                                        {% endif %}
                                                         <a
                                                             href="{% url 'club-delete' %}"
                                                             class="btn btn-outline-danger waves-effect waves-light mr-1"

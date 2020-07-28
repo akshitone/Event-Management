@@ -11,6 +11,10 @@ urlpatterns = [
         name='event-check'
     ),
     path('admin/event/', views.event_table, name='event-table'),
+    path('admin/event/view/<int:id>/', views.event_view, name='event-view'),
+    path('admin/event/edit/<int:id>/', views.event_edit, name='event-edit'),
+    path('admin/event/eventmember/', views.event_member_table, name='event-member-table'),
+    path('admin/event/eventmemberview/<int:id>/', views.event_member_view, name='event-member-view'),
     # path('admin/event/delete/<int:id>/', views.event_delete, name='event-delete'),
     # path('admin/event/edit/<int:id>/', views.event_edit, name='event-edit')
 ]

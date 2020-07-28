@@ -91,10 +91,10 @@
                         <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
                             <div class="single-team text-center pb-50 mb-30">
                                 <div class="team-thumb">
-                                    <a href="{% url 'event-view' id=event.id %}"><img src="{{event.EventImage}}" style="padding: 30px;" alt="img"></a>
+                                    <a href="{% url 'event-view-page' id=event.id %}"><img src="{{event.EventImage}}" style="padding: 30px;" alt="img"></a>
                                 </div>
                                 <div class="team-info">
-                                    <a href="{% url 'event-view' id=event.id %}"><h4>{{event.title}}</h4></a>
+                                    <a href="{% url 'event-view-page' id=event.id %}"><h4>{{event.title}}</h4></a>
                                     <strong>{{event.ClubName_id}}</strong>
                                     <div class="team-social pb-15 mb-15">
                                         <p class="eventdescription" style="color: #47759d;">{{event.EventDescription}}</p>

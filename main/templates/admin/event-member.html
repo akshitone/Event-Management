@@ -1,0 +1,251 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:50 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"
+        />
+        <title>Event Member Table | eVentes</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App Icons -->
+        <link
+            rel="shortcut icon"
+            href="{% static 'admin_plugins/images/favicon.png' %}"
+        />
+        <!-- Sweet Alert -->
+        <link
+            href="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- DataTables -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- Responsive datatable examples -->
+        <link
+            href="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- App css -->
+        <link
+            href="{% static 'admin_plugins/css/bootstrap.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/icons.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/style.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <!-- Loader -->
+        {% include 'admin/header.html' %}
+        <!-- End Navigation Bar-->
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-0">Event Member Table</h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Event Member</a>
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        Event Member Table
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+        </div>
+		</div>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title mb-3">
+                                    Event Member Table
+                                </h4>
+                                <table
+                                    id="datatable-buttons"
+                                    class="table table-hover dt-responsive nowrap"
+                                    style="
+                                        border-collapse: collapse;
+                                        border-spacing: 0;
+                                        width: 100%;
+                                    "
+                                >
+                                    <thead>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Student name</th>
+                                            <th>Event Name</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for event in event_member_data %}
+                                        <tr>
+                                            <td>
+                                                <img
+                                                    class="d-flex mr-3 rounded-circle"
+                                                    src="{{event.StudentId.StudentImage}}"
+                                                    alt="Not found"
+                                                    height="50"
+                                                />
+                                            </td>
+                                            <td>{{event.StudentId.StudentName}}</td>
+                                            <td>
+                                                {{event.EventId.title}}
+                                            </td>
+                                            <td>
+                                                {% if event.StudentId.StudentStatus == True %}
+                                                <span
+                                                        class="badge badge-success p-1"
+                                                        >Approve</span
+                                                    >
+                                                {% else %}
+                                                <span
+                                                        class="badge badge-danger p-1"
+                                                        >No Approve</span
+                                                    >
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <a
+                                                    href="{% url 'event-member-view' id=event.EventMemberId %}"
+                                                    class="btn btn-outline-primary waves-effect waves-light mr-1"
+                                                    data-toggle="tooltip"
+                                                    data-placement="bottom"
+                                                    data-original-title="View"
+                                                    ><i class="fa fa-eye"></i
+                                                ></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <!-- Required datatable js -->
+        <script src="{% static 'admin_plugins/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/jszip.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/buttons.colVis.min.js' %}"></script>
+        <!-- Responsive examples -->
+        <script src="{% static 'admin_plugins/plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/datatables/responsive.bootstrap4.min.js' %}"></script>
+        <!-- Datatable init js -->
+        <script src="{% static 'admin_plugins/pages/datatables.init.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+            // $(document).ready(function () {
+            //     var alert = localStorage.getItem("delete");
+            //     var tab = localStorage.getItem("tab");
+            //     if (alert) {
+            //         if (tab == "grid") {
+            //             $("#details,a[data-id=details]").removeClass("active");
+            //             $("#grid,a[data-id=grid]").addClass("active");
+            //         }
+            //         alertify.success(alert + " has been fired!");
+            //         localStorage.clear();
+            //     }
+            //     $("a[name=delete]").click(function (e) {
+            //         e.preventDefault();
+            //         var url = $(this).attr("href");
+            //         var employee_id = $(this).data("id");
+            //         var employee_name = $(this).data("name");
+            //         swal({
+            //             title: "Are you sure?",
+            //             text: "You won't be able to revert this!",
+            //             type: "warning",
+            //             showCancelButton: !0,
+            //             confirmButtonClass: "btn btn-success",
+            //             cancelButtonClass: "btn btn-danger m-l-10",
+            //             confirmButtonText: "Yes, delete it!",
+            //         }).then(function () {
+            //             $.ajax({
+            //                 headers: { "X-CSRFToken": "{{csrf_token}}" },
+            //                 url: url,
+            //                 data: {
+            //                     employee_id: employee_id,
+            //                 },
+            //                 type: "post",
+            //                 success: function (data) {
+            //                     localStorage.setItem("delete", employee_name);
+            //                     localStorage.setItem(
+            //                         "tab",
+            //                         $("#tab li a.active").data("id")
+            //                     );
+            //                     location.reload();
+            //                 },
+            //                 error: function (response) {
+            //                     alertify.error(
+            //                         "You can't fire " + employee_name
+            //                     );
+            //                 },
+            //             });
+            //         });
+            //     });
+            // });
+        </script>
+    </body>
+    <!-- Mirrored from themesbrand.com/foxia/blue/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:57 GMT -->
+</html>

@@ -68,8 +68,8 @@
 											<td> {{achiever.AchievementId.AchievementName}}</td>
 											<td> {{achiever.StudentId.StudentName}}  </td>
 											<td>
-												<a href="{% url 'achiever-edit' id=achiever.AchieverId %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
-												<a href="{% url 'achiever-edit' id=achiever.AchieverId %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+												<a href="{% url 'achiever-edit' id=achiever.id %}" class="btn btn-outline-pink waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Update"><i class="fa fa-edit"></i></a>
+												<a href="{% url 'achiever-delete' id=achiever.id %}" class="btn btn-outline-danger waves-effect waves-light mr-1" data-toggle="tooltip" data-placement="bottom" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 											</td>
 										</tr>
 										{% endfor %}

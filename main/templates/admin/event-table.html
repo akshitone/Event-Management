@@ -207,7 +207,7 @@
                                                     </td>
                                                     <td>
                                                         <a
-                                                            href=""
+                                                            href="{% url 'event-view' id=event.id %}"
                                                             class="btn btn-outline-primary waves-effect waves-light mr-1"
                                                             data-toggle="tooltip"
                                                             data-placement="bottom"
@@ -217,7 +217,7 @@
                                                             ></i
                                                         ></a>
                                                         <a
-                                                            href=""
+                                                            href="{% url 'event-edit' id=event.id %}"
                                                             class="btn btn-outline-pink waves-effect waves-light mr-1"
                                                             data-toggle="tooltip"
                                                             data-placement="bottom"

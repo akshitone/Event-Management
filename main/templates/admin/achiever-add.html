@@ -53,9 +53,9 @@
 										<label class="col-sm-2 col-form-label">Achievement name</label>
 										<div class="col-sm-10">
 											<select class="form-control form-control-lg" name="dropdownachievement">
-												<option>Select department name</option>
+												<option>Select Achievement</option>
 												{% for achievement in achievement_data %}
-												<option value="{{achievement.AchievementId}}"> {{achievement.AchievementName}} </option>
+												<option value="{{achievement.id}}"> {{achievement.AchievementName}} </option>
 												{% endfor %}
 											</select>
 										</div>
@@ -64,7 +64,7 @@
 										<label class="col-sm-2 col-form-label">Student name</label>
 										<div class="col-sm-10">
 											<select class="form-control form-control-lg" name="dropdownstudent">
-												<option>Select department name</option>
+												<option>Select Student name</option>
 												{% for student in student_data %}
 												<option value="{{student.StudentId}}"> {{student.StudentName}} </option>
 												{% endfor %}

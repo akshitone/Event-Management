@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import Event
+from .models import EventMember
 from club.models import Club
 from employee.models import Employee
 from venue.models import Venue
@@ -42,11 +43,11 @@ def event_add(request):
                     EventAmount=request.POST['txtamount']
                 )
                 event.save()
-                # notification = Notification(
-                #     NotificationTitle="New Event",
-                #     NotificationDescription=name + " Added by Akshit Mithaiwala"
-                # )
-                # notification.save()
+                notification = Notification(
+                    NotificationTitle="New Event",
+                    NotificationDescription=name + " Added by " + club.ClubName
+                )
+                notification.save()
             except:
                 return JsonResponse({'error': 'Something Went Wrong'}, status=500)
             return JsonResponse({'msg': 'New Event Has Been Created'}, status=200)
@@ -54,6 +55,14 @@ def event_add(request):
     club_data = Club.objects.all()
     venue_data = Venue.objects.all()
     return render(request, 'admin/event-add.html', {'club_data': club_data, 'venue_data': venue_data})
+
+def event_member_table(request):
+    event_member_data = EventMember.objects.all()
+    return render(request,'admin/event-member.html',{'event_member_data':event_member_data})
+
+def event_member_view(request, id):
+    event_member_data = EventMember.objects.filter(pk = id)
+    return render(request,'admin/event-member-view.html',{'id': id,'event_member_data':event_member_data})
 
 
 @authentication_check
@@ -133,3 +142,44 @@ def calendar(request):
     events = eval(serializers.serialize("json", event_data))
     events = list(map(lambda x: x['fields'], events))
     return render(request, 'admin/calendar.html', {'events': events})
+
+@authentication_check
+@user_authentication(allowed_users=['clubAdmin', 'superAdmin', 'subAdmin'])
+def event_view(request, id):
+    event_data = Event.objects.filter(pk=id)
+    return render(request, 'admin/event-view.html', {'id': id, 'event_data': event_data})
+
+@authentication_check
+@user_authentication(allowed_users=['clubAdmin','superAdmin','subAdmin'])
+def event_edit(request, id):
+    if request.method == 'POST':
+        EventImage  = request.FILES['txtimageurl']
+        filesystem     = FileSystemStorage()
+        filename       = filesystem.save(EventImage.name, EventImage)
+
+        emp = Event.objects.get(pk = id)
+        filesystem     = FileSystemStorage()
+        filesystem.delete(emp.EventImageName)
+
+        url            = filesystem.url(filename)
+        Event.objects.all().filter(pk=id).update(
+            title              = request.POST['txteventname'],
+            ClubName_id        = request.POST['dropdownclub'],
+            VenueId_id         = request.POST['dropdownvenue'],
+            EventType          = request.POST['eventtype'],
+            EventImageName     = filename,  
+            EventImage         = url, 
+            EventEligibility   = request.POST['eventeligibility'],
+            start              = request.POST['txtstartdate'],
+            end                = request.POST['txtenddate'],
+            EventStartTime     = request.POST['txtstarttime'],
+            EventEndTime       = request.POST['txtendtime'],
+            EventDescription   = request.POST['txtdescription'],
+            EventAmount        = request.POST['txtamount'],
+        )
+        return redirect('/admin/event/')
+    else:
+        event_data = Event.objects.filter(pk=id)
+        club_data = Club.objects.all()
+        venue_data = Venue.objects.all()
+        return render(request, 'admin/event-edit.html', {'id' : id, 'event_data': event_data, 'club_data': club_data, 'venue_data': venue_data})

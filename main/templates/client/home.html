@@ -429,26 +429,15 @@
                                                         src="{{one.EventImage}}"
                                                         alt="img"
                                                     />
-                                                    <h5>{{one.title}}</h5>
+                                                    <h5>Organized By {{one.ClubName.ClubName}}</h5>
                                                 </div>
-                                                <ul>
-                                                    <li>
-                                                        <i
-                                                            class="fal fa-coffee"
-                                                        ></i
-                                                        >{{one.EventType}}
-                                                    </li>
-                                                    <li>
-                                                        <i
-                                                            class="fal fa-video"
-                                                        ></i
-                                                        >{{one.EventEligibility}}
-                                                    </li>
-                                                </ul>
                                             </div>
                                         </div>
                                         <div class="col-lg-10">
                                             <div class="event-list-content fix">
+                                                
+                                                <h2>{{one.title}}</h2>
+                                                <p>{{one.EventDescription}}</p>
                                                 <ul
                                                     data-animation="fadeInUp animated"
                                                     data-delay=".2s"
@@ -463,6 +452,7 @@
                                                         ></i
                                                         >{{one.VenueId.VenueLocation}}
                                                     </li>
+                                                    <br>
                                                     <li>
                                                         <i
                                                             class="far fa-clock"
@@ -471,19 +461,6 @@
                                                         To {{one.EventEndTime}}
                                                     </li>
                                                 </ul>
-                                                <h2>{{one.title}}</h2>
-                                                <p>{{one.EventDescription}}</p>
-                                                <a
-                                                    href="#"
-                                                    class="btn mt-20 mr-10"
-                                                    ><i
-                                                        class="far fa-ticket-alt"
-                                                    ></i>
-                                                    Buy Ticket</a
-                                                >
-                                                <a href="#" class="btn mt-20"
-                                                    >Read More</a
-                                                >
                                                 <div class="crical">
                                                     <i class="fal fa-video"></i>
                                                 </div>
@@ -766,21 +743,21 @@
                                     class="wow fadeInUp animated"
                                     data-animation="fadeInUp animated"
                                     data-delay=".2s"
-                                    >Why Join Ovent</span
+                                    >Why Join eventes</span
                                 >
                                 <h2
                                     class="wow fadeInUp animated"
                                     data-animation="fadeInUp animated"
                                     data-delay=".2s"
                                 >
-                                    Join us at 110th oVent Expo.
+                                    Join us at eVentes.
                                 </h2>
                                 <h5
                                     class="wow fadeInUp animated"
                                     data-animation="fadeInUp animated"
                                     data-delay=".2s"
                                 >
-                                    Shift your perspective on digital business
+                                    Shift your perspective on digital management
                                 </h5>
                             </div>
                             <ul
@@ -794,10 +771,7 @@
                                         alt="img"
                                     />
                                     <span
-                                        >Study in a newly-refreshed campus
-                                        located in the heart of Berlin, Europe's
-                                        start-up capital. Berlin is a fantastic
-                                        place to study as there</span
+                                        >The main objective of this website is that as and when the university plans any kind of events, all the information regarding those events will be provided to each and every student either through mail or even students can obtain any detail by visiting this website.</span
                                     >
                                 </li>
                                 <li>
@@ -806,10 +780,7 @@
                                         alt="img"
                                     />
                                     <span
-                                        >Study in a newly-refreshed campus
-                                        located in the heart of Berlin, Europe's
-                                        start-up capital. Berlin is a fantastic
-                                        place to study as there</span
+                                        >Enthusiastic student can create a club by involving himself/herself using appropriate forms available on the website.</span
                                     >
                                 </li>
                             </ul>
@@ -817,24 +788,24 @@
                         <div class="col-lg-6 col-sm-6">
                             <div class="single-counter text-center mb-30 cr1">
                                 <div class="counter p-relative">
-                                    <span class="count">20</span>
+                                    <span class="count">{{club_count}}</span>
                                     <small>+</small>
                                 </div>
-                                <p>Sponsors</p>
+                                <p>Cool clubs</p>
                             </div>
                             <div class="single-counter text-center mb-30 cr2">
                                 <div class="counter p-relative">
-                                    <span class="count">100</span>
+                                    <span class="count">{{clubmember_count}}</span>
                                     <small>+</small>
                                 </div>
-                                <p>Cool Speakers</p>
+                                <p>Happy club members</p>
                             </div>
                             <div class="single-counter text-center mb-30 cr3">
                                 <div class="counter p-relative">
-                                    <span class="count">5</span>
+                                    <span class="count">{{event_count}}</span>
                                     <small>+</small>
                                 </div>
-                                <p>Happy People</p>
+                                <p>Awesome events</p>
                             </div>
                             <div class="cr4"></div>
                             <div class="cr5"></div>

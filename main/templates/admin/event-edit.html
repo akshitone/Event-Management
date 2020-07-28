@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:36 GMT -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+		<title>Employee Edit | eVentes</title>
+		<meta content="Admin Dashboard" name="description">
+		<meta content="Themesbrand" name="author">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- App Icons -->
+		<link rel="shortcut icon" href="{% static 'admin_plugins/images/favicon.png' %}">
+		<!-- App css -->
+		<link href="{% static 'admin_plugins/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/icons.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'admin_plugins/css/style.css' %}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+			{% include 'admin/header.html' %}
+			<!-- End Navigation Bar-->
+			<div class="container-fluid">
+				<!-- Page-Title -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="page-title-box">
+							<div class="row align-items-center">
+								<div class="col-md-8">
+									<h4 class="page-title mb-0">Event Edit</h4>
+									<ol class="breadcrumb m-0">
+										<li class="breadcrumb-item"><a href="#">Event</a></li>
+										<li class="breadcrumb-item active" aria-current="page">Event Edit</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end page title end breadcrumb -->
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<form action="#" enctype="multipart/form-data" method="POST">
+									{% csrf_token %}
+									{% for event in event_data %}
+									<input required type="hidden" name="txtemployeeid" value="{{event.id}}">
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{event.title}}" type="text" name="txteventname" id="txteventname"></div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-2 col-form-label">Club name</label>
+										<div class="col-sm-10">
+											<select required class="form-control form-control-lg" name="dropdownclub">
+												<option value="{{event.ClubName.ClubName}}">{{event.ClubName.ClubName}}</option>
+												{% for club in club_data %}
+												<option value="{{club.ClubName}}"> {{club.ClubName}} </option>
+												{% endfor %}
+											</select>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label class="col-sm-2 col-form-label">Venue</label>
+										<div class="col-sm-10">
+											<select required  class="form-control form-control-lg" name="dropdownvenue">
+                                                {% for event in event_data %}
+                                                <option value="{{event.VenueId.VenueId}}">{{event.VenueId.VenueName}}</option>
+                                                {% endfor %}
+												{% for venue in venue_data %}
+												<option value="{{venue.VenueId}}"> {{venue.VenueName}} </option>
+												{% endfor %}
+											</select>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Event type</label>
+										<div class="col-sm-10">
+											<div class="btn-group btn-group-toggle" data-toggle="buttons">
+												<label class="btn btn-outline-primary p-2"><input required type="radio" name="eventtype" value="Free" id="option1" checked="checked"> Free</label> 
+												<label class="btn btn-outline-pink p-2"><input required type="radio" name="eventtype" value="Paid" id="option2">Paid</label> 
+											</div>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Event eligibility</label>
+										<div class="col-sm-10">
+											<div class="btn-group btn-group-toggle" data-toggle="buttons">
+												<label class="btn btn-outline-primary p-2"><input required type="radio" name="eventeligibility" value="Open" id="option1" checked="checked"> Open</label> 
+												<label class="btn btn-outline-pink p-2"><input required type="radio" name="eventeligibility" value="Closed" id="option2">Closed</label> 
+											</div>
+										</div>
+                                    </div>
+                                    
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
+										<div class="col-sm-10"><textarea required name="txtdescription" id="txtdescription" class="form-control form-control-lg" rows="4" placeholder="Event description"></textarea></div>
+									</div>
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Registration amount</label>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{event.EventAmount}}" type="text" name="txtamount" id="txtamount"></div>
+                                    </div>
+                                    <div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Start date</label>
+										<div class="col-sm-10">
+											<div class="md-form md-outline">
+												<input required placeholder="Select Start date" type="text" id="date-picker-example" class="form-control datepicker" name="txtstartdate">
+											</div>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">End date</label>
+										<div class="col-sm-10">
+											<div class="md-form md-outline">
+												<input required placeholder="Select End date" type="text" id="date-picker-example" class="form-control datepicker" name="txtenddate">
+											</div>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">Start Time</label>
+										<div class="col-sm-10">
+											<div class="md-form md-outline">
+												<input required type="time" id="default-picker" class="form-control" placeholder="Start time" name="txtstarttime" value="{{event.StartTime}}"> 
+											</div>
+										</div>
+                                    </div>
+                                    <div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">End Time</label>
+										<div class="col-sm-10">
+											<div class="md-form md-outline">
+												<input required type="time" id="default-picker" class="form-control" placeholder="End time" name="txtendtime" value="{{event.EndTime}}">
+											</div>
+										</div>
+                                    </div>
+                                    {% endfor %}
+									{% for event in event_data %}
+									<div class="form-group row">
+										<label class="col-sm-2 col-form-label">Image</label>
+										<div class="col-sm-9 mt-3">
+											<input required type="file" class="filestyle" name="txtimageurl" id="txtimageurl" data-buttonname="btn-primary">
+										</div>
+										<div class="col-sm-1">
+											<img class="d-flex mr-3 rounded-circle" src="{{event.EventImage}}" alt="Not found" height="70"> 
+										</div>
+									</div>
+									{% endfor %}
+									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label">&nbsp;</label>
+										<div class="col-sm-10">
+											<button type="submit" class="btn btn-pink btn-lg waves-effect waves-light">Submit</button>
+											<button type="reset" class="btn btn-secondary btn-lg waves-effect waves-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+		<!-- Plugins js -->
+		<script src="{% static 'admin_plugins/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js' %}"></script>
+        <!-- Plugins Init js -->
+        <script src="{% static 'admin_plugins/pages/form-advanced.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+        $(document).ready(function() {
+			$('form').parsley();
+            });
+        $('.datepicker').datepicker({
+            // Escape any “rule” characters with an exclamation mark (!).
+            format: 'yyyy-mm-dd',
+            //input_formats: ('%m/%d/%Y'),
+            formatSubmit: 'YYYY-MM-DD',
+            hiddenPrefix: 'prefix__',
+            hiddenSuffix: '__suffix'
+        })
+		</script>
+	</body>
+	<!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:37 GMT -->
+</html>

@@ -4,17 +4,21 @@ from department.models import Department, SubDepartment
 from student.models import Student
 from main.models import Notification
 from myproject.customDecorators import *
+from employee.models import Employee
 
 # Create your views here.
 @authentication_check
 @user_authentication(allowed_users=['superAdmin', 'subAdmin'])
 def achievement_add(request):
     if request.method == 'POST':
+        uid=request.user.id
+        dname = Employee.objects.get(UserId=uid).DepartmentName_id
+        sdname = Employee.objects.get(UserId=uid).SubDepartmentName_id
         name = request.POST['txtachievementname']
         achievement = Achievement (
             AchievementName         = name,  
-            DepartmentName_id       = request.POST['dropdowndepartment'],
-            SubDepartmentName_id    = request.POST['dropdownsubdepartment'],
+            DepartmentName_id       = dname,
+            SubDepartmentName_id    = sdname,
             AchievementDescription  = request.POST['txtdescription']
         )
         achievement.save()
@@ -49,14 +53,15 @@ def achievement_delete(request, id):
 @user_authentication(allowed_users=['superAdmin', 'subAdmin'])
 def achievement_edit(request, id):
     if request.method == 'POST':
-        achievement = Achievement (
-            AchievementId              = request.POST['txtemployeeid'],
+        uid=request.user.id
+        dname = Employee.objects.get(UserId=uid).DepartmentName_id
+        sdname = Employee.objects.get(UserId=uid).SubDepartmentName_id
+        Achievement.objects.all().filter(pk=id).update(
             AchievementName            = request.POST['txtfullname'],
-            DepartmentName_id       = request.POST['dropdowndepartment'],
-            SubDepartmentName_id    = request.POST['dropdownsubdepartment'],
+            DepartmentName_id       = dname,
+            SubDepartmentName_id    = sdname,
             AchievementDescription           = request.POST['txtphoneno'],
         )
-        achievement.save()
         return redirect('/admin/achievement/')
     else:
         achievement_data    = Achievement.objects.filter(pk = id)
@@ -103,7 +108,7 @@ def achiever_table(request):
 def achiever_edit(request, id):
     if request.method == 'POST':
         achiever = Achiever (
-            AchieverId          = request.POST['txtachieverid'],
+            id          = request.POST['txtachieverid'],
             AchievementId_id       = request.POST['dropdownachievement'],
             StudentId_id           = request.POST['dropdownstudent']
         )
@@ -114,3 +119,10 @@ def achiever_edit(request, id):
         achievement_data     = Achievement.objects.all()
         student_data        = Student.objects.all()
         return render(request, 'admin/achiever-edit.html', {'id': id, 'achievement_data': achievement_data, 'student_data': student_data, 'achiever_data': achiever_data})
+    
+@authentication_check
+@user_authentication(allowed_users=['superAdmin', 'subAdmin'])
+def achiever_delete(request, id):
+    achiever = Achiever.objects.get(pk=id)
+    achiever.delete()
+    return redirect('/admin/achiever/')

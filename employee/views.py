@@ -86,7 +86,7 @@ def employee_exists(request):
 @authentication_check
 @user_authentication(allowed_users=['superAdmin'])
 def employee_table(request):
-    employee_data = Employee.objects.all()
+    employee_data = Employee.objects.all().order_by('id')
     return render(request, 'admin/employee-table.html', {'employee_data': employee_data})
 
 
@@ -127,7 +127,7 @@ def employee_edit(request, id):
             fn = " ".join(Name)
 
         emp = Employee.objects.get(pk=id)
-        userId = std.UserId_id
+        userId = emp.UserId_id
         print(userId)
         usr = User.objects.all().filter(pk=userId).update(
             email=request.POST['txtemail'],

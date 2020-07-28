@@ -52,12 +52,12 @@
 									<input type="hidden" name="txtemployeeid" value="{{employee.EmployeeId}}">
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Full name</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{employee.EmployeeName}}" type="text" name="txtfullname" id="txtfullname"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{employee.EmployeeName}}" type="text" name="txtfullname" id="txtfullname"></div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Department name</label>
 										<div class="col-sm-10">
-											<select class="form-control form-control-lg" name="dropdowndepartment" id="dropdowndepartment">
+											<select required class="form-control form-control-lg" name="dropdowndepartment" id="dropdowndepartment">
 												<option value="{{employee.DepartmentName_id}}">{{employee.DepartmentName_id}}</option>
 												{% endfor %}
 												{% for department in department_data %}
@@ -69,7 +69,7 @@
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Sub department name</label>
 										<div class="col-sm-10">
-											<select class="form-control form-control-lg" name="dropdownsubdepartment" id="dropdownsubdepartment">
+											<select required class="form-control form-control-lg" name="dropdownsubdepartment" id="dropdownsubdepartment">
 												{% for employee in employee_data %}
 												<option value="{{employee.SubDepartmentName_id}}">{{employee.SubDepartmentName_id}}</option>
 												{% endfor %}
@@ -83,9 +83,9 @@
 										<label for="example-text-input" class="col-sm-2 col-form-label">Gender</label>
 										<div class="col-sm-10">
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
-												<label class="btn btn-outline-primary  p-2"><input type="radio" name="gender" value="Male" id="option1"> Male</label> 
-												<label class="btn btn-outline-pink p-2"><input type="radio" name="gender" value="Female" id="option2"> Female</label> 
-												<label class="btn btn-outline-purple p-2"><input type="radio" name="gender" value="Others" id="option3"> Others</label>
+												<label class="btn btn-outline-primary  p-2"><input required type="radio" name="gender" value="Male" id="option1"> Male</label> 
+												<label class="btn btn-outline-pink p-2"><input required type="radio" name="gender" value="Female" id="option2"> Female</label> 
+												<label class="btn btn-outline-purple p-2"><input required type="radio" name="gender" value="Others" id="option3"> Others</label>
 											</div>
 										</div>
 									</div>
@@ -93,7 +93,7 @@
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Image</label>
 										<div class="col-sm-9 mt-3">
-											<input type="file" class="filestyle" name="txtimageurl" id="txtimageurl" data-buttonname="btn-primary">
+											<input required type="file" class="filestyle" name="txtimageurl" id="txtimageurl" data-buttonname="btn-primary">
 										</div>
 										<div class="col-sm-1">
 											<img class="d-flex mr-3 rounded-circle" src="{{employee.EmployeeImage}}" alt="Not found" height="70"> 
@@ -101,19 +101,19 @@
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Phone no.</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{employee.EmployeePhone}}" type="text" name="txtphoneno" id="txtphoneno"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{employee.EmployeePhone}}" type="text" name="txtphoneno" id="txtphoneno"></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{employee.EmployeeEmail}}" type="email" name="txtemail" id="txtemail"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{employee.EmployeeEmail}}" type="email" name="txtemail" id="txtemail"></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Address</label>
-										<div class="col-sm-10"><textarea name="txtaddress" id="txtaddress" class="form-control form-control-lg" maxlength="225" rows="4" placeholder="Enter address here!"> {{employee.EmployeeAddress}} </textarea></div>
+										<div class="col-sm-10"><textarea required name="txtaddress" id="txtaddress" class="form-control form-control-lg" maxlength="225" rows="4" placeholder="Enter address here!"> {{employee.EmployeeAddress}} </textarea></div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">City</label>
-										<div class="col-sm-10"><input class="form-control form-control-lg" value="{{employee.EmployeeCity}}" type="text" name="txtcityname" id="txtcityname"></div>
+										<div class="col-sm-10"><input required class="form-control form-control-lg" value="{{employee.EmployeeCity}}" type="text" name="txtcityname" id="txtcityname"></div>
 									</div>
 									{% endfor %}
 									<div class="form-group row">

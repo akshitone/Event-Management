@@ -24,22 +24,28 @@ from django.contrib.auth.hashers import make_password
 @client_authentication_check
 def home(request):
     club_data = Club.objects.all()
+    club_count = Club.objects.all().count()
+    event_count = Event.objects.all().count()
+    clubmember_count = ClubMember.objects.all().count()
     club_data = Club.objects.all()
     first = date.today()
     second = date.today() + datetime.timedelta(days=1)
     third = date.today() + datetime.timedelta(days=2)
     fourth = date.today() + datetime.timedelta(days=3)
 
-    first_event_data = Event.objects.filter(start=first, EventStatus='True')
-    second_event_data = Event.objects.filter(start=second, EventStatus='True')
-    third_event_data = Event.objects.filter(start=third, EventStatus='True')
-    forth_event_data = Event.objects.filter(start=fourth, EventStatus='True')
+    first_event_data = Event.objects.filter(start=first )
+    second_event_data = Event.objects.filter(start=second )
+    third_event_data = Event.objects.filter(start=third )
+    forth_event_data = Event.objects.filter(start=fourth )
 
     context = {
         'fourth': fourth, 'third': third, 'second': second, 'first': first,
         'first_event_data': first_event_data, 'forth_event_data': forth_event_data,
         'third_event_data': third_event_data, 'second_event_data': second_event_data,
-        'club_data': club_data
+        'club_data': club_data,
+        'club_count': club_count,
+        'event_count': event_count,
+        'clubmember_count': clubmember_count
     }
     return render(request, 'client/home.html', context)
 
@@ -86,6 +92,14 @@ def registration(request):
                 )
                 user.save()
                 student.save()
+
+                notification = Notification(
+                NotificationTitle="New Student",
+                NotificationDescription=request.POST['txtfullname'] +
+                " Added by Akshit Mithaiwala"
+                )
+                notification.save()
+
                 return JsonResponse({}, status=200)
             except:
                 return JsonResponse({'error': 'Sorry, We Couldn\'t complete your request! Plesae Try Again Later!'}, status=500)
@@ -198,6 +212,12 @@ def clubform(request):
                 user.save()
                 club.save()
                 clubMember.save()
+
+                notification = Notification(
+                NotificationTitle="New Club",
+                NotificationDescription=request.POST['txtclubname'] + "Added by " + student
+                )
+                notification.save()
                 # clubMember.save()
 
                 # notification = Notification(
@@ -266,7 +286,8 @@ def dashboard(request):
     club_count = Club.objects.all().count()
     event_count = Event.objects.all().count()
     active_event_count = Event.objects.filter(EventStatus='True').count()
-    member_count = ClubMember.objects.all().count()
+    member_count = Employee.objects.all().count()
+    active_member_count = Employee.objects.filter(EmployeeStatus='True').count()
     student_count = Student.objects.all().count()
     active_student_count = Student.objects.filter(StudentStatus='True').count()
     active_club = Club.objects.filter(clubStatus='True').count()
@@ -276,7 +297,7 @@ def dashboard(request):
     last_event = Event.objects.order_by('-id')[:5]
     last_student = Student.objects.order_by('-StudentId')[:5]
     last_employee = Employee.objects.order_by('-id')[:5]
-    return render(request, 'admin/dashboard.html', {'active_event_count': active_event_count, 'active_student_count': active_student_count, 'last_employee': last_employee, 'club_count': club_count, 'active_club_data': active_club_data, 'deactive_club_data': deactive_club_data, 'last_student': last_student, 'event_count': event_count, 'member_count': member_count, 'student_count': student_count, 'active_club': active_club, 'deactive_club': deactive_club, 'last_event': last_event})
+    return render(request, 'admin/dashboard.html', {'active_event_count': active_event_count, 'active_student_count': active_student_count, 'last_employee': last_employee, 'club_count': club_count, 'active_club_data': active_club_data, 'deactive_club_data': deactive_club_data, 'last_student': last_student, 'event_count': event_count, 'member_count': member_count, 'student_count': student_count, 'active_club': active_club, 'deactive_club': deactive_club, 'last_event': last_event, 'active_member_count':active_member_count})
     # else:
     #     return redirect('/login/')
     """
@@ -290,31 +311,23 @@ def dashboard(request):
 @admin_authentication_check
 @user_authentication(allowed_users=["subAdmin"])
 def sub_admin_dashboard(request):
-    employee = Employee.objects.get(UserId_id=request.user.id)
-    department_name = employee.DepartmentName_id
-    club_count = Club.objects.filter(DepartmentName_id=department_name).count()
-    event_count = Event.objects.all().count()
-    member_count = ClubMember.objects.all().count()
-    student_count = Student.objects.filter(
-        DepartmentName_id=department_name).count()
-    active_club = Club.objects.filter(
-        clubStatus='True', DepartmentName_id=department_name).count()
-    active_club_data = Club.objects.filter(
-        clubStatus='True', DepartmentName_id=department_name)[:5]
-    deactive_club = Club.objects.filter(
-        clubStatus='False', DepartmentName_id=department_name).count()
-    deactive_club_data = Club.objects.filter(
-        clubStatus='False', DepartmentName_id=department_name)[:5]
-    last_event = Event.objects.order_by('-id')[:5]
-    last_student = Student.objects.filter(
-        DepartmentName_id=department_name).order_by('-StudentId')[:5]
-    last_employee = Employee.objects.order_by('-id')[:5]
+    uid=request.user.id
+    dname = Employee.objects.get(UserId=uid).DepartmentName_id
+    club_count = Club.objects.filter(DepartmentName_id = dname).count()
+    event_count = Event.objects.filter(ClubName_id__DepartmentName_id = dname).count()
+    active_event_count = Event.objects.filter(EventStatus = 'True',ClubName_id__DepartmentName_id = dname).count()
+    student_count = Student.objects.filter(DepartmentName_id = dname).count()
+    active_student_count = Student.objects.filter(StudentStatus = 'True',DepartmentName_id = dname).count()
+    active_club = Club.objects.filter(clubStatus = 'True',DepartmentName_id = dname).count()
+    active_club_data = Club.objects.filter(clubStatus = 'True',DepartmentName_id = dname)[:5]
+    deactive_club = Club.objects.filter(clubStatus = 'False',DepartmentName_id = dname).count()
+    deactive_club_data = Club.objects.filter(clubStatus = 'False',DepartmentName_id = dname)[:5]
+    last_event = Event.objects.filter(ClubName_id__DepartmentName_id = dname).order_by('-id')[:5]
+    last_student = Student.objects.filter(DepartmentName_id = dname).order_by('-StudentId')[:5]
+    last_employee = Employee.objects.filter(DepartmentName_id = dname).order_by('-id')[:5]
     group = request.user.groups.get(name="subAdmin")
     context = {
-        'last_employee': last_employee, 'club_count': club_count, 'active_club_data': active_club_data,
-        'deactive_club_data': deactive_club_data, 'last_student': last_student, 'event_count': event_count,
-        'member_count': member_count, 'student_count': student_count, 'active_club': active_club,
-        'deactive_club': deactive_club, 'last_event': last_event, 'group': group
+        'active_student_count':active_student_count,'active_event_count':active_event_count,'last_employee':last_employee,'club_count':club_count,'active_club_data':active_club_data,'deactive_club_data':deactive_club_data,'last_student':last_student,'event_count':event_count,'student_count':student_count,'active_club':active_club,'deactive_club':deactive_club,'last_event':last_event,'group':group
     }
     return render(request, 'admin/subadmindashboard.html', context)
     # else:
@@ -433,3 +446,7 @@ def eventmember_add(request, id):
     )
     eventmember.save()
     return redirect('event')
+
+def club_profile_view(request, id):
+    return render(request, 'admin/event-member-view.html',{'member_data':member_data})
+

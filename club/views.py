@@ -9,6 +9,7 @@ from student.models import Student
 from main.models import Notification
 from myproject.customDecorators import *
 from django.http import JsonResponse
+from employee.models import Employee
 
 # Create your views here.
 
@@ -77,8 +78,15 @@ def club_add(request):
 @authentication_check
 @user_authentication(allowed_users=['superAdmin', 'subAdmin'])
 def club_table(request):
-    club_data = Club.objects.all()
-    return render(request, 'admin/club-table.html', {'club_data': club_data})
+    uid=request.user.id
+    s = request.user.is_superuser
+    if s:
+        club_data = Club.objects.all()
+        return render(request, 'admin/club-table.html', {'club_data': club_data})
+    else: 
+        dname = Employee.objects.get(UserId=uid).DepartmentName_id
+        club_data = Club.objects.filter(DepartmentName_id = dname)
+        return render(request, 'admin/club-table.html', {'club_data': club_data})
 
 
 def club_exists(request):
@@ -124,7 +132,7 @@ def club_edit(request, name):
         filesystem.delete(emp.ClubImageName)
 
         url = filesystem.url(filename)
-        club = Club(
+        Club.objects.all().filter(ClubName=name).update(
             ClubName=request.POST['txtfullname'],
             ClubType=request.POST['txtclubtype'],
             FacebookLink=request.POST['txtfacebooklink'],
@@ -136,7 +144,6 @@ def club_edit(request, name):
             DribbbleLink=request.POST['txtdribbblelink'],
             clubStatus=request.POST['txtclubstatus']
         )
-        club.save()
         return redirect('/admin/club/')
     else:
         club_data = Club.objects.filter(pk=name)
@@ -209,7 +216,9 @@ def clubmember_add(request):
 @authentication_check
 @user_authentication(allowed_users=['clubAdmin'])
 def clubmember_table(request):
-    clubmember_data = ClubMember.objects.all()
+    uid=request.user.id
+    cname = Club.objects.get(UserId=uid).ClubName
+    clubmember_data = ClubMember.objects.filter(ClubId_id = cname)
     return render(request, 'admin/clubmember-table.html', {'clubmember_data': clubmember_data})
 
 
@@ -224,14 +233,13 @@ def clubmember_view(request, id):
 @user_authentication(allowed_users=['clubAdmin'])
 def clubmember_edit(request, id):
     if request.method == 'POST':
-        clubmember = ClubMember(
+        ClubMember.objects.all().filter(pk=id).update(
             ClubMemberId=request.POST['txtclubmemberid'],
             MemberRole=request.POST['txtmemberrole'],
             ClubId_id=request.POST['dropdownclubname'],
             StudentId_id=request.POST['dropdownstudent'],
         )
-        clubmember.save()
-        return redirect('/admin/clubmember/')
+        return redirect('/clubadmin/clubmember/')
     else:
         clubmember_data = ClubMember.objects.filter(pk=id)
         club_data = Club.objects.all()

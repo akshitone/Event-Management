@@ -46,117 +46,68 @@
 		<div class="wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-xl-3 col-md-6">
+					<div class="col-xl-4 col-md-6">
 						<div class="card mini-stats">
 							<div class="p-3 mini-stats-content">
 								<div class="mb-4">
 									<div class="float-right text-right">
-										<span class="badge badge-light text-info mt-2 mb-2">+ 11%</span>
-										<p class="text-white-50">From previous period</p>
+										<span class="badge badge-light text-info mt-2 mb-2">{{club_count}}</span>
+										<p class="text-white-50">Total Clubs</p>
 									</div>
-									<span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">5/8</span>
+									<span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">{{active_club}}/{{club_count}}</span>
 								</div>
 							</div>
 							<div class="ml-3 mr-3">
 								<div class="bg-white p-3 mini-stats-desc rounded">
-									<h5 class="float-right mt-0">{{club_count}}</h5>
+									<h5 class="float-right mt-0">{{active_club}}</h5>
 									<h6 class="mt-0 mb-3">Clubs</h6>
-									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
+									<p class="text-muted mb-0">Active Clubs</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xl-3 col-md-6">
+					<div class="col-xl-4 col-md-6">
 						<div class="card mini-stats">
 							<div class="p-3 mini-stats-content">
 								<div class="mb-4">
 									<div class="float-right text-right">
-										<span class="badge badge-light text-danger mt-2 mb-2">- 27%</span>
-										<p class="text-white-50">From previous period</p>
+										<span class="badge badge-light text-danger mt-2 mb-2">{{event_count}}</span>
+										<p class="text-white-50">Total Events</p>
 									</div>
-									<span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">2/5</span>
+									<span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">{{active_event_count}}/{{event_count}}</span>
 								</div>
 							</div>
 							<div class="ml-3 mr-3">
 								<div class="bg-white p-3 mini-stats-desc rounded">
-									<h5 class="float-right mt-0">{{event_count}}</h5>
+									<h5 class="float-right mt-0">{{active_event_count}}</h5>
 									<h6 class="mt-0 mb-3">Events</h6>
-									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
+									<p class="text-muted mb-0">Active Events</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xl-3 col-md-6">
+					<div class="col-xl-4 col-md-6">
 						<div class="card mini-stats">
 							<div class="p-3 mini-stats-content">
 								<div class="mb-4">
 									<div class="float-right text-right">
-										<span class="badge badge-light text-primary mt-2 mb-2">0%</span>
-										<p class="text-white-50">From previous period</p>
+										<span class="badge badge-light text-info mt-2 mb-2">{{student_count}}</span>
+										<p class="text-white-50">Total Students</p>
 									</div>
-									<span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">3/8</span>
+									<span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">{{active_student_count}}/{{student_count}}</span>
 								</div>
 							</div>
 							<div class="ml-3 mr-3">
 								<div class="bg-white p-3 mini-stats-desc rounded">
-									<h5 class="float-right mt-0">{{member_count}}</h5>
-									<h6 class="mt-0 mb-3">Club-Members</h6>
-									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-md-6">
-						<div class="card mini-stats">
-							<div class="p-3 mini-stats-content">
-								<div class="mb-4">
-									<div class="float-right text-right">
-										<span class="badge badge-light text-info mt-2 mb-2">- 89%</span>
-										<p class="text-white-50">From previous period</p>
-									</div>
-									<span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">3/5</span>
-								</div>
-							</div>
-							<div class="ml-3 mr-3">
-								<div class="bg-white p-3 mini-stats-desc rounded">
-									<h5 class="float-right mt-0">{{student_count}}</h5>
+									<h5 class="float-right mt-0">{{active_student_count}}</h5>
 									<h6 class="mt-0 mb-3">Students</h6>
-									<p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
+									<p class="text-muted mb-0">Active Student</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- end row -->
-				<div class="row">
-					<div class="col-xl-9">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="mt-0 header-title mb-5">Monthly Earning</h4>
-								<div id="morris-bar-stacked" class="morris-chart-height morris-charts"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="mt-0 header-title">Club Analytics</h4>
-								<div class="row text-center m-t-20">
-									<div class="col-6">
-										<h5 class="">{{active_club}}</h5>
-										<p class="text-muted font-14">Active</p>
-									</div>
-									<div class="col-6">
-										<h5 class="">{{deactive_club}}</h5>
-										<p class="text-muted font-14">Not Active</p>
-									</div>
-								</div>
-								<div id="morris-donut-example" class="dash-chart morris-charts text-center"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end row -->
+				
 				<div class="row">
 						<div class="col-xl-4">
 							<div class="card">
@@ -169,7 +120,7 @@
 												<div>
 													<h6 class="mb-0"><a href="#" class="text-dark">{{emp.EmployeeName}}</a></h6>
 													<p class="text-muted mb-0">{{emp.SubDepartmentName.SubDepartmentName}} ({{emp.DepartmentName.DepartmentName}})</p>
-													<div class="delete-icon"><a href="{% url 'employee-view' id=emp.id %}" class="text-primary"><i class="mdi mdi-delete-forever h4"></i></a></div>
+													
 												</div>
 											</li>
 											{% endfor %}
@@ -249,7 +200,7 @@
 											<div>
 												<h6 class="mb-0"><a href="#" class="text-dark">{{student.StudentName}}</a></h6>
 												<p class="text-muted mb-0">{{student.SubDepartmentName.SubDepartmentName}} ({{student.DepartmentName.DepartmentName}})</p>
-												<div class="delete-icon"><a href="{% url 'student-view' id=student.StudentId %}" class="text-primary"><i class="mdi mdi-delete-forever h4"></i></a></div>
+												<div class="delete-icon"><a href="{% url 'student-view' id=student.StudentId %}" class="text-primary"><i class="mdi mdi-eye h4"></i></a></div>
 											</div>
 										</li>
 										{% endfor %}
