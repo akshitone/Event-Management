@@ -177,6 +177,24 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-12"></div>
                         <div class="col-lg-4 col-sm-12">
+                            {% if request_data %}
+                            <div
+                                class="club-form mt-50 align-items-center justify-content-center wow fadeInLeft"
+                                data-animation="fadeInLeft"
+                                data-delay=".2s"
+                            >
+                                <div class="m-t-40 text-center text-white-50">
+                                    <h2>Club Proposal Received</h2>
+                                    <img src="{{ request_data.ClubImage }}" alt="img">
+                                    <h4>{{ request_data.ClubName }}</h4>
+                                    <p>
+                                        Thank You, we've received your club
+                                        proposal. We'll let you
+                                        know the outcome of your proposal.
+                                    </p>
+                                </div>
+                            </div>
+                            {% else %}
                             <div
                                 class="club-form mt-50 align-items-center justify-content-center wow fadeInLeft"
                                 data-animation="fadeInLeft"
@@ -284,7 +302,7 @@
                                             id="select"
                                             name="dropdowndepartment"
                                         >
-                                            <option  value=""selected="selected"
+                                            <option value="" selected="selected"
                                                 >Select your department</option
                                             >
                                             {% for department in department_data %}
@@ -313,12 +331,17 @@
                                         />
                                     </div>
                                     <div class="text-center">
-                                        <button id="submit-btn" type="submit" class="btn">
+                                        <button
+                                            id="submit-btn"
+                                            type="submit"
+                                            class="btn"
+                                        >
                                             Send Proposal
                                         </button>
                                     </div>
                                 </form>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -387,8 +410,7 @@
                     return uppercases.length >= requirement;
                 },
                 messages: {
-                    en:
-                        " - Must contain at least (%s) uppercase letter.",
+                    en: " - Must contain at least (%s) uppercase letter.",
                 },
             });
             //has lowercase
@@ -399,8 +421,7 @@
                     return lowecases.length >= requirement;
                 },
                 messages: {
-                    en:
-                        " - Must contain at least (%s) lowercase letter.",
+                    en: " - Must contain at least (%s) lowercase letter.",
                 },
             });
             //has number
@@ -422,17 +443,21 @@
                     return specials.length >= requirement;
                 },
                 messages: {
-                    en:
-                        " - Must contain at least (%s) special character.",
+                    en: " - Must contain at least (%s) special character.",
                 },
             });
         </script>
         <script>
             $(document).ready(function () {
+                var alert = localStorage.getItem("status");
+                if (alert) {
+                    alertify.success(alert);
+                    localStorage.clear();
+                }
                 $("#form").parsley();
                 $("#txtclubname").on("focusout", function (e) {
                     if ($("#txtclubname").parsley().isValid()) {
-                        var club_name = $("#txtclubname").val();              
+                        var club_name = $("#txtclubname").val();
                         var url = $("#txtclubname").data("url");
                         $.ajax({
                             headers: { "X-CSRFToken": "{{csrf_token}}" },
@@ -443,9 +468,7 @@
                             type: "post",
                             success: function (response) {
                                 valid = true;
-                                alertify.success(
-                                    response.msg
-                                );
+                                alertify.success(response.msg);
                             },
                             error: function (response) {
                                 valid = false;
@@ -469,9 +492,7 @@
                             type: "post",
                             success: function (response) {
                                 valid = true;
-                                alertify.success(
-                                    response.msg
-                                );
+                                alertify.success(response.msg);
                             },
                             error: function (response) {
                                 valid = false;
@@ -496,7 +517,8 @@
                                 processData: false,
                                 contentType: false,
                                 success: function (response) {
-                                    alertify.success(response.msg);
+                                    localStorage.setItem("status", response.msg);
+                                    location.reload();
                                 },
                                 error: function (response) {
                                     alertify.error(
@@ -504,7 +526,7 @@
                                     );
                                 },
                             });
-                        } 
+                        }
                     }
                 });
             });

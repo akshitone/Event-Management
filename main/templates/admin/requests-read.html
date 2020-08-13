@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:36 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"
+        />
+        <title>Requests | eVentes</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App Icons -->
+        <link
+            rel="shortcut icon"
+            href="{% static 'admin_plugins/images/favicon.png' %}"
+        />
+        <link
+            href="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- App css -->
+        <link
+            href="{% static 'admin_plugins/css/bootstrap.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/icons.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/style.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <!-- Loader -->
+        {% include 'admin/header.html' %}
+        <!-- End Navigation Bar-->
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-0">
+                                    Requests
+                                </h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Requests</a>
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        Request Read
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+        </div>
+        </div>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Left sidebar -->
+                        <div class="email-leftbar mb-3">
+                            <a
+                                href="email-compose.html"
+                                class="btn btn-danger btn-block waves-effect waves-light"
+                                >Compose</a
+                            >
+                            <div class="mail-list m-t-20">
+                                <a href="#" class="active"
+                                    >Club<span class="ml-1">(18)</span></a
+                                >
+                            </div>
+                        </div>
+                        <!-- End Left sidebar --><!-- Right Sidebar -->
+                        <div class="email-rightbar mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="media m-b-30">
+                                        <img
+                                            class="d-flex mr-3 rounded-circle thumb-md"
+                                            src="{{club_data.StudentId.StudentImage}}"
+                                            alt="Generic placeholder image"
+                                        />
+                                        <div class="media-body">
+                                            <h4 class="font-14 m-0">
+                                                {{club_data.StudentId.StudentName}}
+                                            </h4>
+                                            <small class="text-muted"
+                                                >{{club_data.StudentId.UserId.email}}</small
+                                            >
+                                        </div>
+                                    </div>
+                                    <h4 class="mt-0 font-18">
+                                        Proposal of creating new Club "{{club_data.ClubName}}"
+                                    </h4>
+                                    <p>Dear Admin,</p>
+                                    <p>
+                                        Praesent dui ex, dapibus eget mauris ut,
+                                        finibus vestibulum enim. Quisque arcu
+                                        leo, facilisis in fringilla id, luctus
+                                        in tortor. Nunc vestibulum est quis orci
+                                        varius viverra. Curabitur dictum
+                                        volutpat massa vulputate molestie. In at
+                                        felis ac velit maximus convallis.
+                                    </p>
+                                    <p>
+                                        Sed elementum turpis eu lorem interdum,
+                                        sed porttitor eros commodo. Nam eu
+                                        venenatis tortor, id lacinia diam. Sed
+                                        aliquam in dui et porta. Sed bibendum
+                                        orci non tincidunt ultrices. Vivamus
+                                        fringilla, mi lacinia dapibus
+                                        condimentum, ipsum urna lacinia lacus,
+                                        vel tincidunt mi nibh sit amet lorem.
+                                    </p>
+                                    <p>Sincerly,</p>
+                                    <hr />
+                                    <a
+                                        href="{% url 'club-approval' %}"
+                                        name="request"
+                                        data-status="approve"
+                                        data-name="{{club_data.ClubName}}"
+                                        data-id="{{ club_data.id }}"
+                                        class="btn btn-success waves-effect m-t-30"
+                                        ><i class="mdi mdi-check"></i> Approve</a
+                                    >
+                                    <a
+                                        href="{% url 'club-approval' %}"
+                                        name="request"
+                                        data-status="disapprove"
+                                        data-id="{{ club_data.id }}"
+                                        data-name="{{club_data.ClubName}}"
+                                        class="btn btn-danger waves-effect m-t-30"
+                                        ><i class="mdi mdi-close"></i> Disapprove</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end Col-9 -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                $("a[name=request]").click(function (e) {
+                    e.preventDefault();
+                    var url = $(this).attr("href");
+                    var request_id = $(this).data("id");
+                    var status = $(this).data("status");
+                    var name = $(this).data("name");
+                    swal({
+                        title: "Are you sure?",
+                        text: "You Want To Do This?",
+                        type: "warning",
+                        showCancelButton: !0,
+                        confirmButtonClass: "btn btn-success",
+                        cancelButtonClass: "btn btn-danger m-l-10",
+                        confirmButtonText: "Yes, Do it!",
+                    }).then(function () {
+                        $.ajax({
+                            headers: { "X-CSRFToken": "{{csrf_token}}" },
+                            url: url,
+                            data: {
+                                request_id: request_id,
+                                status:status
+                            },
+                            type: "post",
+                            success: function (data) {
+                                localStorage.setItem("status", status);
+                                localStorage.setItem("name", name);
+                                // localStorage.setItem(
+                                //     "tab",
+                                //     $("#tab li a.active").data("id")
+                                // );
+                                location.replace("{% url 'requests' %}");
+                            },
+                            error: function (response) {
+                                alertify.error("Sorry we couldn't complete your request!");
+                            },
+                        });
+                    });
+                });
+            });
+        </script>
+    </body>
+    <!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:37 GMT -->
+</html>

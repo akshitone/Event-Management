@@ -17,8 +17,21 @@ class Club(models.Model):
     TwitterLink = models.CharField(max_length=150, null=True, blank=True)
     DribbbleLink = models.CharField(max_length=150, null=True, blank=True)
     DepartmentName = models.ForeignKey(Department, on_delete=models.CASCADE)
-    clubStatus = models.CharField(max_length=10, default=False)
-    clubApproval = models.CharField(max_length=10, default=-1)
+    clubStatus = models.CharField(max_length=10, default=True)
+    clubApproval = models.CharField(max_length=10, default=1)
+
+
+class ClubRequest(models.Model):
+    ClubName = models.CharField(max_length=150, null=True, blank=True)
+    ClubUserName = models.CharField(max_length=150, null=True, blank=True)
+    ClubPassword = models.CharField(max_length=150, null=True, blank=True)
+    ClubEmail = models.CharField(max_length=150, null=True, blank=True)
+    ClubImageName = models.TextField(null=True, blank=True)
+    ClubImage = models.ImageField(upload_to='images', null=True, blank=True)
+    ClubType = models.CharField(max_length=150, null=True, blank=True)
+    DepartmentName = models.ForeignKey(Department, on_delete=models.CASCADE)
+    StudentId = models.ForeignKey(
+        Student, on_delete=models.CASCADE, null=True)
 
 
 class ClubMember(models.Model):
@@ -27,3 +40,7 @@ class ClubMember(models.Model):
         Club, on_delete=models.CASCADE, related_name="clubName")
     StudentId = models.ForeignKey(Student, on_delete=models.CASCADE)
     MemberRole = models.CharField(max_length=150)
+
+class ClubMemberRequest(models.Model):
+    ClubId = models.ForeignKey(Club, on_delete=models.CASCADE)
+    StudentId = models.ForeignKey(Student, on_delete=models.CASCADE)

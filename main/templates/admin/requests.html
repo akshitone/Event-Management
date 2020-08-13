@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:36 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"
+        />
+        <title>Requests | eVentes</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App Icons -->
+        <link
+            rel="shortcut icon"
+            href="{% static 'admin_plugins/images/favicon.png' %}"
+        />
+        <link
+            href="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- App css -->
+        <link
+            href="{% static 'admin_plugins/css/bootstrap.min.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/icons.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="{% static 'admin_plugins/css/style.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+    <body>
+        <!-- Loader -->
+        {% include 'admin/header.html' %}
+        <!-- End Navigation Bar-->
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-0">
+                                    Requests
+                                </h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Requests</a>
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        Requests Inbox
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+        </div>
+        </div>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Left sidebar -->
+                        <div class="email-leftbar mb-3">
+                            <a
+                                href=""
+                                class="btn btn-danger btn-block waves-effect waves-light"
+                                >Compose</a
+                            >
+                            <div id="tab" class="mail-list m-t-20">
+                                <a href="#club" class="active"
+                                    >Club<span class="ml-1"
+                                        >({{ total_club_req }})</span
+                                    ></a
+                                >
+                                <a href="#club-member"
+                                    >Club-Member<span class="ml-1"
+                                        >({{ total_club_member_req }})</span
+                                    ></a
+                                >
+                                <a href="#events"
+                                    >Events<span class="ml-1"
+                                        >(0)</span
+                                    ></a
+                                >
+                            </div>
+                        </div>
+                        <!-- End Left sidebar --><!-- Right Sidebar -->
+                        <div class="email-rightbar mb-3">
+                            <div class="card">
+                                <div id="club">
+                                    {% if ClubRequests_data %}
+                                    <ul class="message-list">     
+                                        {% for request in ClubRequests_data %}
+                                        <li>
+                                            <div class="col-mail col-mail-1">
+                                                <div
+                                                    class="checkbox-wrapper-mail"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        id="chk20"
+                                                    />
+                                                    <label
+                                                        for="chk20"
+                                                        class="toggle"
+                                                    ></label>
+                                                </div>
+                                                <a
+                                                    href="{% url 'request-read' id=request.id %}"
+                                                    class="title"
+                                                    >{{ request.StudentId.StudentName }}</a
+                                                ><span
+                                                    class="star-toggle fa fa-star-o"
+                                                ></span>
+                                            </div>
+                                            <div class="col-mail col-mail-2">
+                                                <a
+                                                    href="{% url 'request-read' id=request.id %}"
+                                                    class="subject"
+                                                    ><span
+                                                        class="badge-warning badge mr-2"
+                                                        >New</span
+                                                    >Club Proposal</a
+                                                >
+                                                <div class="date"></div>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}
+                                    <p class="m-5 text-center h3 font-weight-bold">There Are No Proposal At This Moment.</p>
+                                    {% endif %}
+                                </div>
+                                <div style="display: none;" id="club-member">
+                                    {% if ClubMemberRequests_data %}
+                                    <ul class="message-list">     
+                                        {% for request in ClubMemberRequests_data %}
+                                        <li>
+                                            <div class="col-mail col-mail-1">
+                                                <div
+                                                    class=""
+                                                >
+                                                    
+                                                </div>
+                                                <a
+                                                    href="{% url 'member-request-read' id=request.id %}"
+                                                    class="title"
+                                                    >{{ request.StudentId.StudentName }}</a
+                                                >
+                                            </div>
+                                            <div class="col-mail col-mail-2">
+                                                <a
+                                                    href="{% url 'member-request-read' id=request.id %}"
+                                                    class="subject"
+                                                    ><span
+                                                        class="badge-warning badge mr-2"
+                                                        >New</span
+                                                    >Club Member Proposal</a
+                                                >
+                                                <div class="date"></div>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}
+                                    <p class="m-5 text-center h3 font-weight-bold">There Are No Proposal At This Moment.</p>
+                                    {% endif %}
+                                </div>
+                                <div style="display: none;" id="events">
+                                    {% if request_data %}
+                                    <ul class="message-list">     
+                                        {% for request in requests_data %}
+                                        <li>
+                                            <div class="col-mail col-mail-1">
+                                                <div
+                                                    class="checkbox-wrapper-mail"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        id="chk20"
+                                                    />
+                                                    <label
+                                                        for="chk20"
+                                                        class="toggle"
+                                                    ></label>
+                                                </div>
+                                                <a
+                                                    href="{% url 'request-read' id=request.id %}"
+                                                    class="title"
+                                                    >{{ request.StudentId.StudentName }}</a
+                                                ><span
+                                                    class="star-toggle fa fa-star-o"
+                                                ></span>
+                                            </div>
+                                            <div class="col-mail col-mail-2">
+                                                <a
+                                                    href="{% url 'request-read' id=request.id %}"
+                                                    class="subject"
+                                                    ><span
+                                                        class="badge-warning badge mr-2"
+                                                        >New</span
+                                                    >Club Proposal</a
+                                                >
+                                                <div class="date"></div>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}
+                                    <p class="m-5 text-center h3 font-weight-bold">There Are No Proposal At This Moment.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end Col-9 -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+        <!-- jQuery  -->
+        <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/modernizr.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/waves.js' %}"></script>
+        <script src="{% static 'admin_plugins/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/sweet-alert2/sweetalert2.min.js' %}"></script>
+        <script src="{% static 'admin_plugins/plugins/alertify/js/alertify.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'admin_plugins/js/app.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                var alert = localStorage.getItem("status");
+                var name = localStorage.getItem("name");
+                if (alert) {
+                    if (alert == "approve") {
+                        alertify.success(
+                            "Club " + name + " has been Approved!"
+                        );
+                    } else {
+                        alertify.error(
+                            "Club " + name + " has been Disapproved!"
+                        );
+                    }
+                    localStorage.clear();
+                }
+                $("#tab > a").click(function (e) {
+                    e.preventDefault();
+                    var currTab = $("#tab > a.active");
+                    $(currTab.attr("href")).hide();
+                    currTab.removeClass("active");
+                    $($(this).attr("href")).show();
+                    $(this).addClass("active");
+                });
+            });
+        </script>
+    </body>
+    <!-- Mirrored from themesbrand.com/foxia/blue/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Mar 2020 06:56:37 GMT -->
+</html>

@@ -1,16 +1,17 @@
 import string
 import secrets
 from django.shortcuts import redirect, render
-from .models import Club
+from .models import ClubMember, ClubRequest, Club, ClubMemberRequest
+from django.contrib.auth.models import User, auth, Group
 from department.models import Department
 from django.core.files.storage import FileSystemStorage
-from club.models import ClubMember
 from student.models import Student
 from main.models import Notification
 from myproject.customDecorators import *
 from django.http import JsonResponse
 from employee.models import Employee
-
+from django.core.mail import send_mail
+from main.views import send_emails
 # Create your views here.
 
 
@@ -75,17 +76,133 @@ def club_add(request):
         return render(request, 'admin/club-add.html', {'department_data': department_data, 'notification_data': notification_data})
 
 
+def club_approval(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            club_data = ClubRequest.objects.get(
+                id=request.POST['request_id']
+            )
+            student = Student.objects.get(
+                StudentId=club_data.StudentId_id)
+            if request.POST['status'] == "approve":
+                user = User.objects.create_user(
+                    club_data.ClubUserName, club_data.ClubEmail, club_data.ClubPassword)
+                group = Group.objects.get(name="clubAdmin")
+                user.groups.add(group)
+                club = Club(
+                    ClubName=club_data.ClubName,
+                    UserId=user,
+                    ClubType=club_data.ClubType,
+                    ClubImageName=club_data.ClubImageName,
+                    ClubImage=club_data.ClubImage,
+                    DepartmentName_id=club_data.DepartmentName_id
+                )
+                clubMember = ClubMember(
+                    ClubId=club,
+                    StudentId=student,
+                    MemberRole='Club Admin'
+                )
+                user.save()
+                club.save()
+                clubMember.save()
+                notification = Notification(
+                    NotificationTitle="New Club ",
+                    NotificationDescription=club_data.ClubName +
+                    " Added by " + student.StudentName
+                )
+                notification.save()
+                club_request = ClubRequest.objects.get(
+                    pk=request.POST['request_id'])
+                club_request.delete()
+                send_mail(
+                    'Club Proposal',
+                    'We are Glad to inform you that your proposal has been accepted!',
+                    'akshiiitone@gmail.com',
+                    [student.StudentEmail],
+                    fail_silently=False,
+                )
+                send_emails(
+                    'New Club', 'New Club Has Been Formed Checkout The Webiste To Know More')
+                return JsonResponse({}, status=200)
+            else:
+                club_request = ClubRequest.objects.get(
+                    pk=request.POST['request_id'])
+                filesystem = FileSystemStorage()
+                club_request.delete()
+                filesystem.delete(club_request.ClubImageName)
+                send_mail(
+                    'Club Proposal',
+                    'We are sorry to inform you that your proposal has been denied',
+                    'akshiiitone@gmail.com',
+                    [student.StudentEmail],
+                    fail_silently=False,
+                )
+                return JsonResponse({}, status=200)
+            return JsonResponse({}, status=500)
+
+
+def club_member_approval(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            club_data = ClubMemberRequest.objects.get(
+                id=request.POST['request_id']
+            )
+            student = Student.objects.get(
+                StudentId=club_data.StudentId_id)
+            club = Club.objects.get(
+                ClubName=club_data.ClubId_id)
+            if request.POST['status'] == "approve":
+                clubMember = ClubMember(
+                    ClubId=club,
+                    StudentId=student,
+                    MemberRole='Club Member'
+                )
+                clubMember.save()
+                notification = Notification(
+                    NotificationTitle="New Club Member ",
+                    NotificationDescription=club_data.ClubId_id +
+                    " Added by " + student.StudentName
+                )
+                notification.save()
+                club_request = ClubMemberRequest.objects.get(
+                    pk=request.POST['request_id'])
+                club_request.delete()
+                send_mail(
+                    'Club Member Proposal',
+                    'We are Glad to inform you that your proposal has been accepted!',
+                    'akshiiitone@gmail.com',
+                    [student.StudentEmail],
+                    fail_silently=False,
+                )
+                send_emails(
+                    'New Club Member', 'New Club Member Has Been Formed Checkout The Webiste To Know More')
+                return JsonResponse({}, status=200)
+            else:
+                club_request = ClubMemberRequest.objects.get(
+                    pk=request.POST['request_id'])
+                club_request.delete()
+                send_mail(
+                    'Club Member Proposal',
+                    'We are sorry to inform you that your proposal has been denied',
+                    'akshiiitone@gmail.com',
+                    [student.StudentEmail],
+                    fail_silently=False,
+                )
+                return JsonResponse({}, status=200)
+            return JsonResponse({}, status=500)
+
+
 @authentication_check
 @user_authentication(allowed_users=['superAdmin', 'subAdmin'])
 def club_table(request):
-    uid=request.user.id
+    uid = request.user.id
     s = request.user.is_superuser
     if s:
         club_data = Club.objects.all()
         return render(request, 'admin/club-table.html', {'club_data': club_data})
-    else: 
+    else:
         dname = Employee.objects.get(UserId=uid).DepartmentName_id
-        club_data = Club.objects.filter(DepartmentName_id = dname)
+        club_data = Club.objects.filter(DepartmentName_id=dname)
         return render(request, 'admin/club-table.html', {'club_data': club_data})
 
 
@@ -216,9 +333,9 @@ def clubmember_add(request):
 @authentication_check
 @user_authentication(allowed_users=['clubAdmin'])
 def clubmember_table(request):
-    uid=request.user.id
+    uid = request.user.id
     cname = Club.objects.get(UserId=uid).ClubName
-    clubmember_data = ClubMember.objects.filter(ClubId_id = cname)
+    clubmember_data = ClubMember.objects.filter(ClubId_id=cname)
     return render(request, 'admin/clubmember-table.html', {'clubmember_data': clubmember_data})
 
 

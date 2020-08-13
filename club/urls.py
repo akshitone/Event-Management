@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('admin/club-approval/', views.club_approval, name='club-approval'),
+    path('admin/club-member-approval/', views.club_member_approval, name='club-member-approval'),
     path('admin/club/add/', views.club_add, name='club-add'),
     path('admin/club/', views.club_table, name='club-table'),
     path('admin/club/delete/',
