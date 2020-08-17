@@ -131,7 +131,7 @@
                                             </li>
                                             {% if request.user.is_authenticated %}
                                             <li class="has-sub">
-                                                <a href="/student/form"
+                                                <a href="#"
                                                     >Hello,
                                                     {{request.user.first_name}}!</a
                                                 >
@@ -151,7 +151,7 @@
                                             </li>
                                             {% else %}
                                             <li class="has-sub">
-                                                <a href="/student/form"
+                                                <a href="#"
                                                     >Account</a
                                                 >
                                                 <ul>
@@ -253,6 +253,8 @@
                                                 ></i>
                                                 +91 7874-987-797
                                             </p>
+                                            {% if request.user.is_authenticated %}
+                                            {% else %}
                                             <p>
                                                 <a
                                                     href="/student/form"
@@ -261,6 +263,7 @@
                                                     Join Us</a
                                                 >
                                             </p>
+                                            {% endif %}
                                         </ul>
                                     </div>
                                 </div>

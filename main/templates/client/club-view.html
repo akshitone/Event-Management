@@ -1,31 +1,67 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
-    
-<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
         {% for club in club_data %}
         <title>{{club.ClubName}} | eVentes</title>
-        
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
+
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="{% static 'client_plugins/img/favicon.png' %}"
+        />
         <!-- Place favicon.ico in the root directory -->
 
-		<!-- CSS here -->
-		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="{% static 'client_plugins/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/fontawesome/css/all.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/dripicons.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/slick.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/responsive.css' %}">
+        <!-- CSS here -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/bootstrap.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/animate.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/magnific-popup.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/fontawesome/css/all.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/dripicons.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/slick.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/default.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/style.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/responsive.css' %}"
+        />
 
         <style>
             /* width */
@@ -45,7 +81,11 @@
             ::-webkit-scrollbar-thumb {
                 border-radius: 10px;
                 background-color: #0652c5;
-                background-image: -webkit-linear-gradient(315deg, #0652c5 0%, #d4418e 74%);
+                background-image: -webkit-linear-gradient(
+                    315deg,
+                    #0652c5 0%,
+                    #d4418e 74%
+                );
             }
         </style>
     </head>
@@ -57,61 +97,140 @@
         <main>
             <!-- slider-area -->
             <!-- breadcrumb-area -->
-            <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/innerpage_bg_img.jpg' %})">
-                <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
-                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
-                 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                                <div class="breadcrumb-wrap text-center">
-                                    <div class="breadcrumb-title mb-30">
-                                        <h2>{{club.ClubName}}</h2>                                   
-                                    </div>
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">{{club.ClubName}}</li>
-                                        </ol>
-                                    </nav>
+            <section
+                id="parallax"
+                class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix"
+                style="
+                    background-image: url({% static 'client_plugins/img/innerpage_bg_img.jpg' %});
+                "
+            >
+                <div class="slider-shape ss-one layer" data-depth="0.10">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_6.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-three layer" data-depth="0.40">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_9.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-four layer" data-depth="0.60">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_7.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                            <div class="breadcrumb-wrap text-center">
+                                <div class="breadcrumb-title mb-30">
+                                    <h2>{{club.ClubName}}</h2>
                                 </div>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li
+                                            class="breadcrumb-item active"
+                                            aria-current="page"
+                                        >
+                                            {{club.ClubName}}
+                                        </li>
+                                    </ol>
+                                </nav>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
             <!-- slider-area-end -->
             <!-- about-area -->
             <section id="team" class="team-area p-relative pt-120 pb-120 fix">
                 <div class="container mb-100">
-                    <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>{{club.ClubName}}</h2></div>
+                    <div
+                        class="section-t team-t paroller"
+                        data-paroller-factor="0.15"
+                        data-paroller-factor-lg="0.15"
+                        data-paroller-factor-md="0.15"
+                        data-paroller-factor-sm="0.15"
+                        data-paroller-type="foreground"
+                        data-paroller-direction="horizontal"
+                    >
+                        <h2>{{club.ClubName}}</h2>
+                    </div>
                     <div class="circal1 item-zoom-inout"></div>
                     <div class="circal2 item-zoom-inout"></div>
                     <div class="circal3 item-zoom-inout"></div>
                     <div class="circal4 item-zoom-inout"></div>
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <div class="wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
-                                <img src="{{club.ClubImage}}" class="eventdisplay" alt="shape">
+                            <div
+                                class="wow fadeInLeft"
+                                data-animation="fadeInLeft"
+                                data-delay=".2s"
+                            >
+                                <img
+                                    src="{{club.ClubImage}}"
+                                    class="eventdisplay"
+                                    alt="shape"
+                                />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="about-content s-about-content pl-30">
                                 <div class="about-title second-atitle">
-                                <div class="text-outline team-info">
+                                    <div class="text-outline team-info">
                                         <span>club</span>
                                     </div>
-                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s" style="margin-bottom: 20px;">{{club.ClubName}}</h2>
-                                    <div class="widget-social">                                    
-                                        <a href="{{club.FacebookLink}}"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="{{club.InstagramLink}}"><i class="fab fa-twitter"></i></a>
-                                        <a href="{{club.TwitterLink}}"><i class="fab fa-instagram"></i></a>
-                                        <a href="{{club.DribbbleLink}}"><i class="fab fa-dribbble"></i></a>
+                                    <h2
+                                        class="wow fadeInUp animated"
+                                        data-animation="fadeInUp animated"
+                                        data-delay=".2s"
+                                        style="margin-bottom: 20px;"
+                                    >
+                                        {{club.ClubName}}
+                                    </h2>
+                                    <div class="widget-social">
+                                        <a href="{{club.FacebookLink}}"
+                                            ><i class="fab fa-facebook-f"></i
+                                        ></a>
+                                        <a href="{{club.InstagramLink}}"
+                                            ><i class="fab fa-twitter"></i
+                                        ></a>
+                                        <a href="{{club.TwitterLink}}"
+                                            ><i class="fab fa-instagram"></i
+                                        ></a>
+                                        <a href="{{club.DribbbleLink}}"
+                                            ><i class="fab fa-dribbble"></i
+                                        ></a>
                                     </div>
                                     <div class="blog__btn mt-30">
-                                        {% if request.user.is_authenticated  %}
-                                            <a href="/clubmember/add/{{club.ClubName}}" class="btn"><i class="far fa-user"></i> Join me</a>
+                                        {% if clubmember %}
+                                        <p>You Are A Member</p>
+                                        {% elif request_data %}
+                                        <p>
+                                            Thank You, we've received your
+                                            proposal. We'll let you
+                                            know the outcome of your proposal.
+                                        </p>
                                         {% else %}
-                                            <a href="/login" class="btn"><i class="far fa-user"></i> First Log in</a>
+                                            {% if request.user.is_authenticated %}
+                                            <a
+                                                href="/clubmember/add/{{club.ClubName}}"
+                                                class="btn"
+                                                ><i class="far fa-user"></i> Join
+                                                me</a
+                                            >
+                                            {% else %}
+                                            <a href="/login" class="btn"
+                                                ><i class="far fa-user"></i> First
+                                                Log in</a
+                                            >
+                                        {% endif %}                          
                                         {% endif %}
                                     </div>
                                 </div>
@@ -121,67 +240,138 @@
                 </div>
                 {% endfor %}
             </section>
-            
-            <section class="shop-area pt-120 pb-120 p-relative wow fadeInUp  animated" data-animation="fadeInUp animated" data-delay=".2s" style="visibility: visible; animation-name: fadeInUp;">
+            <section
+                class="shop-area pt-120 pb-120 p-relative wow fadeInUp animated"
+                data-animation="fadeInUp animated"
+                data-delay=".2s"
+                style="visibility: visible; animation-name: fadeInUp;"
+            >
                 <div class="container">
-					<div class="row">
+                    <div class="row">
                         <div class="col-lg-12 section-title mb-80">
                             {% for club in club_data %}
-                                <center><h2 class="wow fadeInUp  animated" data-animation="fadeInUp animated" data-delay=".4s" style="visibility: visible; animation-name: fadeInUp;">Member of {{club.ClubName}} </h2></center>
+                            <center>
+                                <h2
+                                    class="wow fadeInUp animated"
+                                    data-animation="fadeInUp animated"
+                                    data-delay=".4s"
+                                    style="
+                                        visibility: visible;
+                                        animation-name: fadeInUp;
+                                    "
+                                >
+                                    Member of {{club.ClubName}}
+                                </h2>
+                            </center>
                             {% endfor %}
                         </div>
                     </div>
                     <div class="row align-items-center">
-                                    {% for clubmember in clubmember_data %}
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="product mb-40">
-                                            <div class="product__img" style="padding: 70px;">
-                                                <a href="shop-details.html"><img src="{{clubmember.StudentId.StudentImage}}" alt="" class="memberdisplay"></a>
-                                            </div>
-                                            <div class="product__content text-center">
-                                                <span class="pro-cat"><a style="color: #ff007a;">{{clubmember.MemberRole}}</a></span>
-                                                <h4 class="pro-title">{{clubmember.StudentId.StudentName}}</h4>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    {% endfor %}     
+                        {% for clubmember in clubmember_data %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product mb-40">
+                                <div
+                                    class="product__img"
+                                    style="padding: 70px;"
+                                >
+                                    <a href="shop-details.html"
+                                        ><img
+                                            src="{{clubmember.StudentId.StudentImage}}"
+                                            alt=""
+                                            class="memberdisplay"
+                                    /></a>
                                 </div>
-                            <div>
+                                <div class="product__content text-center">
+                                    <span class="pro-cat"
+                                        ><a style="color: #ff007a;"
+                                            >{{clubmember.MemberRole}}</a
+                                        ></span
+                                    >
+                                    <h4 class="pro-title">
+                                        {{clubmember.StudentId.StudentName}}
+                                    </h4>
+                                </div>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </section>
             <section id="team" class="team-area p-relative pt-120 pb-120 fix">
-                <div class="section-t team-t paroller" data-paroller-factor="0.15" data-paroller-factor-lg="0.15" data-paroller-factor-md="0.15" data-paroller-factor-sm="0.15" data-paroller-type="foreground" data-paroller-direction="horizontal"><h2>Event</h2></div>
-				<div class="circal1 item-zoom-inout"></div>
-				<div class="circal2 item-zoom-inout"></div>
-				<div class="circal3 item-zoom-inout"></div>
-				<div class="circal4 item-zoom-inout"></div>
+                <div
+                    class="section-t team-t paroller"
+                    data-paroller-factor="0.15"
+                    data-paroller-factor-lg="0.15"
+                    data-paroller-factor-md="0.15"
+                    data-paroller-factor-sm="0.15"
+                    data-paroller-type="foreground"
+                    data-paroller-direction="horizontal"
+                >
+                    <h2>Event</h2>
+                </div>
+                <div class="circal1 item-zoom-inout"></div>
+                <div class="circal2 item-zoom-inout"></div>
+                <div class="circal3 item-zoom-inout"></div>
+                <div class="circal4 item-zoom-inout"></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
                             <div class="section-title text-center mb-80">
                                 {% for club in club_data %}
-                                    <h2 class="wow fadeInUp  animated" data-animation="fadeInUp animated" data-delay=".4s" style="visibility: visible; animation-name: fadeInUp;">Event of {{club.ClubName}} </h2>
+                                <h2
+                                    class="wow fadeInUp animated"
+                                    data-animation="fadeInUp animated"
+                                    data-delay=".4s"
+                                    style="
+                                        visibility: visible;
+                                        animation-name: fadeInUp;
+                                    "
+                                >
+                                    Event of {{club.ClubName}}
+                                </h2>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         {% for event in event_data %}
-                        <div class="col-lg-4 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
+                        <div
+                            class="col-lg-4 col-md-6 wow fadeInDown animated"
+                            data-animation="fadeInUp animated"
+                            data-delay=".2s"
+                        >
                             <div class="single-team text-center pb-50 mb-30">
                                 <div class="team-thumb">
-                                    <a href="{% url 'event-view' id=event.id %}"><img src="{{event.EventImage}}" style="padding: 30px;" alt="img"></a>
+                                    <a href="{% url 'event-view' id=event.id %}"
+                                        ><img
+                                            src="{{event.EventImage}}"
+                                            style="padding: 30px;"
+                                            alt="img"
+                                    /></a>
                                 </div>
                                 <div class="team-info">
-                                    <a href="{% url 'event-view' id=event.id %}"><h4>{{event.title}}</h4></a>
+                                    <a href="{% url 'event-view' id=event.id %}"
+                                        ><h4>{{event.title}}</h4></a
+                                    >
                                     <strong>{{event.ClubName_id}}</strong>
                                     <div class="team-social pb-15 mb-15">
-                                        <p class="eventdescription" style="color: #47759d;">{{event.EventDescription}}</p>
-                                        <p>{{event.start}} - {{event.end}}</p> 
+                                        <p
+                                            class="eventdescription"
+                                            style="color: #47759d;"
+                                        >
+                                            {{event.EventDescription}}
+                                        </p>
+                                        <p>{{event.start}} - {{event.end}}</p>
                                     </div>
-                                    <div class="icon"><i class="far fa-map-marker-alt" style="color: #ff007a;"></i><span>&nbsp;{{event.VenueId.VenueName}}</span></div>
+                                    <div class="icon">
+                                        <i
+                                            class="far fa-map-marker-alt"
+                                            style="color: #ff007a;"
+                                        ></i
+                                        ><span
+                                            >&nbsp;{{event.VenueId.VenueName}}</span
+                                        >
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -196,9 +386,7 @@
         {% include 'client/footer.html' %}
         <!-- footer-end -->
 
-
-
-		<!-- JS here -->
+        <!-- JS here -->
         <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/popper.min.js' %}"></script>
@@ -215,11 +403,10 @@
         <script src="{% static 'client_plugins/js/jquery.scrollUp.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/jquery.magnific-popup.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/element-in-view.js' %}"></script>
-		<script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/imagesloaded.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/main.js' %}"></script>
     </body>
 
-<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
+    <!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
 </html>
-    

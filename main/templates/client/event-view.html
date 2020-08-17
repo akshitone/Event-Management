@@ -1,31 +1,67 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
-    
-<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:34:49 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
         {% for event in event_data %}
         <title>{{event.title}} | eVentes</title>
-        
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'client_plugins/img/favicon.png' %}">
+
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="{% static 'client_plugins/img/favicon.png' %}"
+        />
         <!-- Place favicon.ico in the root directory -->
 
-		<!-- CSS here -->
-		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="{% static 'client_plugins/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/fontawesome/css/all.min.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/dripicons.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/slick.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'client_plugins/css/responsive.css' %}">
+        <!-- CSS here -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/bootstrap.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/animate.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/magnific-popup.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/fontawesome/css/all.min.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/dripicons.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/slick.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/default.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/style.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'client_plugins/css/responsive.css' %}"
+        />
 
         <style>
             /* width */
@@ -45,7 +81,11 @@
             ::-webkit-scrollbar-thumb {
                 border-radius: 10px;
                 background-color: #0652c5;
-                background-image: -webkit-linear-gradient(315deg, #0652c5 0%, #d4418e 74%);
+                background-image: -webkit-linear-gradient(
+                    315deg,
+                    #0652c5 0%,
+                    #d4418e 74%
+                );
             }
         </style>
     </head>
@@ -57,59 +97,148 @@
         <main>
             <!-- slider-area -->
             <!-- breadcrumb-area -->
-            <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image:url({% static 'client_plugins/img/innerpage_bg_img.jpg' %})">
-                <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{% static 'client_plugins/img/doddle_6.png' %}" alt="shape"></div>
-                 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{% static 'client_plugins/img/doddle_9.png' %}" alt="shape"></div>
-                 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{% static 'client_plugins/img/doddle_7.png' %}" alt="shape"></div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                                <div class="breadcrumb-wrap text-center">
-                                    <div class="breadcrumb-title mb-30">
-                                        <h2>{{event.title}}</h2>                                   
-                                    </div>
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="index.html">{{event.ClubName_id}}</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">{{event.title}}</li>
-                                        </ol>
-                                    </nav>
+            <section
+                id="parallax"
+                class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix"
+                style="
+                    background-image: url({% static 'client_plugins/img/innerpage_bg_img.jpg' %});
+                "
+            >
+                <div class="slider-shape ss-one layer" data-depth="0.10">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_6.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-three layer" data-depth="0.40">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_9.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="slider-shape ss-four layer" data-depth="0.60">
+                    <img
+                        src="{% static 'client_plugins/img/doddle_7.png' %}"
+                        alt="shape"
+                    />
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                            <div class="breadcrumb-wrap text-center">
+                                <div class="breadcrumb-title mb-30">
+                                    <h2>{{event.title}}</h2>
                                 </div>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a href="index.html"
+                                                >{{event.ClubName_id}}</a
+                                            >
+                                        </li>
+                                        <li
+                                            class="breadcrumb-item active"
+                                            aria-current="page"
+                                        >
+                                            {{event.title}}
+                                        </li>
+                                    </ol>
+                                </nav>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
             <!-- slider-area-end -->
             <!-- about-area -->
             <section id="team" class="team-area p-relative pt-120 pb-120 fix">
                 <div class="container mb-100">
                     <div class="circal1 item-zoom-inout"></div>
                     <div class="circal2 item-zoom-inout"></div>
-                    <div class="circal3 item-zoom-inout"></div>
+                    <div class="circal3 item-zoom-inout"></div> 
                     <div class="circal4 item-zoom-inout"></div>
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <div class="wow fadeInLeft" data-animation="fadeInLeft" data-delay=".2s">
-                                <img src="{{event.EventImage}}" class="eventdisplay" alt="shape">
+                            <div
+                                class="wow fadeInLeft"
+                                data-animation="fadeInLeft"
+                                data-delay=".2s"
+                            >
+                                <img
+                                    src="{{event.EventImage}}"
+                                    class="eventdisplay"
+                                    alt="shape"
+                                />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="about-content s-about-content pl-30">
                                 <div class="about-title second-atitle">
-                                <div class="text-outline">
+                                    <div class="text-outline">
                                         <span>Event</span>
                                     </div>
-                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.title}}</h2>
-                                    <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s" style="margin-top: -20px; font-size:25px;">Organized By {{event.ClubName.ClubName}}</h2>
-                                    <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{event.start}} - {{event.end}} ({{event.EventStartTime}} - {{event.EventEndTime}})</span>
-                                    <p style="color: #47759d;">{{event.EventDescription}}</p>
-                                    <span class="wow fadeInUp animated pt-10" data-animation="fadeInUp animated" style="font-size: 10px;" data-delay=".2s"><a href="/venue"><i class="far fa-map-marker-alt"></i> {{event.VenueId.VenueName}} - {{event.VenueId.VenueLocation}}</a></span>
+                                    <h2
+                                        class="wow fadeInUp animated"
+                                        data-animation="fadeInUp animated"
+                                        data-delay=".2s"
+                                    >
+                                        {{event.title}}
+                                    </h2>
+                                    <h2
+                                        class="wow fadeInUp animated"
+                                        data-animation="fadeInUp animated"
+                                        data-delay=".2s"
+                                        style="
+                                            margin-top: -20px;
+                                            font-size: 25px;
+                                        "
+                                    >
+                                        Organized By {{event.ClubName.ClubName}}
+                                    </h2>
+                                    <span
+                                        class="wow fadeInUp animated"
+                                        data-animation="fadeInUp animated"
+                                        data-delay=".2s"
+                                        >{{event.start}} - {{event.end}}
+                                        ({{event.EventStartTime}} -
+                                        {{event.EventEndTime}})</span
+                                    >
+                                    <p style="color: #47759d;">
+                                        {{event.EventDescription}}
+                                    </p>
+                                    <span
+                                        class="wow fadeInUp animated pt-10"
+                                        data-animation="fadeInUp animated"
+                                        style="font-size: 10px;"
+                                        data-delay=".2s"
+                                        ><a href="/venue"
+                                            ><i
+                                                class="far fa-map-marker-alt"
+                                            ></i>
+                                            {{event.VenueId.VenueName}} -
+                                            {{event.VenueId.VenueLocation}}</a
+                                        ></span
+                                    >
                                     <div class="blog__btn mt-50">
-                                        {% if request.user.is_authenticated  %}
-                                            <a href="/eventmember/add/{{event.id}}" class="btn"><i class="far fa-user"></i> Join me</a>
-                                        {% else %}
-                                            <a href="/login" class="btn"><i class="far fa-user"></i> First Log in</a>
+                                        {% if  member %}    
+                                            <p>You are attending this Event</p>                           
+                                        {% else %}  
+                                            {% if request.user.is_authenticated %}
+                                            <a
+                                                href="/eventmember/add/{{event.id}}"
+                                                class="btn"
+                                                ><i class="far fa-user"></i>Attend Event
+                                                </a
+                                            >
+                                            {% else %}
+                                            <a href="/login" class="btn"
+                                                ><i class="far fa-user"></i> First
+                                                Log in</a
+                                            >
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -126,9 +255,7 @@
         {% include 'client/footer.html' %}
         <!-- footer-end -->
 
-
-
-		<!-- JS here -->
+        <!-- JS here -->
         <script src="{% static 'client_plugins/js/vendor/modernizr-3.5.0.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/vendor/jquery-1.12.4.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/popper.min.js' %}"></script>
@@ -145,11 +272,10 @@
         <script src="{% static 'client_plugins/js/jquery.scrollUp.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/jquery.magnific-popup.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/element-in-view.js' %}"></script>
-		<script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'client_plugins/js/isotope.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/imagesloaded.pkgd.min.js' %}"></script>
         <script src="{% static 'client_plugins/js/main.js' %}"></script>
     </body>
 
-<!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
+    <!-- Mirrored from zcube.in/eventes/index3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 May 2020 04:35:09 GMT -->
 </html>
-    

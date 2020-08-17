@@ -168,7 +168,15 @@ def club_single_view(request, name):
     club_data = Club.objects.filter(pk=name)
     event_data = Event.objects.filter(ClubName_id=name)
     clubmember_data = ClubMember.objects.filter(ClubId_id=name)
-    return render(request, 'client/club-view.html', {'name': name, 'club_data': club_data, 'event_data': event_data, 'clubmember_data': clubmember_data})
+    student_data = Student.objects.get(UserId=request.user)
+    clubmember = ClubMember.objects.filter(
+        ClubId_id=name, StudentId=student_data)
+    try:
+        request_data = ClubMemberRequest.objects.get(
+            ClubId_id=name, StudentId=student_data)
+    except:
+        request_data = ''
+    return render(request, 'client/club-view.html', {'name': name, 'club_data': club_data, 'event_data': event_data, 'clubmember_data': clubmember_data, 'clubmember': clubmember, 'request_data': request_data})
 
 
 @client_authentication_check
@@ -220,8 +228,11 @@ def event(request):
 
 @client_authentication_check
 def event_view(request, id):
+    student_data = Student.objects.get(UserId=request.user)
+    member = EventMember.objects.filter(
+        EventId_id=id, StudentId=student_data)
     event_data = Event.objects.filter(pk=id)
-    return render(request, 'client/event-view.html', {'id': id, 'event_data': event_data})
+    return render(request, 'client/event-view.html', {'id': id, 'event_data': event_data, 'member': member})
 
 
 @authentication_check
@@ -406,15 +417,14 @@ def whoweare(request):
 def clubmember_add(request, name):
     userId = request.user.id
     student = Student.objects.get(UserId_id=userId)
-    print(name)
-    print(student)
     clubMemberRequest = ClubMemberRequest(
         ClubId_id=name,
         StudentId=student
     )
-    clubMemberRequest.save()            
-    return redirect('/club')
-    
+    clubMemberRequest.save()
+    return redirect('/club/view/' + name)
+
+
 def eventmember_add(request, id):
     userId = request.user.id
     student = Student.objects.get(UserId_id=userId)
@@ -423,7 +433,7 @@ def eventmember_add(request, id):
         StudentId=student
     )
     eventmember.save()
-    return redirect('event')
+    return redirect('/event/view/' + str(id))
 
 
 def club_profile_view(request, id):
@@ -439,6 +449,7 @@ def requests(request):
 def request_read(request, id):
     club_data = ClubRequest.objects.get(id=id)
     return render(request, 'admin/requests-read.html', {'club_data': club_data})
+
 
 def member_request_read(request, id):
     club_member_data = ClubMemberRequest.objects.get(id=id)

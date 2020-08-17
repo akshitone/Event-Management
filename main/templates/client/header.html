@@ -41,7 +41,7 @@
                                     </li>
                                     {% if request.user.is_authenticated %}
                                     <li class="has-sub">
-                                        <a href="/student/form"
+                                        <a href="#"
                                             >Hello,
                                             {{request.user.first_name}}</a
                                         >
@@ -60,7 +60,7 @@
                                     </li>
                                     {% else %}
                                     <li class="has-sub">
-                                        <a href="/student/form">Account</a>
+                                        <a">Account</a>
                                         <ul>
                                             <li>
                                                 <a href="{% url 'login' %}"
