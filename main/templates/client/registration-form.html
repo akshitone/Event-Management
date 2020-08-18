@@ -203,6 +203,20 @@
                                                     data-parsley-special="1"
                                                 />
                                             </div>
+                                            <div id="checkbox-error"></div>
+                                            <div class="form-outer">
+                                                <div class="icon">
+                                                    <i class="fal fa-key"></i>
+                                                </div>
+                                                <input
+                                                    type="password"
+                                                    data-parsley-errors-container="#checkbox-error"
+                                                    required
+                                                    placeholder="Confirm Your Password"
+                                                    data-parsley-equalto="#txtpassword"
+                                                    data-parsley-equalto-message="Password Doesn't Match"
+                                                />
+                                            </div>
                                             <div id="checkbox-errors5"></div>
                                             <div class="form-outer">
                                                 <div class="icon">

@@ -85,26 +85,29 @@
                                 >Compose</a
                             >
                             <div id="tab" class="mail-list m-t-20">
+                                {% for group in request.user.groups.all %}
+                                {% if "subAdmin" in group.name %}
                                 <a href="#club" class="active"
                                     >Club<span class="ml-1"
                                         >({{ total_club_req }})</span
                                     ></a
                                 >
-                                <a href="#club-member"
+                                {% endif %}
+                                {% if "clubAdmin" in group.name %}
+                                <a href="#club-member" class="active"
                                     >Club-Member<span class="ml-1"
                                         >({{ total_club_member_req }})</span
                                     ></a
                                 >
-                                <a href="#events"
-                                    >Events<span class="ml-1"
-                                        >(0)</span
-                                    ></a
-                                >
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                         <!-- End Left sidebar --><!-- Right Sidebar -->
                         <div class="email-rightbar mb-3">
                             <div class="card">
+                                {% for group in request.user.groups.all %}
+                                {% if "subAdmin" in group.name %}
                                 <div id="club">
                                     {% if ClubRequests_data %}
                                     <ul class="message-list">     
@@ -149,7 +152,9 @@
                                     <p class="m-5 text-center h3 font-weight-bold">There Are No Proposal At This Moment.</p>
                                     {% endif %}
                                 </div>
-                                <div style="display: none;" id="club-member">
+                                {% endif %}
+                                {% if "clubAdmin" in group.name %}
+                                <div id="club-member">
                                     {% if ClubMemberRequests_data %}
                                     <ul class="message-list">     
                                         {% for request in ClubMemberRequests_data %}
@@ -184,50 +189,8 @@
                                     <p class="m-5 text-center h3 font-weight-bold">There Are No Proposal At This Moment.</p>
                                     {% endif %}
                                 </div>
-                                <div style="display: none;" id="events">
-                                    {% if request_data %}
-                                    <ul class="message-list">     
-                                        {% for request in requests_data %}
-                                        <li>
-                                            <div class="col-mail col-mail-1">
-                                                <div
-                                                    class="checkbox-wrapper-mail"
-                                                >
-                                                    <input
-                                                        type="checkbox"
-                                                        id="chk20"
-                                                    />
-                                                    <label
-                                                        for="chk20"
-                                                        class="toggle"
-                                                    ></label>
-                                                </div>
-                                                <a
-                                                    href="{% url 'request-read' id=request.id %}"
-                                                    class="title"
-                                                    >{{ request.StudentId.StudentName }}</a
-                                                ><span
-                                                    class="star-toggle fa fa-star-o"
-                                                ></span>
-                                            </div>
-                                            <div class="col-mail col-mail-2">
-                                                <a
-                                                    href="{% url 'request-read' id=request.id %}"
-                                                    class="subject"
-                                                    ><span
-                                                        class="badge-warning badge mr-2"
-                                                        >New</span
-                                                    >Club Proposal</a
-                                                >
-                                                <div class="date"></div>
-                                            </div>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% else %}
-                                    <p class="m-5 text-center h3 font-weight-bold">There Are No Proposal At This Moment.</p>
-                                    {% endif %}
-                                </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                         <!-- end Col-9 -->
@@ -253,14 +216,19 @@
             $(document).ready(function () {
                 var alert = localStorage.getItem("status");
                 var name = localStorage.getItem("name");
+                var member = localStorage.getItem("member");
+                var text = ""
+                if(!member){
+                    text = "Club "
+                }
                 if (alert) {
                     if (alert == "approve") {
                         alertify.success(
-                            "Club " + name + " has been Approved!"
+                            text + name + " has been Approved!"
                         );
                     } else {
                         alertify.error(
-                            "Club " + name + " has been Disapproved!"
+                            text + name + " has been Disapproved!"
                         );
                     }
                     localStorage.clear();

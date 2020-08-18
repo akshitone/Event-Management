@@ -15,9 +15,6 @@
                 <div class="d-block d-lg-none mr-5"><a href="/admin/" class="logo"><img src="{% static 'admin_plugins/images/favicon.png' %}" alt="" height="28" class="logo-small"></a></div>
                 <!-- End Logo-->
                 <div class="menu-extras topbar-custom navbar p-0">
-                    <ul class="list-inline flags-dropdown d-none d-lg-block mb-0">
-                        <li class="list-inline-item text-white-50 mr-3"><span class="font-13">Help : +91 7874 987 797</span></li>
-                    </ul>
                     <!-- Search input -->
                     <div class="search-wrap" id="search-wrap">
                         <div class="search-bar"><input class="search-input" type="search" placeholder="Search"> <a href="#" class="close-search toggle-search" data-target="#search-wrap"><i class="mdi mdi-close-circle"></i></a></div>
@@ -32,7 +29,7 @@
                         </li>
                         <!-- User-->
                         <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="{% static 'admin_plugins/images/users/avatar-6.jpg' %}" alt="user" class="rounded-circle"> <span class="d-none d-md-inline-block ml-1">{{admin_data.AdminUserName}} <i class="mdi mdi-chevron-down"></i></span></a>
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="{% static 'admin_plugins/images/favicon.png' %}" alt="user" class="rounded-circle"> <span class="d-none d-md-inline-block ml-1">{{admin_data.AdminUserName}} <i class="mdi mdi-chevron-down"></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                                 <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a> 
                                 <a class="dropdown-item" href="{% url 'logout' %}"><i class="dripicons-exit text-muted"></i>Logout</a>
@@ -56,13 +53,8 @@
             <div class="container-fluid">
                 <!-- Logo-->
                 <div class="d-none d-lg-block">
-                    <!-- Text Logo
-                        <a href="index.html" class="logo">
-                            Foxia
-                        </a>
-                         --><!-- Image Logo --> 
                     <a href="/admin/" class="logo">
-                        <!-- <img src="{% static 'admin_plugins/images/logo-sm.png' %}" alt="" height="22" class="logo-small"> --> <img src="{% static 'admin_plugins/images/logo.png' %}" alt="" height="20" class="logo-large">
+                        <img src="{% static 'admin_plugins/images/logo.png' %}" alt="" height="20" class="logo-large">
                     </a>
                 </div>
                 <!-- End Logo-->
@@ -71,7 +63,6 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         <li class="has-submenu"><a href="/admin/"><i class="dripicons-meter"></i>Dashboard</a></li>
-                        <li class="has-submenu"><a href="/admin/requests/"><i class="dripicons-meter"></i>Request</a></li>
                         <li class="has-submenu">
                             <a href="/admin/venue/"><i class="mdi mdi-city"></i>College<i class="mdi mdi-chevron-down mdi-drop"></i></a>
                             <ul class="submenu megamenu">
@@ -136,9 +127,6 @@
                 <div class="d-block d-lg-none mr-5"><a href="/admin/" class="logo"><img src="{% static 'admin_plugins/images/favicon.png' %}" alt="" height="28" class="logo-small"></a></div>
                 <!-- End Logo-->
                 <div class="menu-extras topbar-custom navbar p-0">
-                    <ul class="list-inline flags-dropdown d-none d-lg-block mb-0">
-                        <li class="list-inline-item text-white-50 mr-3"><span class="font-13">Help : +91 7874 987 797</span></li>
-                    </ul>
                     <!-- Search input -->
                     <div class="search-wrap" id="search-wrap">
                         <div class="search-bar"><input class="search-input" type="search" placeholder="Search"> <a href="#" class="close-search toggle-search" data-target="#search-wrap"><i class="mdi mdi-close-circle"></i></a></div>
@@ -147,13 +135,13 @@
                         <!-- notification-->
                         
                         <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect" href="/admin/notification/" role="button" aria-haspopup="false" aria-expanded="false"><i class="mdi mdi-bell-outline noti-icon"></i> 
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect" href="/admin/requests/" role="button" aria-haspopup="false" aria-expanded="false"><i class="mdi mdi-email-outline noti-icon"></i> 
                                 <!-- <span class="badge badge-info badge-pill noti-icon-badge">3</span> -->
                             </a>
                         </li>
                         <!-- User-->
                         <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="{% static 'admin_plugins/images/users/avatar-6.jpg' %}" alt="user" class="rounded-circle"> <span class="d-none d-md-inline-block ml-1">{{admin_data.AdminUserName}} <i class="mdi mdi-chevron-down"></i></span></a>
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="{{ request.user.employee.EmployeeImage}}" alt="user" class="rounded-circle"> <span class="d-none d-md-inline-block ml-1">{{request.user.first_name}} {{request.user.last_name}}<i class="mdi mdi-chevron-down"></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                                 <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a> 
                                 <a class="dropdown-item" href="{% url 'logout' %}"><i class="dripicons-exit text-muted"></i>Logout</a>
@@ -230,9 +218,6 @@
                 <div class="d-block d-lg-none mr-5"><a href="/admin/" class="logo"><img src="{% static 'admin_plugins/images/favicon.png' %}" alt="" height="28" class="logo-small"></a></div>
                 <!-- End Logo-->
                 <div class="menu-extras topbar-custom navbar p-0">
-                    <ul class="list-inline flags-dropdown d-none d-lg-block mb-0">
-                        <li class="list-inline-item text-white-50 mr-3"><span class="font-13">Help : +91 7874 987 797</span></li>
-                    </ul>
                     <!-- Search input -->
                     <div class="search-wrap" id="search-wrap">
                         <div class="search-bar"><input class="search-input" type="search" placeholder="Search"> <a href="#" class="close-search toggle-search" data-target="#search-wrap"><i class="mdi mdi-close-circle"></i></a></div>
@@ -241,13 +226,13 @@
                         <!-- notification-->
                         
                         <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect" href="/admin/notification/" role="button" aria-haspopup="false" aria-expanded="false"><i class="mdi mdi-bell-outline noti-icon"></i> 
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect" href="/admin/requests/" role="button" aria-haspopup="false" aria-expanded="false"><i class="mdi mdi-email-outline noti-icon"></i> 
                                 <!-- <span class="badge badge-info badge-pill noti-icon-badge">3</span> -->
                             </a>
                         </li>
                         <!-- User-->
                         <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="{% static 'admin_plugins/images/users/avatar-6.jpg' %}" alt="user" class="rounded-circle"> <span class="d-none d-md-inline-block ml-1">{{admin_data.AdminUserName}} <i class="mdi mdi-chevron-down"></i></span></a>
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="{{ request.user.club.ClubImage}}" alt="user" class="rounded-circle"> <span class="d-none d-md-inline-block ml-1">{{request.user.club.ClubName}} <i class="mdi mdi-chevron-down"></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                             
                                 <a class="dropdown-item" href=""><i class="dripicons-user text-muted"></i> Profile</a> 

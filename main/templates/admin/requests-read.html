@@ -39,6 +39,11 @@
             rel="stylesheet"
             type="text/css"
         />
+        <link
+            href="{% static 'admin_plugins/css/spinner.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
     </head>
     <body>
         <!-- Loader -->
@@ -85,10 +90,11 @@
                                 >Compose</a
                             >
                             <div class="mail-list m-t-20">
-                                <a href="#" class="active"
-                                    >Club<span class="ml-1">(18)</span></a
+                                <a href="/admin/requests" class="active"
+                                    >Club<span class="ml-1"
+                                        >({{ total_club_req }})</span
+                                    ></a
                                 >
-                            </div>
                         </div>
                         <!-- End Left sidebar --><!-- Right Sidebar -->
                         <div class="email-rightbar mb-3">
@@ -163,6 +169,12 @@
             </div>
             <!-- end container -->
         </div>
+
+        <div id="preeloader">
+            <div id="staatus">
+                <div class="spiner"></div>
+            </div>
+        </div>
         <!-- end wrapper -->
         <!-- jQuery  -->
         <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
@@ -199,13 +211,12 @@
                                 status:status
                             },
                             type: "post",
+                            beforeSend: function() {
+                                $("#preeloader").show()
+                            },
                             success: function (data) {
                                 localStorage.setItem("status", status);
                                 localStorage.setItem("name", name);
-                                // localStorage.setItem(
-                                //     "tab",
-                                //     $("#tab li a.active").data("id")
-                                // );
                                 location.replace("{% url 'requests' %}");
                             },
                             error: function (response) {

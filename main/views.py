@@ -93,14 +93,6 @@ def registration(request):
                 )
                 user.save()
                 student.save()
-
-                notification = Notification(
-                    NotificationTitle="New Student",
-                    NotificationDescription=request.POST['txtfullname'] +
-                    " Added by Akshit Mithaiwala"
-                )
-                notification.save()
-
                 return JsonResponse({}, status=200)
             except:
                 return JsonResponse({'error': 'Sorry, We Couldn\'t complete your request! Plesae Try Again Later!'}, status=500)

@@ -39,6 +39,11 @@
             rel="stylesheet"
             type="text/css"
         />
+        <link
+            href="{% static 'admin_plugins/css/spinner.css' %}"
+            rel="stylesheet"
+            type="text/css"
+        />
     </head>
     <body>
         <!-- Loader -->
@@ -85,8 +90,10 @@
                                 >Compose</a
                             >
                             <div class="mail-list m-t-20">
-                                <a href="#" class="active"
-                                    >Club Member<span class="ml-1">(18)</span></a
+                                <a href="/admin/requests"
+                                    >Club-Member<span class="ml-1"
+                                        >({{ total_club_member_req }})</span
+                                    ></a
                                 >
                             </div>
                         </div>
@@ -110,35 +117,23 @@
                                         </div>
                                     </div>
                                     <h4 class="mt-0 font-18">
-                                        Proposal of new Club Member in "{{club_member_data.ClubId_id}}"
+                                        Proposal of new Club Member
                                     </h4>
-                                    <p>Dear Admin,</p>
+                                    <p>Dear Club-Admin,</p>
                                     <p>
-                                        Praesent dui ex, dapibus eget mauris ut,
-                                        finibus vestibulum enim. Quisque arcu
-                                        leo, facilisis in fringilla id, luctus
-                                        in tortor. Nunc vestibulum est quis orci
-                                        varius viverra. Curabitur dictum
-                                        volutpat massa vulputate molestie. In at
-                                        felis ac velit maximus convallis.
+                                        I am making this proposal to request you for a membership in your club.
                                     </p>
                                     <p>
-                                        Sed elementum turpis eu lorem interdum,
-                                        sed porttitor eros commodo. Nam eu
-                                        venenatis tortor, id lacinia diam. Sed
-                                        aliquam in dui et porta. Sed bibendum
-                                        orci non tincidunt ultrices. Vivamus
-                                        fringilla, mi lacinia dapibus
-                                        condimentum, ipsum urna lacinia lacus,
-                                        vel tincidunt mi nibh sit amet lorem.
+                                        I request you to accept my request for membership to your club and involve
+                                        me in your club's social activities.
                                     </p>
-                                    <p>Sincerly,</p>
+                                    <p>Sincerly,<br /> {{club_member_data.StudentId.StudentName}}</p>
                                     <hr />
                                     <a
                                         href="{% url 'club-member-approval' %}"
                                         name="request"
                                         data-status="approve"
-                                        data-name="{{club_member_data.ClubId_id}}"
+                                        data-name="{{club_member_data.StudentId.StudentName}}"
                                         data-id="{{ club_member_data.id }}"
                                         class="btn btn-success waves-effect m-t-30"
                                         ><i class="mdi mdi-check"></i> Approve</a
@@ -148,7 +143,7 @@
                                         name="request"
                                         data-status="disapprove"
                                         data-id="{{ club_member_data.id }}"
-                                        data-name="{{club_member_data.ClubId_id}}"
+                                        data-name="{{club_member_data.StudentId.StudentName}}"
                                         class="btn btn-danger waves-effect m-t-30"
                                         ><i class="mdi mdi-close"></i> Disapprove</a
                                     >
@@ -164,6 +159,11 @@
             <!-- end container -->
         </div>
         <!-- end wrapper -->
+        <div id="preeloader">
+            <div id="staatus">
+                <div class="spiner"></div>
+            </div>
+        </div>
         <!-- jQuery  -->
         <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
         <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
@@ -199,13 +199,13 @@
                                 status:status
                             },
                             type: "post",
+                            beforeSend: function() {
+                                $("#preeloader").show()
+                            },
                             success: function (data) {
                                 localStorage.setItem("status", status);
                                 localStorage.setItem("name", name);
-                                // localStorage.setItem(
-                                //     "tab",
-                                //     $("#tab li a.active").data("id")
-                                // );
+                                localStorage.setItem("member", true);
                                 location.replace("{% url 'requests' %}");
                             },
                             error: function (response) {

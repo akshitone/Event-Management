@@ -107,8 +107,7 @@ def club_approval(request):
                 clubMember.save()
                 notification = Notification(
                     NotificationTitle="New Club ",
-                    NotificationDescription=club_data.ClubName +
-                    " Added by " + student.StudentName
+                    NotificationDescription=f'{club_data.ClubName} Approved by {request.user.first_name} {request.user.last_name}!'
                 )
                 notification.save()
                 club_request = ClubRequest.objects.get(
@@ -174,8 +173,6 @@ def club_member_approval(request):
                     [student.StudentEmail],
                     fail_silently=False,
                 )
-                send_emails(
-                    'New Club Member', 'New Club Member Has Been Formed Checkout The Webiste To Know More')
                 return JsonResponse({}, status=200)
             else:
                 club_request = ClubMemberRequest.objects.get(

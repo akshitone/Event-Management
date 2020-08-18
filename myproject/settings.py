@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'event_management_db',
+        'NAME': 'eVentes',
         'USER': 'postgres',
         'PASSWORD': '1920',
         'HOST': 'localhost',
@@ -122,7 +122,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 # SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

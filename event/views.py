@@ -56,13 +56,15 @@ def event_add(request):
     venue_data = Venue.objects.all()
     return render(request, 'admin/event-add.html', {'club_data': club_data, 'venue_data': venue_data})
 
+
 def event_member_table(request):
     event_member_data = EventMember.objects.all()
-    return render(request,'admin/event-member.html',{'event_member_data':event_member_data})
+    return render(request, 'admin/event-member.html', {'event_member_data': event_member_data})
+
 
 def event_member_view(request, id):
-    event_member_data = EventMember.objects.filter(pk = id)
-    return render(request,'admin/event-member-view.html',{'id': id,'event_member_data':event_member_data})
+    event_member_data = EventMember.objects.filter(pk=id)
+    return render(request, 'admin/event-member-view.html', {'id': id, 'event_member_data': event_member_data})
 
 
 @authentication_check
@@ -143,43 +145,45 @@ def calendar(request):
     events = list(map(lambda x: x['fields'], events))
     return render(request, 'admin/calendar.html', {'events': events})
 
+
 @authentication_check
 @user_authentication(allowed_users=['clubAdmin', 'superAdmin', 'subAdmin'])
 def event_view(request, id):
     event_data = Event.objects.filter(pk=id)
     return render(request, 'admin/event-view.html', {'id': id, 'event_data': event_data})
 
+
 @authentication_check
-@user_authentication(allowed_users=['clubAdmin','superAdmin','subAdmin'])
+@user_authentication(allowed_users=['clubAdmin', 'superAdmin', 'subAdmin'])
 def event_edit(request, id):
     if request.method == 'POST':
-        EventImage  = request.FILES['txtimageurl']
-        filesystem     = FileSystemStorage()
-        filename       = filesystem.save(EventImage.name, EventImage)
+        EventImage = request.FILES['txtimageurl']
+        filesystem = FileSystemStorage()
+        filename = filesystem.save(EventImage.name, EventImage)
 
-        emp = Event.objects.get(pk = id)
-        filesystem     = FileSystemStorage()
+        emp = Event.objects.get(pk=id)
+        filesystem = FileSystemStorage()
         filesystem.delete(emp.EventImageName)
 
-        url            = filesystem.url(filename)
+        url = filesystem.url(filename)
         Event.objects.all().filter(pk=id).update(
-            title              = request.POST['txteventname'],
-            ClubName_id        = request.POST['dropdownclub'],
-            VenueId_id         = request.POST['dropdownvenue'],
-            EventType          = request.POST['eventtype'],
-            EventImageName     = filename,  
-            EventImage         = url, 
-            EventEligibility   = request.POST['eventeligibility'],
-            start              = request.POST['txtstartdate'],
-            end                = request.POST['txtenddate'],
-            EventStartTime     = request.POST['txtstarttime'],
-            EventEndTime       = request.POST['txtendtime'],
-            EventDescription   = request.POST['txtdescription'],
-            EventAmount        = request.POST['txtamount'],
+            title=request.POST['txteventname'],
+            ClubName_id=request.POST['dropdownclub'],
+            VenueId_id=request.POST['dropdownvenue'],
+            EventType=request.POST['eventtype'],
+            EventImageName=filename,
+            EventImage=url,
+            EventEligibility=request.POST['eventeligibility'],
+            start=request.POST['txtstartdate'],
+            end=request.POST['txtenddate'],
+            EventStartTime=request.POST['txtstarttime'],
+            EventEndTime=request.POST['txtendtime'],
+            EventDescription=request.POST['txtdescription'],
+            EventAmount=request.POST['txtamount'],
         )
         return redirect('/admin/event/')
     else:
         event_data = Event.objects.filter(pk=id)
         club_data = Club.objects.all()
         venue_data = Venue.objects.all()
-        return render(request, 'admin/event-edit.html', {'id' : id, 'event_data': event_data, 'club_data': club_data, 'venue_data': venue_data})
+        return render(request, 'admin/event-edit.html', {'id': id, 'event_data': event_data, 'club_data': club_data, 'venue_data': venue_data})

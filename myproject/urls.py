@@ -13,7 +13,8 @@ urlpatterns = [
     path('', include('club.urls')),
     path('', include('event.urls')),
     path('', include('student.urls')),
-    path('', include('venue.urls'))
+    path('', include('venue.urls')),
+    path('superadmin/', admin.site.urls),
 ]
 
 urlpatterns = urlpatterns + \
