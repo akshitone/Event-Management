@@ -370,13 +370,19 @@
                                         <button id="submit-btn" type="submit" class="btn" style="margin-right: 20px;">
                                             Register
                                         </button>
-                                        <a class="btn" href="{% url 'login' %}">
-                                            Sign In
-                                        </a>
                                     </div>
                                 </form>
                                 <br />
                                 <div class="m-t-40 text-right text-white-50">
+                                    <p>
+                                        Have an account ?
+                                        <a
+                                            name="login"
+                                            href="{% url 'login' %}"
+                                            class="font-600 text-black"
+                                            >Click Here</a
+                                        >
+                                    </p>
                                     <p>
                                         Want to Checkout Website ?
                                         <a

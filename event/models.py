@@ -16,8 +16,8 @@ class Event(models.Model):
     VenueId = models.ForeignKey(Venue, on_delete=models.CASCADE)
     EventType = models.CharField(max_length=150)
     EventEligibility = models.CharField(max_length=150)
-    EventStatus = models.CharField(max_length=10, default=False)
-    EventApproval = models.CharField(max_length=10, default=-1)
+    EventStatus = models.CharField(max_length=10, default=True)
+    EventApproval = models.CharField(max_length=10, default=1)
     start = models.DateField(
         auto_now=False, auto_now_add=False, default=datetime.date.today)
     end = models.DateField(

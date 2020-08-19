@@ -21,5 +21,5 @@ class Employee(models.Model):
     EmployeeEmail = models.EmailField(max_length=150, null=True, blank=True)
     EmployeeAddress = models.TextField()
     EmployeeCity = models.CharField(max_length=150, null=False, blank=False)
-    EmployeeStatus = models.BooleanField(default=False)
+    EmployeeStatus = models.BooleanField(default=True)
     Role = models.CharField(max_length=150, default="staff")

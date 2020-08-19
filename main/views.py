@@ -160,9 +160,10 @@ def club_single_view(request, name):
     club_data = Club.objects.filter(pk=name)
     event_data = Event.objects.filter(ClubName_id=name)
     clubmember_data = ClubMember.objects.filter(ClubId_id=name)
-    student_data = Student.objects.get(UserId=request.user)
-    clubmember = ClubMember.objects.filter(
-        ClubId_id=name, StudentId=student_data)
+    clubmember = ''
+    if request.user.is_authenticated:
+        clubmember = ClubMember.objects.filter(
+            ClubId_id=name, StudentId=request.user.student)
     try:
         request_data = ClubMemberRequest.objects.get(
             ClubId_id=name, StudentId=student_data)
@@ -220,9 +221,10 @@ def event(request):
 
 @client_authentication_check
 def event_view(request, id):
-    student_data = Student.objects.get(UserId=request.user)
-    member = EventMember.objects.filter(
-        EventId_id=id, StudentId=student_data)
+    member = ""
+    if request.user.is_authenticated:
+        member = EventMember.objects.filter(
+            EventId_id=id, StudentId=request.user.student)
     event_data = Event.objects.filter(pk=id)
     return render(request, 'client/event-view.html', {'id': id, 'event_data': event_data, 'member': member})
 
@@ -351,18 +353,15 @@ def adminLogin(request):
                     if user.is_superuser:
                         login(request, user)
                         return JsonResponse({'url': "/admin"}, status=200)
+                    elif user.is_staff:
+                        return JsonResponse({'error': 'Unauthorized User!'}, status=403)
                     else:
                         groups = user.groups.all()
                         if groups is not None:
                             for group in groups:
                                 if group.name == "clubAdmin":
-                                    userId = user.id
-                                    club = Club.objects.get(UserId_id=userId)
-                                    if club.clubApproval:
-                                        login(request, user)
-                                        return JsonResponse({'url': "/clubadmin"}, status=200)
-                                    else:
-                                        return JsonResponse({'error': 'Club is not approved - please contact admin!'}, status=403)
+                                    login(request, user)
+                                    return JsonResponse({'url': "/clubadmin"}, status=200)
                                 elif group.name == "subAdmin":
                                     login(request, user)
                                     return JsonResponse({'url': "/subadmin"}, status=200)
@@ -433,9 +432,25 @@ def club_profile_view(request, id):
 
 
 def requests(request):
-    ClubRequests_data = ClubRequest.objects.all()
-    ClubMemberRequests_data = ClubMemberRequest.objects.all()
-    return render(request, 'admin/requests.html', {'ClubRequests_data': ClubRequests_data, 'ClubMemberRequests_data': ClubMemberRequests_data, 'total_club_req': ClubRequests_data.count(), 'total_club_member_req': ClubMemberRequests_data.count()})
+    groups = request.user.groups.all()
+    for group in groups:
+        if "subAdmin" in group.name:
+            department_id = request.user.employee.DepartmentName_id
+            ClubRequests_data = ClubRequest.objects.filter(
+                DepartmentName_id=department_id)
+            context = {
+                'ClubRequests_data': ClubRequests_data,
+                'total_club_req': ClubRequests_data.count()
+            }
+        elif "clubAdmin":
+            club_id = request.user.club.ClubName
+            ClubMemberRequests_data = ClubMemberRequest.objects.filter(
+                ClubId_id=club_id)
+            context = {
+                'ClubMemberRequests_data': ClubMemberRequests_data,
+                'total_club_member_req': ClubMemberRequests_data.count()
+            }
+    return render(request, 'admin/requests.html', context)
 
 
 def request_read(request, id):

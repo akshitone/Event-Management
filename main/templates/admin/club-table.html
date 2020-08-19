@@ -156,7 +156,6 @@
                                                     <th>Club type</th>
                                                     <th>Department name</th>
                                                     <th>Status</th>
-                                                    <th>Approval</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -222,26 +221,6 @@
                                                                 class="badge badge-secondary p-1"
                                                                 >Not
                                                                 active</span
-                                                            ></a
-                                                        >
-                                                        {% endif %}
-                                                    </td>
-                                                    <td>
-                                                        {% if club.clubApproval == '1' %}
-                                                        <a
-                                                            href="{% url 'club-update-approval-no' name=club.ClubName %}"
-                                                            ><span
-                                                                class="badge badge-success p-1"
-                                                                >Approve</span
-                                                            ></a
-                                                        >
-                                                        {% else %}
-                                                        <a
-                                                            href="{% url 'club-update-approval-yes' name=club.ClubName %}"
-                                                            ><span
-                                                                class="badge badge-danger p-1"
-                                                                >Not
-                                                                approve</span
                                                             ></a
                                                         >
                                                         {% endif %}

@@ -18,7 +18,6 @@ class Club(models.Model):
     DribbbleLink = models.CharField(max_length=150, null=True, blank=True)
     DepartmentName = models.ForeignKey(Department, on_delete=models.CASCADE)
     clubStatus = models.CharField(max_length=10, default=True)
-    clubApproval = models.CharField(max_length=10, default=1)
 
 
 class ClubRequest(models.Model):
@@ -40,6 +39,7 @@ class ClubMember(models.Model):
         Club, on_delete=models.CASCADE, related_name="clubName")
     StudentId = models.ForeignKey(Student, on_delete=models.CASCADE)
     MemberRole = models.CharField(max_length=150)
+
 
 class ClubMemberRequest(models.Model):
     ClubId = models.ForeignKey(Club, on_delete=models.CASCADE)

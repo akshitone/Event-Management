@@ -20,11 +20,9 @@ def employee_add(request):
                 filesystem = FileSystemStorage()
                 filename = filesystem.save(EmployeeImage.name, EmployeeImage)
                 url = filesystem.url(filename)
-
                 # User Creation
                 user = User.objects.create_user(
                     request.POST['txtusername'], request.POST['txtemail'], request.POST['txtpassword'])
-
                 # Name split and join
                 Name = request.POST['txtfullname'].split()
                 if len(Name) > 1:
@@ -32,7 +30,6 @@ def employee_add(request):
                     user.last_name = " ".join(Name[1:])
                 else:
                     user.first_name = " ".join(Name)
-
                 # print(request.POST["role"])
                 role = request.POST.get("role", False)
                 if role:
