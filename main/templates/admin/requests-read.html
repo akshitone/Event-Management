@@ -84,17 +84,18 @@
                     <div class="col-12">
                         <!-- Left sidebar -->
                         <div class="email-leftbar mb-3">
-                            <a
-                                href="email-compose.html"
+                            <p
+                                style="margin-block-end:0;"
                                 class="btn btn-danger btn-block waves-effect waves-light"
-                                >Compose</a
-                            >
+                                >Inbox</
+                            ></p>
                             <div class="mail-list m-t-20">
-                                <a href="/admin/requests" class="active"
+                                <a class="active" href="/admin/requests"
                                     >Club<span class="ml-1"
                                         >({{ total_club_req }})</span
                                     ></a
                                 >
+                            </div>
                         </div>
                         <!-- End Left sidebar --><!-- Right Sidebar -->
                         <div class="email-rightbar mb-3">
@@ -116,35 +117,33 @@
                                         </div>
                                     </div>
                                     <h4 class="mt-0 font-18">
-                                        Proposal of creating new Club "{{club_data.ClubName}}"
+                                        Proposal of new Club
                                     </h4>
-                                    <p>Dear Admin,</p>
+                                    <p>Dear Department Head,</p>
                                     <p>
-                                        Praesent dui ex, dapibus eget mauris ut,
-                                        finibus vestibulum enim. Quisque arcu
-                                        leo, facilisis in fringilla id, luctus
-                                        in tortor. Nunc vestibulum est quis orci
-                                        varius viverra. Curabitur dictum
-                                        volutpat massa vulputate molestie. In at
-                                        felis ac velit maximus convallis.
+                                        I am making this proposal to request you to give me permission to form new club "{{club_data.ClubName}}".
                                     </p>
                                     <p>
-                                        Sed elementum turpis eu lorem interdum,
-                                        sed porttitor eros commodo. Nam eu
-                                        venenatis tortor, id lacinia diam. Sed
-                                        aliquam in dui et porta. Sed bibendum
-                                        orci non tincidunt ultrices. Vivamus
-                                        fringilla, mi lacinia dapibus
-                                        condimentum, ipsum urna lacinia lacus,
-                                        vel tincidunt mi nibh sit amet lorem.
+                                        I request you to accept my proposal for new club.
                                     </p>
-                                    <p>Sincerly,</p>
+                                    <p>Sincerly,<br /> {{club_data.StudentId.StudentName}}</p>
                                     <hr />
+                                    <div class="row">
+                                        <div class="col-xl-2 col-md-4 col-6">
+                                            <div class="card">
+                                                <img
+                                                    class="card-img-top img-fluid"
+                                                    src="{{club_data.ClubImage}}"
+                                                    alt="Card image cap"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
                                     <a
                                         href="{% url 'club-approval' %}"
                                         name="request"
                                         data-status="approve"
-                                        data-name="{{club_data.ClubName}}"
+                                        data-name="{{club_data.StudentId.StudentName}}"
                                         data-id="{{ club_data.id }}"
                                         class="btn btn-success waves-effect m-t-30"
                                         ><i class="mdi mdi-check"></i> Approve</a
@@ -154,7 +153,7 @@
                                         name="request"
                                         data-status="disapprove"
                                         data-id="{{ club_data.id }}"
-                                        data-name="{{club_data.ClubName}}"
+                                        data-name="{{club_data.StudentId.StudentName}}"
                                         class="btn btn-danger waves-effect m-t-30"
                                         ><i class="mdi mdi-close"></i> Disapprove</a
                                     >
@@ -169,13 +168,12 @@
             </div>
             <!-- end container -->
         </div>
-
+        <!-- end wrapper -->
         <div id="preeloader">
             <div id="staatus">
                 <div class="spiner"></div>
             </div>
         </div>
-        <!-- end wrapper -->
         <!-- jQuery  -->
         <script src="{% static 'admin_plugins/js/jquery.min.js' %}"></script>
         <script src="{% static 'admin_plugins/js/bootstrap.bundle.min.js' %}"></script>
@@ -221,6 +219,9 @@
                             },
                             error: function (response) {
                                 alertify.error("Sorry we couldn't complete your request!");
+                            },
+                            complete: function() {
+                                $("#preeloader").hide()
                             },
                         });
                     });

@@ -84,13 +84,13 @@
                     <div class="col-12">
                         <!-- Left sidebar -->
                         <div class="email-leftbar mb-3">
-                            <a
-                                href="email-compose.html"
+                            <p
+                                style="margin-block-end:0;"
                                 class="btn btn-danger btn-block waves-effect waves-light"
-                                >Compose</a
-                            >
+                                >Inbox</
+                            ></p>
                             <div class="mail-list m-t-20">
-                                <a href="/admin/requests"
+                                <a class="active" href="/admin/requests"
                                     >Club-Member<span class="ml-1"
                                         >({{ total_club_member_req }})</span
                                     ></a
@@ -210,6 +210,9 @@
                             },
                             error: function (response) {
                                 alertify.error("Sorry we couldn't complete your request!");
+                            },
+                            complete: function() {
+                                $("#preeloader").hide()
                             },
                         });
                     });

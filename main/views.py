@@ -454,13 +454,17 @@ def requests(request):
 
 
 def request_read(request, id):
+    total_club_req = ClubRequest.objects.filter(
+        DepartmentName_id=request.user.employee.DepartmentName_id).count()
     club_data = ClubRequest.objects.get(id=id)
-    return render(request, 'admin/requests-read.html', {'club_data': club_data})
+    return render(request, 'admin/requests-read.html', {'club_data': club_data, "total_club_req": total_club_req})
 
 
 def member_request_read(request, id):
+    total_club_member_req = ClubMemberRequest.objects.filter(
+        ClubId_id=request.user.club.ClubName).count()
     club_member_data = ClubMemberRequest.objects.get(id=id)
-    return render(request, 'admin/member-requests-read.html', {'club_member_data': club_member_data})
+    return render(request, 'admin/member-requests-read.html', {'club_member_data': club_member_data, 'total_club_member_req': total_club_member_req})
 
 
 def send_emails(subject, body):
