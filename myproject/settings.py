@@ -140,9 +140,9 @@ EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hkvivu7wt',
-    'API_KEY': '476159173412829',
-    'API_SECRET': 'S28Sv9MJ0iTrwcoUb7pC6hSjyRc'
+    'CLOUD_NAME': os.environ['CLOUD_NAME'],
+    'API_KEY': os.environ['API_KEY'],
+    'API_SECRET': os.environ['API_SECRET']
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
