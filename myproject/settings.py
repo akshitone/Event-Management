@@ -129,8 +129,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_URL = '/media/'   
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -145,4 +145,5 @@ CLOUDINARY_STORAGE = {
     'API_KEY': os.environ['API_KEY'],
     'API_SECRET': os.environ['API_SECRET'],
 }
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
