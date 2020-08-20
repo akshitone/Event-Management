@@ -166,7 +166,7 @@ def club_single_view(request, name):
             ClubId_id=name, StudentId=request.user.student)
     try:
         request_data = ClubMemberRequest.objects.get(
-            ClubId_id=name, StudentId=student_data)
+            ClubId_id=name, StudentId=request.user.student)
     except:
         request_data = ''
     return render(request, 'client/club-view.html', {'name': name, 'club_data': club_data, 'event_data': event_data, 'clubmember_data': clubmember_data, 'clubmember': clubmember, 'request_data': request_data})

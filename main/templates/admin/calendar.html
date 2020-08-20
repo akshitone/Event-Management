@@ -99,6 +99,11 @@
         <script src="{% static 'admin_plugins/plugins/fullcalendar/js/fullcalendar.min.js' %}"></script>
         <script>
             var events = eval($("#data").text());
+            var end = events[0].end
+            end = end.split('-')
+            end[2] = "" + (+end[2] + 1) 
+            end = end.join('-')
+            events[0].end = end
             $(document).ready(function () {
                 $("#calendar").fullCalendar({
                     header: {

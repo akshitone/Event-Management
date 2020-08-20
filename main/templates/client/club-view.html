@@ -132,7 +132,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="index.html">Home</a>
+                                            <a href="/">Home</a>
                                         </li>
                                         <li
                                             class="breadcrumb-item active"
@@ -274,12 +274,11 @@
                                     class="product__img"
                                     style="padding: 70px;"
                                 >
-                                    <a href="shop-details.html"
-                                        ><img
-                                            src="{{clubmember.StudentId.StudentImage}}"
-                                            alt=""
-                                            class="memberdisplay"
-                                    /></a>
+                                    <img
+                                        src="{{clubmember.StudentId.StudentImage}}"
+                                        alt=""
+                                        class="memberdisplay"
+                                    />
                                 </div>
                                 <div class="product__content text-center">
                                     <span class="pro-cat"
@@ -342,7 +341,7 @@
                         >
                             <div class="single-team text-center pb-50 mb-30">
                                 <div class="team-thumb">
-                                    <a href="{% url 'event-view' id=event.id %}"
+                                    <a href="{% url 'event-view-page' id=event.id %}"
                                         ><img
                                             src="{{event.EventImage}}"
                                             style="padding: 30px;"
@@ -350,7 +349,7 @@
                                     /></a>
                                 </div>
                                 <div class="team-info">
-                                    <a href="{% url 'event-view' id=event.id %}"
+                                    <a href="{% url 'event-view-page' id=event.id %}"
                                         ><h4>{{event.title}}</h4></a
                                     >
                                     <strong>{{event.ClubName_id}}</strong>

@@ -10,6 +10,7 @@ from django.core import serializers
 from django.http import HttpResponse, JsonResponse
 import datetime
 from myproject.customDecorators import *
+from main.views import send_emails
 
 # Create your views here.
 
@@ -48,6 +49,8 @@ def event_add(request):
                     NotificationDescription=name + " Added by " + club.ClubName
                 )
                 notification.save()
+                send_emails(
+                    'New Event', f'New Event "{event.title}" Has Been Formed By Club "{club.ClubName}" Checkout The Webiste To Know More')
             except:
                 return JsonResponse({'error': 'Something Went Wrong'}, status=500)
             return JsonResponse({'msg': 'New Event Has Been Created'}, status=200)

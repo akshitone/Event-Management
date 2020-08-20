@@ -232,13 +232,13 @@
 										<tbody>
 											{% for event in last_event %}
 											<tr>
-												<th scope="row">{{event.id}}</th>
+												<th scope="row">{{ forloop.counter }}</th>
 												<td>
 													<div><img src="{{event.EventImage}}" alt="" class="thumb-sm rounded-circle mr-2">{{event.title}}</div>
 												</td>
 												<td>{{event.start}}</td>
 												<td>
-													{% if event.EventStatus == True %}
+													{% if event.EventStatus %}
 														<a href=""><span class="badge badge-success p-1">Active</span></a>
 													{% else %}
 														<a href=""><span class="badge badge-secondary p-1">Not active</span></a>

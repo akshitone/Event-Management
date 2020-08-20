@@ -115,13 +115,13 @@ def club_approval(request):
                 club_request.delete()
                 send_mail(
                     'Club Proposal',
-                    'We are Glad to inform you that your proposal has been accepted!',
+                    f'We are Glad to inform you that your proposal has been accepted for Club "{club.ClubName}"!',
                     'akshiiitone@gmail.com',
                     [student.StudentEmail],
                     fail_silently=False,
                 )
                 send_emails(
-                    'New Club', 'New Club Has Been Formed Checkout The Webiste To Know More')
+                    'New Club', f'New Club "{club.ClubName}" Has Been Formed Checkout The Webiste To Know More')
                 return JsonResponse({}, status=200)
             else:
                 club_request = ClubRequest.objects.get(
@@ -131,7 +131,7 @@ def club_approval(request):
                 filesystem.delete(club_request.ClubImageName)
                 send_mail(
                     'Club Proposal',
-                    'We are sorry to inform you that your proposal has been denied',
+                    f'We are sorry to inform you that your proposal has been denied for Club "{club.ClubName}"',
                     'akshiiitone@gmail.com',
                     [student.StudentEmail],
                     fail_silently=False,
@@ -168,7 +168,7 @@ def club_member_approval(request):
                 club_request.delete()
                 send_mail(
                     'Club Member Proposal',
-                    'We are Glad to inform you that your proposal has been accepted!',
+                    f'We are Glad to inform you that you are member of Club "{club.ClubName}"',
                     'akshiiitone@gmail.com',
                     [student.StudentEmail],
                     fail_silently=False,
@@ -180,7 +180,7 @@ def club_member_approval(request):
                 club_request.delete()
                 send_mail(
                     'Club Member Proposal',
-                    'We are sorry to inform you that your proposal has been denied',
+                    f'We are sorry to inform you that Club "{club.ClubName}" denied your proposal',
                     'akshiiitone@gmail.com',
                     [student.StudentEmail],
                     fail_silently=False,
