@@ -27,8 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'cloudinary_storage',
-    # 'cloudinary',
+    'cloudinary_storage',
+    'cloudinary',
 
     'main',
     'department',
@@ -147,10 +147,9 @@ cloudinary.config(
     api_key = "476159173412829", 
     api_secret = "S28Sv9MJ0iTrwcoUb7pC6hSjyRc" 
 )
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME':os.environ['CLOUD_NAME'],
-#     'API_KEY': os.environ['API_KEY'],
-#     'API_SECRET': os.environ['API_SECRET'],
-# }
 
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hkvivu7wt',
+    'API_KEY': '476159173412829',
+    'API_SECRET': 'S28Sv9MJ0iTrwcoUb7pC6hSjyRc'
+}
